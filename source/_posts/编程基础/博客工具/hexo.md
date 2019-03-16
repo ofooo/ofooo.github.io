@@ -42,6 +42,28 @@ hexo generate   | hexo g
 `
 ```
 
+## 插件
+
+### 自动生存目录树 categories
+
+[hexo-auto-category](https://github.com/xu-song/hexo-auto-category)
+
+```bash
+# 安装
+npm install hexo-auto-category --save
+
+# 在站点根目录下的_config.yml添加：
+# 自动生成目录树categories (depth层级上限)
+auto_category:
+ enable: true
+ depth:
+ 
+# 使用
+hexo clean && hexo g && hexo d
+```
+
+
+
 
 
 ## 参考资料

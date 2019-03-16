@@ -80,8 +80,7 @@ theme: Wikitten
 deploy:
   type: git
   repo:
-      github: git@github.com:ofooo/ofooo.github.io.git
-      branch: master
+      github: git@github.com:ofooo/ofooo.github.io.git,master
 
 
 ################################################
@@ -105,9 +104,13 @@ widgets: # 挂件，默认指开启了分类这一栏
     # - tagcloud
     # - links
 
-
 # 外站连接打开新连接
 nofollow:
     enable: true
     exclude:
     - 友链地址  
+
+# 自动生成目录树categories (depth层级上限)
+auto_category:
+ enable: true
+ depth:

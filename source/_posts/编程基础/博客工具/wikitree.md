@@ -14,12 +14,11 @@ categories:
 ### 维基博客分类树
 
 - 编程基础
+  - 安装与配置
+  - 功能与操作
   - python
   - 前端 #JavaScript #CSS#html5 #node
-  - linux
   - leetcode
-  - 编程风格
-  - 软件技巧
   - 数据库 #mongo
   - 博客工具 #hexo #markdown
 - 人工智能
