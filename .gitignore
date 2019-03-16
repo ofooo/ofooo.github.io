@@ -1,0 +1,32 @@
+.DS_Store
+db.json
+*.log
+node_modules/
+public/
+.deploy*/
+
+# Windows:
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+~*.xlsx
+.~*.xlsx
+~*.docx
+.~*.docx
+.idea
+
+# Python:
+__pycache__
+*.py[cod]
+
+# JavaScript
+*.so
+*.egg
+*.egg-info
+node_modules
+.nuxt
+bin/更新类案列表.json
+
+# log
+log*.txt
+
