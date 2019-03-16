@@ -1,12 +1,12 @@
 ---
 title: markdown说明
 toc: true
-date: 2019-02-27 15:03:45
-tags: 
+tags:
   - markdown
 categories:
   - 编程基础
   - 博客工具
+date: 2019-02-27 15:03:45
 ---
 
 
