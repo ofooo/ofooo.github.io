@@ -1,0 +1,16 @@
+
+
+server {
+	listen 80;
+
+	root /home/wangxiaoyu/wxydir/nginx;
+	index index.html index.htm;
+
+	server_name localhost;
+
+	location / {
+          root  /home/wangxiaoyu/wxydir/nginx;#这里填写你的静态文件存储根目录
+          access_log   on;
+          autoindex  on;
+       }
+}

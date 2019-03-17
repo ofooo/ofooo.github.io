@@ -24,9 +24,9 @@ sudo npm install hexo-cli -g
 
 
 
+## 主题配置
 
-
-
+[hexo-theme-Wikitten Github地址](https://github.com/zthxxx/hexo-theme-Wikitten/blob/master/README_zh-CN.md)
 
 ## 部署hexo
 

@@ -5,6 +5,13 @@ tags: [node, npm]
 
 
 
+## npm最常用命令
+
+```bash
+# 安装模块, 并将模块名加入到package.json
+npm install xxxxxx --save
+```
+
 
 
 ## npm常用命令
