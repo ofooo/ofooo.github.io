@@ -1,3 +1,8 @@
+---
+title: javaeans
+tags: [编程风格]
+---
+
 [使用Beans思想让Python代码更易维护](http://www.cnblogs.com/xieqiankun/p/beans_in_python.html)
 
 

@@ -1,3 +1,9 @@
+---
+title: python读写ini配置文件
+tags: [python]
+
+---
+
 ```python
 import configparser
 cfg = configparser.ConfigParser()    #创建对象

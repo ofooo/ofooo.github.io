@@ -1,3 +1,8 @@
+---
+title: python虚拟环境
+tags: [python]
+---
+
 ### conda添加虚拟环境
 
 1、创建环境

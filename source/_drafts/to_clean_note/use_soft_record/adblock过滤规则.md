@@ -1,3 +1,10 @@
+---
+title: adblock
+tags: []
+---
+
+
+
 过滤class
 
 ```js

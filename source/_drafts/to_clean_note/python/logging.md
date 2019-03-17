@@ -1,4 +1,9 @@
-**每个logger输出时**
+---
+title: logging
+tags: [python]
+---
+
+每个logger输出时**
 
 ​	每个handler输出符合logger.level和handler.level的日志
 

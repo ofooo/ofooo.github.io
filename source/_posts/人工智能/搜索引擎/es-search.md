@@ -1,9 +1,15 @@
 ---
 title: es-搜索操作
 toc: true
-date: 2019-03-17 09:25:03
-tags: [es, elastic_search, search, 搜索]
+tags:
+  - es
+  - elastic_search
+  - search
+  - 搜索
 categories:
+  - 人工智能
+  - 搜索引擎
+date: 2019-03-17 09:25:03
 ---
 
 

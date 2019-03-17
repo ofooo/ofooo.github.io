@@ -1,9 +1,11 @@
 ---
 title: 操作系统重装记录
 toc: true
+categories:
+  - 编程基础
+  - 安装与配置
 date: 2019-03-17 08:56:59
 tags:
-categories:
 ---
 
 

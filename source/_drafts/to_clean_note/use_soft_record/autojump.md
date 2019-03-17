@@ -1,3 +1,8 @@
+---
+title: autojump
+tags: []
+---
+
 ```bash
 j -s     	 # 显示所有目录和概率
 j -a 目录     # 手工添加一个目录

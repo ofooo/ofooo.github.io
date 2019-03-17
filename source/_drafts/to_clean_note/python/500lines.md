@@ -1,3 +1,12 @@
+---
+title: 5oo行项目学python
+tags: [python]
+---
+
+
+
+## 目录
+
 \1. A Template Engine （[http://aosabook.org/en/500L/a-template-engine.html](https://link.zhihu.com/?target=http%3A//aosabook.org/en/500L/a-template-engine.html)）
 ​    MVC模型中的view层如何解析html中的静态变量和简单的语句，如下：
 

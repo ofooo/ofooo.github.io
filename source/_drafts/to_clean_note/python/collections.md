@@ -1,3 +1,8 @@
+---
+title: collections
+tags: [python]
+---
+
 ### class collections.Counter
 
 ```

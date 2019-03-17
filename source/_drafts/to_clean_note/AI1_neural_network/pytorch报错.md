@@ -1,3 +1,10 @@
+---
+title: pytorch报错
+tags: [深度学习, GPU, pytorch]
+---
+
+
+
 eq() received an invalid combination of arguments - got (type), but expected one of:(float other)
 
 **net-Module内部的 self.type 不能被覆盖。    不能self.type=net() 这样～～～**

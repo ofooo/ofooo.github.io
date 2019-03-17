@@ -1,3 +1,8 @@
+---
+title: jupyter-notebook
+tags: []
+---
+
 #### 魔法命令
 
 | 命令     | 作用        |

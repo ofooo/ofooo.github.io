@@ -1,3 +1,8 @@
+---
+title: shell脚本
+tags: []
+---
+
 ##### 问题：source 无法找到
 
 source是bash的内建命令。不是单独的执行文件。如果用其他shell则会缺少source。

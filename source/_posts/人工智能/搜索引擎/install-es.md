@@ -1,9 +1,14 @@
 ---
 title: 安装ES
 toc: true
-date: 2019-03-17 09:21:17
-tags: [es, elastic_search, Kibana]
+tags:
+  - es
+  - elastic_search
+  - Kibana
 categories:
+  - 人工智能
+  - 搜索引擎
+date: 2019-03-17 09:21:17
 ---
 
 ## 安装ES

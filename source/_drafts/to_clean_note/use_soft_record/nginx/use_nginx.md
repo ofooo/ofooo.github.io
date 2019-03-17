@@ -1,3 +1,10 @@
+---
+title: 使用nginx
+tags: [nginx]
+---
+
+
+
 1. 如果报错缺少PCRE库，则安装：
 
     ``` sudo apt-get update ```

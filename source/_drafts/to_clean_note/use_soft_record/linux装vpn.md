@@ -1,3 +1,8 @@
+---
+title: vpn
+tags: []
+---
+
 1. 下载浏览器插件
 
    1. whttps://github.com/FelisCatus/SwitchyOmega/releases/
@@ -19,7 +24,7 @@
       sslocal -c 配置文件.json
       ```
 
-      ​
+      
 
 4. 配置浏览器插件
 

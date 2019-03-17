@@ -1,9 +1,14 @@
 ---
 title: decorator装饰器
 toc: true
-date: 2019-03-17 08:38:37
-tags: [python, decorator, 装饰器]
+tags:
+  - python
+  - decorator
+  - 装饰器
 categories:
+  - 编程基础
+  - python
+date: 2019-03-17 08:38:37
 ---
 
 

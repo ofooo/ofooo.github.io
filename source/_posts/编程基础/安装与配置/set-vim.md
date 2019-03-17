@@ -1,9 +1,11 @@
 ---
 title: 配置vim
 toc: true
+categories:
+  - 编程基础
+  - 安装与配置
 date: 2019-03-17 08:56:04
 tags:
-categories:
 ---
 
 

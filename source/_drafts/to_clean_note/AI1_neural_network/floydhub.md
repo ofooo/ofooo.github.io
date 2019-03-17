@@ -1,4 +1,11 @@
-**安装命令行工具**
+---
+title: floydhub云
+tags: [深度学习, GPU]
+---
+
+
+
+安装命令行工具**
 
 pip install -U floyd-cli
 
@@ -16,5 +23,5 @@ floyd login -u aifish
    1. --env pytorch-0.4
    2. --gpu
    3. --model job默认| jupyter| serve
-   4. ​
+   4. 
 

@@ -1,9 +1,11 @@
 ---
 title: 安装manjaro
 toc: true
-date: 2019-03-17 08:55:36
-tags: 
 categories:
+  - 编程基础
+  - 安装与配置
+date: 2019-03-17 08:55:36
+tags:
 ---
 
 

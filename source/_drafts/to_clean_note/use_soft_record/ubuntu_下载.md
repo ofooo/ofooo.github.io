@@ -1,3 +1,9 @@
+---
+title: ubuntu下载
+tags: []
+---
+
+
 ```bash
 # 安装下载器
 sudo apt install aria2

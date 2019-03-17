@@ -1,3 +1,10 @@
+---
+title: pycharm
+tags: []
+---
+
+
+
 希望屏蔽的错误提示：设置》Editor》Inspections	（搜索Typo可以找到）
 
 - 错误拼写：Spelling》Typo

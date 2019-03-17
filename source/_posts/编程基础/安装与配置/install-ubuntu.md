@@ -1,9 +1,11 @@
 ---
 title: 安装ubuntu
 toc: true
+categories:
+  - 编程基础
+  - 安装与配置
 date: 2019-03-17 08:55:46
 tags:
-categories:
 ---
 
 

@@ -1,9 +1,11 @@
 ---
 title: 配置pycharm
 toc: true
+categories:
+  - 编程基础
+  - 安装与配置
 date: 2019-03-17 08:55:57
 tags:
-categories:
 ---
 
 

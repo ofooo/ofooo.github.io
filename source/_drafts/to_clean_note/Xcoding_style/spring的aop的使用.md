@@ -1,3 +1,8 @@
+---
+title: spring的aop的使用
+tags: [编程风格]
+---
+
 ## [Spring AOP详解](http://www.cnblogs.com/hongwz/p/5764917.html)
 
 

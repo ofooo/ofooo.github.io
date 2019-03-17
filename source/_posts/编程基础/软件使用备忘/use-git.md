@@ -1,9 +1,13 @@
 ---
 title: 使用git
 toc: true
-date: 2019-03-17 09:05:30
-tags: [git, gitlab]
+tags:
+  - git
+  - gitlab
 categories:
+  - 编程基础
+  - 软件使用备忘
+date: 2019-03-17 09:05:30
 ---
 
 

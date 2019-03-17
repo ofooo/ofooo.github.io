@@ -1,3 +1,8 @@
+---
+title: 使用deepin
+tags: []
+---
+
 ### 重启桌面程序
 
 	``` sudo /etc/init.d/lightdm restart ```

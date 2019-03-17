@@ -1,3 +1,8 @@
+---
+title: pytorch--tensor
+tags: [深度学习, pytorch]
+---
+
 #### Tensor
 
 | 作用          | tensor的方法()             |
