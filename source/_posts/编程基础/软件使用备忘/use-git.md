@@ -54,6 +54,22 @@ git config --global core.editor "vim"
 git branch -f master HEAD~3
 ```
 
+### 删除git子模组/子模块
+
+```bash
+# 删除子模块目录及源码
+rm -rf 子模块目录 
+# 删除项目目录下.gitmodules文件中子模块相关条目
+vi .gitmodules 
+# 删除配置项中子模块相关条目
+vi .git/config 
+# 删除模块下的子模块目录，每个子模块对应一个目录，注意只删除对应的子模块目录即可
+rm .git/module/* 
+
+# 如果仍然报错，执行如下：
+git rm --cached 子模块名称
+```
+
 
 
 ### TODO: 学习  git hooks自动更新
