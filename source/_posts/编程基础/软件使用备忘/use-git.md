@@ -57,6 +57,13 @@ git branch -f master HEAD~3
 ### 删除git子模组/子模块
 
 ```bash
+菜鸟流程:
+1. 把子模组文件夹剪切到项目外
+2. add/commit/push(删除对应文件夹)
+3. 然后把文件夹剪切回来
+4. add/commit/push(增加对应文件夹)
+
+官方流程:
 # 删除子模块目录及源码
 rm -rf 子模块目录 
 # 删除项目目录下.gitmodules文件中子模块相关条目
