@@ -118,6 +118,17 @@ Name=Typora
 Comment=MarkDown Editor
 ```
 
+### 安装node/npm
+
+```bash
+sudo pacman -S nvm 
+nvm install --latest-npm
+
+然后把/home/fish/.nvm/versions/node/v11.12.0/bin添加到系统路径
+```
+
+
+
 ### 安装jdk
 
 ```bash
@@ -137,6 +148,28 @@ sudo pacman -S electronic-wechat   （网页版不能复制粘帖图片）
 sudo pacman -S shadownsocks-qt5
 sudo pacman -S vim
 ```
+
+### 安装下载工具Gwget
+
+```bash
+打开系统工具：添加/删除软件
+搜索工具后下载
+```
+
+百度云下载
+
+```bash
+打开系统工具：添加/删除软件：安装baidupcs-go-git
+说明：https://github.com/iikira/BaiduPCS-Go
+
+# 进入命令交互工具
+baidupcs
+# 帮助
+help
+
+```
+
+
 
 ### 安装zsh   autojump
 

@@ -31,7 +31,7 @@ date: 2019-03-17 09:05:30
 git config --global core.editor "vim"
 ```
 
-#### 配置远程仓库的密钥
+### 配置远程仓库的密钥
 
 1. 创建自己的私钥和公钥对
    ``` ssh-keygen -C “备注信息”  -f ~/.ssh/私钥名称 ```       【密码输入空】
@@ -46,19 +46,25 @@ git config --global core.editor "vim"
 4. 在phabricator里个人--setting--SSH Public Keys-- SSH Key Actions -- Upload Public Key
 5. Name 随便取， Public Key 是你的公钥的文本内容
 
+### 强制修改分支位置
+
+```bash
+可以直接使用 -f 选项让分支指向另一个提交
+# 例如下面。将 master 分支强制指向 HEAD 的第 3 级父提交。（代码恢复到老版本）
+git branch -f master HEAD~3
+```
 
 
 
+### TODO: 学习  git hooks自动更新
 
-#### git hooks自动更新
-
-#### 提交空文件夹
+### 提交空文件夹
 
 - 空的.gitignore文件可以作为占位符，使git只创建一个文件夹，里面是空的（一个空.ignore文件）
 
 
 
-#### 删除文件的git控制
+### 删除文件的git控制
 
 - 如果已经加到版本控制中（push或add过）：用该命令去除控制（**不删除本地文件**）
 
@@ -70,7 +76,7 @@ git config --global core.editor "vim"
 
 
 
-#### 忽略已加入控制的文件改动
+### 忽略已加入控制的文件改动
 
 - git update-index --assume-unchanged 文件名
 
