@@ -207,6 +207,19 @@ git branch -f master HEAD~3
 
 ```
 
+### 恢复到merge之前
+
+```bash
+# ORIG_HEAD 是git在做危险操作时候给HEAD做的备份
+git reset --hard ORIG_HEAD
+# ORIG_HEAD 等价于 HEAD@{1}  
+```
+
+
+
+
+
 ## 参考资料
+
 > - []()
 > - []()

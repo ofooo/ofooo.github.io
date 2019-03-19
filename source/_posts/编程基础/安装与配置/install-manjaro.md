@@ -140,13 +140,14 @@ export JRE_HOME=${JAVA_HOEM}/jre
 export CLASSPATH=.:${JAVA_HOME}/lib:${JRE_HOME}/lib 
 ```
 
-### 安装 vscode   vim   微信   shadownsocks    
+### 安装 vscode   vim   微信   shadownsocks    网易云音乐
 
 ```bash
 sudo pacman -S code
 sudo pacman -S electronic-wechat   （网页版不能复制粘帖图片）
 sudo pacman -S shadownsocks-qt5
 sudo pacman -S vim
+sudo pacman -S netease-cloud-music   # 网易云音乐
 ```
 
 ### 安装下载工具Gwget
@@ -220,6 +221,8 @@ tips配置：%m-%d   %j/365  第%V周
 时钟配置：周%u %H:%M
 
 ## 四. 常用快捷键
+
+**Ctrl+Alt+D  回到桌面（在设置界面里看不见这个快捷键，但是超级方便）**
 
 Ctrl+Alt+F  exo-open --launch FileManager 打开文件管理器  我改成了 Super E
 Ctrl+Alt+M  xfce4-taskmanager  资源监控器

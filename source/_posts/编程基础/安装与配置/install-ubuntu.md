@@ -16,6 +16,21 @@ tags:
 
 ## 二 安装软件
 
+### 安装git git-lfs
+
+```bash
+# 安装git
+sudo apt install git
+
+# 安装git-lfs
+## 1. 设置url源
+curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | sudo bash
+## 2. 安装lfs
+sudo apt-get install git-lfs
+## 3. 初始化
+git lfs install
+```
+
 ### 安装输入法
 
 ```bash

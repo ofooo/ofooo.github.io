@@ -10,6 +10,15 @@ tags:
 
 
 
+### tty终端
+
+```bash
+# 进入tty终端
+Ctrl+Alt+F1   到F6  进入tty1～～tty6
+# 从tty回到桌面环境
+Ctrl+Alt+F7
+```
+
 ## Shell脚本
 
 ### Shell特殊变量
