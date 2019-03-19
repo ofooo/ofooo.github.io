@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    
+    <title>使用linux | AIfish</title>
+    
+    
+        <meta name="keywords" content="使用linux">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="tty终端1234# 进入tty终端Ctrl+Alt+F1   到F6  进入tty1～～tty6# 从tty回到桌面环境Ctrl+Alt+F7 Shell脚本Shell特殊变量   变量 含义     $0 当前脚本的文件名   $n 传递给脚本或函数的参数。n 是一个数字，表示第几个参数。例如，第一个参数是$1，第二个参数是$2。   $# 传递给脚本或函数的参数个数。   $* 传递给脚本或">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用linux">
+<meta property="og:url" content="http://yoursite.com/wiki/编程基础/软件使用备忘/use-linux/index.html">
+<meta property="og:site_name" content="AIfish">
+<meta property="og:description" content="tty终端1234# 进入tty终端Ctrl+Alt+F1   到F6  进入tty1～～tty6# 从tty回到桌面环境Ctrl+Alt+F7 Shell脚本Shell特殊变量   变量 含义     $0 当前脚本的文件名   $n 传递给脚本或函数的参数。n 是一个数字，表示第几个参数。例如，第一个参数是$1，第二个参数是$2。   $# 传递给脚本或函数的参数个数。   $* 传递给脚本或">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-03-19T02:44:36.153Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="使用linux">
+<meta name="twitter:description" content="tty终端1234# 进入tty终端Ctrl+Alt+F1   到F6  进入tty1～～tty6# 从tty回到桌面环境Ctrl+Alt+F7 Shell脚本Shell特殊变量   变量 含义     $0 当前脚本的文件名   $n 传递给脚本或函数的参数。n 是一个数字，表示第几个参数。例如，第一个参数是$1，第二个参数是$2。   $# 传递给脚本或函数的参数个数。   $* 传递给脚本或">
+    
+
+    
+
+    
+        <link rel="icon" href="/fish256.png">
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/open-sans/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="/libs/jquery/plugins/cookie/1.4.1/jquery.cookie.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+    
+    
+
+
+    
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+</head>
+</html>
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">AIfish</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/">首页</a>
+                
+                    <a class="main-nav-link" href="/archives">归档</a>
+                
+                    <a class="main-nav-link" href="/categories">分类</a>
+                
+                    <a class="main-nav-link" href="/tags">标签</a>
+                
+                    <a class="main-nav-link" href="/about">关于</a>
+                
+            </nav>
+            
+            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索">
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="想要查找什么...">
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/">首页</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">归档</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">分类</a></td>
+                
+                    <td><a class="main-nav-link" href="/tags">标签</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">关于</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索">
+    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+            
+                <aside id="sidebar">
+   
+        
+    <div class="widget-wrap" id="categories">
+        <h3 class="widget-title">
+            <span>分类</span>
+            &nbsp;
+            <a id="allExpand" href="#">
+                <i class="fa fa-angle-double-down fa-2x"></i>
+            </a>
+        </h3>
+        
+        
+        
+         <ul class="unstyled" id="tree"> 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            人工智能
+                        </a>
+                         <ul class="unstyled" id="tree"> 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            搜索引擎
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/wiki/人工智能/搜索引擎/install-es/">安装ES</a></li>  <li class="file"><a href="/wiki/人工智能/搜索引擎/elastic-search基础/">elastic_search基础</a></li>  <li class="file"><a href="/wiki/人工智能/搜索引擎/es-search/">es-搜索操作</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            深度学习
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/wiki/人工智能/深度学习/GPU相关/">GPU相关</a></li>  <li class="file"><a href="/wiki/人工智能/深度学习/pytorch功能/">pytorch功能</a></li>  </ul> 
+                    </li> 
+                     </ul> 
+                    </li> 
+                    
+                    <li class="directory open">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder-open"></i>
+                            &nbsp;
+                            编程基础
+                        </a>
+                         <ul class="unstyled" id="tree"> 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            python
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/wiki/编程基础/python/decorator装饰器/">decorator装饰器</a></li>  <li class="file"><a href="/wiki/编程基础/python/py2-and-py3/">py2_and_py3</a></li>  <li class="file"><a href="/wiki/编程基础/python/基础库/">基础库：os/sys/dis</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            博客工具
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/wiki/编程基础/博客工具/wikitree/">wikitree</a></li>  <li class="file"><a href="/wiki/编程基础/博客工具/hexo/">hexo</a></li>  <li class="file"><a href="/wiki/编程基础/博客工具/markdown说明/">markdown说明</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            安装与配置
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/wiki/编程基础/安装与配置/set-pycharm/">配置pycharm</a></li>  <li class="file"><a href="/wiki/编程基础/安装与配置/install-ubuntu/">安装ubuntu</a></li>  <li class="file"><a href="/wiki/编程基础/安装与配置/set-vim/">配置vim</a></li>  <li class="file"><a href="/wiki/编程基础/安装与配置/system-record/">操作系统重装记录</a></li>  <li class="file"><a href="/wiki/编程基础/安装与配置/install-manjaro/">安装manjaro</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            数据库
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/wiki/编程基础/数据库/mongo/">mongo</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory open">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder-open"></i>
+                            &nbsp;
+                            软件使用备忘
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/wiki/编程基础/软件使用备忘/use-git/">使用git</a></li>  <li class="file active"><a href="/wiki/编程基础/软件使用备忘/use-linux/">使用linux</a></li>  </ul> 
+                    </li> 
+                     </ul> 
+                    </li> 
+                     <li class="file"><a href="/wiki/编程基础/python/交换2个变量/">交换变量（快捷写法和注意事项）</a></li>  <li class="file"><a href="/wiki/编程基础/软件使用备忘/use-docker/">使用docker</a></li>  </ul> 
+    </div>
+    <script>
+        $(document).ready(function() {
+            var iconFolderOpenClass  = 'fa-folder-open';
+            var iconFolderCloseClass = 'fa-folder';
+            var iconAllExpandClass = 'fa-angle-double-down';
+            var iconAllPackClass = 'fa-angle-double-up';
+            // Handle directory-tree expansion:
+            // 左键单独展开目录
+            $(document).on('click', '#categories a[data-role="directory"]', function (event) {
+                event.preventDefault();
+
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconFolderOpenClass);
+                var subtree = $(this).siblings('ul');
+                icon.removeClass(iconFolderOpenClass).removeClass(iconFolderCloseClass);
+                if (expanded) {
+                    if (typeof subtree != 'undefined') {
+                        subtree.slideUp({ duration: 100 });
+                    }
+                    icon.addClass(iconFolderCloseClass);
+                } else {
+                    if (typeof subtree != 'undefined') {
+                        subtree.slideDown({ duration: 100 });
+                    }
+                    icon.addClass(iconFolderOpenClass);
+                }
+            });
+            // 右键展开下属所有目录
+            $('#categories a[data-role="directory"]').bind("contextmenu", function(event){
+                event.preventDefault();
+                
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconFolderOpenClass);
+                var listNode = $(this).siblings('ul');
+                var subtrees = $.merge(listNode.find('li ul'), listNode);
+                var icons = $.merge(listNode.find('.fa'), icon);
+                icons.removeClass(iconFolderOpenClass).removeClass(iconFolderCloseClass);
+                if(expanded) {
+                    subtrees.slideUp({ duration: 100 });
+                    icons.addClass(iconFolderCloseClass);
+                } else {
+                    subtrees.slideDown({ duration: 100 });
+                    icons.addClass(iconFolderOpenClass);
+                }
+            })
+            // 展开关闭所有目录按钮
+            $(document).on('click', '#allExpand', function (event) {
+                event.preventDefault();
+                
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconAllExpandClass);
+                icon.removeClass(iconAllExpandClass).removeClass(iconAllPackClass);
+                if(expanded) {
+                    $('#sidebar .fa.fa-folder').removeClass('fa-folder').addClass('fa-folder-open')
+                    $('#categories li ul').slideDown({ duration: 100 });
+                    icon.addClass(iconAllPackClass);
+                } else {
+                    $('#sidebar .fa.fa-folder-open').removeClass('fa-folder-open').addClass('fa-folder')
+                    $('#categories li ul').slideUp({ duration: 100 });
+                    icon.addClass(iconAllExpandClass);
+                }
+            });  
+        });
+    </script>
+
+    
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+            
+            <section id="main"><article id="post-编程基础/软件使用备忘/use-linux" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+                    <div class="article-meta">
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/编程基础/">编程基础</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/编程基础/软件使用备忘/">软件使用备忘</a>
+    </div>
+
+                        
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/wiki/编程基础/软件使用备忘/use-linux/">
+            <time datetime="2019-03-17T01:05:41.000Z" itemprop="datePublished">2019-03-17</time>
+        </a>
+    </div>
+
+
+                        
+                            <i class="fa fa-bar-chart"></i>
+                            <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span></span>    
+                        
+                        
+                            <div class="article-meta-button">
+                                <a href="https://github.com/ofooo/Wiki-site/raw/writing/source/_posts/编程基础/软件使用备忘/use-linux.md" rel="external nofollow noopener noreferrer" target="_blank"> Source </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a href="https://github.com/ofooo/Wiki-site/edit/writing/source/_posts/编程基础/软件使用备忘/use-linux.md" rel="external nofollow noopener noreferrer" target="_blank"> Edit </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a href="https://github.com/ofooo/Wiki-site/commits/writing/source/_posts/编程基础/软件使用备忘/use-linux.md" rel="external nofollow noopener noreferrer" target="_blank"> History </a>
+                            </div>
+                        
+                    </div>
+                
+                
+    
+        <h1 class="article-title" itemprop="name">
+            使用linux
+        </h1>
+    
+
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+        
+            
+                <div id="toc" class="toc-article">
+                <strong class="toc-title">文章目录</strong>
+                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#tty终端"><span class="toc-number">1.</span> <span class="toc-text">tty终端</span></a></li></ol><li class="toc-item toc-level-2"><a class="toc-link" href="#Shell脚本"><span class="toc-number"></span> <span class="toc-text">Shell脚本</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Shell特殊变量"><span class="toc-number">1.</span> <span class="toc-text">Shell特殊变量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#常用shell脚本"><span class="toc-number">2.</span> <span class="toc-text">常用shell脚本</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#常用shell函数"><span class="toc-number">3.</span> <span class="toc-text">常用shell函数</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#免密码SSH登录远程服务器"><span class="toc-number"></span> <span class="toc-text">免密码SSH登录远程服务器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#常用命令"><span class="toc-number"></span> <span class="toc-text">常用命令</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#远程挂载"><span class="toc-number">1.</span> <span class="toc-text">远程挂载</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#一条命令kill某个进程"><span class="toc-number">2.</span> <span class="toc-text">一条命令kill某个进程</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考资料"><span class="toc-number"></span> <span class="toc-text">参考资料</span></a>
+                </li></div>
+            
+        
+        
+            <h3 id="tty终端"><a href="#tty终端" class="headerlink" title="tty终端"></a>tty终端</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 进入tty终端</span></span><br><span class="line">Ctrl+Alt+F1   到F6  进入tty1～～tty6</span><br><span class="line"><span class="comment"># 从tty回到桌面环境</span></span><br><span class="line">Ctrl+Alt+F7</span><br></pre></td></tr></table></figure>
+<h2 id="Shell脚本"><a href="#Shell脚本" class="headerlink" title="Shell脚本"></a>Shell脚本</h2><h3 id="Shell特殊变量"><a href="#Shell特殊变量" class="headerlink" title="Shell特殊变量"></a>Shell特殊变量</h3><table>
+<thead>
+<tr>
+<th>变量</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$0</td>
+<td>当前脚本的文件名</td>
+</tr>
+<tr>
+<td>$n</td>
+<td>传递给脚本或函数的参数。n 是一个数字，表示第几个参数。例如，第一个参数是$1，第二个参数是$2。</td>
+</tr>
+<tr>
+<td>$#</td>
+<td>传递给脚本或函数的参数个数。</td>
+</tr>
+<tr>
+<td>$*</td>
+<td>传递给脚本或函数的所有参数。</td>
+</tr>
+<tr>
+<td>$@</td>
+<td>传递给脚本或函数的所有参数。被双引号(“ “)包含时，与 $* 稍有不同，下面将会讲到。</td>
+</tr>
+<tr>
+<td>$?</td>
+<td>上个命令的退出状态，或函数的返回值。</td>
+</tr>
+<tr>
+<td>$$</td>
+<td>当前Shell进程ID。对于 Shell 脚本，就是这些脚本所在的进程ID。</td>
+</tr>
+</tbody>
+</table>
+<p>注意:$10 不能获取第十个参数，获取第十个参数需要${10}</p>
+<h3 id="常用shell脚本"><a href="#常用shell脚本" class="headerlink" title="常用shell脚本"></a>常用shell脚本</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">变量默认值</span><br><span class="line"><span class="comment">#当变量a为null或为空字符串时则var=b  </span></span><br><span class="line">var=<span class="variable">$&#123;a:-b&#125;</span>  </span><br><span class="line"></span><br><span class="line">脚本所在目录</span><br><span class="line">script_dir=$(<span class="built_in">cd</span> <span class="string">"`dirname <span class="variable">$0</span>`/."</span>; <span class="built_in">pwd</span>)</span><br></pre></td></tr></table></figure>
+<h3 id="常用shell函数"><a href="#常用shell函数" class="headerlink" title="常用shell函数"></a>常用shell函数</h3><blockquote>
+<p>函数定义前可选加”function “</p>
+<p>函数末尾可以加：return 返回</p>
+<ul>
+<li>如果不加，将以最后一条命令运行结果，作为返回值。 </li>
+<li>return后跟数值范围 0-255</li>
+</ul>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 第一个echo函数</span></span><br><span class="line"><span class="function"><span class="title">demoFun</span></span>()&#123;</span><br><span class="line">    <span class="built_in">echo</span> <span class="string">"这是我的第一个 shell 函数!"</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 需要键盘输入的函数</span></span><br><span class="line"><span class="function"><span class="title">funWithReturn</span></span>()&#123;</span><br><span class="line">    <span class="built_in">echo</span> <span class="string">"这个函数会对输入的两个数字进行相加运算..."</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">"输入第一个数字: "</span></span><br><span class="line">    <span class="built_in">read</span> aNum</span><br><span class="line">    <span class="built_in">echo</span> <span class="string">"输入第二个数字: "</span></span><br><span class="line">    <span class="built_in">read</span> anotherNum</span><br><span class="line">    <span class="built_in">echo</span> <span class="string">"两个数字分别为 <span class="variable">$aNum</span> 和 <span class="variable">$anotherNum</span> !"</span></span><br><span class="line">    <span class="built_in">return</span> $((<span class="variable">$aNum</span>+<span class="variable">$anotherNum</span>))</span><br><span class="line">&#125;</span><br><span class="line">funWithReturn</span><br><span class="line"><span class="comment"># 函数返回值在调用该函数后通过 $? 来获得。</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"输入的两个数字之和为 $? !"</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 分支</span></span><br><span class="line"><span class="keyword">if</span> condition1</span><br><span class="line"><span class="keyword">then</span></span><br><span class="line">    command1</span><br><span class="line"><span class="keyword">elif</span> condition2 </span><br><span class="line"><span class="keyword">then</span> </span><br><span class="line">    command2</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">    commandN</span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line">  </span><br><span class="line"><span class="keyword">if</span> [ <span class="variable">$a</span> == <span class="variable">$b</span> ]  <span class="comment"># "a 等于 b"</span></span><br><span class="line"><span class="keyword">if</span> [ <span class="variable">$a</span> -gt <span class="variable">$b</span> ]  <span class="comment"># "a 大于 b"</span></span><br><span class="line"><span class="keyword">if</span> [ <span class="variable">$a</span> -lt <span class="variable">$b</span> ]  <span class="comment">#"a 小于 b"</span></span><br></pre></td></tr></table></figure>
+<h2 id="免密码SSH登录远程服务器"><a href="#免密码SSH登录远程服务器" class="headerlink" title="免密码SSH登录远程服务器"></a>免密码SSH登录远程服务器</h2><ol>
+<li><p>创建自己的私钥和公钥对</p>
+<figure class="highlight plain"><figcaption><span>-C “备注信息”  -f ~/.ssh/私钥名称 ```       【密码输入空】</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">2. 设置私钥对应的网站,在~/.ssh/config 文件中写入：</span><br></pre></td></tr></table></figure>
+<p>Host 远程服务器 空格链接多个地址</p>
+<pre><code>HostName： 目标主机地址
+User：指定的登陆用户名
+Port：指定的端口号(可选)
+IdentifyFile：指定的私钥地址(可选)
+</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">3. 免密码SSH远程登录服务器</span><br><span class="line"></span><br><span class="line">   ``` ssh-copy-id -i ~/.ssh/私钥名称 远程帐号@远程服务器</span><br></pre></td></tr></table></figure>
+<p>把公钥文件复制到远程服务器，并输入密码后，下次就可以自动验证私钥文件</p>
+</li>
+</ol>
+<p>开机启动设置软件：<strong>Stacer</strong></p>
+<h2 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h2><table>
+<thead>
+<tr>
+<th>作用</th>
+<th>命令</th>
+<th>参数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>查看占用内存CPU</td>
+<td>top -p <strong>进程ID</strong></td>
+<td></td>
+</tr>
+<tr>
+<td>查看占用socket端口的程序</td>
+<td>netstat -ap\</td>
+<td>grep <strong>端口号</strong></td>
+<td></td>
+</tr>
+<tr>
+<td>查看硬盘使用情况</td>
+<td>df -h</td>
+<td></td>
+</tr>
+<tr>
+<td>查看所有进程</td>
+<td>ps -ax</td>
+<td>a=all</td>
+</tr>
+<tr>
+<td>查看当前文件夹递归1层大小/末尾可加文件夹</td>
+<td>du -h –max-depth=1</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>发送网络请求 curl</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## post 方法</span></span><br><span class="line"><span class="comment"># curl -i -X POST -H head文本 -d body_json_data</span></span><br><span class="line"><span class="comment"># 示范如下:</span></span><br><span class="line">curl -i -X POST -H <span class="string">'Content-type'</span>:<span class="string">'application/x-www-form-urlencoded; charset=UTF-8'</span> -d &#123;<span class="string">"json-body"</span>:<span class="string">""</span>&#125; http://192.168.31.189:5858/handle/</span><br><span class="line"></span><br><span class="line"><span class="comment">## get方法</span></span><br><span class="line">curl http://192.168.31.189:5858/</span><br></pre></td></tr></table></figure>
+<h3 id="远程挂载"><a href="#远程挂载" class="headerlink" title="远程挂载"></a>远程挂载</h3><table>
+<thead>
+<tr>
+<th>说明</th>
+<th>命令</th>
+<th>参数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>安装工具：sshfs</td>
+<td>sudo apt install sshfs</td>
+<td></td>
+</tr>
+<tr>
+<td>开始挂载</td>
+<td>sshfs 用户名@host:远程目录 本地挂载点 -o</td>
+<td>-p端口</td>
+</tr>
+<tr>
+<td>取消挂载</td>
+<td><strong>sudo</strong> umount -l 挂载点</td>
+<td></td>
+</tr>
+<tr>
+<td>取消挂载</td>
+<td>fusermount -u 挂载点</td>
+</tr>
+</tbody>
+</table>
+<p><strong>rename   perl版本程序  2个参数</strong></p>
+<p>参数一：’s/aaa/bbb/‘   把aaa替换为bbb</p>
+<p>参数二：用* 匹配1个或多个字符</p>
+<p>rename ‘s/aaa/bbb/‘ *.json</p>
+<h3 id="一条命令kill某个进程"><a href="#一条命令kill某个进程" class="headerlink" title="一条命令kill某个进程"></a>一条命令kill某个进程</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">ps -aux|grep 50050|grep -v grep|cut -c 9-15|xargs <span class="built_in">kill</span> -9</span><br><span class="line"></span><br><span class="line"><span class="comment"># 截取输入行的第9个字符到第15个字符，而这正好是进程号PID。</span></span><br><span class="line"><span class="comment"># xargs命令是用来把前面命令的输出结果（PID）作为“kill -9”命令的参数，并执行该命令</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 用正则表达式来kill进程。而不用PID</span></span><br><span class="line">pkill nginx</span><br><span class="line"></span><br><span class="line"><span class="comment"># 用进程名字kill多个进程。</span></span><br><span class="line">killall nginx</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 新建用户</span></span><br><span class="line">sudo adduser 用户名</span><br><span class="line"><span class="comment"># 增加root权限</span></span><br><span class="line">sudo usermod -aG sudo 用户名</span><br></pre></td></tr></table></figure>
+<p><strong>sed-正则表达式</strong>  awk,sed都可以做字符串各种操作。</p>
+<p>^行的开头    $行的结尾      . 任意单个字符    * 匹配0-多次     + 匹配1次以上     ? 匹配0/1次</p>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><blockquote>
+<ul>
+<li><a href=""></a></li>
+<li><a href=""></a></li>
+</ul>
+</blockquote>
+
+            </div>
+        
+        <footer class="article-footer">
+        </footer>
+    </div>
+</article>
+
+
+    
+<nav id="article-nav">
+    
+        <a href="/wiki/人工智能/搜索引擎/install-es/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">上一篇</strong>
+            <div class="article-nav-title">
+                
+                    安装ES
+                
+            </div>
+        </a>
+    
+    
+        <a href="/wiki/编程基础/软件使用备忘/use-git/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">下一篇</strong>
+            <div class="article-nav-title">使用git</div>
+        </a>
+    
+</nav>
+
+
+
+
+
+    
+    
+
+
+
+
+<!-- baidu url auto push script -->
+<script type="text/javascript">
+    !function(){var e=/([http|https]:\/\/[a-zA-Z0-9\_\.]+\.baidu\.com)/gi,r=window.location.href,o=document.referrer;if(!e.test(r)){var n="//api.share.baidu.com/s.gif";o?(n+="?r="+encodeURIComponent(document.referrer),r&&(n+="&l="+r)):r&&(n+="?l="+r);var t=new Image;t.src=n}}(window);
+</script>     
+</section>
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            aifish &copy; 2019 
+            <a rel="external nofollow noopener noreferrer" href="http://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/80x15.png"></a>
+            <br> Powered by <a href="http://hexo.io/" target="_blank" rel="external nofollow noopener noreferrer">Hexo</a>. Theme - <a href="https://github.com/zthxxx/hexo-theme-Wikitten" rel="external nofollow noopener noreferrer" target="_blank">wikitten</a>
+            
+                <br>
+                <span id="busuanzi_container_site_pv"><i class="fa fa-eye"></i> <span id="busuanzi_value_site_pv"></span></span>
+                &nbsp;|&nbsp;
+                <span id="busuanzi_container_site_pv"><i class="fa fa-user"></i> <span id="busuanzi_value_site_uv"></span></span>
+            
+        </div>
+    </div>
+</footer>
+
+        
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+    
+        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
+        <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true,
+            TeX: {
+                equationNumbers: {
+                  autoNumber: 'AMS'
+                }
+            }
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script async src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+</body>

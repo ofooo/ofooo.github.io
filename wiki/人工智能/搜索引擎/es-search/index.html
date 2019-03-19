@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    
+    <title>es-搜索操作 | AIfish</title>
+    
+    
+        <meta name="keywords" content="es,elastic_search,search,搜索">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="搜索备忘一原生的url接口1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374757677787980818283848586878889909192939495969798">
+<meta name="keywords" content="es,elastic_search,search,搜索">
+<meta property="og:type" content="article">
+<meta property="og:title" content="es-搜索操作">
+<meta property="og:url" content="http://yoursite.com/wiki/人工智能/搜索引擎/es-search/index.html">
+<meta property="og:site_name" content="AIfish">
+<meta property="og:description" content="搜索备忘一原生的url接口1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374757677787980818283848586878889909192939495969798">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-03-18T02:07:19.999Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="es-搜索操作">
+<meta name="twitter:description" content="搜索备忘一原生的url接口1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374757677787980818283848586878889909192939495969798">
+    
+
+    
+
+    
+        <link rel="icon" href="/fish256.png">
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/open-sans/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="/libs/jquery/plugins/cookie/1.4.1/jquery.cookie.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+    
+    
+
+
+    
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+</head>
+</html>
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">AIfish</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/">首页</a>
+                
+                    <a class="main-nav-link" href="/archives">归档</a>
+                
+                    <a class="main-nav-link" href="/categories">分类</a>
+                
+                    <a class="main-nav-link" href="/tags">标签</a>
+                
+                    <a class="main-nav-link" href="/about">关于</a>
+                
+            </nav>
+            
+            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索">
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="想要查找什么...">
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/">首页</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">归档</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">分类</a></td>
+                
+                    <td><a class="main-nav-link" href="/tags">标签</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">关于</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索">
+    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+            
+                <aside id="sidebar">
+   
+        
+    <div class="widget-wrap" id="categories">
+        <h3 class="widget-title">
+            <span>分类</span>
+            &nbsp;
+            <a id="allExpand" href="#">
+                <i class="fa fa-angle-double-down fa-2x"></i>
+            </a>
+        </h3>
+        
+        
+        
+         <ul class="unstyled" id="tree"> 
+                    <li class="directory open">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder-open"></i>
+                            &nbsp;
+                            人工智能
+                        </a>
+                         <ul class="unstyled" id="tree"> 
+                    <li class="directory open">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder-open"></i>
+                            &nbsp;
+                            搜索引擎
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/wiki/人工智能/搜索引擎/install-es/">安装ES</a></li>  <li class="file"><a href="/wiki/人工智能/搜索引擎/elastic-search基础/">elastic_search基础</a></li>  <li class="file active"><a href="/wiki/人工智能/搜索引擎/es-search/">es-搜索操作</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            深度学习
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/wiki/人工智能/深度学习/GPU相关/">GPU相关</a></li>  <li class="file"><a href="/wiki/人工智能/深度学习/pytorch功能/">pytorch功能</a></li>  </ul> 
+                    </li> 
+                     </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            编程基础
+                        </a>
+                         <ul class="unstyled" id="tree"> 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            python
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/wiki/编程基础/python/decorator装饰器/">decorator装饰器</a></li>  <li class="file"><a href="/wiki/编程基础/python/py2-and-py3/">py2_and_py3</a></li>  <li class="file"><a href="/wiki/编程基础/python/基础库/">基础库：os/sys/dis</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            博客工具
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/wiki/编程基础/博客工具/wikitree/">wikitree</a></li>  <li class="file"><a href="/wiki/编程基础/博客工具/hexo/">hexo</a></li>  <li class="file"><a href="/wiki/编程基础/博客工具/markdown说明/">markdown说明</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            安装与配置
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/wiki/编程基础/安装与配置/set-pycharm/">配置pycharm</a></li>  <li class="file"><a href="/wiki/编程基础/安装与配置/install-ubuntu/">安装ubuntu</a></li>  <li class="file"><a href="/wiki/编程基础/安装与配置/set-vim/">配置vim</a></li>  <li class="file"><a href="/wiki/编程基础/安装与配置/system-record/">操作系统重装记录</a></li>  <li class="file"><a href="/wiki/编程基础/安装与配置/install-manjaro/">安装manjaro</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            数据库
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/wiki/编程基础/数据库/mongo/">mongo</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            软件使用备忘
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/wiki/编程基础/软件使用备忘/use-git/">使用git</a></li>  <li class="file"><a href="/wiki/编程基础/软件使用备忘/use-linux/">使用linux</a></li>  </ul> 
+                    </li> 
+                     </ul> 
+                    </li> 
+                     <li class="file"><a href="/wiki/编程基础/python/交换2个变量/">交换变量（快捷写法和注意事项）</a></li>  <li class="file"><a href="/wiki/编程基础/软件使用备忘/use-docker/">使用docker</a></li>  </ul> 
+    </div>
+    <script>
+        $(document).ready(function() {
+            var iconFolderOpenClass  = 'fa-folder-open';
+            var iconFolderCloseClass = 'fa-folder';
+            var iconAllExpandClass = 'fa-angle-double-down';
+            var iconAllPackClass = 'fa-angle-double-up';
+            // Handle directory-tree expansion:
+            // 左键单独展开目录
+            $(document).on('click', '#categories a[data-role="directory"]', function (event) {
+                event.preventDefault();
+
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconFolderOpenClass);
+                var subtree = $(this).siblings('ul');
+                icon.removeClass(iconFolderOpenClass).removeClass(iconFolderCloseClass);
+                if (expanded) {
+                    if (typeof subtree != 'undefined') {
+                        subtree.slideUp({ duration: 100 });
+                    }
+                    icon.addClass(iconFolderCloseClass);
+                } else {
+                    if (typeof subtree != 'undefined') {
+                        subtree.slideDown({ duration: 100 });
+                    }
+                    icon.addClass(iconFolderOpenClass);
+                }
+            });
+            // 右键展开下属所有目录
+            $('#categories a[data-role="directory"]').bind("contextmenu", function(event){
+                event.preventDefault();
+                
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconFolderOpenClass);
+                var listNode = $(this).siblings('ul');
+                var subtrees = $.merge(listNode.find('li ul'), listNode);
+                var icons = $.merge(listNode.find('.fa'), icon);
+                icons.removeClass(iconFolderOpenClass).removeClass(iconFolderCloseClass);
+                if(expanded) {
+                    subtrees.slideUp({ duration: 100 });
+                    icons.addClass(iconFolderCloseClass);
+                } else {
+                    subtrees.slideDown({ duration: 100 });
+                    icons.addClass(iconFolderOpenClass);
+                }
+            })
+            // 展开关闭所有目录按钮
+            $(document).on('click', '#allExpand', function (event) {
+                event.preventDefault();
+                
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconAllExpandClass);
+                icon.removeClass(iconAllExpandClass).removeClass(iconAllPackClass);
+                if(expanded) {
+                    $('#sidebar .fa.fa-folder').removeClass('fa-folder').addClass('fa-folder-open')
+                    $('#categories li ul').slideDown({ duration: 100 });
+                    icon.addClass(iconAllPackClass);
+                } else {
+                    $('#sidebar .fa.fa-folder-open').removeClass('fa-folder-open').addClass('fa-folder')
+                    $('#categories li ul').slideUp({ duration: 100 });
+                    icon.addClass(iconAllExpandClass);
+                }
+            });  
+        });
+    </script>
+
+    
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+            
+            <section id="main"><article id="post-人工智能/搜索引擎/es-search" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+                    <div class="article-meta">
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/人工智能/">人工智能</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/人工智能/搜索引擎/">搜索引擎</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/elastic-search/">elastic_search</a>, <a class="tag-link" href="/tags/es/">es</a>, <a class="tag-link" href="/tags/search/">search</a>, <a class="tag-link" href="/tags/搜索/">搜索</a>
+    </div>
+
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/wiki/人工智能/搜索引擎/es-search/">
+            <time datetime="2019-03-17T01:25:03.000Z" itemprop="datePublished">2019-03-17</time>
+        </a>
+    </div>
+
+
+                        
+                            <i class="fa fa-bar-chart"></i>
+                            <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span></span>    
+                        
+                        
+                            <div class="article-meta-button">
+                                <a href="https://github.com/ofooo/Wiki-site/raw/writing/source/_posts/人工智能/搜索引擎/es-search.md" rel="external nofollow noopener noreferrer" target="_blank"> Source </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a href="https://github.com/ofooo/Wiki-site/edit/writing/source/_posts/人工智能/搜索引擎/es-search.md" rel="external nofollow noopener noreferrer" target="_blank"> Edit </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a href="https://github.com/ofooo/Wiki-site/commits/writing/source/_posts/人工智能/搜索引擎/es-search.md" rel="external nofollow noopener noreferrer" target="_blank"> History </a>
+                            </div>
+                        
+                    </div>
+                
+                
+    
+        <h1 class="article-title" itemprop="name">
+            es-搜索操作
+        </h1>
+    
+
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+        
+            
+                <div id="toc" class="toc-article">
+                <strong class="toc-title">文章目录</strong>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#搜索备忘一"><span class="toc-number">1.</span> <span class="toc-text">搜索备忘一</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#原生的url接口"><span class="toc-number">1.0.1.</span> <span class="toc-text">原生的url接口</span></a></li></ol></li></ol><li class="toc-item toc-level-2"><a class="toc-link" href="#搜索备忘二"><span class="toc-number">2.</span> <span class="toc-text">搜索备忘二</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#elasticsearch-查询（match和term）"><span class="toc-number"></span> <span class="toc-text">elasticsearch 查询（match和term）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#match"><span class="toc-number">1.</span> <span class="toc-text">match</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#match-phrase"><span class="toc-number">2.</span> <span class="toc-text">match_phrase</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#multi-match"><span class="toc-number">3.</span> <span class="toc-text">multi_match</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#我们希望完全匹配的文档占的评分比较高，则需要使用best-fields"><span class="toc-number">4.</span> <span class="toc-text">我们希望完全匹配的文档占的评分比较高，则需要使用best_fields</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#我们希望越多字段匹配的文档评分越高，就要使用most-fields"><span class="toc-number">5.</span> <span class="toc-text">我们希望越多字段匹配的文档评分越高，就要使用most_fields</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#我们会希望这个词条的分词词汇是分配到不同字段中的，那么就使用cross-fields"><span class="toc-number">6.</span> <span class="toc-text">我们会希望这个词条的分词词汇是分配到不同字段中的，那么就使用cross_fields</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#term"><span class="toc-number"></span> <span class="toc-text">term</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#bool联合查询-must-should-must-not"><span class="toc-number">1.</span> <span class="toc-text">bool联合查询: must,should,must_not</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考资料"><span class="toc-number">2.</span> <span class="toc-text">参考资料</span></a></li></ol>
+                </li></div>
+            
+        
+        
+            <h2 id="搜索备忘一"><a href="#搜索备忘一" class="headerlink" title="搜索备忘一"></a>搜索备忘一</h2><h4 id="原生的url接口"><a href="#原生的url接口" class="headerlink" title="原生的url接口"></a>原生的url接口</h4><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br></pre></td><td class="code"><pre><span class="line"># 搜索位置(url)</span><br><span class="line">/_search					# 在所有的索引中搜索所有的类型</span><br><span class="line">/gb/_search					# 在 gb 索引中搜索所有的类型</span><br><span class="line">/gb,us/_search				# 在 gb 和 us 索引中搜索所有的文档</span><br><span class="line">/g*,u*/_search				# 在任何以 g 或者 u 开头的索引中搜索所有的类型</span><br><span class="line">/gb/user/_search			# 在 gb 索引中搜索 user 类型</span><br><span class="line">/gb,us/user,tweet/_search	# 在 gb 和 us 索引中搜索 user 和 tweet 类型</span><br><span class="line">/_all/user,tweet/_search	# 在所有的索引中搜索 user 和 tweet 类型</span><br><span class="line"></span><br><span class="line"># 分页(url)</span><br><span class="line">POST /_search				# 默认size=10, from=0 从0返回</span><br><span class="line">POST /_search?size=5			# 第二页</span><br><span class="line">POST /_search?size=5&amp;from=5</span><br><span class="line">POST /_search?size=5&amp;from=10</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># term  精确查找,不计算相关度.</span><br><span class="line">&#123;</span><br><span class="line">    <span class="attr">"term"</span> : &#123;</span><br><span class="line">        <span class="attr">"price"</span> : <span class="number">20</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"># 用constant_score 把term包装成filter</span><br><span class="line">POST /my_store/products/_search</span><br><span class="line">&#123;</span><br><span class="line">    <span class="attr">"query"</span> : &#123;</span><br><span class="line">        <span class="attr">"constant_score"</span> : &#123;</span><br><span class="line">            <span class="attr">"filter"</span> : &#123;</span><br><span class="line">                <span class="attr">"term"</span> : &#123;</span><br><span class="line">                    <span class="attr">"productID"</span> : <span class="string">"XHDK-A-1293-#fJ3"</span></span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># range 过滤器(filter): age　&gt; 30</span><br><span class="line"># 过滤器执行速度非常快，不会计算相关度. 精确的筛选.</span><br><span class="line">POST /megacorp/employee/_search</span><br><span class="line">&#123;</span><br><span class="line">    <span class="attr">"query"</span> : &#123;</span><br><span class="line">        <span class="attr">"bool"</span>: &#123;</span><br><span class="line">            <span class="attr">"must"</span>: &#123;</span><br><span class="line">                		<span class="attr">"match"</span> : &#123;<span class="attr">"last_name"</span> : <span class="string">"smith"</span>  &#125;</span><br><span class="line">                    &#125;,</span><br><span class="line">            <span class="attr">"filter"</span>: &#123;</span><br><span class="line">                        <span class="attr">"range"</span> : &#123;</span><br><span class="line">                            <span class="attr">"age"</span> : &#123; <span class="attr">"gt"</span> : <span class="number">30</span> &#125; </span><br><span class="line">                                  &#125;</span><br><span class="line">           			 &#125;</span><br><span class="line">       		  &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># 全文搜索: 返回相关性排序的结果．　　如果有rock没有climbing也可能会返回结果.</span><br><span class="line">POST /megacorp/employee/_search</span><br><span class="line">&#123;</span><br><span class="line">    <span class="attr">"query"</span> : &#123;</span><br><span class="line">        <span class="attr">"match"</span> : &#123;</span><br><span class="line">            <span class="attr">"about"</span> : <span class="string">"rock climbing"</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">&#123;</span><br><span class="line">  <span class="attr">"query"</span>: &#123;</span><br><span class="line">    <span class="attr">"match_phrase"</span>: &#123;</span><br><span class="line">        <span class="attr">"content"</span> : &#123;</span><br><span class="line">            <span class="attr">"query"</span> : <span class="string">"我的宝马多少马力"</span>,</span><br><span class="line">            <span class="attr">"slop"</span> : <span class="number">1</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"># 实际上下面的query才能正确返回结果，搜索的是content这个字段里包含对应文本的文档</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># 精确匹配一系列单词或者短语</span><br><span class="line">POST /megacorp/employee/_search</span><br><span class="line">&#123;</span><br><span class="line">    <span class="attr">"query"</span> : &#123;</span><br><span class="line">        <span class="attr">"match_phrase"</span> : &#123;</span><br><span class="line">            <span class="attr">"about"</span> : <span class="string">"rock climbing"</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"># 高亮搜索</span><br><span class="line">POST /megacorp/employee/_search</span><br><span class="line">&#123;</span><br><span class="line">    <span class="attr">"query"</span> : &#123;</span><br><span class="line">        <span class="attr">"match_phrase"</span> : &#123;</span><br><span class="line">            <span class="attr">"about"</span> : <span class="string">"rock climbing"</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">"highlight"</span>: &#123;</span><br><span class="line">        <span class="attr">"fields"</span> : &#123;</span><br><span class="line">            <span class="attr">"about"</span> : &#123;&#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"># 返回:</span><br><span class="line">&#123;  ...</span><br><span class="line">   "hits": &#123;</span><br><span class="line">      "total":      1,</span><br><span class="line">      "max_score":  0.23013961,</span><br><span class="line">      "hits": [</span><br><span class="line">         &#123;  ...</span><br><span class="line">            "_score":         0.23013961,</span><br><span class="line">            "_source": &#123;</span><br><span class="line">               "first_name":  "John",</span><br><span class="line">               "about":       "I love to go rock climbing",</span><br><span class="line">               "interests": [ "sports", "music" ]</span><br><span class="line">            &#125;,</span><br><span class="line">            "highlight": &#123;</span><br><span class="line">               "about": [</span><br><span class="line">                  <span class="string">"I love to go &lt;em&gt;rock&lt;/em&gt; &lt;em&gt;climbing&lt;/em&gt;"</span> </span><br><span class="line">               ]</span><br><span class="line">            &#125;</span><br><span class="line">         &#125;</span><br><span class="line">      ]</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"># 聚合（aggregations）: 统计某些标签的数量(是在搜索结果中进行统计,可以结合其他query)</span><br><span class="line">POST /megacorp/employee/_search</span><br><span class="line">&#123;</span><br><span class="line">  <span class="attr">"aggs"</span>: &#123;</span><br><span class="line">    <span class="attr">"all_interests"</span>: &#123;</span><br><span class="line">      <span class="attr">"terms"</span>: &#123; <span class="attr">"field"</span>: <span class="string">"interests"</span> &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="搜索备忘二"><a href="#搜索备忘二" class="headerlink" title="搜索备忘二"></a>搜索备忘二</h2><p><a href="http://www.cnblogs.com/yjf512/p/4897294.html" rel="external nofollow noopener noreferrer" target="_blank">http://www.cnblogs.com/yjf512/p/4897294.html</a></p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">组合式搜索</span><br><span class="line">&#123;</span><br><span class="line">  <span class="attr">"query"</span>: &#123; </span><br><span class="line">    &#123;</span><br><span class="line">        "bool": &#123;</span><br><span class="line">            "must":     &#123; "match": &#123; "tweet": "elasticsearch" &#125;&#125;,</span><br><span class="line">            "must_not": &#123; "match": &#123; "name":  "mary" &#125;&#125;,</span><br><span class="line">            "should":   &#123; "match": &#123; "tweet": "full text" &#125;&#125;,	# 这些match可以是数组</span><br><span class="line">            "filter":   &#123; "range": &#123; "age" : &#123; "gt" : 30 &#125;&#125; &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;  </span><br><span class="line">  &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="elasticsearch-查询（match和term）"><a href="#elasticsearch-查询（match和term）" class="headerlink" title="elasticsearch 查询（match和term）"></a>elasticsearch 查询（match和term）</h1><p>es中的查询请求有两种方式，一种是简易版的查询，另外一种是使用JSON完整的请求体，叫做结构化查询（DSL）。<br>由于DSL查询更为直观也更为简易，所以大都使用这种方式。<br>DSL查询是POST过去一个json，由于post的请求是json格式的，所以存在很多灵活性，也有很多形式。<br>这里有一个地方注意的是官方文档里面给的例子的json结构只是一部分，并不是可以直接黏贴复制进去使用的。一般要在外面加个query为key的机构。</p>
+<h2 id="match"><a href="#match" class="headerlink" title="match"></a>match</h2><p>最简单的一个match例子：</p>
+<p>查询和”我的宝马多少马力”这个查询语句匹配的文档。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;query&quot;: &#123;</span><br><span class="line">    &quot;match&quot;: &#123;</span><br><span class="line">        &quot;content&quot; : &#123;</span><br><span class="line">            &quot;query&quot; : &quot;我的宝马多少马力&quot;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>上面的查询匹配就会进行分词，比如”宝马多少马力”会被分词为”宝马 多少 马力”, 所有有关”宝马 多少 马力”, 那么所有包含这三个词中的一个或多个的文档就会被搜索出来。<br>并且根据lucene的评分机制(TF/IDF)来进行评分。</p>
+<h2 id="match-phrase"><a href="#match-phrase" class="headerlink" title="match_phrase"></a>match_phrase</h2><p>比如上面一个例子，一个文档”我的保时捷马力不错”也会被搜索出来，那么想要精确匹配所有同时包含”宝马 多少 马力”的文档怎么做？就要使用 match_phrase 了</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;query&quot;: &#123;</span><br><span class="line">    &quot;match_phrase&quot;: &#123;</span><br><span class="line">        &quot;content&quot; : &#123;</span><br><span class="line">            &quot;query&quot; : &quot;我的宝马多少马力&quot;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>完全匹配可能比较严，我们会希望有个可调节因子，少匹配一个也满足，那就需要使用到slop。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;query&quot;: &#123;</span><br><span class="line">    &quot;match_phrase&quot;: &#123;</span><br><span class="line">        &quot;content&quot; : &#123;</span><br><span class="line">            &quot;query&quot; : &quot;我的宝马多少马力&quot;,</span><br><span class="line">            &quot;slop&quot; : 1</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="multi-match"><a href="#multi-match" class="headerlink" title="multi_match"></a>multi_match</h2><p>如果我们希望两个字段进行匹配，其中一个字段有这个文档就满足的话，使用multi_match</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;query&quot;: &#123;</span><br><span class="line">    &quot;multi_match&quot;: &#123;</span><br><span class="line">        &quot;query&quot; : &quot;我的宝马多少马力&quot;,</span><br><span class="line">        &quot;fields&quot; : [&quot;title&quot;, &quot;content&quot;]</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>但是multi_match就涉及到匹配评分的问题了。</p>
+<h2 id="我们希望完全匹配的文档占的评分比较高，则需要使用best-fields"><a href="#我们希望完全匹配的文档占的评分比较高，则需要使用best-fields" class="headerlink" title="我们希望完全匹配的文档占的评分比较高，则需要使用best_fields"></a>我们希望完全匹配的文档占的评分比较高，则需要使用best_fields</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;query&quot;: &#123;</span><br><span class="line">    &quot;multi_match&quot;: &#123;</span><br><span class="line">      &quot;query&quot;: &quot;我的宝马发动机多少&quot;,</span><br><span class="line">      &quot;type&quot;: &quot;best_fields&quot;,</span><br><span class="line">      &quot;fields&quot;: [</span><br><span class="line">        &quot;tag&quot;,</span><br><span class="line">        &quot;content&quot;</span><br><span class="line">      ],</span><br><span class="line">      &quot;tie_breaker&quot;: 0.3</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>意思就是完全匹配”宝马 发动机”的文档评分会比较靠前，如果只匹配宝马的文档评分乘以0.3的系数</p>
+<h2 id="我们希望越多字段匹配的文档评分越高，就要使用most-fields"><a href="#我们希望越多字段匹配的文档评分越高，就要使用most-fields" class="headerlink" title="我们希望越多字段匹配的文档评分越高，就要使用most_fields"></a>我们希望越多字段匹配的文档评分越高，就要使用most_fields</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;query&quot;: &#123;</span><br><span class="line">    &quot;multi_match&quot;: &#123;</span><br><span class="line">      &quot;query&quot;: &quot;我的宝马发动机多少&quot;,</span><br><span class="line">      &quot;type&quot;: &quot;most_fields&quot;,</span><br><span class="line">      &quot;fields&quot;: [</span><br><span class="line">        &quot;tag&quot;,</span><br><span class="line">        &quot;content&quot;</span><br><span class="line">      ]</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="我们会希望这个词条的分词词汇是分配到不同字段中的，那么就使用cross-fields"><a href="#我们会希望这个词条的分词词汇是分配到不同字段中的，那么就使用cross-fields" class="headerlink" title="我们会希望这个词条的分词词汇是分配到不同字段中的，那么就使用cross_fields"></a>我们会希望这个词条的分词词汇是分配到不同字段中的，那么就使用cross_fields</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;query&quot;: &#123;</span><br><span class="line">    &quot;multi_match&quot;: &#123;</span><br><span class="line">      &quot;query&quot;: &quot;我的宝马发动机多少&quot;,</span><br><span class="line">      &quot;type&quot;: &quot;cross_fields&quot;,</span><br><span class="line">      &quot;fields&quot;: [</span><br><span class="line">        &quot;tag&quot;,</span><br><span class="line">        &quot;content&quot;</span><br><span class="line">      ]</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="term"><a href="#term" class="headerlink" title="term"></a>term</h1><p>term是代表完全匹配，即不进行分词器分析，文档中必须包含整个搜索的词汇</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;query&quot;: &#123;</span><br><span class="line">    &quot;term&quot;: &#123;</span><br><span class="line">      &quot;content&quot;: &quot;汽车保养&quot;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>查出的所有文档都包含”汽车保养”这个词组的词汇。</p>
+<p>使用term要确定的是这个字段是否“被分析”(analyzed)，默认的字符串是被分析的。</p>
+<p>拿官网上的例子举例：</p>
+<p>mapping是这样的：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">PUT my_index</span><br><span class="line">&#123;</span><br><span class="line">  &quot;mappings&quot;: &#123;</span><br><span class="line">    &quot;my_type&quot;: &#123;</span><br><span class="line">      &quot;properties&quot;: &#123;</span><br><span class="line">        &quot;full_text&quot;: &#123;</span><br><span class="line">          &quot;type&quot;:  &quot;string&quot;</span><br><span class="line">        &#125;,</span><br><span class="line">        &quot;exact_value&quot;: &#123;</span><br><span class="line">          &quot;type&quot;:  &quot;string&quot;,</span><br><span class="line">          &quot;index&quot;: &quot;not_analyzed&quot;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">PUT my_index/my_type/1</span><br><span class="line">&#123;</span><br><span class="line">  &quot;full_text&quot;:   &quot;Quick Foxes!&quot;,</span><br><span class="line">  &quot;exact_value&quot;: &quot;Quick Foxes!&quot;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>其中的full_text是被分析过的，所以full_text的索引中存的就是[quick, foxes]，而extra_value中存的是[Quick Foxes!]。</p>
+<p>那下面的几个请求：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">GET my_index/my_type/_search</span><br><span class="line">&#123;</span><br><span class="line">  &quot;query&quot;: &#123;</span><br><span class="line">    &quot;term&quot;: &#123;</span><br><span class="line">      &quot;exact_value&quot;: &quot;Quick Foxes!&quot;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>请求的出数据，因为完全匹配</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">GET my_index/my_type/_search</span><br><span class="line">&#123;</span><br><span class="line">  &quot;query&quot;: &#123;</span><br><span class="line">    &quot;term&quot;: &#123;</span><br><span class="line">      &quot;full_text&quot;: &quot;Quick Foxes!&quot;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>请求不出数据的，因为full_text分词后的结果中没有[Quick Foxes!]这个分词。</p>
+<h2 id="bool联合查询-must-should-must-not"><a href="#bool联合查询-must-should-must-not" class="headerlink" title="bool联合查询: must,should,must_not"></a>bool联合查询: must,should,must_not</h2><p>如果我们想要请求”content中带宝马，但是tag中不带宝马”这样类似的需求，就需要用到bool联合查询。<br>联合查询就会使用到must,should,must_not三种关键词。</p>
+<p>这三个可以这么理解</p>
+<ul>
+<li>must: 文档必须完全匹配条件</li>
+<li>should: should下面会带一个以上的条件，至少满足一个条件，这个文档就符合should</li>
+<li>must_not: 文档必须不匹配条件</li>
+</ul>
+<p>比如上面那个需求：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;query&quot;: &#123;</span><br><span class="line">    &quot;bool&quot;: &#123;</span><br><span class="line">      &quot;must&quot;: &#123;</span><br><span class="line">        &quot;term&quot;: &#123;</span><br><span class="line">          &quot;content&quot;: &quot;宝马&quot;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;,</span><br><span class="line">      &quot;must_not&quot;: &#123;</span><br><span class="line">        &quot;term&quot;: &#123;</span><br><span class="line">          &quot;tags&quot;: &quot;宝马&quot;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><blockquote>
+<ul>
+<li><a href=""></a></li>
+<li><a href=""></a></li>
+</ul>
+</blockquote>
+
+            </div>
+        
+        <footer class="article-footer">
+        </footer>
+    </div>
+</article>
+
+
+    
+<nav id="article-nav">
+    
+        <a href="/wiki/人工智能/深度学习/GPU相关/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">上一篇</strong>
+            <div class="article-nav-title">
+                
+                    GPU相关
+                
+            </div>
+        </a>
+    
+    
+        <a href="/wiki/人工智能/搜索引擎/install-es/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">下一篇</strong>
+            <div class="article-nav-title">安装ES</div>
+        </a>
+    
+</nav>
+
+
+
+
+
+    
+    
+
+
+
+
+<!-- baidu url auto push script -->
+<script type="text/javascript">
+    !function(){var e=/([http|https]:\/\/[a-zA-Z0-9\_\.]+\.baidu\.com)/gi,r=window.location.href,o=document.referrer;if(!e.test(r)){var n="//api.share.baidu.com/s.gif";o?(n+="?r="+encodeURIComponent(document.referrer),r&&(n+="&l="+r)):r&&(n+="?l="+r);var t=new Image;t.src=n}}(window);
+</script>     
+</section>
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            aifish &copy; 2019 
+            <a rel="external nofollow noopener noreferrer" href="http://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/80x15.png"></a>
+            <br> Powered by <a href="http://hexo.io/" target="_blank" rel="external nofollow noopener noreferrer">Hexo</a>. Theme - <a href="https://github.com/zthxxx/hexo-theme-Wikitten" rel="external nofollow noopener noreferrer" target="_blank">wikitten</a>
+            
+                <br>
+                <span id="busuanzi_container_site_pv"><i class="fa fa-eye"></i> <span id="busuanzi_value_site_pv"></span></span>
+                &nbsp;|&nbsp;
+                <span id="busuanzi_container_site_pv"><i class="fa fa-user"></i> <span id="busuanzi_value_site_uv"></span></span>
+            
+        </div>
+    </div>
+</footer>
+
+        
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+    
+        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
+        <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true,
+            TeX: {
+                equationNumbers: {
+                  autoNumber: 'AMS'
+                }
+            }
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script async src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+</body>
