@@ -140,7 +140,7 @@ export JRE_HOME=${JAVA_HOEM}/jre
 export CLASSPATH=.:${JAVA_HOME}/lib:${JRE_HOME}/lib 
 ```
 
-### 安装 vscode   vim   微信   shadownsocks    网易云音乐
+### 命令简单安装： vscode/ vim/ 微信/ shadownsocks/ 网易云音乐/ qq/ chrome
 
 ```bash
 sudo pacman -S code
@@ -148,6 +148,8 @@ sudo pacman -S electronic-wechat   （网页版不能复制粘帖图片）
 sudo pacman -S shadownsocks-qt5
 sudo pacman -S vim
 sudo pacman -S netease-cloud-music   # 网易云音乐
+sudo pacman -S deepin.com.qq.office  # 可以先搜索qq 看看版本
+sudo pacman -S google-chrome
 ```
 
 ### 安装下载工具Gwget
@@ -157,7 +159,7 @@ sudo pacman -S netease-cloud-music   # 网易云音乐
 搜索工具后下载
 ```
 
-百度云下载
+### 百度云下载
 
 ```bash
 打开系统工具：添加/删除软件：安装baidupcs-go-git
@@ -168,6 +170,14 @@ baidupcs
 # 帮助
 help
 
+```
+
+### 安装截图工具
+
+```bash
+sudo pacman -S deepin-screenshot
+
+添加快捷键： deepin-screenshot  
 ```
 
 
@@ -184,7 +194,7 @@ sudo pacman -S autojump
 plugins=(git autojump)
 ```
 
-### 安装googlepinyin
+### 安装googlepinyin谷歌拼音
 
 ```bash
 sudo pacman -S fcitx-im fcitx-configtool fcitx-googlepinyin
@@ -194,6 +204,22 @@ exportGTK_IM_MODULE=fcitx
 exportQT_IM_MODULE=fcitx
 exportXMODIFIERS="@im=fcitx"
 ```
+
+安装搜狗拼音
+
+```bash
+# 前置：设置中国软件源
+
+sudo pacman -S fcitx-im #默认全部安装
+sudo pacman -S fcitx-configtool
+sudo pacman -S fcitx-sogoupinyin
+
+在~/.xprofile添加如下内容：
+export GTK_IM_MODULE=fcitx
+export QT_IM_MODULE=fcitx
+export XMODIFIERS=@im=fcitx
+```
+
 
 
 ### 关闭ssh远程root登录（ubuntu通用）
@@ -219,6 +245,25 @@ sudo systemctl restart sshd
 操作：右键点击任务栏右下角的时间，选择属性：
 tips配置：%m-%d   %j/365  第%V周
 时钟配置：周%u %H:%M
+
+### 
+
+### 切换deepin桌面
+
+```bash
+# 安装桌面，然后重启电脑，选择桌面
+sudo pacman -S deepin deepin-extra lightdm
+
+```
+
+[参考arch-wiki](<https://wiki.archlinux.org/index.php/Deepin_Desktop_Environment>)
+
+### chrome安装插件
+
+1. 去官网下载插件文件  xxx.crx
+2. 去http://crxextractor.com/ 网站上传crx文件，获得zip文件
+3. 解压zip文件获得一个文件夹
+4. 打开chrome，打开开发者模式，加载已解压的扩展程序，选中解压文件夹，安装即可
 
 ## 四. 常用快捷键
 

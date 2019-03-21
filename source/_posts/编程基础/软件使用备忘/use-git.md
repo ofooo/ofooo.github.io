@@ -24,6 +24,27 @@ date: 2019-03-17 09:05:30
 
 # git命令行
 
+### 本地分支和远程分支
+
+```bash
+# 查看当前跟踪关系
+git branch -vv
+
+# 克隆时自动将创建好的`master`分支追踪`origin/master`分支
+git clone 服务器地址
+
+# 建立本地分支 xxx, 追踪远程分支origin/yyy
+git checkout -b xxx origin/yyy
+
+# 将 xxx 分支追踪远程分支 origin/yyy
+git branch --set-upstream xxx origin/yyy
+
+# 设置当前分支跟踪远程分支 origin/yyyy
+git branch -u origin/yyyy
+```
+
+
+
 ### 设置git默认使用的编辑器
 
 ```bash

@@ -13,7 +13,11 @@ categories:
 
 
 
+### 
 
+
+
+## 服务器
 
 ### 服务器启用mongo集群
 
@@ -50,9 +54,21 @@ rs.status()
 
 
 
+## mongo客户端使用
+
+### 登录/验证/切换数据库
+
+```bash
+# 进入mongo客户端
+mongo
+
+```
 
 
-### 客户端调用mongo集群
+
+## 客户端模块调用
+
+### pymongo/motor调用mongo集群
 
 当 mongo 是集群时，客户端连接时需要设置好要连接的所有 mongo 节点。
 

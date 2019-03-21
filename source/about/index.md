@@ -1,5 +1,5 @@
 ---
-title: "About"
+title: "About Me"
 layout: "page"
 ---
 
@@ -9,13 +9,15 @@ layout: "page"
 
 
 
-## 王晓宇
+# 王晓宇
 
-> 研究方向：认知科学、自然语言处理
-
-
+**研究方向：自然语言处理**
 
 
+
+微信二维码：
+
+![fish_wechat](/source/fish_wechat.jpg)
 
 github: https://github.com/ofooo
 
