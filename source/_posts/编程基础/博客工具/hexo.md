@@ -20,9 +20,24 @@ categories:
 sudo npm install hexo-cli -g
 ```
 
+## 图片显示
 
+```bash
+# 配置资源文件夹
+# hexo n xxx 会生成同名文件夹,
+# hexo g 会把同名文件夹内图片打包生成静态文件
+_config.yml里的post_asset_folder，改成true
 
+# 安装插件
+npm install hexo-asset-image --save
 
+# 设置typora编辑器
+# 图片插入路径= ./${filename}
+# 优先使用相对路径
+在typora编辑器内粘贴图片时会自动把图片存储到同名文件夹
+```
+
+![typora设置界面](hexo/1553321387089.png)
 
 ## 主题配置
 
@@ -60,6 +75,15 @@ auto_category:
  
 # 使用
 hexo clean && hexo g && hexo d
+```
+
+## 绑定域名
+
+```bash
+A (Address) 记录是域名到ip的映射，即为ip起别名
+CNAME是域名别名到域名的映射，即为域名起别名。
+
+政策导致国内无法绑定到github~~
 ```
 
 

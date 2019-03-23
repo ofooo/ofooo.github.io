@@ -28,6 +28,8 @@ error = '\n'.join(traceback.format_exception(*sys.exc_info()))
 ```bash
 Keymap---方案设置成NetBeans
 
+# Code格式化代码   设置成  Ctrl+Alt+L
+Reformat
 # 当前行往上挪一行  设置成 Alt+Up
 Move Line Up
 # 当前行往上挪一行  设置成 Alt+Down
