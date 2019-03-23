@@ -206,7 +206,7 @@ exportQT_IM_MODULE=fcitx
 exportXMODIFIERS="@im=fcitx"
 ```
 
-安装搜狗拼音
+### 安装搜狗拼音
 
 ```bash
 # 前置：设置中国软件源

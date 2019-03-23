@@ -31,12 +31,28 @@ sudo apt-get install git-lfs
 git lfs install
 ```
 
-### 安装输入法
+### 安装google输入法(不好用)
 
 ```bash
 sudo  apt-get install fcitx-googlepinyin
 然后注销再登陆操作系统
 ```
+
+### 安装搜狗输入法
+
+![ibus配置](install-ubuntu/1553342505304.png)
+
+![1553344201236](install-ubuntu/1553344201236.png)
+
+```bash
+1. 去搜狗拼音官网,下载linux版本安装文件(.deb)
+2. 双击打开界面安装
+3. 登出后登录操作系统
+4. 右键点击顶栏的键盘图标，选择配置
+5. 添加搜狗输入法
+```
+
+
 
 ### 安装zsh
 
