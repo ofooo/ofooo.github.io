@@ -140,7 +140,7 @@ export JRE_HOME=${JAVA_HOEM}/jre
 export CLASSPATH=.:${JAVA_HOME}/lib:${JRE_HOME}/lib 
 ```
 
-### 命令简单安装： vscode/ vim/ 微信/ shadownsocks/ 网易云音乐/ qq/ chrome
+### 命令简单安装： vscode/ vim/ 微信/ shadownsocks/ 网易云音乐/ qq/ chrome/docker
 
 ```bash
 sudo pacman -S code
@@ -150,6 +150,7 @@ sudo pacman -S vim
 sudo pacman -S netease-cloud-music   # 网易云音乐
 sudo pacman -S deepin.com.qq.office  # 可以先搜索qq 看看版本
 sudo pacman -S google-chrome
+sudo pacman -S docker
 ```
 
 ### 安装下载工具Gwget

@@ -10,7 +10,29 @@ tags:
 
 
 
+## 配置
 
+### 服务设置
+
+刚安装完成后，需要重启机器，才能启动服务
+
+```
+# Ubuntu
+sudo service docker start  # 启动服务
+
+# manjaro
+sudo systemctl start docker   # 启动服务
+sudo systemctl status docker  # 查看服务状态
+systemctl enable docker       # 开机启动
+```
+
+### 设置信任本地仓库
+
+```bash
+# 1. 在/etc/default/docker添加：
+-- insecure-registry 127.0.0.1:5000
+# 2. 再重启docker 服务
+```
 
 
 

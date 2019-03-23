@@ -136,7 +136,7 @@ if [ $a -lt $b ]  #"a 小于 b"
 | 查看硬盘使用情况                         | df -h                        |       |
 | 查看所有进程                             | ps -ax                       | a=all |
 | 查看当前文件夹递归1层大小/末尾可加文件夹 | du -h --max-depth=1          |       |
-|                                          |                              |       |
+| 给xxx账号设置root权限（sudo）            | sudo *user*mod-aG sudo xxx   |       |
 |                                          |                              |       |
 
 发送网络请求 curl
