@@ -3,24 +3,23 @@
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
     
-    <title>wikitree | AIfish</title>
+    <title>双指针找环 | AIfish</title>
     
     
-        <meta name="keywords" content="博客">
+        <meta name="keywords" content="双指针找环">
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta name="description" content="维基博客分类树 编程基础 安装与配置 功能与操作 python 前端 #JavaScript #CSS#html5 #node leetcode 数据库 #mongo 博客工具 #hexo #markdown   人工智能 论文翻译 机器学习 深度学习（神经网络相关的都在这里） 认知科学 搜索引擎 #ElasticSearch   杂七杂八 草稿  参考资料">
-<meta name="keywords" content="博客">
+    <meta name="description" content="题目https://leetcode.com/problems/linked-list-cycle/ 141.给一个链表的头节点,判断链表是否有环 解法1: 用set判断重复优点:  逻辑直观, 容易理解 比双指针更快  缺点:  空间占用比双指针更多  解法2: 双指针 用两个指针指向head 进行循环: 每次慢指针下移一次,快指针下移两次 如果快指针指向结尾则无循环,如果两个指针指向同一个节点">
 <meta property="og:type" content="article">
-<meta property="og:title" content="wikitree">
-<meta property="og:url" content="http://yoursite.com/wiki/编程基础/博客工具/wikitree/index.html">
+<meta property="og:title" content="双指针找环">
+<meta property="og:url" content="http://yoursite.com/wiki/编程基础/leetcode/141. Linked_List_Cycle/index.html">
 <meta property="og:site_name" content="AIfish">
-<meta property="og:description" content="维基博客分类树 编程基础 安装与配置 功能与操作 python 前端 #JavaScript #CSS#html5 #node leetcode 数据库 #mongo 博客工具 #hexo #markdown   人工智能 论文翻译 机器学习 深度学习（神经网络相关的都在这里） 认知科学 搜索引擎 #ElasticSearch   杂七杂八 草稿  参考资料">
+<meta property="og:description" content="题目https://leetcode.com/problems/linked-list-cycle/ 141.给一个链表的头节点,判断链表是否有环 解法1: 用set判断重复优点:  逻辑直观, 容易理解 比双指针更快  缺点:  空间占用比双指针更多  解法2: 双指针 用两个指针指向head 进行循环: 每次慢指针下移一次,快指针下移两次 如果快指针指向结尾则无循环,如果两个指针指向同一个节点">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-03-18T02:07:20.002Z">
+<meta property="og:updated_time" content="2019-03-25T00:13:36.116Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="wikitree">
-<meta name="twitter:description" content="维基博客分类树 编程基础 安装与配置 功能与操作 python 前端 #JavaScript #CSS#html5 #node leetcode 数据库 #mongo 博客工具 #hexo #markdown   人工智能 论文翻译 机器学习 深度学习（神经网络相关的都在这里） 认知科学 搜索引擎 #ElasticSearch   杂七杂八 草稿  参考资料">
+<meta name="twitter:title" content="双指针找环">
+<meta name="twitter:description" content="题目https://leetcode.com/problems/linked-list-cycle/ 141.给一个链表的头节点,判断链表是否有环 解法1: 用set判断重复优点:  逻辑直观, 容易理解 比双指针更快  缺点:  空间占用比双指针更多  解法2: 双指针 用两个指针指向head 进行循环: 每次慢指针下移一次,快指针下移两次 如果快指针指向结尾则无循环,如果两个指针指向同一个节点">
     
 
     
@@ -193,22 +192,31 @@
                             编程基础
                         </a>
                          <ul class="unstyled" id="tree"> 
+                    <li class="directory open">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder-open"></i>
+                            &nbsp;
+                            leetcode
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file active"><a href="/wiki/编程基础/leetcode/141. Linked_List_Cycle/">双指针找环</a></li>  </ul> 
+                    </li> 
+                    
                     <li class="directory">
                         <a href="#" data-role="directory">
                             <i class="fa fa-folder"></i>
                             &nbsp;
                             python
                         </a>
-                         <ul class="unstyled" id="tree">  <li class="file"><a href="/wiki/编程基础/python/py2-and-py3/">py2_and_py3</a></li>  <li class="file"><a href="/wiki/编程基础/python/decorator装饰器/">decorator装饰器</a></li>  <li class="file"><a href="/wiki/编程基础/python/基础库/">基础库：os/sys/dis</a></li>  <li class="file"><a href="/wiki/编程基础/python/交换2个变量/">交换变量（快捷写法和注意事项）</a></li>  </ul> 
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/wiki/编程基础/python/pycharm/">配置和使用 pycharm</a></li>  <li class="file"><a href="/wiki/编程基础/python/decorator装饰器/">decorator装饰器</a></li>  <li class="file"><a href="/wiki/编程基础/python/py2-and-py3/">py2_and_py3</a></li>  <li class="file"><a href="/wiki/编程基础/python/python_datatype/">python基本数据类型</a></li>  <li class="file"><a href="/wiki/编程基础/python/交换2个变量/">交换变量（快捷写法和注意事项）</a></li>  <li class="file"><a href="/wiki/编程基础/python/基础库/">基础库：os/sys/dis</a></li>  <li class="file"><a href="/wiki/编程基础/python/queue/">Queue 队列模块相关</a></li>  </ul> 
                     </li> 
                     
-                    <li class="directory open">
+                    <li class="directory">
                         <a href="#" data-role="directory">
-                            <i class="fa fa-folder-open"></i>
+                            <i class="fa fa-folder"></i>
                             &nbsp;
                             博客工具
                         </a>
-                         <ul class="unstyled" id="tree">  <li class="file"><a href="/wiki/编程基础/博客工具/hexo/">hexo</a></li>  <li class="file active"><a href="/wiki/编程基础/博客工具/wikitree/">wikitree</a></li>  <li class="file"><a href="/wiki/编程基础/博客工具/markdown说明/">markdown说明</a></li>  </ul> 
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/wiki/编程基础/博客工具/markdown说明/">markdown说明</a></li>  <li class="file"><a href="/wiki/编程基础/博客工具/hexo/">hexo</a></li>  </ul> 
                     </li> 
                     
                     <li class="directory">
@@ -217,7 +225,7 @@
                             &nbsp;
                             安装与配置
                         </a>
-                         <ul class="unstyled" id="tree">  <li class="file"><a href="/wiki/编程基础/安装与配置/set-vim/">配置vim</a></li>  <li class="file"><a href="/wiki/编程基础/安装与配置/set-pycharm/">配置pycharm</a></li>  <li class="file"><a href="/wiki/编程基础/安装与配置/system-record/">操作系统重装记录</a></li>  <li class="file"><a href="/wiki/编程基础/安装与配置/install-ubuntu/">安装ubuntu</a></li>  <li class="file"><a href="/wiki/编程基础/安装与配置/install-manjaro/">安装manjaro</a></li>  </ul> 
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/wiki/编程基础/安装与配置/install-ubuntu/">安装ubuntu</a></li>  <li class="file"><a href="/wiki/编程基础/安装与配置/set-vim/">配置vim</a></li>  <li class="file"><a href="/wiki/编程基础/安装与配置/install-manjaro/">安装manjaro</a></li>  <li class="file"><a href="/wiki/编程基础/安装与配置/system-record/">操作系统重装记录</a></li>  <li class="file"><a href="/wiki/编程基础/安装与配置/set-vscode/">配置vscode</a></li>  </ul> 
                     </li> 
                     
                     <li class="directory">
@@ -235,11 +243,11 @@
                             &nbsp;
                             软件使用备忘
                         </a>
-                         <ul class="unstyled" id="tree">  <li class="file"><a href="/wiki/编程基础/软件使用备忘/use-docker/">使用docker</a></li>  <li class="file"><a href="/wiki/编程基础/软件使用备忘/use-git/">使用git</a></li>  <li class="file"><a href="/wiki/编程基础/软件使用备忘/use-linux/">使用linux</a></li>  </ul> 
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/wiki/编程基础/软件使用备忘/use-git/">使用git</a></li>  <li class="file"><a href="/wiki/编程基础/软件使用备忘/use-linux/">使用linux</a></li>  <li class="file"><a href="/wiki/编程基础/软件使用备忘/use-docker/">使用docker</a></li>  </ul> 
                     </li> 
                      </ul> 
                     </li> 
-                     <li class="file"><a href="/wiki/编程基础/python/python_base/">python基本语法</a></li>  <li class="file"><a href="/wiki/编程基础/安装与配置/set-vscode/">配置vscode</a></li>  </ul> 
+                     <li class="file"><a href="/wiki/编程基础/python/thread多线程/">thread多线程模块</a></li>  </ul> 
     </div>
     <script>
         $(document).ready(function() {
@@ -310,7 +318,7 @@
     <div id="toTop" class="fa fa-angle-up"></div>
 </aside>
             
-            <section id="main"><article id="post-编程基础/博客工具/wikitree" class="article article-type-post" itemscope="" itemprop="blogPost">
+            <section id="main"><article id="post-编程基础/leetcode/141. Linked_List_Cycle" class="article article-type-post" itemscope="" itemprop="blogPost">
     <div class="article-inner">
         
         
@@ -320,20 +328,15 @@
                         
     <div class="article-category">
     	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/编程基础/">编程基础</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/编程基础/博客工具/">博客工具</a>
+        <a class="article-category-link" href="/categories/编程基础/">编程基础</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/编程基础/leetcode/">leetcode</a>
     </div>
 
                         
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/博客/">博客</a>
-    </div>
-
                         
     <div class="article-date">
         <i class="fa fa-calendar"></i>
-        <a href="/wiki/编程基础/博客工具/wikitree/">
-            <time datetime="2019-03-02T12:21:34.000Z" itemprop="datePublished">2019-03-02</time>
+        <a href="/wiki/编程基础/leetcode/141. Linked_List_Cycle/">
+            <time datetime="2019-03-19T14:08:18.000Z" itemprop="datePublished">2019-03-19</time>
         </a>
     </div>
 
@@ -344,13 +347,13 @@
                         
                         
                             <div class="article-meta-button">
-                                <a href="https://github.com/ofooo/Wiki-site/raw/writing/source/_posts/编程基础/博客工具/wikitree.md" rel="external nofollow noopener noreferrer" target="_blank"> Source </a>
+                                <a href="https://github.com/ofooo/Wiki-site/raw/writing/source/_posts/编程基础/leetcode/141. Linked_List_Cycle.md" rel="external nofollow noopener noreferrer" target="_blank"> Source </a>
                             </div>
                             <div class="article-meta-button">
-                                <a href="https://github.com/ofooo/Wiki-site/edit/writing/source/_posts/编程基础/博客工具/wikitree.md" rel="external nofollow noopener noreferrer" target="_blank"> Edit </a>
+                                <a href="https://github.com/ofooo/Wiki-site/edit/writing/source/_posts/编程基础/leetcode/141. Linked_List_Cycle.md" rel="external nofollow noopener noreferrer" target="_blank"> Edit </a>
                             </div>
                             <div class="article-meta-button">
-                                <a href="https://github.com/ofooo/Wiki-site/commits/writing/source/_posts/编程基础/博客工具/wikitree.md" rel="external nofollow noopener noreferrer" target="_blank"> History </a>
+                                <a href="https://github.com/ofooo/Wiki-site/commits/writing/source/_posts/编程基础/leetcode/141. Linked_List_Cycle.md" rel="external nofollow noopener noreferrer" target="_blank"> History </a>
                             </div>
                         
                     </div>
@@ -358,7 +361,7 @@
                 
     
         <h1 class="article-title" itemprop="name">
-            wikitree
+            双指针找环
         </h1>
     
 
@@ -371,39 +374,27 @@
             
                 <div id="toc" class="toc-article">
                 <strong class="toc-title">文章目录</strong>
-                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#维基博客分类树"><span class="toc-number">1.</span> <span class="toc-text">维基博客分类树</span></a></li></ol><li class="toc-item toc-level-2"><a class="toc-link" href="#参考资料"><span class="toc-number"></span> <span class="toc-text">参考资料</span></a>
-                </li></div>
+                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#题目"><span class="toc-number">1.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#解法1-用set判断重复"><span class="toc-number">2.</span> <span class="toc-text">解法1: 用set判断重复</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#解法2-双指针"><span class="toc-number">3.</span> <span class="toc-text">解法2: 双指针</span></a></li></ol>
+                </div>
             
         
         
-            <h3 id="维基博客分类树"><a href="#维基博客分类树" class="headerlink" title="维基博客分类树"></a>维基博客分类树</h3><ul>
-<li>编程基础<ul>
-<li>安装与配置</li>
-<li>功能与操作</li>
-<li>python</li>
-<li>前端 #JavaScript #CSS#html5 #node</li>
-<li>leetcode</li>
-<li>数据库 #mongo</li>
-<li>博客工具 #hexo #markdown</li>
-</ul>
-</li>
-<li>人工智能<ul>
-<li>论文翻译</li>
-<li>机器学习</li>
-<li>深度学习（神经网络相关的都在这里）</li>
-<li>认知科学</li>
-<li>搜索引擎 #ElasticSearch</li>
-</ul>
-</li>
-<li>杂七杂八</li>
-<li>草稿</li>
-</ul>
-<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><blockquote>
+            <h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p><a href="https://leetcode.com/problems/linked-list-cycle/" rel="external nofollow noopener noreferrer" target="_blank">https://leetcode.com/problems/linked-list-cycle/</a></p>
+<p>141.给一个链表的头节点,判断链表是否有环</p>
+<h3 id="解法1-用set判断重复"><a href="#解法1-用set判断重复" class="headerlink" title="解法1: 用set判断重复"></a>解法1: 用set判断重复</h3><p><strong>优点:</strong></p>
 <ul>
-<li><a href=""></a></li>
-<li><a href=""></a></li>
+<li>逻辑直观, 容易理解</li>
+<li>比双指针更快</li>
 </ul>
-</blockquote>
+<p><strong>缺点:</strong></p>
+<ul>
+<li>空间占用比双指针更多</li>
+</ul>
+<h3 id="解法2-双指针"><a href="#解法2-双指针" class="headerlink" title="解法2: 双指针"></a>解法2: 双指针</h3><ol>
+<li>用两个指针指向head</li>
+<li>进行循环: 每次慢指针下移一次,快指针下移两次</li>
+<li>如果快指针指向结尾则无循环,如果两个指针指向同一个节点则有循环</li>
+</ol>
 
             </div>
         
@@ -416,19 +407,19 @@
     
 <nav id="article-nav">
     
-        <a href="/wiki/人工智能/搜索引擎/elastic-search基础/" id="article-nav-newer" class="article-nav-link-wrap">
+        <a href="/wiki/编程基础/安装与配置/set-vscode/" id="article-nav-newer" class="article-nav-link-wrap">
             <strong class="article-nav-caption">上一篇</strong>
             <div class="article-nav-title">
                 
-                    elastic_search基础
+                    配置vscode
                 
             </div>
         </a>
     
     
-        <a href="/wiki/编程基础/博客工具/hexo/" id="article-nav-older" class="article-nav-link-wrap">
+        <a href="/wiki/编程基础/软件使用备忘/use-docker/" id="article-nav-older" class="article-nav-link-wrap">
             <strong class="article-nav-caption">下一篇</strong>
-            <div class="article-nav-title">hexo</div>
+            <div class="article-nav-title">使用docker</div>
         </a>
     
 </nav>
