@@ -1,9 +1,9 @@
 ---
-title: 配置pycharm
+title: 配置和使用 pycharm
 toc: true
 categories:
   - 编程基础
-  - 安装与配置
+  - python
 date: 2019-03-17 08:55:57
 tags:
 ---
@@ -21,6 +21,17 @@ tags:
 ```python
 # ~err
 error = '\n'.join(traceback.format_exception(*sys.exc_info()))
+
+# ~root
+def root(*f, relative_root='../../../'):
+    # relative_root 当前代码目录相对root的相对路径
+    for t in f:
+        if t[:1] == '/':
+            print('Warning: root()包含绝对路径 参数={}'.format(f))
+            break
+    code_dir = os.path.dirname(os.path.realpath(__file__))
+    long_path = os.path.join(code_dir, relative_root, *f)
+    return long_path
 ```
 
 ### 快捷键配置
@@ -36,7 +47,11 @@ Move Line Up
 Move Line Down
 ```
 
+### 跳转到上个光标所在位置
 
+​	打开 View---toolbar   有左右箭头按钮。悬停可以查看快捷键
+
+![toolbar](/home/fish/.config/Typora/typora-user-images/1553590786370.png)
 
 ### 插件
 

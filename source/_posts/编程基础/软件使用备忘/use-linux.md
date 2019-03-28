@@ -139,7 +139,7 @@ if [ $a -lt $b ]  #"a 小于 b"
 | 给xxx账号设置root权限（sudo）            | sudo *user*mod-aG sudo xxx   |       |
 |                                          |                              |       |
 
-发送网络请求 curl
+### 发送网络请求 curl
 
 ```bash
 ## post 方法

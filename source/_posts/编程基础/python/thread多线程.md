@@ -1,0 +1,100 @@
+---
+title: thread多线程模块
+toc: true
+categories:
+  - 编程基础
+  - python
+date: 2019-03-27 16:30:26
+tags:
+---
+
+
+
+## 概述
+
+**threading**用于提供线程相关的操作，线程是应用程序中工作的最小单元。
+
+python当前版本的多线程库没有实现优先级、线程组，线程也不能被停止、暂停、恢复、中断。
+
+**threading模块提供的类：**  　　Thread, Lock, Rlock, Condition, [Bounded]Semaphore, Event, Timer, local。
+
+**threading 模块提供的常用方法：** 
+　　threading.currentThread(): 返回当前的线程变量。 
+　　threading.enumerate(): 返回一个包含正在运行的线程的list。正在运行指线程启动后、结束前，不包括启动前和终止后的线程。 
+　　threading.activeCount(): 返回正在运行的线程数量，与len(threading.enumerate())有相同的结果。
+
+​	threading.currentThread().getName()获取当前程序的线程名称
+
+
+
+**threading 模块提供的常量：**
+
+　　threading.TIMEOUT_MAX 设置threading全局超时时间。
+
+## Thread类
+
+**构造方法：** *Thread(group=None, target=None, name=None, args=(), kwargs={})* 
+
+　　group: 线程组，目前还没有实现，库引用中提示必须是None； 
+　　target: 要执行的方法； 
+　　name: 线程名； 
+　　args/kwargs: 要传入方法的参数。
+
+**实例方法：** 　　isAlive(): 返回线程是否在运行。正在运行指启动后、终止前。 
+　　get/setName(name): 获取/设置线程名。 
+
+　　start():  线程准备就绪，等待CPU调度
+　　is/setDaemon(bool): 获取/设置是后台线程（默认前台线程（False））。（在start之前设置）
+
+　　　　如果是后台线程，主线程执行过程中，后台线程也在进行，主线程执行完毕后，后台线程不论成功与否，主线程和后台线程均停止
+       　　如果是前台线程，主线程执行过程中，前台线程也在进行，主线程执行完毕后，等待前台线程也执行完成后，程序停止
+　　start(): 启动线程。 
+　　join([timeout]): 阻塞当前上下文环境的线程，直到调用此方法的线程终止或到达指定的timeout（可选参数）。
+
+```python
+import threading
+import time
+
+def action(arg):
+    time.sleep(1)
+    print('the arg is:%s\r' %arg)
+    
+#运行方法一：将要执行的方法作为参数传给Thread的构造方法
+for i in range(4):
+    t =threading.Thread(target=action,args=(i,))
+    t.start()
+
+#运行方法二：从Thread继承，并重写run()
+class MyThread(threading.Thread):
+    def __init__(self,arg):
+        super().__init__()#注意：一定要显式的调用父类的初始化函数。
+        self.arg=arg
+    def run(self):#定义每个线程要运行的函数===action()
+        time.sleep(1)
+        print('the arg is:%s\r' % self.arg)
+
+for i in xrange(4):
+    t = MyThread(i)
+    t.start()
+```
+
+
+
+```python
+thread_list = []    #线程存放列表
+for i in xrange(4):
+    t =threading.Thread(target=action,args=(i,))
+    t.setDaemon(True)
+    thread_list.append(t)
+
+for t in thread_list:
+    t.start()
+
+for t in thread_list:
+    t.join()
+#  join()阻塞当前上下文环境的线程，直到调用此方法的线程终止或到达指定的timeout，即使设置了setDeamon（True）主线程依然要等待子线程结束。
+```
+
+## 参考资料
+> - [[python--threading多线程总结]](https://www.cnblogs.com/tkqasn/p/5700281.html)
+> - []()

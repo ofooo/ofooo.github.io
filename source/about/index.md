@@ -17,7 +17,7 @@ layout: "page"
 
 微信二维码：
 
-![fish_wechat](/source/fish_wechat.jpg)
+![我的微信二维码](index/我的微信二维码.jpg)
 
 github: https://github.com/ofooo
 

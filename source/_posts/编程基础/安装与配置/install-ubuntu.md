@@ -16,6 +16,15 @@ tags:
 
 ## 二 安装软件
 
+### 科学上网
+
+```bash
+# 安装ss的GUI客户端
+sudo add-apt-repository ppa:hzwhuang/ss-qt5
+sudo apt-get update
+sudo apt-get install shadowsocks-qt5
+```
+
 ### 安装git git-lfs
 
 ```bash

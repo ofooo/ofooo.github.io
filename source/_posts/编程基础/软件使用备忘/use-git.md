@@ -24,6 +24,34 @@ date: 2019-03-17 09:05:30
 
 # git命令行
 
+### 标签
+
+```bash
+标签分为带附注和不带附注的。我们尽量使用带附注的。
+
+# 本地新建一个tag 名称=V1.2
+git tag -a V1.2 -m 'xxxxx'
+
+# 查看本地tag
+git tag
+
+# 查看tag详细信息
+git tag show V1.2
+
+# 推送到远程仓库
+git push origin --tags
+
+# 如果发现有问题，可以删除标签（本地）
+git tag -d V1.2
+# 推送空的同名版本到远程仓库，等同于删除远程库里的版本
+git push origin :refs/tags/V1.2
+
+# 获取远程版本，精确拉取某一个版本的代码
+git fetch origin tag V1.2
+```
+
+
+
 ### 本地分支和远程分支
 
 ```bash
