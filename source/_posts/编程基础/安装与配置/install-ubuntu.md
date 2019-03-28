@@ -16,6 +16,52 @@ tags:
 
 ## 二 安装软件
 
+```bash
+卸载软件
+
+命令： apt-get remove softname1 softname2 softname3……
+
+卸载并清除配置
+
+命令： apt-get remove --purge softname1
+更新软件信息数据库
+
+命令： apt-get update
+
+进行系统升级
+
+命令： apt-get upgrade
+
+搜索软件包
+
+命令： apt-cache search softname1 softname2 softname3……
+安装deb软件包
+
+命令： dpkg -i xxx.deb
+
+删除软件包
+
+命令： dpkg -r xxx.deb
+连同配置文件一起删除
+
+命令： dpkg -P xxx.deb  (purge)
+查看软件包信息
+
+命令： dpkg -info xxx.deb
+
+查看文件拷贝详情
+
+命令： dpkg -L xxx.deb
+
+查看系统中已安装软件包信息
+
+命令： dpkg -l
+
+重新配置软件包
+
+命令： dpkg-reconfigure xxx
+```
+
 ### 科学上网
 
 ```bash
@@ -59,6 +105,11 @@ sudo  apt-get install fcitx-googlepinyin
 3. 登出后登录操作系统
 4. 右键点击顶栏的键盘图标，选择配置
 5. 添加搜狗输入法
+
+如果候选栏显示乱码、无法显示中文，可按如下方式处理：
+cd ~/.config
+rm -rf SogouPY* sogou*
+然后重启后登录即可。
 ```
 
 
