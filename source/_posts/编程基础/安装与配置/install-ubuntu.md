@@ -69,6 +69,10 @@ tags:
 sudo add-apt-repository ppa:hzwhuang/ss-qt5
 sudo apt-get update
 sudo apt-get install shadowsocks-qt5
+
+# 浏览器安装科学插件
+# 找到chrome执行程序目录，加代理启动，安装 SwitchyOmega插件
+./chrome --proxy-server='socks5://127.0.0.1:1080'
 ```
 
 ### 安装git git-lfs
