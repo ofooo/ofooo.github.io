@@ -7,6 +7,7 @@ tags:
 categories:
   - 人工智能
   - 深度学习
+  - allennlp
 date: 2019-03-29 17:29:52
 ---
 

@@ -70,6 +70,11 @@ sudo add-apt-repository ppa:hzwhuang/ss-qt5
 sudo apt-get update
 sudo apt-get install shadowsocks-qt5
 
+# 安裝ss的命令行工具
+sudo apt install shadowsocks
+sslocal -c xxx.json -d start
+# -c config  -d start/stop/restart  daemon mode
+
 # 浏览器安装科学插件
 # 找到chrome执行程序目录，加代理启动，安装 SwitchyOmega插件
 ./chrome --proxy-server='socks5://127.0.0.1:1080'
@@ -118,7 +123,7 @@ rm -rf SogouPY* sogou*
 
 
 
-### 安装zsh
+### 安装zsh 和 autojump
 
 ```bash
 sudo apt install zsh
@@ -129,7 +134,11 @@ sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/i
 如果要切换回去bash
 chsh -s /bin/bash
 
-
+# 安裝autojump
+git clone git://github.com/wting/autojump.git
+cd autojump
+./install.py or ./uninstall.py
+手工把提示腳本添加到 ~/.zshrc
 ```
 
 ### 安装node/npm
