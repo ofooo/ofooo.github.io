@@ -103,11 +103,13 @@ if [ $a -lt $b ]  #"a 小于 b"
 ## 免密码SSH登录远程服务器
 
 1. 创建自己的私钥和公钥对
-   ``` ssh-keygen -C “备注信息”  -f ~/.ssh/私钥名称 ```       【密码输入空】
+   ```bash
+   ssh-keygen -C “备注信息”  -f ~/.ssh/私钥名称  #【密码输入空】
+   ```
 
 2. 设置私钥对应的网站,在~/.ssh/config 文件中写入：
 
-   ```
+   ```bash
    Host 远程服务器 空格链接多个地址
        HostName： 目标主机地址
        User：指定的登陆用户名
@@ -129,15 +131,60 @@ if [ $a -lt $b ]  #"a 小于 b"
 
 ## 常用命令
 
-| 作用                                     | 命令                         | 参数  |
-| ---------------------------------------- | ---------------------------- | ----- |
-| 查看占用内存CPU                          | top -p **进程ID**            |       |
-| 查看占用socket端口的程序                 | netstat -ap\|grep **端口号** |       |
-| 查看硬盘使用情况                         | df -h                        |       |
-| 查看所有进程                             | ps -ax                       | a=all |
-| 查看当前文件夹递归1层大小/末尾可加文件夹 | du -h --max-depth=1          |       |
-| 给xxx账号设置root权限（sudo）            | sudo *user*mod-aG sudo xxx   |       |
-|                                          |                              |       |
+### 进程相关
+
+```bash
+# 查看占用内存CPU
+top -p **进程ID
+
+# 查看所有进程  a=all
+ps -ax
+
+# 查看占用socket端口的程序
+netstat -ap\|grep **端口号**
+
+
+
+
+
+```
+
+### 文件相关
+
+```bash
+# 查看硬盘使用情况
+df -h
+
+# 查看当前文件夹递归1层大小/末尾可加文件夹
+du -h --max-depth=1
+
+# 切分并压缩文件  pre_xxx是切分文件的前缀
+tar cjf - file_or_dir |split -b 2000m - pre_xxx.
+
+# 合并然后解压文件 -C 输出到相对位置
+cat pre_xxx.* |tar xj -C ./../aim_dir/xxx_dir/
+```
+
+
+
+### 权限相关
+
+```bash
+# 给xxx账号设置root权限（sudo）
+sudo *user*mod-aG sudo xxx
+
+# 修改文件的所有者   -R表示递归目录下所有文件
+chown  用户名:用户组  文件名或目录名  -R
+
+
+
+```
+
+
+
+
+
+
 
 ### 发送网络请求 curl
 
