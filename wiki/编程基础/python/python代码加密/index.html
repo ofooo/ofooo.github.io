@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="AIfish">
 <meta property="og:description" content="目前的加密手段： 源代码混淆：只降低源码可读性，对破解有一定的干扰作用 只发行 pyc: 可以用现成工具复原 打包 exe: 可以用现成工具复原 cython打包so文件: 要加密单一的模块 /特制算法很有效，不过对很多复杂模块无法兼容，比如 django 写的 app 修改python解释器: 未丢失信息，容易复原   总结：python语言在设计理念上倾向于开源，没有很完美的加密方案，只能有限">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-03-29T08:02:10.713Z">
+<meta property="og:updated_time" content="2019-03-29T12:25:47.306Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="python代码加密">
 <meta name="twitter:description" content="目前的加密手段： 源代码混淆：只降低源码可读性，对破解有一定的干扰作用 只发行 pyc: 可以用现成工具复原 打包 exe: 可以用现成工具复原 cython打包so文件: 要加密单一的模块 /特制算法很有效，不过对很多复杂模块无法兼容，比如 django 写的 app 修改python解释器: 未丢失信息，容易复原   总结：python语言在设计理念上倾向于开源，没有很完美的加密方案，只能有限">
@@ -180,14 +180,23 @@
                             &nbsp;
                             深度学习
                         </a>
-                         <ul class="unstyled" id="tree">  <li class="file"><a href="/wiki/人工智能/深度学习/GPU相关/">GPU相关</a></li>  <li class="file"><a href="/wiki/人工智能/深度学习/pytorch功能/">pytorch功能</a></li>  </ul> 
+                         <ul class="unstyled" id="tree"> 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            allennlp
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/wiki/人工智能/深度学习/allennlp/allennlp-classes/">allennlp 类</a></li>  <li class="file"><a href="/wiki/人工智能/深度学习/allennlp/allennlp-command/">allennlp 命令</a></li>  <li class="file"><a href="/wiki/人工智能/深度学习/allennlp/allennlp-json-config/">allennlp_json_config</a></li>  <li class="file"><a href="/wiki/人工智能/深度学习/allennlp/allennlp-models/">allennlp_models</a></li>  </ul> 
+                    </li> 
+                     <li class="file"><a href="/wiki/人工智能/深度学习/GPU相关/">GPU相关</a></li>  <li class="file"><a href="/wiki/人工智能/深度学习/pytorch功能/">pytorch功能</a></li>  </ul> 
                     </li> 
                      </ul> 
                     </li> 
                     
-                    <li class="directory">
+                    <li class="directory open">
                         <a href="#" data-role="directory">
-                            <i class="fa fa-folder"></i>
+                            <i class="fa fa-folder-open"></i>
                             &nbsp;
                             编程基础
                         </a>
@@ -201,13 +210,13 @@
                          <ul class="unstyled" id="tree">  <li class="file"><a href="/wiki/编程基础/leetcode/141. Linked_List_Cycle/">双指针找环</a></li>  </ul> 
                     </li> 
                     
-                    <li class="directory">
+                    <li class="directory open">
                         <a href="#" data-role="directory">
-                            <i class="fa fa-folder"></i>
+                            <i class="fa fa-folder-open"></i>
                             &nbsp;
                             python
                         </a>
-                         <ul class="unstyled" id="tree">  <li class="file"><a href="/wiki/编程基础/python/decorator装饰器/">decorator装饰器</a></li>  <li class="file"><a href="/wiki/编程基础/python/pycharm/">配置和使用 pycharm</a></li>  <li class="file"><a href="/wiki/编程基础/python/python_datatype/">python基本数据类型</a></li>  <li class="file"><a href="/wiki/编程基础/python/py2-and-py3/">py2_and_py3</a></li>  <li class="file"><a href="/wiki/编程基础/python/交换2个变量/">交换变量（快捷写法和注意事项）</a></li>  <li class="file"><a href="/wiki/编程基础/python/基础库/">基础库：os/sys/dis</a></li>  <li class="file"><a href="/wiki/编程基础/python/queue/">Queue 队列模块相关</a></li>  <li class="file"><a href="/wiki/编程基础/python/thread多线程/">thread多线程模块</a></li>  </ul> 
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/wiki/编程基础/python/decorator装饰器/">decorator装饰器</a></li>  <li class="file"><a href="/wiki/编程基础/python/pycharm/">配置和使用 pycharm</a></li>  <li class="file active"><a href="/wiki/编程基础/python/python代码加密/">python代码加密</a></li>  <li class="file"><a href="/wiki/编程基础/python/命令行参数和环境变量/">命令行参数和环境变量</a></li>  <li class="file"><a href="/wiki/编程基础/python/python_datatype/">python基本数据类型</a></li>  <li class="file"><a href="/wiki/编程基础/python/py2-and-py3/">py2_and_py3</a></li>  <li class="file"><a href="/wiki/编程基础/python/交换2个变量/">交换变量（快捷写法和注意事项）</a></li>  <li class="file"><a href="/wiki/编程基础/python/基础库/">基础库：os/sys/dis</a></li>  <li class="file"><a href="/wiki/编程基础/python/queue/">Queue 队列模块相关</a></li>  <li class="file"><a href="/wiki/编程基础/python/thread多线程/">thread多线程模块</a></li>  </ul> 
                     </li> 
                     
                     <li class="directory">
@@ -247,7 +256,7 @@
                     </li> 
                      </ul> 
                     </li> 
-                     <li class="file"><a href="/wiki/人工智能/深度学习/allennlp-models/">allennlp_models</a></li>  <li class="file active"><a href="/wiki/编程基础/python/python代码加密/">python代码加密</a></li>  <li class="file"><a href="/wiki/编程基础/python/命令行参数和环境变量/">命令行参数和环境变量</a></li>  </ul> 
+                     </ul> 
     </div>
     <script>
         $(document).ready(function() {
@@ -326,6 +335,11 @@
                 
                     <div class="article-meta">
                         
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/编程基础/">编程基础</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/编程基础/python/">python</a>
+    </div>
+
                         
                         
     <div class="article-date">
@@ -402,7 +416,7 @@
     
 <nav id="article-nav">
     
-        <a href="/wiki/人工智能/深度学习/allennlp-models/" id="article-nav-newer" class="article-nav-link-wrap">
+        <a href="/wiki/人工智能/深度学习/allennlp/allennlp-models/" id="article-nav-newer" class="article-nav-link-wrap">
             <strong class="article-nav-caption">上一篇</strong>
             <div class="article-nav-title">
                 
