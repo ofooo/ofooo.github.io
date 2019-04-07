@@ -45,6 +45,10 @@ Reformat
 Move Line Up
 # 当前行往上挪一行  设置成 Alt+Down
 Move Line Down
+
+# 优化导入代码   默认快捷键 Ctrl+Shift+I
+Optimize Imports
+
 ```
 
 ### 跳转到上个光标所在位置

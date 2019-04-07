@@ -80,6 +80,49 @@ sslocal -c xxx.json -d start
 ./chrome --proxy-server='socks5://127.0.0.1:1080'
 ```
 
+### 设置开机自启动的内容
+
+```bash
+#　建立 /etc/systemd/system/rc-local.service　文件内容如下：
+_________________________________________________
+[Unit]
+Description=/etc/rc.local Compatibility
+ConditionPathExists=/etc/rc.local
+ 
+[Service]
+Type=forking
+ExecStart=/etc/rc.local start
+TimeoutSec=0
+StandardOutput=tty
+RemainAfterExit=yes
+SysVStartPriority=99
+ 
+[Install]
+WantedBy=multi-user.target
+_________________________________________________
+
+# 创建启动命令脚步文件 /etc/rc.local
+——————————————————————————————————————————————————
+#!/bin/sh -e
+echo "看到这行字，说明添加自启动脚本成功。" > /usr/local/test.log
+exit 0
+——————————————————————————————————————————————————
+# 添加权限
+sudo chmod +x /etc/rc.local
+
+# 开机启动服务
+sudo systemctl enable rc-local
+# 启动服务并检查状态
+sudo systemctl start rc-local.service
+sudo systemctl status rc-local.service
+# 修改service配置文件后，重载
+sudo systemctl daemon-reload
+# 查看日志
+cat /usr/local/test.log　　
+```
+
+
+
 ### 安装git git-lfs
 
 ```bash

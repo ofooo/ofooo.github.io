@@ -54,6 +54,15 @@ set mousehide
  
 ```
 
+
+
+### bug: backspace退格键不能使用 
+
+把 deleteleft 快捷键设置会 backspace
+
+
+
 ## 参考资料
+
 > - []()
 > - []()
