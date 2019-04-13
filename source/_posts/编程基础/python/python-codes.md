@@ -17,8 +17,8 @@ tags:
 ### tqdm进度条
 
 ```python
-from tqdm import Tqdm
-gen_tqdm = Tqdm(gener, total=len(gener))
+from tqdm import tqdm
+gen_tqdm = tqdm(gener, total=len(gener))
 for i in gen_tqdm:
     # 实时修改进度条上的描述文本
     gen_tqdm.set_description(description, refresh=False)

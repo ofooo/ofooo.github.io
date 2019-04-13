@@ -217,6 +217,19 @@ https://extensions.gnome.org/
 |            |                         |            |
 |            |                         |            |
 
+### alias配置
+
+```bash
+alias get1='pip install -i https://pypi.tuna.tsinghua.edu.cn/simple/ '
+alias get2='pip install -i http://mirrors.aliyun.com/pypi/simple/ '
+alias get3='pip install -i https://pypi.douban.com/simple/ '
+```
+
+
+
+
+
 ## 参考资料
+
 > - []()
 > - []()
