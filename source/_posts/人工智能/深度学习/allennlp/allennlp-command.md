@@ -78,7 +78,7 @@ allennlp configure --port 8123
 
 ```
 
-### Trainer类
+### Trainer初始化参数
 
 ```
 Trainer
@@ -122,7 +122,7 @@ num_serialized_models_to_keep：``int``，可选（默认= 20）
     要保留的先前模型检查点的数量。默认是保留20个检查点。
     值为None或-1表示将保留所有检查点。
     
-keep_serialized_model_every_num_seconds：``int``，可选（默认=无）
+keep_serialized_model_every_num_seconds：``int``，可选（默认=None）
     如果num_serialized_models_to_keep不是None，那么除了最后一个
 num_serialized_models_to_keep之外，偶尔以给定间隔保存模型也很有用。
     为此，请将keep_serialized_model_every_num_seconds指定为永久保存的检查点之间的秒数。请注意，此选项仅在以下情况下使用
