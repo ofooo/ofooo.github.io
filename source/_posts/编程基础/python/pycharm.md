@@ -67,9 +67,18 @@ File---Setting---Plugins
 
 ​		安装 Database Navigator
 
-​		安装Mongo Plugin
+​		~~安装Mongo Plugin~~
 
 ​	
+
+### 显示界面和字体配置
+
+```bash
+界面的字体：
+Setting-->Appearance&Behavior-->Appearance-->Use custom font
+```
+
+
 
 
 

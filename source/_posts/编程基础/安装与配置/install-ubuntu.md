@@ -14,6 +14,64 @@ tags:
 
 
 
+### 制作启动盘
+
+```bash
+# 查看硬盘列表
+sudo fdisk -l
+
+# 结果依次显示每个硬盘的信息，可知 /dev/sdb就是优盘
+Disk /dev/nvme0n1：232.9 GiB，250059350016 字节，488397168 个扇区
+Disk model: Samsung SSD 970 EVO 250GB               
+单元：扇区 / 1 * 512 = 512 字节
+扇区大小(逻辑/物理)：512 字节 / 512 字节
+I/O 大小(最小/最佳)：512 字节 / 512 字节
+磁盘标签类型：gpt
+磁盘标识符：C56964F0-A438-4609-8521-BB80B61A498F
+
+设备                起点      末尾      扇区   大小 类型
+/dev/nvme0n1p1 109258752 488392031 379133280 180.8G Linux 文件系统
+/dev/nvme0n1p2   4196352   4401151    204800   100M Linux 文件系统
+/dev/nvme0n1p3   4401152 109258751 104857600    50G Linux 文件系统
+/dev/nvme0n1p4      2048    616447    614400   300M EFI 系统
+/dev/nvme0n1p5    616448   4196351   3579904   1.7G Linux swap
+
+分区表记录没有按磁盘顺序。
+
+
+Disk /dev/sda：1.8 TiB，2000398934016 字节，3907029168 个扇区
+Disk model: WDC WD20EZAZ-00G
+单元：扇区 / 1 * 512 = 512 字节
+扇区大小(逻辑/物理)：512 字节 / 4096 字节
+I/O 大小(最小/最佳)：4096 字节 / 4096 字节
+磁盘标签类型：gpt
+磁盘标识符：B6164008-B283-4767-831C-8784AB8854F7
+
+设备            起点       末尾       扇区   大小 类型
+/dev/sda1       2048  835022847  835020800 398.2G Linux 文件系统
+/dev/sda2  835022848 3907024031 3072001184   1.4T Linux 文件系统
+
+
+Disk /dev/sdb：14.4 GiB，15483273216 字节，30240768 个扇区
+Disk model: DataTraveler 2.0
+单元：扇区 / 1 * 512 = 512 字节
+扇区大小(逻辑/物理)：512 字节 / 512 字节
+I/O 大小(最小/最佳)：512 字节 / 512 字节
+磁盘标签类型：dos
+磁盘标识符：0x3fbeba85
+
+设备       启动    起点    末尾    扇区  大小 Id 类型
+/dev/sdb1  *          0 4774783 4774784  2.3G  0 空
+/dev/sdb2       4774784 4929791  155008 75.7M  1 FAT12
+
+# 创建启动盘： if=镜像文件   of=优盘盘符路径
+sudo dd if=/home/fish/下载/deepinamd64.iso of=/dev/sdb
+```
+
+
+
+
+
 ## 二 安装软件
 
 ```bash
@@ -121,6 +179,19 @@ sudo systemctl daemon-reload
 cat /usr/local/test.log　　
 ```
 
+开启ssh服务
+
+```bash
+sudo apt install openssh-server
+sudo systemctl restart sshd
+
+# 设置不允许root帐号登录 修改文件 /etc/ssh/sshd_config
+	PermitRootLogin no
+# 重启sshd服务
+sudo systemctl restart sshd
+sudo systemctl enable sshd
+```
+
 
 
 ### 安装git git-lfs
@@ -129,13 +200,14 @@ cat /usr/local/test.log　　
 # 安装git
 sudo apt install git
 
-# 安装git-lfs
+# 安装git-lfs ########### ubuntu
 ## 1. 设置url源
 curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | sudo bash
 ## 2. 安装lfs
 sudo apt-get install git-lfs
 ## 3. 初始化
 git lfs install
+
 ```
 
 ### 安装google输入法(不好用)
@@ -208,14 +280,14 @@ https://extensions.gnome.org/
 
 ### 快捷键设置
 
-| 快捷键     | 配置路径                | 说明       |
-| ---------- | ----------------------- | ---------- |
-| Super+E    | 启动器---主目录         | 文件管理器 |
-| Ctrl+Alt+E | 启动网页浏览器          | 浏览器     |
-| Super+D    | 导航---隐藏所有正常窗口 | 回到桌面   |
-|            |                         |            |
-|            |                         |            |
-|            |                         |            |
+| 快捷键  | 配置路径                | 说明       |
+| ------- | ----------------------- | ---------- |
+| Super+E | 启动器---主目录         | 文件管理器 |
+|         |                         |            |
+| Super+D | 导航---隐藏所有正常窗口 | 回到桌面   |
+| Super+W | 启动网页浏览器          |            |
+|         |                         |            |
+|         |                         |            |
 
 ## 参考资料
 > - []()

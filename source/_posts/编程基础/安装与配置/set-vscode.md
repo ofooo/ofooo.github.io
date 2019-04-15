@@ -21,6 +21,20 @@ tags:
 editor.action.copyLinesDownAction
 ```
 
+## 插件
+
+| 插件名          | 说明     |
+| --------------- | -------- |
+| Project Manager | 项目管理 |
+|                 |          |
+|                 |          |
+|                 |          |
+|                 |          |
+|                 |          |
+|                 |          |
+|                 |          |
+|                 |          |
+
 
 
 ## 参考资料

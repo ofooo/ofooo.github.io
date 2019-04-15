@@ -223,7 +223,7 @@ export XMODIFIERS=@im=fcitx
 
 
 
-### 关闭ssh远程root登录（ubuntu通用）
+### 关闭ssh远程root登录
 
 ```bash
 # 设置不允许root帐号登录 修改文件 /etc/ssh/sshd_config
