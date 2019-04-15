@@ -270,6 +270,37 @@ sudo n stable   #最新的稳定版本
 
 
 
+### 安装ssh服务
+
+```bash
+sudo apt install openssh-server
+sudo systemctl start sshd
+sudo vim /etc/ssh/sshd_config # 关闭root用户登录
+PermitRootLogin no
+
+sudo systemctl restart sshd
+
+wangxiaoyu@dc5:~$ ssh xxxxx@192.168.31.68
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@    WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!     @
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+IT IS POSSIBLE THAT SOMEONE IS DOING SOMETHING NASTY!
+Someone could be eavesdropping on you right now (man-in-the-middle attack)!
+It is also possible that a host key has just been changed.
+The fingerprint for the ECDSA key sent by the remote host is
+SHA256:yHxBrXIZ6upZaOPDf3PcaOO+aaEthNQiw4O4CCt7gSM.
+Please contact your system administrator.
+Add correct host key in /home/wangxiaoyu/.ssh/known_hosts to get rid of this message.
+Offending ECDSA key in /home/wangxiaoyu/.ssh/known_hosts:14
+  remove with:
+  ssh-keygen -f "/home/usr1/.ssh/known_hosts" -R 192.168.31.68
+  
+目标ssh服务器重装系统后，远程登录时会报错。使用报错信息里的remove with 后面的命令即可清除报错
+ssh-keygen -f "/home/usr1/.ssh/known_hosts" -R 192.168.31.68
+```
+
+
+
 ### 配置Ubuntu界面
 
 ```bash
