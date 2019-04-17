@@ -230,6 +230,90 @@ should_log_learning_rate：bool，optional（默认= False）
 是否记录学习率。
 ```
 
+## Field 字段
+
+### Field 字段基类
+
+
+
+```
+Field
+“字段”是数据实例的一部分，最终作为模型中的张量（作为输入或输出）。 数据实例只是字段的集合。
+  字段最多经历两个处理步骤：（1）将标记化字段转换为标记ID，（2）填充包含标记id（或任何其他数字数据）的字段（如果需要）并转换为张量。 `Field`API有这两个步骤的方法，虽然它们可能不需要一些具体的`Field`类 - 如果你的字段没有任何需要索引的字符串，你不需要实现`count_vocab_items` 或`索引`。 这些方法默认为`pass`。
+  一旦计算出词汇表并对所有字段编制索引，我们将确定填充长度，然后智能地将实例批处理并将它们填充到实际张量中。
+
+def count_vocab_items（self，counter：Dict [str，dict [str，int]]）：“”“如果这个字段中的字符串需要通过：class：`Vocabulary`转换成整数，这里就是我们所在的位置统计它们，以确定哪些令牌在词汇表之内或之外。
+ 如果你的`Field`没有任何需要转换为索引的字符串，你不需要实现这个方法。
+ 关于这个`counter`的注释：因为`Fields`可以代表概念上不同的东西，我们用`namespaces`分隔词汇项。这样，我们可以使用单个共享机制来处理从字符串到所有字段中的整数的所有映射，同时保持`TextField`中的单词与`LabelField`中的标签共享相同的id（例如，“entailment”或“矛盾“是蕴涵任务中的标签”
+ 另外，单个`Field`可能想要使用多个名称空间 - “TextFields”可以表示为单词ID和字符id的组合，并且您不希望单词和字符共享相同的词汇 - “a”作为单词应该从“a”作为一个字符获得不同的id，并且单词和字符的词汇量大小非常不同。
+ 因此，`counter`对象中的第一个键是`namespace'，如“tokens”，“token_characters”，“tags”或“labels”，第二个键是实际的词汇表项。 “”通过
+
+def index（self，vocab：Vocabulary）：
+ 给定一个：class：`Vocabulary`，将该字段中的所有字符串转换为（通常）整数。这个`修改``Field`对象，它不返回任何东西。
+ 如果你的`Field`没有任何需要转换为索引的字符串，你不需要实现这个方法。 “”通过
+
+def get_padding_lengths（self） - > Dict [str，int]：
+ 如果此字段中有需要填充的内容，请在此处记下。为了填充一批实例，我们从批处理中获取所有长度，取最大值，并将所有内容填充到该长度（或使用预先指定的最大长度）。返回值是将键映射到长度的字典，例如{'num_tokens'：13}。
+ 这总是在：func：`index`之后调用。 msgstr“”“引发NotImplementedError
+
+def as_tensor（self，padding_lengths：Dict [str，int]） - > DataArray：
+ 给定一组指定的填充长度，实际填充此字段中的数据并返回正确形状的割炬张量（或更复杂的数据结构）。我们还采用了一些在构建火炬传感器时很重要的参数。
+ 参数---------- padding_lengths：`Dict [str，int]`这个字典将具有与func：`get_padding_lengths`相同的键。这些值指定填充每个相关维度时使用的长度，这些维度在批处理中的所有实例之间聚合。 msgstr“”“引发NotImplementedError
+
+def empty_field（self） - >'Field'：
+ 因此`ListField`可以填充列表中的字段数（例如，答案选项`TextFields`的数量），我们需要表示每种类型的空字段。这会返回。这只会在我们调用时调用：func：`as_tensor`，所以你不必担心在这个空字段上调用`get_padding_lengths`，`count_vocab_items`等等。
+ 我们使这个实例方法而不是静态方法，这样如果Field中有任何状态，我们可以复制它（例如，`TextField`中的标记索引器）。 msgstr“”“引发NotImplementedError
+
+def batch_tensors（self，tensor_list：List [DataArray]） - > DataArray：#type：ignore从`Instances`列表中获取`Field.as_tensor（）`的输出，并将其合并为一个批量张量为此`Field` 。这里基类的默认实现处理`as_tensor`为每个实例返回一个火炬张量的情况。如果您的子类返回除此之外的其他内容，则需要覆盖此方法。
+ 这个操作不会修改`self`，但在某些情况下我们需要`self`中包含的信息来执行批处理，所以这是一个实例方法，而不是类方法。 “”#pylint：disable = no-self-use return torch.stack（tensor_list）
+```
+
+### SequenceField  序列字段
+
+```
+SequenceField
+`SequenceField`代表一系列事物。 这个类只是在`Field` :: func：`sequence_length`上添加了一个方法。 它的存在使得`SequenceLabelField`，`IndexField`和其他类似的`Fields`可以有一个类型要求，具有一致的API，它们是指向`TextField`中的单词，`ListField`中的项目，还是 别的。
+```
+
+### TextField 文本字段
+
+```
+TextField
+这个`Field`代表一个字符串标记列表。 在构造此对象之前，需要使用：class：`~allennlp.data.tokenizers.tokenizer.Tokenizer`来标记原始字符串。
+
+因为字符串标记可以通过多种方式表示为索引数组，所以我们还会使用以下字典：class：`~allennlp.data.token_indexers.token_indexer.TokenIndexer`对象，用于将标记转换为索引。 每个“TokenIndexer”可以将每个标记表示为单个ID，或者字符ID列表或其他内容。
+
+该字段将被转换为数组字典，每个`TokenIndexer`一个。 `SingleIdTokenIndexer`生成一个形状数组（num_tokens，），而`TokenCharactersIndexer`生成一个形状数组（num_tokens，num_characters）。
+```
+
+### SequenceLabelField
+
+```
+SequenceLabelField
+
+`SequenceLabelField`为a中的每个元素分配一个分类标签
+产品类别：`〜allennlp.data.fields.sequence_field.SequenceField`。
+因为它是某个其他字段的标签，我们在此处将该字段作为输入，我们将其用于
+确定我们的填充和其他东西。
+
+此字段将转换为整数类ID列表，表示正确的类
+对于序列中的每个元素。
+
+参数
+----------
+标签：`Union [List [str]，List [int]]`
+ 一系列分类标签，编码为字符串或整数。这些可能是POS标签，如[NN，JJ，...]，BIO标签，如[B-PERS，I-PERS，O，O，...]，或任何其他分类标签序列。如果标签被编码为整数，则不会使用词汇对其进行索引。
+sequence_field：`SequenceField`
+ 包含此SequenceLabelField`标记序列的字段。大多数情况下，这是一个“TextField”，用于标记句子中的单个标记。
+label_namespace：`str`，optional（default ='labels'）
+ 用于将标记字符串转换为整数的命名空间。我们将标记字符串转换为整数，并且此参数告诉`Vocabulary`对象从字符串到整数的映射使用（因此“O”作为标记不会获得与“O”作为单词相同的id） 。
+“””
+＃用户可能希望将此字段与使用OOV / PAD令牌的命名空间一起使用。
+＃对于此类的每个实例化（即每个数据），将重复此警告
+#instance），喷出很多警告，所以这个类变量只用于记录单个变量
+每个命名空间＃警告。
+```
+
 
 
 ## 参考资料

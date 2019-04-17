@@ -14,6 +14,23 @@ tags:
 
 
 
+### 安装docker
+
+```bash
+sudo apt install docker.io
+
+
+# 创建文件  /etc/docker/daemon.json  增加私有镜像仓库
+{
+    "insecure-registries" : ["192.168.31.103:5000"]
+}
+
+sudo systemctl restart docker
+
+```
+
+
+
 ### 制作启动盘
 
 ```bash
@@ -123,20 +140,22 @@ sudo dd if=/home/fish/下载/deepinamd64.iso of=/dev/sdb
 ### 科学上网
 
 ```bash
-# 安装ss的GUI客户端
-sudo add-apt-repository ppa:hzwhuang/ss-qt5
-sudo apt-get update
-sudo apt-get install shadowsocks-qt5
-
 # 安裝ss的命令行工具
 sudo apt install shadowsocks
-sslocal -c xxx.json -d start
-# -c config  -d start/stop/restart  daemon mode
+sslocal -c xxx.json
 
 # 浏览器安装科学插件
 # 找到chrome执行程序目录，加代理启动，安装 SwitchyOmega插件
 ./chrome --proxy-server='socks5://127.0.0.1:1080'
 ```
+
+![1555384196923](install-ubuntu/1555384196923.png)
+
+开机启动：打开“启动应用程序”添加命令```/usr/bin/sslocal -c ///xxx.json```
+
+其中命令和配置文件需要全局路径
+
+
 
 ### 设置开机自启动的内容
 
@@ -299,6 +318,18 @@ Offending ECDSA key in /home/wangxiaoyu/.ssh/known_hosts:14
 ssh-keygen -f "/home/usr1/.ssh/known_hosts" -R 192.168.31.68
 ```
 
+### 安装chrome
+
+```bash
+sudo wget http://www.linuxidc.com/files/repo/google-chrome.list -P /etc/apt/sources.list.d/
+
+wget -q -O - https://dl.google.com/linux/linux_signing_key.pub  | sudo apt-key add -
+
+sudo apt update
+
+sudo apt install google-chrome-stable
+```
+
 
 
 ### 配置Ubuntu界面
@@ -306,7 +337,7 @@ ssh-keygen -f "/home/usr1/.ssh/known_hosts" -R 192.168.31.68
 ```bash
 sudo apt install chrome-gnome-shell
 打开Ubuntu软件商店安装：GNOME Tweaks
-https://extensions.gnome.org/
+https://extensions.gnome.org/   账号
 ```
 
 ### 快捷键设置
