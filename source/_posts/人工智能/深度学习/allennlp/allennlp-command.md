@@ -66,7 +66,7 @@ allennlp/training/trainer.py  Trainer._train_epoch()
 
 
 
-```bash
+```python
 # 训练
 # -r就会使用之前已经创建好的词典
 allennlp train XXX -s XXX
@@ -78,9 +78,25 @@ allennlp configure --port 8123
 
 ```
 
+## 词汇对照表
+
+| 英文    | 中文                       |
+| ------- | -------------------------- |
+| tag     | 序列标记（NER输出等）      |
+| label   | 类别标签（分类任务输出等） |
+| index   | 索引                       |
+| padding | 填充                       |
+|         |                            |
+|         |                            |
+|         |                            |
+|         |                            |
+|         |                            |
+
+
+
 ### Trainer初始化参数
 
-```bash
+```python
 Trainer
 初始化参数
 ----------
@@ -170,8 +186,8 @@ log_batch_size_period：``int``，optional，（default =``None``）
 
 ### Vocabulary
 
-```bash
-tag--序列标记（NER输出等）    label--类别标签（分类任务输出等）
+```python
+
 
 词汇表将字符串映射到整数，允许将字符串映射到OOV标记（out-of-vocabulary OOV）。
 
@@ -230,27 +246,62 @@ should_log_learning_rate：bool，optional（默认= False）
 是否记录学习率。
 ```
 
+## indexer索引器
+
+```python
+TokenIndexer
+“TokenIndexer”确定字符串标记如何表示为模型中的索引数组。
+这个类在a的帮助下将字符串转换为数值
+：class：`~allennlp.data.vocabulary.Vocabulary`，它产生实际的数组。
+
+标记可以表示为单个ID（例如，单词“cat”由数字表示
+34），或作为字符ID列表（例如，“cat”由数字[23,10,18]表示），
+或以某种其他方式，你可以提出（例如，如果你有一些结构化的输入你
+想要在数据数组中以特殊方式表示，你可以在这里做到这一点）。
+default_implementation ='single_id'
+
+def count_vocab_items（self，token：Token，counter：Dict [str，dict [str，int]]）：
+  ：class：`Vocabulary`需要为我们在训练数据中看到的任何字符串分配索引（可能进行一些频率过滤和使用OOV，或者使用词汇表，令牌）。对于令牌中存在的任何词汇项，此方法采用令牌和计数字典和增量计数。如果这是单个令牌ID表示，则词汇表项可能是令牌本身。如果这是令牌字符表示，则词汇表项是令牌中的所有字符。
+def tokens_to_indices（self，tokens：List [Token]，词汇：Vocabulary，index_name：str） - > Dict [str，List [TokenType]]：
+  获取令牌列表并将其转换为一组或多组索引。这可能只是词​​汇表中每个标记的ID。或者它可以将每个标记分成字符并返回每个字符一个ID。或者（例如，在字节对编码的情况下）可能没有从单个令牌到索引的干净映射。
+
+def get_padding_token（self） - > TokenType：
+  当我们需要添加填充令牌时，它们应该是什么样的？此方法返回由以下函数返回的任何类型的“空白”标记：func：`tokens_to_indices`。
+
+def get_padding_lengths（self，token：TokenType） - > Dict [str，int]：
+  此方法返回给定标记的填充字典，该字典指定需要填充的所有数组的长度。例如，对于单个ID令牌，返回的字典将为空，但对于令牌字符表示，这将返回令牌中的字符数。
+
+def pad_token_sequence（self，tokens：Dict [str，List [TokenType]]，desired_num_tokens：Dict [str，int]，padding_lengths：Dict [str，int]） - > Dict [str，List [TokenType]]：
+  此方法将令牌列表填充到“desired_num_tokens”并返回输入令牌的填充副本。如果输入标记列表长于“desired_num_tokens”，那么它将被截断。
+ `padding_lengths`用于提供在某些情况下需要的补充填充参数。例如，它包含在执行字符级填充时填充字符的宽度。
+
+def get_keys（self，index_name：str） - > List [str]：
+  返回此索引器从`tokens_to_indices`返回的键列表。
+```
+
+
+
 ## Field 字段
 
 ### Field 字段基类
 
 
 
-```
+```python
 Field
-“字段”是数据实例的一部分，最终作为模型中的张量（作为输入或输出）。 数据实例只是字段的集合。
+“字段”是instance数据实例的一部分，最终作为模型中的张量（作为输入或输出）。 数据实例只是字段的集合。
   字段最多经历两个处理步骤：（1）将标记化字段转换为标记ID，（2）填充包含标记id（或任何其他数字数据）的字段（如果需要）并转换为张量。 `Field`API有这两个步骤的方法，虽然它们可能不需要一些具体的`Field`类 - 如果你的字段没有任何需要索引的字符串，你不需要实现`count_vocab_items` 或`索引`。 这些方法默认为`pass`。
   一旦计算出词汇表并对所有字段编制索引，我们将确定填充长度，然后智能地将实例批处理并将它们填充到实际张量中。
 
-def count_vocab_items（self，counter：Dict [str，dict [str，int]]）：“”“如果这个字段中的字符串需要通过：class：`Vocabulary`转换成整数，这里就是我们所在的位置统计它们，以确定哪些令牌在词汇表之内或之外。
+def count_vocab_items（self，counter：Dict [str，dict [str，int]]）：“”“如果这个字段中的字符串需要通过：class：`Vocabulary`转换成整数，这里就是我们统计它们的位置，以确定哪些令牌在词汇表之内或之外。
  如果你的`Field`没有任何需要转换为索引的字符串，你不需要实现这个方法。
- 关于这个`counter`的注释：因为`Fields`可以代表概念上不同的东西，我们用`namespaces`分隔词汇项。这样，我们可以使用单个共享机制来处理从字符串到所有字段中的整数的所有映射，同时保持`TextField`中的单词与`LabelField`中的标签共享相同的id（例如，“entailment”或“矛盾“是蕴涵任务中的标签”
- 另外，单个`Field`可能想要使用多个名称空间 - “TextFields”可以表示为单词ID和字符id的组合，并且您不希望单词和字符共享相同的词汇 - “a”作为单词应该从“a”作为一个字符获得不同的id，并且单词和字符的词汇量大小非常不同。
- 因此，`counter`对象中的第一个键是`namespace'，如“tokens”，“token_characters”，“tags”或“labels”，第二个键是实际的词汇表项。 “”通过
+ 关于这个`counter`的注释：因为`Fields`可以代表概念上不同的东西，我们用`namespaces`分隔词汇项。这样，我们可以使用单个共享机制来处理从字符串到所有字段中的整数的所有映射，同时保持`TextField`中的单词与`LabelField`中的标签共享相同的id（例如，"entailment" or "contradiction"是蕴涵任务中的标签”
+ 另外，单个`Field`可能想要使用多个名称空间 - “TextFields”可以表示为单词ID和字符id的组合，并且您不希望单词和字符共享相同的vocabulary - “a”作为单词应该从“a”作为一个字符获得不同的id，并且单词和字符的词汇量大小非常不同。
+ 因此，`counter`对象中的第一个键是`namespace'，如“tokens”，“token_characters”，“tags”或“labels”，第二个键是实际的词汇表项item。 
 
 def index（self，vocab：Vocabulary）：
  给定一个：class：`Vocabulary`，将该字段中的所有字符串转换为（通常）整数。这个`修改``Field`对象，它不返回任何东西。
- 如果你的`Field`没有任何需要转换为索引的字符串，你不需要实现这个方法。 “”通过
+ 如果你的`Field`没有任何需要转换为索引的字符串，你不需要实现这个方法。
 
 def get_padding_lengths（self） - > Dict [str，int]：
  如果此字段中有需要填充的内容，请在此处记下。为了填充一批实例，我们从批处理中获取所有长度，取最大值，并将所有内容填充到该长度（或使用预先指定的最大长度）。返回值是将键映射到长度的字典，例如{'num_tokens'：13}。
@@ -270,14 +321,14 @@ def batch_tensors（self，tensor_list：List [DataArray]） - > DataArray：#ty
 
 ### SequenceField  序列字段
 
-```
+```python
 SequenceField
 `SequenceField`代表一系列事物。 这个类只是在`Field` :: func：`sequence_length`上添加了一个方法。 它的存在使得`SequenceLabelField`，`IndexField`和其他类似的`Fields`可以有一个类型要求，具有一致的API，它们是指向`TextField`中的单词，`ListField`中的项目，还是 别的。
 ```
 
 ### TextField 文本字段
 
-```
+```python
 TextField
 这个`Field`代表一个字符串标记列表。 在构造此对象之前，需要使用：class：`~allennlp.data.tokenizers.tokenizer.Tokenizer`来标记原始字符串。
 
@@ -288,7 +339,7 @@ TextField
 
 ### SequenceLabelField
 
-```
+```python
 SequenceLabelField
 
 `SequenceLabelField`为a中的每个元素分配一个分类标签
