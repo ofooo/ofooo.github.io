@@ -275,6 +275,26 @@ cd autojump
 手工把提示腳本添加到 ~/.zshrc
 ```
 
+### 安装WPS
+
+去wps官网下载deb文件，双击后安装。
+
+然后下载font文件：链接如下
+
+[国内地址](https://link.jianshu.com/?t=http%3A%2F%2Fpan.baidu.com%2Fs%2F1mh0lcbY)
+
+[国外地址](https://link.jianshu.com/?t=https%3A%2F%2Fwww.dropbox.com%2Fs%2Flfy4hvq95ilwyw5%2Fwps_symbol_fonts.zip)
+
+```bash
+#a. 将得到文件复制到/usr/share/fonts
+sudo cp * /usr/share/fonts
+#b. 执行以下命令,生成字体的索引信息
+sudo mkfontscale
+sudo mkfontdir
+#c. 更新字体缓存
+sudo fc-cache
+```
+
 ### 安装node/npm
 
 ```bash
