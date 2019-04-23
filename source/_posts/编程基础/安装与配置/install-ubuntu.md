@@ -352,7 +352,7 @@ sudo apt install google-chrome-stable
 
 
 
-### 配置Ubuntu界面
+### 配置Gnome界面
 
 ```bash
 sudo apt install chrome-gnome-shell
@@ -387,9 +387,7 @@ User Themes
 
 
 
-
-
-### 快捷键设置
+#### 快捷键设置
 
 | 快捷键  | 配置路径                | 说明       |
 | ------- | ----------------------- | ---------- |
@@ -400,6 +398,12 @@ User Themes
 |         |                         |            |
 |         |                         |            |
 
+#### 设置开机时自动登录
+
+设置---详细信息---用户---自动登录
+
+![1556032346718](install-ubuntu/1556032346718.png)
+
 ### alias配置
 
 ```bash
@@ -409,6 +413,18 @@ alias get3='pip install -i https://pypi.douban.com/simple/ '
 ```
 
 
+
+### 使用xfce界面
+
+安装
+
+```bash
+sudo apt-get install xfce4 
+注销当前账号
+在输入密码界面，选择不同的界面系统
+```
+
+界面设置
 
 
 
