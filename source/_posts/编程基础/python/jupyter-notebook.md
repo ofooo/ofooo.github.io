@@ -40,6 +40,19 @@ jupyter notebook
 nohup /home/aifish/anaconda3/bin/jupyter notebook>/home/aifish/.jupyter/notebook.log 2>&1 &
 ```
 
+### 把虚拟环境添加到jupyter的kernel
+
+```python
+进入虚拟环境
+# 安装 ipykernel
+pip install ipykernel
+# 找到python位置（因为加入kernel时需要sudo权限，要制定python路径
+which python
+# 使用python绝对路径, 把虚拟环境XXXX加入kernel
+sudo /anaconda/env/python -m ipykernel install --name XXXX
+
+```
+
 
 
 
