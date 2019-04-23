@@ -74,7 +74,7 @@ File---Setting---Plugins
 ### 显示界面和字体配置
 
 ```bash
-界面的字体：
+界面的字体大小：
 Setting-->Appearance&Behavior-->Appearance-->Use custom font
 ```
 

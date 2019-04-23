@@ -336,9 +336,38 @@ sudo apt install google-chrome-stable
 
 ```bash
 sudo apt install chrome-gnome-shell
+sudo apt install gnome-tweak-tool
 打开Ubuntu软件商店安装：GNOME Tweaks
-https://extensions.gnome.org/   账号
+https://extensions.gnome.org/   账号aifish f1
+
+使用火狐浏览器安装插件
 ```
+
+使用chrome打开：
+
+![1555984468345](install-ubuntu/1555984468345.png)
+
+使用火狐打开：
+
+![1555985276034](install-ubuntu/1555985276034.png)
+
+点击安装插件 [Click here to install browser extension](https://extensions.gnome.org/#)
+
+#### 安装gnome插件
+
+User Themes 
+
+[Clipboard Indicator topbar剪贴板列表](https://extensions.gnome.org/extension/779/clipboard-indicator/)
+
+[Recent Items  topbar最近文件夹](https://extensions.gnome.org/extension/72/recent-items/)
+
+[Places Status Indicator   topbar文件夹收藏](https://extensions.gnome.org/extension/8/places-status-indicator/)
+
+[Datetime Format topbar显示日期   配置格式：%b-%d     %A   %R](https://extensions.gnome.org/extension/1173/datetime-format/)
+
+
+
+
 
 ### 快捷键设置
 
