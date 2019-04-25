@@ -350,6 +350,21 @@ sudo apt update
 sudo apt install google-chrome-stable
 ```
 
+### 安装deepin的截图和终端
+
+```bash
+在ubuntu软件上级
+搜索   dee
+```
+
+### 安装和挑选终端
+
+```bash
+sudo apt install xfce4-terminal
+terminator   #gnome
+konsole
+```
+
 
 
 ### 配置Gnome界面
@@ -425,6 +440,45 @@ sudo apt-get install xfce4
 ```
 
 界面设置
+
+### 安装LXDE
+
+安装
+
+```bash
+LXDE有很多定制版，可任选
+# Lubuntu定制LXDE和vanilla LXDE（实际安装不成功，缺少依赖）
+# sudo apt-get install lubuntu-desktop
+# 香草LXDE
+sudo apt-get install lxde
+# 选择使用lightdm（见图）  （gdm3 快捷键报错cannot configure keys remotely）
+如果设置错了也可以切换lightdm
+sudo dpkg-reconfigure lightdm  # sudo dpkg-reconfigure gdm3
+ 
+```
+
+![这里写图片描述](install-ubuntu/20160416193634256)
+
+#### 设置数字时钟格式：%b-%d     %A   %R
+
+#### 设置快捷键：菜单---首选项---set hot key
+
+| 功能       | 快捷键           | 说明                                |
+| ---------- | ---------------- | ----------------------------------- |
+| 文件管理器 | Win+E            | 默认有                              |
+| 显示桌面   | Win+D            | 默认有                              |
+| 锁屏       | Win+L            | lxlock                              |
+| 打开浏览器 | Win+W            | browser360                          |
+| 打开终端   | Win+T            | lxterminal  或  deepin-terminal     |
+| vscode     | Win+V            | code                                |
+| pycharm    | Win+P            | 打开pycharm--Tools--Create CMD line |
+| typora     | Win+M            | typora                              |
+| 截图       | Ctrl+Shift+Print | deepin-screenshot                   |
+|            |                  |                                     |
+|            |                  |                                     |
+|            |                  |                                     |
+
+
 
 
 

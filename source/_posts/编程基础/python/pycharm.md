@@ -36,20 +36,31 @@ def root(*f, relative_root='../../../'):
 
 ### 快捷键配置
 
-```bash
 Keymap---方案设置成NetBeans
 
-# Code格式化代码   设置成  Ctrl+Alt+L
-Reformat
-# 当前行往上挪一行  设置成 Alt+Up
-Move Line Up
-# 当前行往上挪一行  设置成 Alt+Down
-Move Line Down
+| 名称              | 快捷键             | 说明               |
+| ----------------- | ------------------ | ------------------ |
+| Reformat          | Ctrl+Alt+L  需设置 | Code格式化代码     |
+| Move Line Up      | Alt+Up  需设置     | 当前行往上挪一行   |
+| Move Line Down    | Alt+Down  需设置   | 当前行往上挪一行   |
+| Optimize Imports  | Ctrl+Shift+I       | 优化导入代码       |
+|                   | Ctrl+F12           | 跳转到方法（列表） |
+|                   | Ctrl + F11         | 设置书签           |
+|                   |                    |                    |
+|                   | SHIFT F11          | 显示所有书签       |
+| Go to Bookmark 1  | Ctrl+Alt+1  需设置 | 跳转到 该书签      |
+| Next Bookmark     | Ctrl+Shift+.       | 跳转到下个书签     |
+| Previous Bookmark | Ctrl+Shift+逗号    | 跳转到上个书签     |
+|                   |                    |                    |
+|                   |                    |                    |
+|                   |                    |                    |
+|                   |                    |                    |
+|                   |                    |                    |
+|                   |                    |                    |
+|                   |                    |                    |
+|                   |                    |                    |
 
-# 优化导入代码   默认快捷键 Ctrl+Shift+I
-Optimize Imports
 
-```
 
 ### 跳转到上个光标所在位置
 

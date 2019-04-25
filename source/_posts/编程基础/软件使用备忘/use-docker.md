@@ -50,7 +50,8 @@ docker ps
 # 删除容器    -f强制删除
 docker rm -f xxx
 
-
+# 实时查看容器占用的CPU和内存资源
+docker stats
 ```
 
 ### 容器自启动设置
