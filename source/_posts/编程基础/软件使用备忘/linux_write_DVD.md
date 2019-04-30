@@ -20,7 +20,9 @@ tags:
 
 
 
+## 大小：4000M比较靠谱（存储空间比真实文件更大）
 
+sudo tar cjf - police_model |split -b 4000m - police.v9.
 
 
 

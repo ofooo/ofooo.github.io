@@ -52,6 +52,9 @@ docker rm -f xxx
 
 # 实时查看容器占用的CPU和内存资源
 docker stats
+
+# 从容器生成镜像
+docker commit -m "change somth" -a "somebody info" container_id(docker ps -a获取id) 新镜像名字
 ```
 
 ### 容器自启动设置
@@ -87,6 +90,8 @@ docker tag xxx:tag  xxx2:tag2
 docker rmi -f xxx:tag
 
 ```
+
+### DockerFile
 
 
 
