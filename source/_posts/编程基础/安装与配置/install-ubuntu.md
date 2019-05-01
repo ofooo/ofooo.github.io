@@ -14,6 +14,25 @@ tags:
 
 
 
+### 安装thefuck
+
+```bash
+sudo apt install thefuck
+
+thefuck -a f   # 获取alias文本， 别名=f（可以自己设定）
+把alias文本设置到.bashrc内
+```
+
+### 安装tldr （太长不看，查看linux命令行帮助信息的工具）
+
+```bash
+sudo pip install tldr
+# 查看tar的帮助信息
+tldr tar
+```
+
+
+
 ### 安装docker
 
 ```bash
@@ -350,9 +369,13 @@ sudo apt update
 sudo apt install google-chrome-stable
 ```
 
-### 安装deepin的截图和终端
+### 安装deepin的百度云、截图和终端
 
 ```bash
+# 百度云  安装失败！
+https://gitee.com/wszqkzqk/deepin-wine-for-ubuntu
+
+# 截图、深度终端
 在ubuntu软件上级
 搜索   dee
 ```

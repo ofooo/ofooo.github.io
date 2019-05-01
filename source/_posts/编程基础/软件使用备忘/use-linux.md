@@ -44,6 +44,13 @@ var=${a:-b}
 
 脚本所在目录
 script_dir=$(cd "`dirname $0`/."; pwd)
+
+关机命令
+sudo shutdown
+sudo shutdown -h 10    # 10分钟后关机
+sudo shutdown -h 14:15 # 希望在14:15关闭计算机
+sudo shutdown -c       # 取消自动关机
+reboot                 # 重启电脑
 ```
 
 ### 常用shell函数
