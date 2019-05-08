@@ -1,9 +1,11 @@
 ---
 title: use_tmux
 toc: true
+categories:
+  - 编程基础
+  - 软件使用备忘
 date: 2019-05-01 16:19:49
 tags:
-categories:
 ---
 
 
