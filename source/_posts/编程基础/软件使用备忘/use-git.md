@@ -73,6 +73,56 @@ size（工作量）：表示 issue 需要大约花费多少时间/精力，可�
 
 
 
+### CRLF/LF/CR
+
+#### 三种换行模式：
+
+| 模式 | 操作系统 | 缩写 |
+| ---- | -------- | ---- |
+| CRLF | windows  | \n\r |
+| CR   | mac OSX  | \r   |
+| LR   | Linux    | \n   |
+
+#### pycharm可以在状态栏显示换行符使用的模式，如下图：
+
+![1557916145357](use-git/1557916145357.png)
+
+点击  LF 可以切换文件的换行模式
+
+#### git--AutoCRLF
+
+```bash
+#提交时转换为LF，检出时转换为CRLF
+git config --global core.autocrlf true   #windows推荐方式
+
+#提交时转换为LF，检出时不转换
+git config --global core.autocrlf input   
+
+#提交检出均不转换
+git config --global core.autocrlf false   #Linux/Mac推荐方式
+```
+
+#### SafeCRLF
+
+```bash
+#拒绝提交包含混合换行符的文件
+git config --global core.safecrlf true    #推荐方式
+
+#允许提交包含混合换行符的文件
+git config --global core.safecrlf false   
+
+#提交包含混合换行符的文件时给出警告
+git config --global core.safecrlf warn
+```
+
+
+
+
+
+
+
+
+
 
 
 # git命令行

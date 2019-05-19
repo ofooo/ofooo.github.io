@@ -8,9 +8,213 @@ categories: [人工智能, 搜索引擎]
 
 
 
+## Document元数据（MetaData）
+
+元数据用于标注文档的相关信息：
+
+_index：文档所在的索引名 
+_type：文档所在的类型名 
+_id：文档的唯一id 
+_uid：组合uid，由_type和_id组成（6.x中_type不再起作用，同_id一样） 
+_source：文档的原始json数据，可以从这里获取每个字段的内容 
+_all：整合所有字段内容到该字段，默认禁用
 
 
-## 索引(库)、分类(表)
+
+## Mappings
+
+### 创建索引时，设定mappings
+
+```bash
+PUT $host:$port/$index
+body = {
+    "settings": {
+        "number_of_shards": 1,    //分片节点数量
+        "number_of_replicas": 0,  //复制节点数量
+    },
+    "mappings": {
+        "_doc": {
+            "properties": {
+                "txt": {
+                    "type": "text",
+                    "analyzer": "ik_smart"  // ik-分词器
+                }
+            }
+        }
+    }
+}
+
+analyzer可选: "standard", "ik_smart", "english"
+如果body={}  那么就使用ES的自动mappings
+```
+
+[字段的数据类型：](https://www.elastic.co/guide/en/elasticsearch/reference/7.0/mapping.html)
+
+简单类型：[`text`](https://www.elastic.co/guide/en/elasticsearch/reference/7.0/text.html), [`keyword`](https://www.elastic.co/guide/en/elasticsearch/reference/7.0/keyword.html), [`date`](https://www.elastic.co/guide/en/elasticsearch/reference/7.0/date.html), [`long`](https://www.elastic.co/guide/en/elasticsearch/reference/7.0/number.html), [`double`](https://www.elastic.co/guide/en/elasticsearch/reference/7.0/number.html), [`boolean`](https://www.elastic.co/guide/en/elasticsearch/reference/7.0/boolean.html) or [`ip`](https://www.elastic.co/guide/en/elasticsearch/reference/7.0/ip.html).
+
+json层级类型：[`object`](https://www.elastic.co/guide/en/elasticsearch/reference/7.0/object.html) or [`nested`](https://www.elastic.co/guide/en/elasticsearch/reference/7.0/nested.html).
+
+专有类型：[`geo_point`](https://www.elastic.co/guide/en/elasticsearch/reference/7.0/geo-point.html), [`geo_shape`](https://www.elastic.co/guide/en/elasticsearch/reference/7.0/geo-shape.html), or [`completion`](https://www.elastic.co/guide/en/elasticsearch/reference/7.0/search-suggesters-completion.html).
+
+## 
+
+## 查看全局的信息
+
+### 查看ES版本
+
+```bash
+GET $host:$port/
+```
+
+### 查看ES安装的插件列表
+
+```bash
+GET $host:$port/_cat/plugins   # 返回的文本（不是json）
+```
+
+## 搜索操作
+
+### 搜索所有文档
+
+```bash
+# 某索引的某个类型的所有文档
+GET $host:$port/$index/$type/_search
+
+# 某索引的所有文档
+GET $host:$port/$index/_search
+
+# ES所有文档
+GET $host:$port/_search
+```
+
+### 搜索符合条件的文档
+
+```bash
+# 某索引的某个类型的所有文档
+POST $host:$port/$index/$type/_search
+body = {
+	"query": query
+	"from": 0,    // 从0开始
+    "size": 20,   // 取20个
+    "sort": [
+    	{"age": {"order": "asc"}}  //asc升序  dsc降序
+    ]
+    "_source" : ["key1", "key2"]  // 返回信息包含的键
+}
+
+query = {"match_all": {}} // 搜索全部
+```
+
+### 基础查询种类 
+
+#### 数值符合范围
+
+```json
+query = {
+    "range": {
+        "字段名": {
+            "gte": 20000,  //  gte是>=   gt是>
+            "lte": 30000,   //  lte是<=   lt是<
+            "boost": 1.5  // 分数权重
+        }
+    }  
+}
+
+query = {
+    "range": {
+        "字段名": {
+            "from": 20000,  
+            "to": 30000, 
+            "boost": 1.5  // 分数权重
+        }
+    }
+}
+```
+
+#### 词项匹配（不进行分词处理）
+
+```json
+query = {
+	"term": {  
+    	"_id": "ZUd6zmoBr51spxZUlcFQ"
+    }
+}
+
+query = {
+    "terms": {  
+        "featrue": ["盗窃", "自首"]  //或的关系
+    }
+}
+```
+
+#### 短语匹配（先分词，再查询分词结果和位置顺序都对的文档）
+
+```json
+query = {
+    "match": {  
+    	"txt": "关键词"
+	}
+}
+```
+
+#### 前缀匹配
+
+```json
+query = {
+    "match_phase_prefix": {
+        "name": {
+            "query": "赵"
+        }
+    }
+}
+```
+
+### nested查询（数组元素是对象，查询符合条件的对象）
+
+```json
+query = {
+    "nested":{
+        "path": "字段1",
+        "query": {  // 可以是任意query
+            "match": {
+                "字段1.字段2": "关键词"  //注意key需要有前置路径
+            }
+        }
+    }
+}
+
+# 文档结构是：
+{"字段1": // nested对象
+    [  
+    	{"字段2"： "文本内容"}
+    ] 
+}
+```
+
+### bool查询
+
+```json
+query = {
+    "bool" : {
+        "must" : [  # must 且     should 或
+            {"term": {"price": 25} }  // query   
+        ],
+        "filter" : filter
+    }
+}
+```
+
+### filter
+
+```json
+filter = {
+    "exists": {   # 存在字段
+        "filed": "price"
+    }
+}
+```
+
+
 
 
 
@@ -22,7 +226,7 @@ categories: [人工智能, 搜索引擎]
 
 
 
-### 删除数据
+### ~~删除数据~~
 
 ```bash
 # es参考版本：elasticsearch：5.5
