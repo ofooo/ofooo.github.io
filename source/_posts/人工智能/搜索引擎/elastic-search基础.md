@@ -112,7 +112,7 @@ query = {"match_all": {}} // 搜索全部
 ```json
 query = {
     "range": {
-        "字段名": {
+        "字段名": {   # 符合则score=1 否则=0
             "gte": 20000,  //  gte是>=   gt是>
             "lte": 30000,   //  lte是<=   lt是<
             "boost": 1.5  // 分数权重
@@ -136,11 +136,22 @@ query = {
 ```json
 query = {
 	"term": {  
-    	"_id": "ZUd6zmoBr51spxZUlcFQ"
+    	"_id": "ZUd6zmoBr51spxZUlcFQ",
     }
 }
 
 query = {
+	"term": {  
+    	"_id": {
+            "value": "ZUd6zmoBr51spxZUlcFQ",
+            "boost": 2
+        }
+    }
+}
+
+# terms是筛选，输出分数=1，不管匹配了多少个词项
+# 如果希望有分数，则用 should 拼接 term
+query = {  
     "terms": {  
         "featrue": ["盗窃", "自首"]  //或的关系
     }
@@ -155,6 +166,15 @@ query = {
     	"txt": "关键词"
 	}
 }
+
+query = {
+    "match": {
+        "txt": {
+            "query":"我是中国人", 
+            "boost": 2.0
+        }
+    }
+}
 ```
 
 #### 前缀匹配
@@ -168,6 +188,8 @@ query = {
     }
 }
 ```
+
+## 复合查询
 
 ### nested查询（数组元素是对象，查询符合条件的对象）
 
@@ -191,15 +213,23 @@ query = {
 }
 ```
 
-### bool查询
+### bool查询 
 
 ```json
 query = {
     "bool" : {
-        "must" : [  # must 且     should 或
+        "must" : [     # 与  各个查询的分数相加
             {"term": {"price": 25} }  // query   
         ],
-        "filter" : filter
+        "should" : [   # 或  各个查询的分数相加
+            {"term": {"price": 25} }  // query   
+        ],
+        "must_not" : [  # 非
+            {"term": {"price": 25} }  // query   
+        ],
+        "filter" : filter,
+		"minimum_should_match" : 1,
+		"boost" : 1.0,
     }
 }
 ```
@@ -210,6 +240,20 @@ query = {
 filter = {
     "exists": {   # 存在字段
         "filed": "price"
+    }
+}
+```
+
+### boosting 查询（soft not)
+
+```json
+# 不复合negative查询的文档的得分不变
+# 复合negative查询的文档的得分会乘以negative_boost
+{
+        "boosting":{
+        "positive": p_query,
+        "negative": n_query,
+        "negative_boost": 0.2
     }
 }
 ```
