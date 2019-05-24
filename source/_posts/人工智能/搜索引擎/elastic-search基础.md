@@ -21,6 +21,17 @@ _all：整合所有字段内容到该字段，默认禁用
 
 
 
+## 搜索结果超出1万条的报错
+
+如果数据量小于20万，那么简单方法是修改max_result_window
+
+```bash
+# PUT方法，$开头的是变量
+PUT $ip:$port/$index/_settings
+body = 
+{ "index" : { "max_result_window" : 200000}}'
+```
+
 ## Mappings
 
 ### 创建索引时，设定mappings

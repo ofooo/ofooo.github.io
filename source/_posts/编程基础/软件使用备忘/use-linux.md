@@ -170,9 +170,17 @@ find ./ -type f -size +100M | xargs rm -rf
 find / -name "*.mp3" |xargs rm -rf
 # 也可以先去掉后面的删除命令看一遍结果，再删除（安全一些）
 
-
 # 查看当前文件夹递归1层大小/末尾可加文件夹
 du -h --max-depth=1
+
+
+```
+
+#### 压缩文件 tar
+
+```bash
+查看压缩文件内容
+tar tvf xxx.tar
 
 # 切分并压缩文件  pre_xxx是切分文件的前缀
 tar cjf - file_or_dir |split -b 2000m - pre_xxx.
@@ -180,11 +188,10 @@ tar cjf - file_or_dir |split -b 2000m - pre_xxx.
 ##### 排除的目录（写file_or_dir后面的相对路径即可）
 tar cjf --exclude=排除的目录 file_or_dir |split -b 2000m - pre_xxx.
 
+
 # 合并然后解压文件 -C 输出到相对位置
 cat pre_xxx.* |tar xj -C ./../aim_dir/xxx_dir/
 
-cat pre_xxx.* |tar xj -C ./../aim_dir/xxx_dir/
---exclude police_model/mongo
 ```
 
 
