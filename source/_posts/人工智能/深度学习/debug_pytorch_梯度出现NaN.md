@@ -1,9 +1,10 @@
 ---
-title: debug: pytorch_梯度出现NaN
+title: debug：pytorch_梯度出现NaN
 toc: true
 date: 2019-05-22 19:00:45
 tags: 
   - pytorch
+  - NaN
 categories:
   - 人工智能
   - 深度学习
