@@ -1,9 +1,11 @@
 ---
 title: 使用 htop
 toc: true
+categories:
+  - 编程基础
+  - 软件使用备忘
 date: 2019-05-29 14:56:59
 tags:
-categories:
 ---
 
 

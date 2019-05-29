@@ -33,12 +33,16 @@ systemctl enable docker       # 开机启动
 ### 设置信任本地仓库
 
 ```bash
+### 方法1  (如果不行可以尝试方法2)
 # 1. 在/etc/default/docker添加：
 -- insecure-registry 127.0.0.1:5000
 # 2. 再重启docker 服务
+
+### 方法2
+# 1. 创建文件/etc/docker/daemon.json
+{ "insecure-registries":["192.168.163.131:5000"]}
+# 2. 再重启docker 服务
 ```
-
-
 
 ## 容器-常用命令
 
