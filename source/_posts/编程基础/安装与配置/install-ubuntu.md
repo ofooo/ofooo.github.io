@@ -10,6 +10,32 @@ tags:
 
 
 
+
+
+## 零 安装kernel（修复界面卡顿问题）
+
+问题：4.18版本kernel的CPU核心显卡存在bug，会导致界面卡顿
+
+解决：安装5.1版本kernel（不要安装最新的rc版本，稳定一些）
+
+查看当前内核版本
+
+```bash
+# 查看当前内核版本
+uname -r
+>>>4.18.0-20-generic
+
+# 搜索可用的内核
+apt-cache showpkg linux-headers
+apt-cache showpkg linux-image
+找到这两个命令里，版本号相同的最新版本
+
+# 示例：选择5.1.0版本
+sudo apt install linux-headers-5.1.0-050100-generic linux-image-unsigned-5.1.0-050100-generic --fix-missing
+```
+
+
+
 ## 一 安装系统
 
 
@@ -452,7 +478,17 @@ alias get3='pip install -i https://pypi.douban.com/simple/ '
 
 
 
-### 使用xfce界面
+### KDE界面
+
+安装
+
+```bash
+sudo apt install plasma-desktop
+```
+
+
+
+### xfce界面
 
 安装
 
@@ -464,7 +500,9 @@ sudo apt-get install xfce4
 
 界面设置
 
-### 安装LXDE
+### LXDE界面
+
+**致命缺陷:  不能设置屏幕缩放, 对于高分辨率屏幕太不方便**
 
 安装
 
@@ -486,20 +524,20 @@ sudo dpkg-reconfigure lightdm  # sudo dpkg-reconfigure gdm3
 
 #### 设置快捷键：菜单---首选项---set hot key
 
-| 功能       | 快捷键           | 说明                                |
-| ---------- | ---------------- | ----------------------------------- |
-| 文件管理器 | Win+E            | 默认有                              |
-| 显示桌面   | Win+D            | 默认有                              |
-| 锁屏       | Win+L            | lxlock                              |
-| 打开浏览器 | Win+W            | browser360                          |
-| 打开终端   | Win+T            | lxterminal  或  deepin-terminal     |
-| vscode     | Win+V            | code                                |
-| pycharm    | Win+P            | 打开pycharm--Tools--Create CMD line |
-| typora     | Win+M            | typora                              |
-| 截图       | Ctrl+Shift+Print | deepin-screenshot                   |
-|            |                  |                                     |
-|            |                  |                                     |
-|            |                  |                                     |
+| 功能       | 快捷键           | 说明                                                |
+| ---------- | ---------------- | --------------------------------------------------- |
+| 文件管理器 | Win+E            | 默认有  nautilus --new-window                       |
+| 显示桌面   | Win+D            | 默认有                                              |
+| 锁屏       | Win+L            | lxlock                                              |
+| 打开浏览器 | Win+W            | browser360                                          |
+| 打开终端   | Win+T            | lxterminal  或  deepin-terminal  或  gnome-terminal |
+| vscode     | Win+V            | code                                                |
+| pycharm    | Win+P            | 打开pycharm--Tools--Create CMD line                 |
+| typora     | Win+M            | typora                                              |
+| 截图       | Ctrl+Shift+Print | deepin-screenshot                                   |
+|            |                  |                                                     |
+|            |                  |                                                     |
+|            |                  |                                                     |
 
 
 
