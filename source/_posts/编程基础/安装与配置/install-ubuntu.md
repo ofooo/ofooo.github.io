@@ -295,9 +295,9 @@ sudo  apt-get install fcitx-googlepinyin
 5. 添加搜狗输入法
 
 如果候选栏显示乱码、无法显示中文，可按如下方式处理：
-cd ~/.config
-rm -rf SogouPY* sogou*
-然后重启后登录即可。
+1. 如果是刚装完搜狗输入法,则输入命令:sudo apt-get install -f,进行依懒性检查,判断是否却是依赖项.
+2. 如果是之前一直可以输入中文的,突然无法输入,则不是依赖项的问题,此时输入命令:killall fcitx
+3.如果2仍不能解决问题,则删除配置文件,Ubuntu下搜狗的配置文件在~/.config下的3个文件夹里：SogouPY、SogouPY.users、sogou-qimpanel   删除这3个文件夹,然后重启搜狗即可.
 ```
 
 
@@ -480,17 +480,42 @@ alias get3='pip install -i https://pypi.douban.com/simple/ '
 
 ### KDE界面
 
-安装
+#### 安装
 
 ```bash
 sudo apt install plasma-desktop
 ```
+#### 开机自启动
+
+系统设置－－－＞工作空间－－－＞开机和关机－－－＞自动启动
+
+（勾选：在终端中运行）
+
+![深度截图_选择区域_20190530171342](install-ubuntu/深度截图_选择区域_20190530171342.png)
+
+#### 界面设置
+
+```bash
+# 关闭: 自动锁屏时间
+系统设置--->工作空间--->桌面行为--->锁屏(快捷键)
+# 快捷键
+系统设置--->工作空间--->快捷键
+```
+
+#### 没有无线网络选择图标
+
+```bash
+开机自启动增加:
+nm-applet
+```
+
+程序图标：![深度截图_选择区域_20190530170543](install-ubuntu/深度截图_选择区域_20190530170543.png)
 
 
 
 ### xfce界面
 
-安装
+#### 安装
 
 ```bash
 sudo apt-get install xfce4 
@@ -498,7 +523,9 @@ sudo apt-get install xfce4
 在输入密码界面，选择不同的界面系统
 ```
 
-界面设置
+
+
+
 
 ### LXDE界面
 
@@ -529,7 +556,7 @@ sudo dpkg-reconfigure lightdm  # sudo dpkg-reconfigure gdm3
 | 文件管理器 | Win+E            | 默认有  nautilus --new-window                       |
 | 显示桌面   | Win+D            | 默认有                                              |
 | 锁屏       | Win+L            | lxlock                                              |
-| 打开浏览器 | Win+W            | browser360                                          |
+| 打开浏览器 | Win+W            | browser360  或  /usr/bin/google-chrome-stable       |
 | 打开终端   | Win+T            | lxterminal  或  deepin-terminal  或  gnome-terminal |
 | vscode     | Win+V            | code                                                |
 | pycharm    | Win+P            | 打开pycharm--Tools--Create CMD line                 |

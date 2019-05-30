@@ -16,6 +16,25 @@ tags:
 
 
 
+### debug: 直接运行命令会报错, 进入bash再执行可用
+
+**现象:**
+
+1. docker的command=apachectl -D FOREGROUND执行失败
+2. docker的command=bash, 在bash手工执行命令可成功
+
+**原因:**
+
+电脑性能差, apachectl依赖程序未全部启动, 此时执行命令所以报错. 
+
+**解决方法:**
+
+把command命令放在command.sh 中, 在最开始执行sleep 5 等待5秒.
+
+然后把command.sh映射到容器内, command=bash command.sh
+
+
+
 ### 服务设置
 
 刚安装完成后，需要重启机器，才能启动服务
@@ -35,6 +54,7 @@ systemctl enable docker       # 开机启动
 ```bash
 # 1. 在/etc/default/docker添加：
 -- insecure-registry 127.0.0.1:5000
+-- insecure-registry 192.168.31.103:5000
 # 2. 再重启docker 服务
 ```
 
