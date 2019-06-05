@@ -9,17 +9,17 @@
         <meta name="keywords" content="使用docker">
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta name="description" content="配置###  服务设置刚安装完成后，需要重启机器，才能启动服务 1234567# Ubuntusudo service docker start  # 启动服务# manjarosudo systemctl start docker   # 启动服务sudo systemctl status docker  # 查看服务状态systemctl enable docker       # 开机启动">
+    <meta name="description" content="配置###  debug: 直接运行命令会报错, 进入bash再执行可用现象:  docker的command=apachectl -D FOREGROUND执行失败 docker的command=bash, 在bash手工执行命令可成功  原因: 电脑性能差, apachectl依赖程序未全部启动, 此时执行命令所以报错.  解决方法: 把command命令放在command.sh 中, 在最开">
 <meta property="og:type" content="article">
 <meta property="og:title" content="使用docker">
 <meta property="og:url" content="http://yoursite.com/wiki/编程基础/软件使用备忘/use-docker/index.html">
 <meta property="og:site_name" content="AIfish">
-<meta property="og:description" content="配置###  服务设置刚安装完成后，需要重启机器，才能启动服务 1234567# Ubuntusudo service docker start  # 启动服务# manjarosudo systemctl start docker   # 启动服务sudo systemctl status docker  # 查看服务状态systemctl enable docker       # 开机启动">
+<meta property="og:description" content="配置###  debug: 直接运行命令会报错, 进入bash再执行可用现象:  docker的command=apachectl -D FOREGROUND执行失败 docker的command=bash, 在bash手工执行命令可成功  原因: 电脑性能差, apachectl依赖程序未全部启动, 此时执行命令所以报错.  解决方法: 把command命令放在command.sh 中, 在最开">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-04-30T01:19:50.842Z">
+<meta property="og:updated_time" content="2019-06-05T10:06:20.738Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="使用docker">
-<meta name="twitter:description" content="配置###  服务设置刚安装完成后，需要重启机器，才能启动服务 1234567# Ubuntusudo service docker start  # 启动服务# manjarosudo systemctl start docker   # 启动服务sudo systemctl status docker  # 查看服务状态systemctl enable docker       # 开机启动">
+<meta name="twitter:description" content="配置###  debug: 直接运行命令会报错, 进入bash再执行可用现象:  docker的command=apachectl -D FOREGROUND执行失败 docker的command=bash, 在bash手工执行命令可成功  原因: 电脑性能差, apachectl依赖程序未全部启动, 此时执行命令所以报错.  解决方法: 把command命令放在command.sh 中, 在最开">
     
 
     
@@ -171,7 +171,7 @@
                             &nbsp;
                             搜索引擎
                         </a>
-                         <ul class="unstyled" id="tree">  <li class="file"><a href="/wiki/人工智能/搜索引擎/elastic-search基础/">elastic_search基础</a></li>  <li class="file"><a href="/wiki/人工智能/搜索引擎/install-es/">安装ES</a></li>  <li class="file"><a href="/wiki/人工智能/搜索引擎/es-search/">es-搜索操作</a></li>  </ul> 
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/wiki/人工智能/搜索引擎/install-es/">安装ES</a></li>  <li class="file"><a href="/wiki/人工智能/搜索引擎/elastic-search基础/">elastic_search基础</a></li>  <li class="file"><a href="/wiki/人工智能/搜索引擎/es-search/">es-搜索操作</a></li>  </ul> 
                     </li> 
                     
                     <li class="directory">
@@ -189,7 +189,7 @@
                         </a>
                          <ul class="unstyled" id="tree">  <li class="file"><a href="/wiki/人工智能/深度学习/allennlp/allennlp-classes/">allennlp 类</a></li>  <li class="file"><a href="/wiki/人工智能/深度学习/allennlp/allennlp-json-config/">allennlp_json_config</a></li>  <li class="file"><a href="/wiki/人工智能/深度学习/allennlp/allennlp-models/">allennlp_models</a></li>  <li class="file"><a href="/wiki/人工智能/深度学习/allennlp/allennlp-command/">allennlp 命令执行流程</a></li>  </ul> 
                     </li> 
-                     <li class="file"><a href="/wiki/人工智能/深度学习/GPU相关/">GPU相关</a></li>  <li class="file"><a href="/wiki/人工智能/深度学习/debug_pytorch_梯度出现NaN/">pytorch功能</a></li>  <li class="file"><a href="/wiki/人工智能/深度学习/pytorch功能/">pytorch功能</a></li>  </ul> 
+                     <li class="file"><a href="/wiki/人工智能/深度学习/GPU相关/">GPU相关</a></li>  <li class="file"><a href="/wiki/人工智能/深度学习/pytorch功能/">pytorch功能</a></li>  <li class="file"><a href="/wiki/人工智能/深度学习/debug_pytorch_梯度出现NaN/">debug：pytorch_梯度出现NaN</a></li>  </ul> 
                     </li> 
                      </ul> 
                     </li> 
@@ -234,7 +234,7 @@
                             &nbsp;
                             python
                         </a>
-                         <ul class="unstyled" id="tree">  <li class="file"><a href="/wiki/编程基础/python/decorator装饰器/">decorator装饰器</a></li>  <li class="file"><a href="/wiki/编程基础/python/argparse/">argparse命令行参数模块</a></li>  <li class="file"><a href="/wiki/编程基础/python/install-python/">安装python</a></li>  <li class="file"><a href="/wiki/编程基础/python/jupyter-notebook/">jupyter_notebook</a></li>  <li class="file"><a href="/wiki/编程基础/python/py2-and-py3/">py2_and_py3</a></li>  <li class="file"><a href="/wiki/编程基础/python/pycharm/">配置和使用 pycharm</a></li>  <li class="file"><a href="/wiki/编程基础/python/python-codes/">python常用代码</a></li>  <li class="file"><a href="/wiki/编程基础/python/python-error-book/">python_error_book</a></li>  <li class="file"><a href="/wiki/编程基础/python/python_datatype/">python基本数据类型</a></li>  <li class="file"><a href="/wiki/编程基础/python/python代码加密/">python代码加密</a></li>  <li class="file"><a href="/wiki/编程基础/python/queue/">Queue 队列模块相关</a></li>  <li class="file"><a href="/wiki/编程基础/python/thread多线程/">thread多线程模块</a></li>  <li class="file"><a href="/wiki/编程基础/python/基础库/">基础库：os/sys/dis</a></li>  <li class="file"><a href="/wiki/编程基础/python/命令行参数和环境变量/">命令行参数和环境变量</a></li>  <li class="file"><a href="/wiki/编程基础/python/交换2个变量/">交换变量（快捷写法和注意事项）</a></li>  </ul> 
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/wiki/编程基础/python/argparse/">argparse命令行参数模块</a></li>  <li class="file"><a href="/wiki/编程基础/python/decorator装饰器/">decorator装饰器</a></li>  <li class="file"><a href="/wiki/编程基础/python/install-python/">安装python</a></li>  <li class="file"><a href="/wiki/编程基础/python/jupyter-notebook/">jupyter_notebook</a></li>  <li class="file"><a href="/wiki/编程基础/python/pycharm/">配置和使用 pycharm</a></li>  <li class="file"><a href="/wiki/编程基础/python/python-codes/">python常用代码</a></li>  <li class="file"><a href="/wiki/编程基础/python/py2-and-py3/">py2_and_py3</a></li>  <li class="file"><a href="/wiki/编程基础/python/python源码转UML图/">python源码转UML图</a></li>  <li class="file"><a href="/wiki/编程基础/python/python_datatype/">python基本数据类型</a></li>  <li class="file"><a href="/wiki/编程基础/python/python代码加密/">python代码加密</a></li>  <li class="file"><a href="/wiki/编程基础/python/python-error-book/">python_error_book</a></li>  <li class="file"><a href="/wiki/编程基础/python/queue/">Queue 队列模块相关</a></li>  <li class="file"><a href="/wiki/编程基础/python/thread多线程/">thread多线程模块</a></li>  <li class="file"><a href="/wiki/编程基础/python/交换2个变量/">交换变量（快捷写法和注意事项）</a></li>  <li class="file"><a href="/wiki/编程基础/python/命令行参数和环境变量/">命令行参数和环境变量</a></li>  <li class="file"><a href="/wiki/编程基础/python/基础库/">基础库：os/sys/dis</a></li>  </ul> 
                     </li> 
                     
                     <li class="directory">
@@ -270,11 +270,11 @@
                             &nbsp;
                             软件使用备忘
                         </a>
-                         <ul class="unstyled" id="tree">  <li class="file"><a href="/wiki/编程基础/软件使用备忘/linux_write_DVD/">linux刻录光盘</a></li>  <li class="file active"><a href="/wiki/编程基础/软件使用备忘/use-docker/">使用docker</a></li>  <li class="file"><a href="/wiki/编程基础/软件使用备忘/use-git/">使用git</a></li>  <li class="file"><a href="/wiki/编程基础/软件使用备忘/use-tmux/">use_tmux</a></li>  <li class="file"><a href="/wiki/编程基础/软件使用备忘/use-linux/">使用linux</a></li>  <li class="file"><a href="/wiki/编程基础/软件使用备忘/use-vscode/">use-vscode</a></li>  <li class="file"><a href="/wiki/编程基础/软件使用备忘/使用虚拟机/">使用虚拟机</a></li>  </ul> 
+                         <ul class="unstyled" id="tree">  <li class="file active"><a href="/wiki/编程基础/软件使用备忘/use-docker/">使用docker</a></li>  <li class="file"><a href="/wiki/编程基础/软件使用备忘/use-htop/">使用 htop</a></li>  <li class="file"><a href="/wiki/编程基础/软件使用备忘/use-Adblock/">使用Adblock广告屏蔽插件</a></li>  <li class="file"><a href="/wiki/编程基础/软件使用备忘/linux_write_DVD/">linux刻录光盘</a></li>  <li class="file"><a href="/wiki/编程基础/软件使用备忘/use-linux/">使用linux</a></li>  <li class="file"><a href="/wiki/编程基础/软件使用备忘/use-git/">使用git</a></li>  <li class="file"><a href="/wiki/编程基础/软件使用备忘/use-tmux/">use_tmux</a></li>  <li class="file"><a href="/wiki/编程基础/软件使用备忘/使用虚拟机/">使用虚拟机</a></li>  <li class="file"><a href="/wiki/编程基础/软件使用备忘/use-vscode/">use-vscode</a></li>  </ul> 
                     </li> 
                      </ul> 
                     </li> 
-                     </ul> 
+                     <li class="file"><a href="/wiki/人工智能/深度学习/pytorch-codes/">pytorch常用代码</a></li>  <li class="file"><a href="/wiki/人工智能/深度学习/RNN/">RNN</a></li>  <li class="file"><a href="/wiki/编程基础/python/debug思路备忘/">debug思路备忘</a></li>  </ul> 
     </div>
     <script>
         $(document).ready(function() {
@@ -401,15 +401,25 @@
             
                 <div id="toc" class="toc-article">
                 <strong class="toc-title">文章目录</strong>
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#配置"><span class="toc-number">1.</span> <span class="toc-text">配置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#服务设置"><span class="toc-number">1.1.</span> <span class="toc-text">服务设置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#设置信任本地仓库"><span class="toc-number">1.2.</span> <span class="toc-text">设置信任本地仓库</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#容器-常用命令"><span class="toc-number">2.</span> <span class="toc-text">容器-常用命令</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#容器自启动设置"><span class="toc-number">2.1.</span> <span class="toc-text">容器自启动设置</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#镜像-常用命令"><span class="toc-number">3.</span> <span class="toc-text">镜像-常用命令</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#DockerFile"><span class="toc-number">3.1.</span> <span class="toc-text">DockerFile</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考资料"><span class="toc-number">4.</span> <span class="toc-text">参考资料</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#配置"><span class="toc-number">1.</span> <span class="toc-text">配置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#debug-直接运行命令会报错-进入bash再执行可用"><span class="toc-number">1.1.</span> <span class="toc-text">debug: 直接运行命令会报错, 进入bash再执行可用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#服务设置"><span class="toc-number">1.2.</span> <span class="toc-text">服务设置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#设置信任本地仓库"><span class="toc-number">1.3.</span> <span class="toc-text">设置信任本地仓库</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#容器-常用命令"><span class="toc-number">2.</span> <span class="toc-text">容器-常用命令</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#容器自启动设置"><span class="toc-number">2.1.</span> <span class="toc-text">容器自启动设置</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#镜像-常用命令"><span class="toc-number">3.</span> <span class="toc-text">镜像-常用命令</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#DockerFile"><span class="toc-number">3.1.</span> <span class="toc-text">DockerFile</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考资料"><span class="toc-number">4.</span> <span class="toc-text">参考资料</span></a></li></ol>
                 </div>
             
         
         
             <h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><p>### </p>
+<h3 id="debug-直接运行命令会报错-进入bash再执行可用"><a href="#debug-直接运行命令会报错-进入bash再执行可用" class="headerlink" title="debug: 直接运行命令会报错, 进入bash再执行可用"></a>debug: 直接运行命令会报错, 进入bash再执行可用</h3><p><strong>现象:</strong></p>
+<ol>
+<li>docker的command=apachectl -D FOREGROUND执行失败</li>
+<li>docker的command=bash, 在bash手工执行命令可成功</li>
+</ol>
+<p><strong>原因:</strong></p>
+<p>电脑性能差, apachectl依赖程序未全部启动, 此时执行命令所以报错. </p>
+<p><strong>解决方法:</strong></p>
+<p>把command命令放在command.sh 中, 在最开始执行sleep 5 等待5秒.</p>
+<p>然后把command.sh映射到容器内, command=bash command.sh</p>
 <h3 id="服务设置"><a href="#服务设置" class="headerlink" title="服务设置"></a>服务设置</h3><p>刚安装完成后，需要重启机器，才能启动服务</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"># Ubuntu</span><br><span class="line">sudo service docker start  # 启动服务</span><br><span class="line"></span><br><span class="line"># manjaro</span><br><span class="line">sudo systemctl start docker   # 启动服务</span><br><span class="line">sudo systemctl status docker  # 查看服务状态</span><br><span class="line">systemctl enable docker       # 开机启动</span><br></pre></td></tr></table></figure>
-<h3 id="设置信任本地仓库"><a href="#设置信任本地仓库" class="headerlink" title="设置信任本地仓库"></a>设置信任本地仓库</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 1. 在/etc/default/docker添加：</span></span><br><span class="line">-- insecure-registry 127.0.0.1:5000</span><br><span class="line"><span class="comment"># 2. 再重启docker 服务</span></span><br></pre></td></tr></table></figure>
+<h3 id="设置信任本地仓库"><a href="#设置信任本地仓库" class="headerlink" title="设置信任本地仓库"></a>设置信任本地仓库</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">### 方法1  (如果不行可以尝试方法2)</span></span><br><span class="line"><span class="comment"># 1. 在/etc/default/docker添加：</span></span><br><span class="line">-- insecure-registry 127.0.0.1:5000</span><br><span class="line">-- insecure-registry 192.168.31.103:5000</span><br><span class="line"><span class="comment"># 2. 再重启docker 服务</span></span><br><span class="line"></span><br><span class="line"><span class="comment">### 方法2</span></span><br><span class="line"><span class="comment"># 1. 创建文件/etc/docker/daemon.json</span></span><br><span class="line">&#123; <span class="string">"insecure-registries"</span>:[<span class="string">"192.168.163.131:5000"</span>]&#125;</span><br><span class="line"><span class="comment"># 2. 再重启docker 服务</span></span><br></pre></td></tr></table></figure>
 <h2 id="容器-常用命令"><a href="#容器-常用命令" class="headerlink" title="容器-常用命令"></a>容器-常用命令</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查看容器列表 </span></span><br><span class="line"><span class="comment">## -a 查看全部，否则查看运行中的</span></span><br><span class="line">docker ps</span><br><span class="line"></span><br><span class="line"><span class="comment"># 删除容器    -f强制删除</span></span><br><span class="line">docker rm -f xxx</span><br><span class="line"></span><br><span class="line"><span class="comment"># 实时查看容器占用的CPU和内存资源</span></span><br><span class="line">docker stats</span><br><span class="line"></span><br><span class="line"><span class="comment"># 从容器生成镜像</span></span><br><span class="line">docker commit -m <span class="string">"change somth"</span> -a <span class="string">"somebody info"</span> container_id(docker ps -a获取id) 新镜像名字</span><br></pre></td></tr></table></figure>
 <h3 id="容器自启动设置"><a href="#容器自启动设置" class="headerlink" title="容器自启动设置"></a>容器自启动设置</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker run --restart=on-failure:10 xxx</span><br><span class="line">docker run --restart=always xxx</span><br></pre></td></tr></table></figure>
 <ul>
