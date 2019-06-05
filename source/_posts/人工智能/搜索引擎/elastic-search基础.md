@@ -98,7 +98,7 @@ GET $host:$port/$index/_search
 GET $host:$port/_search
 ```
 
-### 搜索符合条件的文档
+### 搜索符合条件的文档 (并排序)
 
 ```bash
 # 某索引的某个类型的所有文档
@@ -107,7 +107,7 @@ body = {
 	"query": query
 	"from": 0,    // 从0开始
     "size": 20,   // 取20个
-    "sort": [
+    "sort": [     // 排序
     	{"age": {"order": "asc"}}  //asc升序  dsc降序
     ]
     "_source" : ["key1", "key2"]  // 返回信息包含的键
@@ -115,6 +115,20 @@ body = {
 
 query = {"match_all": {}} // 搜索全部
 ```
+
+#### 搜索参数
+
+```bash
+GET /_search
+{
+    "min_score": 0.5, // 分数最小值, 查询结果必须有 _score 字段
+    "query" : query,
+}
+```
+
+
+
+
 
 ### 基础查询种类 
 
@@ -268,6 +282,99 @@ filter = {
     }
 }
 ```
+
+
+
+[排序功能说明](<https://www.elastic.co/guide/en/elasticsearch/reference/7.2/search-request-sort.html>)
+
+```bash
+# score_mode 对数组的数值进行融合后排序: 
+# min最小值, max最大值, sum求和, avg平均值, median中位数
+# multiply相乘, first
+POST /_search
+{
+    "query": {
+        "function_score": {
+          "query": { "match_all": {} },
+          "boost": "5", 
+          "functions": [
+              {
+                  "filter": { "match": { "test": "bar" } },
+                  "random_score": {}, 
+                  "weight": 23
+              },
+              {
+                  "filter": { "match": { "test": "cat" } },
+                  "weight": 42
+              }
+          ],
+          "max_boost": 42,   //计算出分数的上限
+          "score_mode": "max",
+          "boost_mode": "multiply",
+          "min_score" : 42   //最小分数, 用于排除得分过低的文档
+        }
+    }
+}
+```
+
+## function_score
+
+衰减函数     [越近越好](<https://www.elastic.co/guide/cn/elasticsearch/guide/current/decay-functions.html>)
+
+ `linear`线性 、 `exp`指数 和 `gauss`高斯函数 
+
+它们可以操作数值、时间以及经纬度地理坐标点这样的字段。
+
+```
+origin
+原点* 或字段可能的最佳值，落在原点 `origin` 上的文档评分 `_score` 为满分 `1.0` 
+
+scale
+衰减率，从原点origin下落时，评分 _score 改变的速度。（例如，每 £10 欧元或每 100 米）
+
+decay
+从原点 origin 衰减到 scale 所得的评分 _score ，默认值为 0.5 。
+offset
+以原点 origin 为中心点，为其设置一个非零的偏移量 offset 覆盖一个范围，而不只是单个原点。在范围 -offset <= origin <= +offset 内的所有评分 _score 都是 1.0 。
+
+```
+
+![衰减函数曲线](elastic-search基础/decay_2d.png)
+
+```bash
+{
+    "query": {
+        "function_score": {
+            "gauss": {
+                "date": {
+                      "origin": "2013-09-17",  // 如果不定义原点，则使用当前时间。
+                      "scale": "10d",
+                      "offset": "5d", 
+                      "decay" : 0.5 
+                }
+            }
+        }
+    }
+}
+
+"gauss": { 
+    "字段名": { // 字段必须是数字/日期/地理位置
+          "origin": "11, 12",
+          "scale": "2km",
+          "offset": "0km",
+          "decay": 0.33
+    }
+}
+
+```
+
+[function-score-参考文档](<https://www.elastic.co/guide/en/elasticsearch/reference/7.2/query-dsl-function-score-query.html>)
+
+
+
+
+
+
 
 
 

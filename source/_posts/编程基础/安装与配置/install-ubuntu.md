@@ -383,6 +383,25 @@ Offending ECDSA key in /home/wangxiaoyu/.ssh/known_hosts:14
 ssh-keygen -f "/home/usr1/.ssh/known_hosts" -R 192.168.31.68
 ```
 
+### 安装postman
+
+```bash
+# 创建软链接
+sudo ln -s /home/fish3/soft/Postman/Postman /usr/bin/postman
+
+# 创建 /usr/share/applications/postman.desktop 内容如下:
+[Desktop Entry]
+Encoding=UTF-8
+Name=postman
+Exec=postman
+Icon=/home/fish3/soft/Postman/app/resources/app/assets/icon.png
+Terminal=false
+Type=Application
+Categories=Development;
+```
+
+
+
 ### 安装chrome
 
 ```bash
@@ -485,6 +504,20 @@ alias get3='pip install -i https://pypi.douban.com/simple/ '
 ```bash
 sudo apt install plasma-desktop
 ```
+
+
+#### 快捷键
+
+##### 显示桌面	
+
+默认是Ctrl+F12 改成Win+D
+
+系统设置--->快捷键--->全局快捷键--->Plasma--->显示桌面
+
+
+
+
+
 #### 开机自启动
 
 系统设置－－－＞工作空间－－－＞开机和关机－－－＞自动启动
@@ -500,9 +533,11 @@ sudo apt install plasma-desktop
 系统设置--->工作空间--->桌面行为--->锁屏(快捷键)
 # 快捷键
 系统设置--->工作空间--->快捷键
+# 鼠标双击打开文件
+系统设置--->硬件--->输入设备--->鼠标--->双击打开
 ```
 
-#### 没有无线网络选择图标
+#### bug: 没有无线网络选择图标
 
 ```bash
 开机自启动增加:
@@ -510,6 +545,20 @@ nm-applet
 ```
 
 程序图标：![深度截图_选择区域_20190530170543](install-ubuntu/深度截图_选择区域_20190530170543.png)
+
+#### bug: 无法打开wps表格文件
+
+```bash
+# 写入文件: ~/.xprofile
+export LC_ALL=zh_CN.UTF-8
+export GTK_IM_MODULE=fcitx
+export QT_IM_MODULE=fcitx
+export XMODIFIERS="@im=fcitx"
+```
+
+
+
+
 
 
 
