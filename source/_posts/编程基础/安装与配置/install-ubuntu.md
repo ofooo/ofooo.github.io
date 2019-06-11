@@ -412,6 +412,12 @@ wget -q -O - https://dl.google.com/linux/linux_signing_key.pub  | sudo apt-key a
 sudo apt update
 
 sudo apt install google-chrome-stable
+
+# 离线安装包下载
+## 1. 点击链接  (手工添加的standalone是离线下载参数)
+https://www.google.cn/chrome/?standalone=1
+https://www.google.cn/chrome/?standalone=1&platform=win64
+## 2. 点击接受并安装, 下载deb文件
 ```
 
 ### 安装deepin的百度云、截图和终端
@@ -556,9 +562,13 @@ export QT_IM_MODULE=fcitx
 export XMODIFIERS="@im=fcitx"
 ```
 
+#### bug: 文件管理器里文件不能剪贴和复制
 
+nautilus --new-window  管理器可以剪贴
 
+PCManFMC  管理器不能剪贴
 
+所有设置--->应用程序--->默认程序--->文件管理器--->其他
 
 
 

@@ -352,7 +352,9 @@ offset
                       "offset": "5d", 
                       "decay" : 0.5 
                 }
-            }
+            },
+            'min_score': 0.1  // 筛选条件: 分数最小值
+            'boost': 3.0
         }
     }
 }
@@ -362,7 +364,7 @@ offset
           "origin": "11, 12",
           "scale": "2km",
           "offset": "0km",
-          "decay": 0.33
+          "decay": 0.33,
     }
 }
 

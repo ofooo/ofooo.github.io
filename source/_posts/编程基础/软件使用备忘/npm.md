@@ -1,11 +1,11 @@
 ---
 title: npm
 toc: true
-tags:
 categories:
   - 编程基础
-  - js前端
+  - 软件使用备忘
 date: 2019-04-12 16:38:37
+tags:
 ---
 
 
