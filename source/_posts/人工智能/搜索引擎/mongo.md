@@ -1,12 +1,12 @@
 ---
 title: mongo
 toc: true
-date: 2019-02-28 16:41:56
 tags:
   - mongo
 categories:
-  - 编程基础
-  - 数据库
+  - 人工智能
+  - 搜索引擎
+date: 2019-02-28 16:41:56
 ---
 
 
