@@ -115,7 +115,20 @@ docker rmi -f xxx:tag
 
 ```
 
-### DockerFile
+## DockerFile
+
+```bash
+# 使用dockerfile生成镜像  -t添加标签名称(可以多个)
+
+ docker build -t shykes/myapp:1.0.2 -t shykes/myapp:latest .
+
+```
+
+
+
+
+
+
 
 
 
