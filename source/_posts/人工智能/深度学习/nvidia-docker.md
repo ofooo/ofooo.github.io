@@ -1,9 +1,11 @@
 ---
 title: nvidia_docker
 toc: true
+categories:
+  - 人工智能
+  - 深度学习
 date: 2019-06-14 09:54:32
 tags:
-categories:
 ---
 
 

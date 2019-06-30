@@ -186,7 +186,7 @@ sudo dd if=/home/fish/下载/deepinamd64.iso of=/dev/sdb
 
 ```bash
 # 安裝ss的命令行工具
-sudo apt install shadowsocks
+sudo apt install -y shadowsocks
 sslocal -c xxx.json
 
 # 浏览器安装科学插件
@@ -283,14 +283,26 @@ sudo  apt-get install fcitx-googlepinyin
 
 ### 安装搜狗输入法
 
+KDE界面很难配置输入法， 可以进入gnome界面安装好输入法，再重新进入KDE
+
 ![ibus配置](install-ubuntu/1553342505304.png)
 
 ![1553344201236](install-ubuntu/1553344201236.png)
 
+
+
+
+
+![配置输入法系统使用 fcitx](install-ubuntu/20180508181310292)
+
 ```bash
+# 搜狗拼音依赖fcitx
+sudo apt-get install fcitx-bin fcitx-table
+
+
 1. 去搜狗拼音官网,下载linux版本安装文件(.deb)
 2. 双击打开界面安装
-3. 登出后登录操作系统
+3. 登出后登录操作系统！ 
 4. 右键点击顶栏的键盘图标，选择配置
 5. 添加搜狗输入法
 
@@ -299,6 +311,10 @@ sudo  apt-get install fcitx-googlepinyin
 2. 如果是之前一直可以输入中文的,突然无法输入,则不是依赖项的问题,此时输入命令:killall fcitx
 3.如果2仍不能解决问题,则删除配置文件,Ubuntu下搜狗的配置文件在~/.config下的3个文件夹里：SogouPY、SogouPY.users、sogou-qimpanel   删除这3个文件夹,然后重启搜狗即可.
 ```
+
+选择需要的输入法： 点击Ubuntu右上角顶栏的小键盘图标中打开，配置，如下图
+
+![选择需要的输入法](install-ubuntu/20180508181355503)
 
 
 
@@ -511,6 +527,9 @@ alias get3='pip install -i https://pypi.douban.com/simple/ '
 sudo apt install plasma-desktop
 ```
 
+#### 任务栏设置
+
+删除“程序启动器”， 添加“应用程序菜单”（有搜索框）
 
 #### 快捷键
 
@@ -520,9 +539,13 @@ sudo apt install plasma-desktop
 
 系统设置--->快捷键--->全局快捷键--->Plasma--->显示桌面
 
+##### 锁屏
 
+默认是Ctrl+Alt+L   改为Win+L
 
+系统设置--->快捷键--->全局快捷键--->ksmserver--->锁定会话
 
+ 
 
 #### 开机自启动
 
@@ -582,7 +605,32 @@ sudo apt-get install xfce4
 在输入密码界面，选择不同的界面系统
 ```
 
+#### Xfce 触摸板启用“点击”|apt安装软件失败的处理方法
 
+```bash
+# 触摸板启用"点击"
+# 1.首先，保证安装了synaptics驱动：
+sudo apt install xserver-xorg-input-synaptics-hwe-18.04  # 因为是ubuntu18.04所以添加后缀"-hwe-18.04"
+
+编辑 /usr/share/x11/xorg.conf.d/*synaptics-quirks.conf  增加
+# Disable generic Synaptics device, as we're using
+# "DLL0704:01 06CB:76AE Touchpad"
+
+# Having multiple touchpad devices running confuses syndaemon
+Section "InputClass"
+Identifier "SynPS/2 Synaptics TouchPad"
+MatchProduct "SynPS/2 Synaptics TouchPad"
+MatchIsTouchpad "on"
+MatchOS "Linux"
+MatchDevicePath "/dev/input/event*"
+Option "Ignore" "on"
+EndSection
+
+# 然后重启机器
+
+```
+
+https://www.dell.com/support/article/us/en/04/sln308258/precision-xps-ubuntu-general-touchpad-mouse-issue-fix?lang=en
 
 
 
@@ -618,7 +666,7 @@ sudo dpkg-reconfigure lightdm  # sudo dpkg-reconfigure gdm3
 | 打开浏览器 | Win+W            | browser360  或  /usr/bin/google-chrome-stable       |
 | 打开终端   | Win+T            | lxterminal  或  deepin-terminal  或  gnome-terminal |
 | vscode     | Win+V            | code                                                |
-| pycharm    | Win+P            | 打开pycharm--Tools--Create CMD line                 |
+| pycharm    | Ctrl+P           | 打开pycharm--Tools--Create CMD line                 |
 | typora     | Win+M            | typora                                              |
 | 截图       | Ctrl+Shift+Print | deepin-screenshot                                   |
 |            |                  |                                                     |

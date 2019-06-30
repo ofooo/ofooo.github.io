@@ -110,10 +110,10 @@ sudo ln -s /home/fish/soft/Typora-linux-x64/Typora /usr/bin/typora
 [Desktop Entry]
 Version=1.0
 Terminal=false
-Icon=/home/fish/soft/Typora-linux-x64/resources/app/asserts/icon/icon_256x256.png
+Icon=/home/aifish2/soft/typora/Typora-linux-x64/resources/app/asserts/icon/icon_256x256.png
 Type=Application
 Categories=Office;
-Exec=/home/fish/soft/Typora-linux-x64/Typora %U
+Exec=/usr/bin/typora %U
 Name=Typora
 Comment=MarkDown Editor
 ```
