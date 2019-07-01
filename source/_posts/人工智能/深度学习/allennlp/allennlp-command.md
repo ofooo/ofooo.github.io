@@ -12,6 +12,12 @@ categories:
 date: 2019-03-31 19:09:04
 ---
 
+
+
+Successfully installed Jinja2-2.10.1 MarkupSafe-1.1.1 PyYAML-5.1 Pygments-2.4.2 Werkzeug-0.15.4 alabaster-0.7.12 allennlp-0.8.4 atomicwrites-1.3.0 attrs-19.1.0 awscli-1.16.190 babel-2.7.0 blis-0.2.4 boto3-1.9.180 botocore-1.12.180 click-7.0 colorama-0.3.9 conllu-0.11 cycler-0.10.0 cymem-2.0.2 docutils-0.14 editdistance-0.5.3 flaky-3.6.0 flask-1.0.3 flask-cors-3.0.8 ftfy-5.5.1 gevent-1.4.0 greenlet-0.4.15 h5py-2.9.0 imagesize-1.1.0 importlib-metadata-0.18 itsdangerous-1.1.0 jmespath-0.9.4 joblib-0.13.2 jsonnet-0.13.0 jsonpickle-1.2 jsonschema-3.0.1 kiwisolver-1.1.0 matplotlib-3.1.0 more-itertools-7.1.0 murmurhash-1.0.2 nltk-3.4.3 numpy-1.16.4 numpydoc-0.9.1 overrides-1.9 packaging-19.0 parsimonious-0.8.1 plac-0.9.6 pluggy-0.12.0 preshed-2.0.1 protobuf-3.8.0 py-1.8.0 pyasn1-0.4.5 pyparsing-2.4.0 pyrsistent-0.15.2 pytest-5.0.0 python-dateutil-2.8.0 pytorch-pretrained-bert-0.6.2 pytz-2019.1 regex-2019.6.8 responses-0.10.6 rsa-3.4.2 s3transfer-0.2.1 scikit-learn-0.21.2 scipy-1.3.0 snowballstemmer-1.9.0 spacy-2.1.4 sphinx-2.1.2 sphinxcontrib-applehelp-1.0.1 sphinxcontrib-devhelp-1.0.1 sphinxcontrib-htmlhelp-1.0.2 sphinxcontrib-jsmath-1.0.1 sphinxcontrib-qthelp-1.0.2 sphinxcontrib-serializinghtml-1.1.3 sqlparse-0.3.0 srsly-0.0.7 tensorboardX-1.7 thinc-7.0.4 torch-1.1.0 tqdm-4.32.2 unidecode-1.1.1 wasabi-0.2.2 wcwidth-0.1.7 word2number-1.1 zipp-0.5.1
+
+
+
 ## 安装tensorboard
 
 ```bash
