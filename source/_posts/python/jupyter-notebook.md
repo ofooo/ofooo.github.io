@@ -5,7 +5,6 @@ tags:
   - jupyter
   - notebook
 categories:
-  - 编程基础
   - python
 date: 2019-04-07 17:58:44
 ---

@@ -2,7 +2,6 @@
 title: Queue 队列模块相关
 toc: true
 categories:
-  - 编程基础
   - python
 date: 2019-03-25 08:13:50
 tags:

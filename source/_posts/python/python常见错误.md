@@ -2,8 +2,7 @@
 title: python常见错误
 toc: true
 categories:
-  - 编程基础
-  - pythonw
+  - python
 date: 2019-04-15 08:46:54
 tags:
 ---

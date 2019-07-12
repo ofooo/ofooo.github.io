@@ -2,7 +2,6 @@
 title: 配置和使用 pycharm
 toc: true
 categories:
-  - 编程基础
   - python
 date: 2019-03-17 08:55:57
 tags:

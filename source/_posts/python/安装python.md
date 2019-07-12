@@ -2,9 +2,7 @@
 title: 安装python
 toc: true
 categories:
-  - 编程基础
   - python
-  - 虚拟环境
 date: 2019-04-17 08:55:46
 tags:
 ---

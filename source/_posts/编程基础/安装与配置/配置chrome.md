@@ -1,9 +1,11 @@
 ---
 title: 配置chrome
 toc: true
+categories:
+  - 编程基础
+  - 安装与配置
 date: 2019-06-27 09:51:37
 tags:
-categories:
 ---
 
 

@@ -1,9 +1,11 @@
 ---
 title: ubuntu的KDE开启触摸板
 toc: true
+categories:
+  - 编程基础
+  - 软件使用备忘
 date: 2019-07-11 22:37:20
 tags:
-categories:
 ---
 
 

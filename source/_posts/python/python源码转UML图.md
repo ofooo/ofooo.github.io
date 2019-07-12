@@ -2,7 +2,6 @@
 title: python源码转UML图
 toc: true
 categories:
-  - 编程基础
   - python
 date: 2019-05-25 19:08:46
 tags:

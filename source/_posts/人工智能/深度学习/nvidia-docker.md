@@ -1,12 +1,14 @@
 ---
 title: nvidia_docker
 toc: true
-date: 2019-06-14 09:54:32
-tags: 
-- GPU
-- 深度学习
-- 显卡
+tags:
+  - GPU
+  - 深度学习
+  - 显卡
 categories:
+  - 人工智能
+  - 深度学习
+date: 2019-06-14 09:54:32
 ---
 
 

@@ -4,8 +4,9 @@ toc: true
 tags:
   - python
   - xml
-date: 2019-07-12 08:58:58
 categories:
+  - python
+date: 2019-07-12 08:58:58
 ---
 
 

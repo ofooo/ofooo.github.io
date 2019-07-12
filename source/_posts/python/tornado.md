@@ -2,7 +2,6 @@
 title: tornado
 toc: true
 categories:
-  - 编程基础
   - python
 date: 2019-06-12 09:46:09
 tags:

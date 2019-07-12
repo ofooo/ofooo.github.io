@@ -2,7 +2,6 @@
 title: python代码加密
 toc: true
 categories:
-  - 编程基础
   - python
 date: 2019-03-29 15:45:48
 tags:

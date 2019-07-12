@@ -1,9 +1,11 @@
 ---
 title: elastic-debug
 toc: true
+categories:
+  - 人工智能
+  - 搜索引擎
 date: 2019-06-27 11:20:54
 tags:
-categories:
 ---
 
 

@@ -5,7 +5,6 @@ tags:
   - 兼容性
   - python版本
 categories:
-  - 编程基础
   - python
 date: 2019-03-17 08:39:15
 ---

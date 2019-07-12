@@ -1,9 +1,10 @@
 ---
 title: NAS
 toc: true
+categories:
+  - 其他
 date: 2019-07-05 08:40:32
 tags:
-categories:
 ---
 
 

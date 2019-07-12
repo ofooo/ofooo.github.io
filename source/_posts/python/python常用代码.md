@@ -2,7 +2,6 @@
 title: python常用代码
 toc: true
 categories:
-  - 编程基础
   - python
 date: 2019-04-10 22:46:50
 tags:

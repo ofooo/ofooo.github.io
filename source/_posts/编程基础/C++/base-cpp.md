@@ -1,9 +1,11 @@
 ---
 title: C++基础
 toc: true
+categories:
+  - 编程基础
+  - C++
 date: 2019-07-12 08:57:45
 tags:
-categories:
 ---
 
 

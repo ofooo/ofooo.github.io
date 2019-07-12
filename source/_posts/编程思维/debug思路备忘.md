@@ -2,10 +2,9 @@
 title: debug思路备忘
 toc: true
 categories:
-  - 编程基础
-  - python
-date: 2019-05-31 09:39:46
+  - 编程思维
 tags: debug
+date: 2019-05-31 09:39:46
 ---
 
 

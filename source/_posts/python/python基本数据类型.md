@@ -2,7 +2,6 @@
 title: python基本数据类型
 toc: true
 categories:
-  - 编程基础
   - python
 date: 2019-03-21 14:35:53
 tags:

@@ -4,8 +4,10 @@ toc: true
 tags:
   - node
   - npm
-date: 2019-07-12 08:55:09
 categories:
+  - 编程基础
+  - javascript
+date: 2019-07-12 08:55:09
 ---
 
 

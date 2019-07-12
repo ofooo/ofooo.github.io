@@ -3,8 +3,10 @@ title: javascript基础
 toc: true
 tags:
   - javascript语法
-date: 2019-07-12 08:55:19
 categories:
+  - 编程基础
+  - javascript
+date: 2019-07-12 08:55:19
 ---
 
 
