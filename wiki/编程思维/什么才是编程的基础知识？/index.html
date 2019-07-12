@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    
+    <title>编程的基础知识 | AIfish</title>
+    
+    
+        <meta name="keywords" content="编程风格">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="参考资料      什么才是java的基础知识？https://xwjie.github.io/note/basic.html 近日里，很多人邀请我回答各种j2ee开发的初级问题，我无一都强调java初学者要先扎实自己的基础知识，那什么才是java的基础知识？又怎么样才算掌握了java的基础知识呢？这个问题还真值得仔细思考。 我做j2ee开发已经超过十载，作为过来人，心路历程估计和大家差不多。编码">
+<meta name="keywords" content="编程风格">
+<meta property="og:type" content="article">
+<meta property="og:title" content="编程的基础知识">
+<meta property="og:url" content="http://yoursite.com/wiki/编程思维/什么才是编程的基础知识？/index.html">
+<meta property="og:site_name" content="AIfish">
+<meta property="og:description" content="参考资料      什么才是java的基础知识？https://xwjie.github.io/note/basic.html 近日里，很多人邀请我回答各种j2ee开发的初级问题，我无一都强调java初学者要先扎实自己的基础知识，那什么才是java的基础知识？又怎么样才算掌握了java的基础知识呢？这个问题还真值得仔细思考。 我做j2ee开发已经超过十载，作为过来人，心路历程估计和大家差不多。编码">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-07-12T01:12:19.286Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="编程的基础知识">
+<meta name="twitter:description" content="参考资料      什么才是java的基础知识？https://xwjie.github.io/note/basic.html 近日里，很多人邀请我回答各种j2ee开发的初级问题，我无一都强调java初学者要先扎实自己的基础知识，那什么才是java的基础知识？又怎么样才算掌握了java的基础知识呢？这个问题还真值得仔细思考。 我做j2ee开发已经超过十载，作为过来人，心路历程估计和大家差不多。编码">
+    
+
+    
+
+    
+        <link rel="icon" href="/fish256.png">
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/open-sans/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="/libs/jquery/plugins/cookie/1.4.1/jquery.cookie.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+    
+    
+
+
+    
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+</head>
+</html>
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">AIfish</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/">首页</a>
+                
+                    <a class="main-nav-link" href="/archives">归档</a>
+                
+                    <a class="main-nav-link" href="/categories">分类</a>
+                
+                    <a class="main-nav-link" href="/tags">标签</a>
+                
+                    <a class="main-nav-link" href="/about">关于</a>
+                
+            </nav>
+            
+            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索">
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="想要查找什么...">
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/">首页</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">归档</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">分类</a></td>
+                
+                    <td><a class="main-nav-link" href="/tags">标签</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">关于</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索">
+    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+            
+                <aside id="sidebar">
+   
+        
+    <div class="widget-wrap" id="categories">
+        <h3 class="widget-title">
+            <span>分类</span>
+            &nbsp;
+            <a id="allExpand" href="#">
+                <i class="fa fa-angle-double-down fa-2x"></i>
+            </a>
+        </h3>
+        
+        
+        
+         <ul class="unstyled" id="tree"> 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            人工智能
+                        </a>
+                         <ul class="unstyled" id="tree"> 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            搜索引擎
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/wiki/人工智能/搜索引擎/mongo/">mongo</a></li>  <li class="file"><a href="/wiki/人工智能/搜索引擎/install-es/">安装ES</a></li>  <li class="file"><a href="/wiki/人工智能/搜索引擎/elastic-search基础/">elastic_search基础</a></li>  <li class="file"><a href="/wiki/人工智能/搜索引擎/es-search/">es-搜索操作</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            深度学习
+                        </a>
+                         <ul class="unstyled" id="tree"> 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            allennlp
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/wiki/人工智能/深度学习/allennlp/allennlp-classes/">allennlp 类</a></li>  <li class="file"><a href="/wiki/人工智能/深度学习/allennlp/allennlp-json-config/">allennlp_json_config</a></li>  <li class="file"><a href="/wiki/人工智能/深度学习/allennlp/allennlp-models/">allennlp_models</a></li>  <li class="file"><a href="/wiki/人工智能/深度学习/allennlp/allennlp-command/">allennlp 命令执行流程</a></li>  </ul> 
+                    </li> 
+                     <li class="file"><a href="/wiki/人工智能/深度学习/RNN/">RNN</a></li>  <li class="file"><a href="/wiki/人工智能/深度学习/pytorch/debug_pytorch_梯度出现NaN/">debug：pytorch_梯度出现NaN</a></li>  <li class="file"><a href="/wiki/人工智能/深度学习/pytorch/pytorch常用代码/">pytorch常用代码</a></li>  </ul> 
+                    </li> 
+                     </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            其他
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/wiki/其他/nikon-d5600/">尼康D5600相机</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            编程基础
+                        </a>
+                         <ul class="unstyled" id="tree"> 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            leetcode
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/wiki/编程基础/leetcode/141. Linked_List_Cycle/">双指针找环</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            python
+                        </a>
+                         <ul class="unstyled" id="tree"> 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            虚拟环境
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/wiki/python/安装python/">安装python</a></li>  </ul> 
+                    </li> 
+                     <li class="file"><a href="/wiki/python/decorator装饰器/">decorator装饰器</a></li>  <li class="file"><a href="/wiki/python/jupyter-notebook/">jupyter_notebook</a></li>  <li class="file"><a href="/wiki/python/py2和py3/">py2_and_py3</a></li>  <li class="file"><a href="/wiki/python/python代码加密/">python代码加密</a></li>  <li class="file"><a href="/wiki/python/python常用代码/">python常用代码</a></li>  <li class="file"><a href="/wiki/python/python源码转UML图/">python源码转UML图</a></li>  <li class="file"><a href="/wiki/python/queue队列/">Queue 队列模块相关</a></li>  <li class="file"><a href="/wiki/python/python基本数据类型/">python基本数据类型</a></li>  <li class="file"><a href="/wiki/python/tornado/">tornado</a></li>  <li class="file"><a href="/wiki/python/命令行参数和环境变量/">命令行参数和环境变量</a></li>  <li class="file"><a href="/wiki/python/基础库/">基础库：os/sys/dis</a></li>  <li class="file"><a href="/wiki/python/多线程、多进程、协程/">thread多线程模块</a></li>  <li class="file"><a href="/wiki/编程思维/debug思路备忘/">debug思路备忘</a></li>  <li class="file"><a href="/wiki/python/pycharm/">配置和使用 pycharm</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            pythonw
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/wiki/python/python常见错误/">python常见错误</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            博客工具
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/wiki/编程基础/博客工具/hexo/">hexo</a></li>  <li class="file"><a href="/wiki/编程基础/博客工具/markdown说明/">markdown说明</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            安装与配置
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/wiki/编程基础/安装与配置/install-manjaro/">安装manjaro</a></li>  <li class="file"><a href="/wiki/编程基础/安装与配置/set-vscode/">配置vscode</a></li>  <li class="file"><a href="/wiki/编程基础/安装与配置/set-vim/">配置vim</a></li>  <li class="file"><a href="/wiki/编程基础/安装与配置/system-record/">操作系统重装记录</a></li>  <li class="file"><a href="/wiki/编程基础/安装与配置/install-ubuntu/">安装ubuntu</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            软件使用备忘
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/wiki/编程基础/软件使用备忘/linux_write_DVD/">linux刻录光盘</a></li>  <li class="file"><a href="/wiki/编程基础/软件使用备忘/npm/">npm</a></li>  <li class="file"><a href="/wiki/编程基础/软件使用备忘/use-Adblock/">使用Adblock广告屏蔽插件</a></li>  <li class="file"><a href="/wiki/编程基础/软件使用备忘/use-docker/">使用docker</a></li>  <li class="file"><a href="/wiki/编程基础/软件使用备忘/use-htop/">使用 htop</a></li>  <li class="file"><a href="/wiki/编程基础/软件使用备忘/use-tmux/">use_tmux</a></li>  <li class="file"><a href="/wiki/编程基础/软件使用备忘/use-git/">使用git</a></li>  <li class="file"><a href="/wiki/编程基础/软件使用备忘/use-vscode/">use-vscode</a></li>  <li class="file"><a href="/wiki/编程基础/软件使用备忘/use-linux/">使用linux</a></li>  <li class="file"><a href="/wiki/编程基础/软件使用备忘/使用虚拟机/">使用虚拟机</a></li>  </ul> 
+                    </li> 
+                     </ul> 
+                    </li> 
+                     <li class="file"><a href="/wiki/python/python-xml/">python-xml解析</a></li>  <li class="file"><a href="/wiki/python/文本操作/">文本操作</a></li>  <li class="file"><a href="/wiki/python/迭代器和生成器/">python基本概念</a></li>  <li class="file"><a href="/wiki/其他/NAS/">NAS</a></li>  <li class="file"><a href="/wiki/编程思维/错误处理/">错误处理</a></li>  <li class="file active"><a href="/wiki/编程思维/什么才是编程的基础知识？/">编程的基础知识</a></li>  <li class="file"><a href="/wiki/人工智能/搜索引擎/elastic-debug/">elastic-debug</a></li>  <li class="file"><a href="/wiki/人工智能/深度学习/nvidia-docker/">nvidia_docker</a></li>  <li class="file"><a href="/wiki/编程基础/C++/base-cpp/">C++基础</a></li>  <li class="file"><a href="/wiki/编程基础/javascript/node/">node</a></li>  <li class="file"><a href="/wiki/编程基础/安装与配置/配置chrome/">配置chrome</a></li>  <li class="file"><a href="/wiki/编程基础/软件使用备忘/ubuntu的KDE开启触摸板/">ubuntu的KDE开启触摸板</a></li>  <li class="file"><a href="/wiki/编程基础/软件使用备忘/使用vim/">vim</a></li>  <li class="file"><a href="/wiki/编程基础/javascript/javascript/">javascript基础</a></li>  <li class="file"><a href="/wiki/人工智能/深度学习/pytorch/pytorch-tensor/">pytorch--tensor</a></li>  <li class="file"><a href="/wiki/人工智能/深度学习/pytorch/pytorch报错/">pytorch报错</a></li>  </ul> 
+    </div>
+    <script>
+        $(document).ready(function() {
+            var iconFolderOpenClass  = 'fa-folder-open';
+            var iconFolderCloseClass = 'fa-folder';
+            var iconAllExpandClass = 'fa-angle-double-down';
+            var iconAllPackClass = 'fa-angle-double-up';
+            // Handle directory-tree expansion:
+            // 左键单独展开目录
+            $(document).on('click', '#categories a[data-role="directory"]', function (event) {
+                event.preventDefault();
+
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconFolderOpenClass);
+                var subtree = $(this).siblings('ul');
+                icon.removeClass(iconFolderOpenClass).removeClass(iconFolderCloseClass);
+                if (expanded) {
+                    if (typeof subtree != 'undefined') {
+                        subtree.slideUp({ duration: 100 });
+                    }
+                    icon.addClass(iconFolderCloseClass);
+                } else {
+                    if (typeof subtree != 'undefined') {
+                        subtree.slideDown({ duration: 100 });
+                    }
+                    icon.addClass(iconFolderOpenClass);
+                }
+            });
+            // 右键展开下属所有目录
+            $('#categories a[data-role="directory"]').bind("contextmenu", function(event){
+                event.preventDefault();
+                
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconFolderOpenClass);
+                var listNode = $(this).siblings('ul');
+                var subtrees = $.merge(listNode.find('li ul'), listNode);
+                var icons = $.merge(listNode.find('.fa'), icon);
+                icons.removeClass(iconFolderOpenClass).removeClass(iconFolderCloseClass);
+                if(expanded) {
+                    subtrees.slideUp({ duration: 100 });
+                    icons.addClass(iconFolderCloseClass);
+                } else {
+                    subtrees.slideDown({ duration: 100 });
+                    icons.addClass(iconFolderOpenClass);
+                }
+            })
+            // 展开关闭所有目录按钮
+            $(document).on('click', '#allExpand', function (event) {
+                event.preventDefault();
+                
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconAllExpandClass);
+                icon.removeClass(iconAllExpandClass).removeClass(iconAllPackClass);
+                if(expanded) {
+                    $('#sidebar .fa.fa-folder').removeClass('fa-folder').addClass('fa-folder-open')
+                    $('#categories li ul').slideDown({ duration: 100 });
+                    icon.addClass(iconAllPackClass);
+                } else {
+                    $('#sidebar .fa.fa-folder-open').removeClass('fa-folder-open').addClass('fa-folder')
+                    $('#categories li ul').slideUp({ duration: 100 });
+                    icon.addClass(iconAllExpandClass);
+                }
+            });  
+        });
+    </script>
+
+    
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+            
+            <section id="main"><article id="post-编程思维/什么才是编程的基础知识？" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+                    <div class="article-meta">
+                        
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/编程风格/">编程风格</a>
+    </div>
+
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/wiki/编程思维/什么才是编程的基础知识？/">
+            <time datetime="2019-07-12T01:12:19.000Z" itemprop="datePublished">2019-07-12</time>
+        </a>
+    </div>
+
+
+                        
+                            <i class="fa fa-bar-chart"></i>
+                            <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span></span>    
+                        
+                        
+                            <div class="article-meta-button">
+                                <a href="https://github.com/ofooo/Wiki-site/raw/writing/source/_posts/编程思维/什么才是编程的基础知识？.md" rel="external nofollow noopener noreferrer" target="_blank"> Source </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a href="https://github.com/ofooo/Wiki-site/edit/writing/source/_posts/编程思维/什么才是编程的基础知识？.md" rel="external nofollow noopener noreferrer" target="_blank"> Edit </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a href="https://github.com/ofooo/Wiki-site/commits/writing/source/_posts/编程思维/什么才是编程的基础知识？.md" rel="external nofollow noopener noreferrer" target="_blank"> History </a>
+                            </div>
+                        
+                    </div>
+                
+                
+    
+        <h1 class="article-title" itemprop="name">
+            编程的基础知识
+        </h1>
+    
+
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+        
+            
+                <div id="toc" class="toc-article">
+                <strong class="toc-title">文章目录</strong>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#参考资料"><span class="toc-number">1.</span> <span class="toc-text">参考资料</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#什么才是java的基础知识？"><span class="toc-number">1.1.</span> <span class="toc-text">什么才是java的基础知识？</span></a></li></ol></li></ol>
+                </div>
+            
+        
+        
+            <h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><blockquote>
+<ul>
+<li><a href=""></a></li>
+<li><a href=""></a></li>
+</ul>
+</blockquote>
+<h3 id="什么才是java的基础知识？"><a href="#什么才是java的基础知识？" class="headerlink" title="什么才是java的基础知识？"></a>什么才是java的基础知识？</h3><p><a href="https://xwjie.github.io/note/basic.html" rel="external nofollow noopener noreferrer" target="_blank">https://xwjie.github.io/note/basic.html</a></p>
+<p>近日里，很多人邀请我回答各种j2ee开发的初级问题，我无一都强调java初学者要先扎实自己的基础知识，那什么才是java的基础知识？又怎么样才算掌握了java的基础知识呢？这个问题还真值得仔细思考。</p>
+<p>我做j2ee开发已经超过十载，作为过来人，心路历程估计和大家差不多。编码的前几年，很长一段时间觉得java简单，开发实现各种功能都很轻松，代码写起来根本不费劲（主要是因为写的代码都是一些功能业务逻辑）。但同时自己心里明白，自己其实没有什么水平，自己这3,4年以来学懂的东西就那么多，其他人几个月就可以学会，自己的竞争力在哪里？这种矛盾的心理，困扰了我非常长的时间，非常的苦恼！总有一种报国无门无处发力的感觉。</p>
+<p>这个时期，热衷了使用各种框架，各种api，常以今天学习了某个api，组件，框架的使用就觉得自己学到了东西，设计模式也看过不止一次，但都没有啥感觉。<strong>一方面很努力学习，一方面又觉得不踏实</strong>，因为例如这个api我知道而你不知道，但我告诉你之后你就知道了，那我比你的优势在哪里呢？苦恼*2</p>
+<p>过了很长一段这种惶惶不可终日的日子，决定自己要改变，改变的方向就是阅读自己用到的java相关的源代码，看看jdk是如何实现的。就从基本的数据结构看，然后看多线程相关，在学习前台等等。写的代码还是那些代码，代码还是那么简单，但我力求做到<strong>知道代码背后的真相</strong>，这就是我最开始努力的方向。于是不再把时间都花在追求各种新框架、新API的使用上，每天都花时间在看实现原理上。就这样过了大半年左右，终于不再迷茫，不会在觉得自己只懂api的使用，觉得自己没有那么肤浅了，说脱胎换骨也不为过。那段时间，是我成长最快的时期，也是最充实的一段时光。</p>
+<p><strong>Talk is cheap，show me the code</strong>。举例说明大家会比较有感觉。</p>
+<p>如学习了hashmap的源代码知道了工作原理之后，使用hashmap</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Map&lt;Integer, String&gt; map = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br></pre></td></tr></table></figure>
+<p>代码还是那个代码，但我已经知道了hashmap背后的东西</p>
+<ul>
+<li>数据结构是链表的数组（注：后面的版本为了提升性能，已经是改成链表或者树（节点较多）了）</li>
+<li>思想上是空间换时间的算法</li>
+<li>构造函数上有容量和负载因子2个参数以及作用</li>
+<li>决定性能的是key的hashcode是否够快、结果够分散（不分散就会变成链表的性能了），和扩容的开销（什么时候扩容，和负载因子有关）</li>
+</ul>
+<p>然后写代码的时候，如果知道了最终的容量（尤其是数据量大的时候），我都会指定初始化容量，类似如下</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">List&lt;SomeBean&gt; list = doSomeThing(); </span><br><span class="line">Map&lt;Integer, String&gt; map = <span class="keyword">new</span> HashMap&lt;&gt;((<span class="keyword">int</span>)(list.size()/<span class="number">0.75</span>));<span class="comment">//0.75为默认负载因子</span></span><br></pre></td></tr></table></figure>
+<p>如果工作中某个map使用特别多，性能还需要继续优化，我就会考虑从以下方面优化</p>
+<ul>
+<li>如果key是自己定义的对象，那么hashcode方法是否够快（最少应该缓存保证只计算一次，而且放入之后不能改变，决定hashcode的字段不能改变）？ hash的结果是否够分散？</li>
+<li>可以考虑调小负载因子，花更多的空间来换时间</li>
+</ul>
+<p>学习源代码的时候，特别有意思，你会强烈感觉到一个词：<strong>举一反三！触类旁通！</strong> 学习api使用的时候，如果你只知道使用不知道原理，很难举一反三，感觉的是死记硬背。但学习了原理之后，知识成体系后，很容易举一反三，学的越多就容易，还是以hashmap为例，我举一个hashmap反三个点。</p>
+<ol>
+<li>你会知道但凡有数组的数据结构，构造函数都有一个容量的初始化参数（或者说构造函数有初始化容量的可能都是数组的数据结构）。构造函数如下</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">ArrayList</span><span class="params">(<span class="keyword">int</span> initialCapacity)</span> <span class="comment">//LinkedList不是数组就没有</span></span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">HashMap</span><span class="params">(<span class="keyword">int</span> initialCapacity)</span> </span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">StringBuffer</span><span class="params">(<span class="keyword">int</span> capacity)</span></span></span><br></pre></td></tr></table></figure>
+<p>你就会知道，数组扩容很耗性能（数据量大容易oom），尽量指定容量。</p>
+<ol>
+<li>算法是空间换时间，还有没有其他算法是这种思想的？你最少能找到一个桶排序。</li>
+<li>数据库的分库分表，思路和hashmap大同小异</li>
+<li>各种分布式的hash一致性算法，第一步都是创建一个最大的数组（Integer.MAX_VALUE）,就是避免了hashmap最耗性能的扩容运算。</li>
+</ol>
+<p>学习了hashmap之后，你很自然就会去了解其他的map，如TreeMap，LinkedHashmap（超级有用），HashTable，ConcurrentSkipListMap（算法思路很有意思），ConcurrentHashMap等，你会知道set就是用map做的，都不需要学。到了这步，map相关就可以暂告一段落。</p>
+<p>在学习中，我发现思想上的东西是最重要的，你理解了思想，一下子就豁然开朗了，在也不需要死记硬背了。如学习CAS的时候，大家都知道这是一种指令级的免锁实现。看代码的时候，我一度疑惑为什么会有个while死循环（原谅我天资驽钝）</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">int</span> <span class="title">getAndUpdate</span><span class="params">(IntUnaryOperator updateFunction)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">int</span> prev, next;</span><br><span class="line">  <span class="keyword">do</span> &#123;</span><br><span class="line">      prev = get();</span><br><span class="line">      next = updateFunction.applyAsInt(prev);</span><br><span class="line">  &#125; <span class="keyword">while</span> (!compareAndSet(prev, next));</span><br><span class="line">  <span class="keyword">return</span> prev;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>后来从思想上理解，才知道乐观锁的概念，就是很乐观，假设你不会出错，但你要是出错了我就重试有办法给你修复，对应的就是悲观锁，就是很悲观，觉得不锁就会出错，如synchronize关键字和reentrantlock。这体现了2种不同截然不同的管理思想。这种思想经常体现在多个系统集成的设计，有些时候如果你用悲观的思想设计，实现起来很麻烦或者无法实现，但如果你用乐观的思想，减少出错条件，然后出错了能解决，代价就会小很多。</p>
+<p>说了这么多，我想说的就是，j2ee的基础知识就是你做项目中代码背后的东西。提高自己水平的方法很简单，就是把大部分时间去了解实现原理，了解思想，让自己的知识串起来，形成体系。j2ee的知识特别多，学得人想哭，千万不要一开始把时间花在各种框架、组件的使用上，在我看来那是本末倒置。简单来说：先修内功再练招式。</p>
+<p><strong>我觉得重要的、工作会用得到的知识就是一个请求从前台到后台处理的过程需要用到的东西</strong>，最少包括以下点：js，html，css，ajax，ajax跨域，跨站脚本，web缓存，web优化，nginx，apache作用，鉴权方式，cookie，session，servlet，filter，基本数据结构，线程池，线程并发，缓存，io等等，知识点非常多。如你前台用jq，你应该了解他的选择器和ajax是如何实现的（其实去了解就会发现不复杂）？而不是只是会用。后台你用springmvc，你要了解他是如何工作，每一个配置是做什么，为什么？</p>
+<p>j2ee知识点特别多，每一个都能写很多，我也在不断学习中。具体要写我还真不知道如何下手，我就列举一下我觉得基础的东西（面试的时候问的问题），有简单有难，你觉得偏可能是你没有做过这块的开发或者做得比较浅：</p>
+<ol>
+<li>map有哪些，特点和使用场景？（只知道hashmap，hashtable是不够的。。。）</li>
+<li>哪些方面会影响hashmap的性能？</li>
+<li>线程安全的map有哪些，concurrenthashmap是如何实现线程安全的（jdk1.8大不同）？</li>
+<li>锁有哪几种？</li>
+<li>公平锁，读写锁等如何实现？</li>
+<li>synchronize能加在哪些地方？什么区别？</li>
+<li>死锁的形成条件？现在很少死锁了，很少问</li>
+<li>原子数据对象的原理？</li>
+<li>reentrantlock相关知识，condition如何使用？（很重要的知识点，强烈推荐阅读ArrayBlockingQueue源码，教科书般）</li>
+<li>volatile的相关知识（内存屏障，重排）</li>
+<li>ThreadLocal原理和使用？（超级有用的知识点，工作中使用很多，让代码漂亮很多，后面专门开贴写）</li>
+<li>多个线程同步等待？（CountDownLatch，CyclicBarrier，Semaphore信号量很多语言都有，实际上使用不是很多，线程池就可以实现大部分等待功能）</li>
+<li>线程池？（种类，重要的方法，这个一般是使用层面，简单）</li>
+<li>动态代理？反射？内省？（考察知识面）</li>
+<li>session相关知识？和cookie关系？分布式session实现原理？</li>
+<li>cookie相关知识？有哪些属性？（有些属性很有用，只是我们很少留意而已！）</li>
+<li>nginx，apache 实际项目能做哪些？（鉴权，转发，缓存，反向代理等）和tomcat什么关系？最少了解</li>
+<li>ajax跨域原因？解决方式？（重点知识，做SE避免不了的问题。这里很多知识点。）</li>
+<li>jsonp原理？后台需要改动吗？（jsonp虽然现在落伍了，但还是会问问）</li>
+<li>web优化知识点？（常规知识点）</li>
+<li>前台缓存相关？（200cache,304，ajax缓存，如何实现缓存）</li>
+</ol>
+<p>一列举就根本停不下来了。。。其他的spring框架的东西也很多，还有jvm的东西，系统集成相关，数据库相关，io做得很少也不懂问，后面再慢慢把我的学习过程和偶得写下来。很多东西我也是了解个大概，就是看看你有没有学习过，不断学习是程序员最重要的特征。</p>
+<p>我不算高手，只能算一个合格的老程序员。这里只是说了一下自己之前学习的方向和列举了几个学习中的例子，大家见仁见智。帖子也是针对迷茫的初学者有感而发，希望能帮助到大家。</p>
+<p><strong>最后我总结一下：初学者先广在精，关注代码背后的实现，关注内功修炼，了解实现原理和思想，形成自己完整的技术体系，知识成片之后就容易触类旁通，进步的速度就会越来越快。最后以我在每一个项目组和开发人员聊天都会说的几个例子结尾：“少林功夫里面有功和拳之分，马步功，石锁功是功，蛇拳猴拳是拳，你不可能练会了蛇拳猴拳就能打人，你必须先重点练功。乔峰在聚贤庄用太祖长拳把大家打得落花流水，我们用太祖长拳就只是个广播体操。同样，我们要分清编程里面那些是功那些是拳，代码背后的实现和思想是功，各个框架、api使用是拳。初学者应该大部分时间花在练功上，功到了拳自然就有了，切勿本末倒置。”谢谢大家阅读！</strong></p>
+
+            </div>
+        
+        <footer class="article-footer">
+        </footer>
+    </div>
+</article>
+
+
+    
+<nav id="article-nav">
+    
+        <a href="/wiki/编程思维/错误处理/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">上一篇</strong>
+            <div class="article-nav-title">
+                
+                    错误处理
+                
+            </div>
+        </a>
+    
+    
+        <a href="/wiki/人工智能/深度学习/pytorch/pytorch报错/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">下一篇</strong>
+            <div class="article-nav-title">pytorch报错</div>
+        </a>
+    
+</nav>
+
+
+
+
+
+    
+    
+
+
+
+
+<!-- baidu url auto push script -->
+<script type="text/javascript">
+    !function(){var e=/([http|https]:\/\/[a-zA-Z0-9\_\.]+\.baidu\.com)/gi,r=window.location.href,o=document.referrer;if(!e.test(r)){var n="//api.share.baidu.com/s.gif";o?(n+="?r="+encodeURIComponent(document.referrer),r&&(n+="&l="+r)):r&&(n+="?l="+r);var t=new Image;t.src=n}}(window);
+</script>     
+</section>
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            aifish &copy; 2019 
+            <a rel="external nofollow noopener noreferrer" href="http://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/80x15.png"></a>
+            <br> Powered by <a href="http://hexo.io/" target="_blank" rel="external nofollow noopener noreferrer">Hexo</a>. Theme - <a href="https://github.com/zthxxx/hexo-theme-Wikitten" rel="external nofollow noopener noreferrer" target="_blank">wikitten</a>
+            
+                <br>
+                <span id="busuanzi_container_site_pv"><i class="fa fa-eye"></i> <span id="busuanzi_value_site_pv"></span></span>
+                &nbsp;|&nbsp;
+                <span id="busuanzi_container_site_pv"><i class="fa fa-user"></i> <span id="busuanzi_value_site_uv"></span></span>
+            
+        </div>
+    </div>
+</footer>
+
+        
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+    
+        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
+        <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true,
+            TeX: {
+                equationNumbers: {
+                  autoNumber: 'AMS'
+                }
+            }
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script async src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+</body>
