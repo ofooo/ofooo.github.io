@@ -76,6 +76,15 @@ sudo systemctl restart docker
 
 
 
+### 支持exfat文件格式
+
+```bash
+# 因为版权问题, 不能默认支持, 需要安装如下软件: 
+sudo apt-get install exfat-utils
+```
+
+
+
 ### 制作启动盘
 
 ```bash
@@ -564,6 +573,8 @@ sudo apt install plasma-desktop
 系统设置--->工作空间--->快捷键
 # 鼠标双击打开文件
 系统设置--->硬件--->输入设备--->鼠标--->双击打开
+# 锁屏壁纸
+系统设置--->桌面行为--->锁屏--->外观--->添加图片
 ```
 
 #### bug: 没有无线网络选择图标
@@ -666,7 +677,7 @@ sudo dpkg-reconfigure lightdm  # sudo dpkg-reconfigure gdm3
 | 打开浏览器 | Win+W            | browser360  或  /usr/bin/google-chrome-stable       |
 | 打开终端   | Win+T            | lxterminal  或  deepin-terminal  或  gnome-terminal |
 | vscode     | Win+V            | code                                                |
-| pycharm    | Ctrl+P           | 打开pycharm--Tools--Create CMD line                 |
+| pycharm    | Win+P            | 打开pycharm--Tools--Create CMD line                 |
 | typora     | Win+M            | typora                                              |
 | 截图       | Ctrl+Shift+Print | deepin-screenshot                                   |
 |            |                  |                                                     |

@@ -1,12 +1,38 @@
 ---
 title: nvidia_docker
 toc: true
-categories:
-  - 人工智能
-  - 深度学习
 date: 2019-06-14 09:54:32
-tags:
+tags: 
+- GPU
+- 深度学习
+- 显卡
+categories:
 ---
+
+
+
+
+
+## GPU相关命令
+
+查看当前GPU使用情况
+
+nvidia-smi
+
+设置使用哪个GPU
+
+CUDA_VISIBLE_DEVICES="1"  
+
+查看CUDA版本
+
+nvcc --version
+
+```bash
+# 查看显卡版本
+lspci | grep -i nvidia
+```
+
+
 
 
 
