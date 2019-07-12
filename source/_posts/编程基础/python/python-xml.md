@@ -1,11 +1,25 @@
 ---
 title: python-xml解析
-tags: [python, xml]
+toc: true
+tags:
+  - python
+  - xml
+date: 2019-07-12 08:58:58
+categories:
 ---
 
 
 
 
+
+## 参考资料
+> - []()
+> - []()
+
+
+
+
+asd
 
 ### xml--可扩展标记语言
 

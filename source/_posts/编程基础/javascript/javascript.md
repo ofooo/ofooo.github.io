@@ -1,7 +1,20 @@
 ---
 title: javascript基础
-tags: [javascript语法]
+toc: true
+tags:
+  - javascript语法
+date: 2019-07-12 08:55:19
+categories:
 ---
+
+
+
+
+
+## 参考资料
+> - []()
+> - []()
+
 
 
 
