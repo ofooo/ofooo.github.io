@@ -330,6 +330,7 @@ sudo apt-get install fcitx-bin fcitx-table
 ### 安装zsh 和 autojump
 
 ```bash
+# 如果是Ubuntu需要先安装（manjaro自带zsh）
 sudo apt install zsh
 
 sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
@@ -343,6 +344,8 @@ git clone git://github.com/wting/autojump.git
 cd autojump
 ./install.py or ./uninstall.py
 手工把提示腳本添加到 ~/.zshrc
+
+# 登出操作系统，再登录，打开shell即会进入zsh
 ```
 
 ### 安装WPS
