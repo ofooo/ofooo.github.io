@@ -1,7 +1,22 @@
 ---
 title: pytorch报错
-tags: [深度学习, GPU, pytorch]
+toc: true
+tags:
+  - 深度学习
+  - GPU
+  - pytorch
+date: 2019-07-12 09:09:53
+categories:
 ---
+
+
+
+
+
+## 参考资料
+> - []()
+> - []()
+
 
 
 

@@ -1,7 +1,21 @@
 ---
 title: pytorch--tensor
-tags: [深度学习, pytorch]
+toc: true
+tags:
+  - 深度学习
+  - pytorch
+date: 2019-07-12 09:09:44
+categories:
 ---
+
+
+
+
+
+## 参考资料
+> - []()
+> - []()
+
 
 #### Tensor
 
