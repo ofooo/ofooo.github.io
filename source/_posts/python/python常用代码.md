@@ -1,13 +1,47 @@
 ---
-title: 交换变量（快捷写法和注意事项）
+title: python常用代码
 toc: true
-tags:
-  - 基础语法
 categories:
   - 编程基础
   - python
-date: 2019-03-19 13:55:32
+date: 2019-04-10 22:46:50
+tags:
 ---
+
+
+
+
+
+## 计数器对象 class collections.Counter
+
+```python
+c = Counter()   # 创建
+c.most_common(3)  # 返回频次前3的二维数组，降序排列。不加参数则返回全部。 [(word, count)]
+```
+
+
+
+
+
+
+
+## 向上取整
+
+```python
+(分子 + 分母 - 1) // 分母
+```
+
+
+
+## tqdm进度条
+
+```python
+from tqdm import tqdm
+gen_tqdm = tqdm(gener, total=len(gener))
+for i in gen_tqdm:
+    # 实时修改进度条上的描述文本
+    gen_tqdm.set_description(description, refresh=False)
+```
 
 
 
@@ -50,3 +84,15 @@ node, node.next = node.next, node.val
 - 交换的不是变量，而是变量的地址。地址变化是有顺序的，并不是同时完成的。
 - 如果没有涉及到对象及其属性，地址变化不会影响取值过程，所以不会报错。所以看起来像是一句代码同时完成了一样。
 - python解释得出的执行码中有4个指令：ROT_TWO /ROT_THREE/ROT_FOUR  所以交换赋值语句最多支持4个变量
+
+
+
+
+
+
+
+## 参考资料
+
+> - []()
+> - []()
+

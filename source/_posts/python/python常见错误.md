@@ -1,9 +1,9 @@
 ---
-title: python_error_book
+title: python常见错误
 toc: true
 categories:
   - 编程基础
-  - python
+  - pythonw
 date: 2019-04-15 08:46:54
 tags:
 ---
