@@ -18,7 +18,7 @@ tags:
 
 解决：安装5.1版本kernel（不要安装最新的rc版本，稳定一些）
 
-查看当前内核版本
+### 查看当前内核版本
 
 ```bash
 # 查看当前内核版本
@@ -32,7 +32,20 @@ apt-cache showpkg linux-image
 
 # 示例：选择5.1.0版本
 sudo apt install linux-headers-5.1.0-050100-generic linux-image-unsigned-5.1.0-050100-generic --fix-missing
+
 ```
+
+### 查看硬件
+
+```bash
+# 查看内存  槽位
+sudo lshw -c Memory
+
+# 查看主板
+sudo dmidecode -t 2
+```
+
+
 
 
 
