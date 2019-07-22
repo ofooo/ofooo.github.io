@@ -22,34 +22,77 @@ date: 2019-03-17 09:05:30
 
 
 
-### issue模板配置
+### 设置issue模板
 
-在代码文件夹中新建2个issue模板文件
+在项目repository的代码文件夹新建一个文件夹:   ```.gitlab```
+
+.gitlab/.gitkeep  (空文本)
 
 ```bash
-.gitlab/issue_templates/bug.md  内容如下：
+
+```
+
+.gitlab/issue_templates  文件夹
+
+.gitlab/issue_templates/.gitkeep  (空文本)
+
+```bash
+
+```
+
+.gitlab/issue_templates/bug.md
+
+```md
 #### 系统信息（代码版本等）
+
+
 
 #### 重现步骤
 
+
+
 #### 期望结果
+
+
 
 #### 报错信息
 
 
-.gitlab/issue_templates/feature.md  内容如下：
+
+
+```
+
+.gitlab/issue_templates/feature.md
+
+```md
 #### 要解决什么问题
+
+
 
 #### 要实现什么样的功能
 
+
+
 #### 用户的应用场景是什么样的
+
+
 
 #### 注意事项（用户可能有哪些骚操作，等等）
 
+
+
 #### 对现有功能有什么影响
 
+
+
 #### 依赖什么模块
+
+
+
+
+
 ```
+
 
 ### labels配置
 
