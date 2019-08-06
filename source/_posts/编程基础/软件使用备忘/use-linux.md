@@ -53,6 +53,18 @@ sudo shutdown -c       # 取消自动关机
 reboot                 # 重启电脑
 ```
 
+### shell脚本自动输入sudo密码
+
+```bash
+echo '密码内容' | sudo 具体命令内容
+```
+
+
+
+
+
+
+
 ### 常用shell函数
 
 > 函数定义前可选加"function "

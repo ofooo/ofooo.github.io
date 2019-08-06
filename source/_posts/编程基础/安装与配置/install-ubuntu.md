@@ -10,6 +10,16 @@ tags:
 
 
 
+```
+sudo systemctl start NetworkManager.service
+sudo systemctl enable NetworkManager.service
+
+```
+
+
+
+
+
 
 
 ## 零 安装kernel（修复界面卡顿问题）
@@ -52,6 +62,26 @@ sudo dmidecode -t 2
 ## 一 安装系统
 
 
+
+### 被锁住时的操作
+
+```bash
+E: 无法获得锁 /var/lib/dpkg/lock-frontend - open (11: 资源暂时不可用)
+E: Unable to acquire the dpkg frontend lock (/var/lib/dpkg/lock-frontend), is another process using it?
+# 杀掉apt-get进程
+ps -e|grep apt-get
+然后kill掉进程ID
+# 强制解锁
+sudo rm /var/cache/apt/archives/lock
+sudo rm /var/lib/dpkg/lock
+
+```
+
+### 使Ubuntu支持exfat格式的优盘
+
+```bash
+sudo apt-get install exfat-utils
+```
 
 ### 安装thefuck
 
@@ -601,6 +631,26 @@ nm-applet
 ```
 
 程序图标：![深度截图_选择区域_20190530170543](install-ubuntu/深度截图_选择区域_20190530170543.png)
+
+
+
+nm-applet是network-manager的一个桌面组件
+
+先要保证网络管理使用的是network-manager
+
+```bash
+# /etc/NetworkManager/NetworkManager.conf
+[ifupdown]
+managed=true
+
+# 然后开启network-manager
+# sudo service network-manager stop
+sudo service network-manager start
+```
+
+确认任务栏组件添加了: "系统托盘"(访问在系统托盘中隐藏的桌面小程序)
+
+
 
 #### bug: 无法打开wps表格文件
 

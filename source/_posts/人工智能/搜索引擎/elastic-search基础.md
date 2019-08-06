@@ -110,7 +110,8 @@ body = {
     "sort": [     // 排序
     	{"age": {"order": "asc"}}  //asc升序  dsc降序
     ]
-    "_source" : ["key1", "key2"]  // 返回信息包含的键
+    "_source" : ["key1", "key2"],  // 返回信息包含的键
+    "highlight": {'fields': {'text': {"number_of_fragments": 0}}},   # number_of_fragments默认是5, 会返回5段带高亮的文本, 如果设置成0就会返回全文
 }
 
 query = {"match_all": {}} // 搜索全部
@@ -252,7 +253,7 @@ query = {
         "must_not" : [  # 非
             {"term": {"price": 25} }  // query   
         ],
-        "filter" : filter,
+        "filter" : [filter],
 		"minimum_should_match" : 1,
 		"boost" : 1.0,
     }
@@ -374,6 +375,21 @@ offset
 
 
 
+### 聚合
+
+查询某个字段的所有值
+
+```json
+GET /_search
+{
+    "aggs" : {
+        "genres" : {
+            "terms" : { "field" : "genre" } 
+        }
+    }
+}
+```
+
 
 
 
@@ -423,6 +439,18 @@ curl -X POST "localhost:9200/twitter/_delete_by_query?scroll_size=1000" -H 'Cont
     }
   }
 }
+```
+
+### 中文分词
+
+```bash
+测试ik_max_word
+{“text”:“中华人民共和国人民大会堂”,“analyzer”:“ik_max_word” }
+测试ik_smart
+{“text”:“中华人民共和国人民大会堂”,“analyzer”:“ik_smart” }
+
+两种分词器使用的最佳实践是：索引时用ik_max_word，在搜索时用ik_smart。
+即：索引时最大化的将文章内容分词（会把所有词汇切分到最短词），搜索时更精确的搜索到想要的结果。
 ```
 
 

@@ -11,6 +11,16 @@ tags:
 
 
 
+## 自带的静态服务器
+
+```python
+python -m http.server 8081
+```
+
+
+
+
+
 ## 计数器对象 class collections.Counter
 
 ```python

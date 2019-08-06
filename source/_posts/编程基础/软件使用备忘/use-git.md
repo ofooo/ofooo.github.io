@@ -299,6 +299,12 @@ git rm --cached 子模块名称
 - .git/info/**exclude** 该文件和.ignore格式相同，但是不会被提交，不会影响他人的忽略名单。
 
 
+### 恢复到删除并add删除操作之前
+
+```bash
+git checkout -- 文件的名字
+```
+
 
 ### 忽略已加入控制的文件改动
 
