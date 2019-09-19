@@ -45,6 +45,9 @@ var=${a:-b}
 脚本所在目录
 script_dir=$(cd "`dirname $0`/."; pwd)
 
+递归的创建文件夹(-p)
+mkdir -p xxxx/xxxx
+
 关机命令
 sudo shutdown
 sudo shutdown -h 10    # 10分钟后关机

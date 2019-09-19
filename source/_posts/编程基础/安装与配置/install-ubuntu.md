@@ -752,6 +752,24 @@ sudo dpkg-reconfigure lightdm  # sudo dpkg-reconfigure gdm3
 
 
 
+## 三. 特定问题解答
+
+### 没有声音
+
+```bash
+ 
+sudo apt-get remove --purge alsa-base pulseaudio
+sudo apt-get install alsa-base pulseaudio pavucontrol
+sudo alsa force-reload
+
+然后在命令行打开"pavucontrol"
+在界面中点击配置: 切换到“配置”选项卡，根据实际情况禁用不需要的声卡。禁止第一项，第二项选择analogy stereo output（模拟立体输出。推荐选择）或者analogy stereo duplex（模拟立体声双工）
+
+reboot
+```
+
+![img](install-ubuntu/20190106233136414.png)
+
 
 
 ## 参考资料

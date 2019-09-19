@@ -420,6 +420,9 @@ git branch -f master HEAD~3
 # ORIG_HEAD 是git在做危险操作时候给HEAD做的备份
 git reset --hard ORIG_HEAD
 # ORIG_HEAD 等价于 HEAD@{1}  
+
+# 直接恢复到对应版本, 本地修改/删除/新增的文件都会消失
+git reset --hard 版本的哈希id    
 ```
 
 

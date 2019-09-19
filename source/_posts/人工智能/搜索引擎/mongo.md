@@ -59,8 +59,11 @@ rs.status()
 ### 登录/验证/切换数据库
 
 ```bash
-# 进入mongo客户端
+# 进入mongo客户端(默认链接27017)
 mongo
+
+# 指定端口
+mongo --port 1234
 
 ```
 
@@ -83,6 +86,33 @@ conn = pymongo.MongoClient()
 注释：pymongo和motor连接时使用的uri字符串可以是相同的，因为motor实际是调用pymongo实现的。
 
 [集群--官方文档 ](https://docs.mongodb.com/manual/tutorial/deploy-replica-set/)
+
+
+
+### pymongo调用基础功能
+
+```python
+import pymongo
+# 链接到 数据库
+db = pymongo.MongoClient('mongodb://{$ip}:{$port}')[$db_name]
+# 链接到 数据集合
+db_col = db[$col_name]
+
+# 数据集合的总数量
+total = db_col.count_documents()
+
+# find    sort()排序   limit()结果数量限制
+resp = db_col.find({}, keys).sort([(key1, 1), (key2, -1)]).limit(10)
+
+
+
+
+
+```
+
+
+
+
 
 
 
