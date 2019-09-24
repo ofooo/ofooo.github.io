@@ -170,8 +170,8 @@ find ./ -type f -size +100M | xargs rm -rf
 find / -name "*.mp3" |xargs rm -rf
 # 也可以先去掉后面的删除命令看一遍结果，再删除（安全一些）
 
-# 查看当前文件夹递归1层大小/末尾可加文件夹
-du -h --max-depth=1
+# 查看当前文件夹递归1层大小/末尾可加文件夹    |    sort 默认升序  -r降序    -h则按真实大小排序
+du -h --max-depth=1 | sort -hr
 
 
 ```
