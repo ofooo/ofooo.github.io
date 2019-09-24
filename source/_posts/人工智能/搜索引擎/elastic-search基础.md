@@ -32,6 +32,31 @@ body =
 { "index" : { "max_result_window" : 200000}}'
 ```
 
+
+
+## 异步调用, 报错 HTTP 406: Not Acceptable
+
+需要在post的时候指定headers
+
+```python
+import json
+from tornado.httpclient import AsyncHTTPClient
+client = AsyncHTTPClient()
+async def search(body, explain=False):
+    if explain:
+        body['explain'] = True
+    headers = {
+    	'Content-Type': 'application/json; charset=UTF-8',
+    	'Accept': 'application/json',
+    }
+    url=http://192.168.31.192:33303/oonp_report_case.cases/_search
+    resp = await client.fetch(url, method='POST', headers=headers, body=json.dumps(body))
+    resp = json.loads(resp.body.decode())
+    return resp
+```
+
+
+
 ## Mappings
 
 ### 创建索引时，设定mappings
