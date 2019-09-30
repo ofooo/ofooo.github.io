@@ -6,7 +6,7 @@ tags:
   - gitlab
 categories:
   - 编程基础
-  - 软件使用备忘
+  - git
 date: 2019-03-17 09:05:30
 ---
 
