@@ -3,7 +3,6 @@ title: pytorch常用代码
 toc: true
 categories:
   - 人工智能
-  - 深度学习
   - pytorch
 date: 2019-06-05 09:35:55
 tags:

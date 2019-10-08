@@ -7,7 +7,6 @@ tags:
   - pytorch
 categories:
   - 人工智能
-  - 深度学习
   - pytorch
 date: 2019-07-12 09:09:53
 ---
