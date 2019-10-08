@@ -62,6 +62,16 @@ reboot                 # 重启电脑
 echo '密码内容' | sudo 具体命令内容
 ```
 
+### 查看进程的命令
+
+```bash
+# 查看内存占用最多的5个程序
+ps auxw|head -1;ps auxw|sort -rn -k4|head -5
+
+# 查看CPU占用最多的5个程序
+ps auxw|head -1;ps auxw|sort -rn -k3|head -5
+```
+
 
 
 
@@ -144,6 +154,7 @@ if [ $a -lt $b ]  #"a 小于 b"
    ```bash
 ssh-copy-id -i ~/.ssh/私钥名称 远程帐号@远程服务器
    
+   ```
 #  -p ssh的端口
    ```
    
@@ -159,7 +170,7 @@ ssh-copy-id -i ~/.ssh/私钥名称 远程帐号@远程服务器
 
 ### 进程相关
 
-```bash
+​```bash
 # 查看占用内存CPU
 top -p **进程ID
 
@@ -173,7 +184,7 @@ netstat -ap\|grep **端口号**
 
 
 
-```
+   ```
 
 ### 文件相关
 
@@ -303,6 +314,18 @@ sudo usermod -aG sudo 用户名
 **sed-正则表达式**  awk,sed都可以做字符串各种操作。
 
 ^行的开头    $行的结尾      . 任意单个字符    * 匹配0-多次     + 匹配1次以上     ? 匹配0/1次
+
+
+
+
+
+## debug
+
+### bash无法输入某个字符
+
+可能是/etc/inputrc 里有非法的句子, 非法句子的第一个字符会无法在shell里面正常输入
+
+
 
 ## 参考资料
 > - []()
