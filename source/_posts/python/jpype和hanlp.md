@@ -1,5 +1,5 @@
 ---
-title: jpype安装
+title: jpype和hanlp 安装
 toc: true
 date: 2019-10-08 20:17:31
 tags:
@@ -19,8 +19,9 @@ categories:
 ```bash
 java -version  # bash会提示如何安装openjdk
 
-sudo apt install openjdk-11-jre-headless
+sudo apt-get install openjdk-11-jre-headless  # ubuntu18
 
+sudo apt-get install -y openjdk-9-jre-headless  # ubuntu16
 ```
 
 3. 测试是否成功
