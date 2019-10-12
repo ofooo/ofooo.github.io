@@ -22,7 +22,7 @@ categories:
 
 [NER- 命名实体识别（Chinese NER 、Cross-domain NER）---PeterLee](https://zhuanlan.zhihu.com/p/67458346)
 
-
+[CRF和LSTM 模型在序列标注上的优劣？---zenRRan](https://cloud.tencent.com/developer/article/1496306)
 
 ## 参考资料
 > - []()

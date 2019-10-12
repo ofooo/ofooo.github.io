@@ -54,6 +54,18 @@ tags:
    }
    ```
 
+   ```python
+   # 取消ES的只读状态
+   import requests
+   import json
+   
+   body = {"index.blocks.read_only_allow_delete": False}
+   url = 'http://192.168.31.192:50082/_all/_settings'
+   
+   resp = requests.put(url, json=body)
+   print(json.loads(resp.text))
+   ```
+   
    
 
 

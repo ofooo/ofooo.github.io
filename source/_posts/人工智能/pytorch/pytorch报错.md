@@ -21,6 +21,18 @@ date: 2019-07-12 09:09:53
 
 
 
+**异常**: ModuleNotFoundError: No module named 'past'
+
+解决方案: ```pip3 install future```
+
+参考: https://blog.csdn.net/qq_31282773/article/details/78672584
+
+https://www.cnblogs.com/huolifeng/p/6412183.html
+
+
+
+
+
 
 eq() received an invalid combination of arguments - got (type), but expected one of:(float other)
 
