@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    
+    <title>PyTorch | AIfish</title>
+    
+    
+        <meta name="keywords" content="PyTorch">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="原文: Debugging CUDA device-side assert in PyTorchPyTorch的立即执行模型的美丽之处在于您实际上可以调试程序。 但是，有时CUDA执行的异步特性使其变得很难。 这是调试程序的一个小技巧。 当您使用CUDA操作运行PyTorch程序时，该程序通常不等到计算完成，而是继续向GPU抛出指令，直到它实际需要结果为止（例如，使用.item（）或.cpu（）进">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PyTorch">
+<meta property="og:url" content="http://yoursite.com/wiki/人工智能/pytorch/debug-CUDA-device-side-assert/index.html">
+<meta property="og:site_name" content="AIfish">
+<meta property="og:description" content="原文: Debugging CUDA device-side assert in PyTorchPyTorch的立即执行模型的美丽之处在于您实际上可以调试程序。 但是，有时CUDA执行的异步特性使其变得很难。 这是调试程序的一个小技巧。 当您使用CUDA操作运行PyTorch程序时，该程序通常不等到计算完成，而是继续向GPU抛出指令，直到它实际需要结果为止（例如，使用.item（）或.cpu（）进">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-10-08T11:43:15.171Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="PyTorch">
+<meta name="twitter:description" content="原文: Debugging CUDA device-side assert in PyTorchPyTorch的立即执行模型的美丽之处在于您实际上可以调试程序。 但是，有时CUDA执行的异步特性使其变得很难。 这是调试程序的一个小技巧。 当您使用CUDA操作运行PyTorch程序时，该程序通常不等到计算完成，而是继续向GPU抛出指令，直到它实际需要结果为止（例如，使用.item（）或.cpu（）进">
+    
+
+    
+
+    
+        <link rel="icon" href="/fish256.png">
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/open-sans/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="/libs/jquery/plugins/cookie/1.4.1/jquery.cookie.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+    
+    
+
+
+    
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+</head>
+</html>
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">AIfish</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/">首页</a>
+                
+                    <a class="main-nav-link" href="/archives">归档</a>
+                
+                    <a class="main-nav-link" href="/categories">分类</a>
+                
+                    <a class="main-nav-link" href="/tags">标签</a>
+                
+                    <a class="main-nav-link" href="/about">关于</a>
+                
+            </nav>
+            
+            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索">
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="想要查找什么...">
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/">首页</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">归档</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">分类</a></td>
+                
+                    <td><a class="main-nav-link" href="/tags">标签</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">关于</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索">
+    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+            
+                <aside id="sidebar">
+   
+        
+    <div class="widget-wrap" id="categories">
+        <h3 class="widget-title">
+            <span>分类</span>
+            &nbsp;
+            <a id="allExpand" href="#">
+                <i class="fa fa-angle-double-down fa-2x"></i>
+            </a>
+        </h3>
+        
+        
+        
+         <ul class="unstyled" id="tree"> 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            python
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/wiki/python/jpype和hanlp/">jpype和hanlp 安装</a></li>  <li class="file"><a href="/wiki/python/datetime/">datetime</a></li>  <li class="file"><a href="/wiki/python/decorator装饰器/">decorator装饰器</a></li>  <li class="file"><a href="/wiki/python/py2和py3/">py2_and_py3</a></li>  <li class="file"><a href="/wiki/python/jupyter-notebook/">jupyter_notebook</a></li>  <li class="file"><a href="/wiki/python/python基本数据类型/">python基本数据类型</a></li>  <li class="file"><a href="/wiki/python/python代码加密/">python代码加密</a></li>  <li class="file"><a href="/wiki/python/python常见错误/">python常见错误</a></li>  <li class="file"><a href="/wiki/python/python常用代码/">python常用代码</a></li>  <li class="file"><a href="/wiki/python/python-xml/">python-xml解析</a></li>  <li class="file"><a href="/wiki/python/python源码转UML图/">python源码转UML图</a></li>  <li class="file"><a href="/wiki/python/queue队列/">Queue 队列模块相关</a></li>  <li class="file"><a href="/wiki/python/命令行参数和环境变量/">命令行参数和环境变量</a></li>  <li class="file"><a href="/wiki/python/多线程、多进程、协程/">thread多线程模块</a></li>  <li class="file"><a href="/wiki/python/基础库/">基础库：os/sys/dis</a></li>  <li class="file"><a href="/wiki/python/tornado/">tornado</a></li>  <li class="file"><a href="/wiki/python/文本操作/">文本操作</a></li>  <li class="file"><a href="/wiki/python/安装python/">安装python</a></li>  <li class="file"><a href="/wiki/python/迭代器和生成器/">python基本概念</a></li>  <li class="file"><a href="/wiki/python/pycharm/">配置和使用 pycharm</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            人工智能
+                        </a>
+                         <ul class="unstyled" id="tree"> 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            cs224n笔记
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/wiki/人工智能/cs224n笔记/《hanlp神经网络依存句法分析器》笔记/">《hanlp神经网络依存句法分析器》笔记</a></li>  <li class="file"><a href="/wiki/人工智能/cs224n笔记/02词向量/">cs224n-02词向量</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            pytorch
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/wiki/人工智能/pytorch/debug-pytorch-梯度出现NaN/">debug：pytorch_梯度出现NaN</a></li>  <li class="file"><a href="/wiki/人工智能/pytorch/pytorch报错/">pytorch报错</a></li>  <li class="file"><a href="/wiki/人工智能/pytorch/torch乘法/">torch中的几种乘法。torch.mm, torch.mul, torch.matmul</a></li>  <li class="file"><a href="/wiki/人工智能/pytorch/pytorch-tensor/">pytorch--tensor</a></li>  <li class="file"><a href="/wiki/人工智能/pytorch/pytorch常用代码/">pytorch常用代码</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            搜索引擎
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/wiki/人工智能/搜索引擎/elastic-debug/">elastic-debug</a></li>  <li class="file"><a href="/wiki/人工智能/搜索引擎/elastic-search插件/">elastic-search插件</a></li>  <li class="file"><a href="/wiki/人工智能/搜索引擎/install-es/">安装ES</a></li>  <li class="file"><a href="/wiki/人工智能/搜索引擎/mongo/">mongo</a></li>  <li class="file"><a href="/wiki/人工智能/搜索引擎/sql-oracle/">oracle的SQL基础</a></li>  <li class="file"><a href="/wiki/人工智能/搜索引擎/elastic-search基础/">elastic_search基础</a></li>  <li class="file"><a href="/wiki/人工智能/搜索引擎/es-search/">es-搜索操作</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            深度学习
+                        </a>
+                         <ul class="unstyled" id="tree"> 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            allennlp
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/wiki/人工智能/深度学习/allennlp/allennlp-classes/">allennlp 类</a></li>  <li class="file"><a href="/wiki/人工智能/深度学习/allennlp/allennlp-json-config/">allennlp_json_config</a></li>  <li class="file"><a href="/wiki/人工智能/深度学习/allennlp/allennlp-models/">allennlp_models</a></li>  <li class="file"><a href="/wiki/人工智能/深度学习/allennlp/allennlp-command/">allennlp 命令执行流程</a></li>  </ul> 
+                    </li> 
+                     <li class="file"><a href="/wiki/人工智能/深度学习/nvidia-docker/">nvidia_docker</a></li>  <li class="file"><a href="/wiki/人工智能/深度学习/RNN/">RNN</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            资料
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/wiki/人工智能/资料/bert与NER/">BERT与NER</a></li>  <li class="file"><a href="/wiki/人工智能/资料/分词和新词发现/">分词和新词发现</a></li>  <li class="file"><a href="/wiki/人工智能/资料/聚类/">分词和新词发现</a></li>  <li class="file"><a href="/wiki/人工智能/资料/笔记-Ruby 之父松本行弘：程序员的乐趣、存在感与平衡/">笔记 Ruby 之父松本行弘：程序员的乐趣、存在感与平衡.md</a></li>  <li class="file"><a href="/wiki/人工智能/资料/词向量/">分词和新词发现</a></li>  </ul> 
+                    </li> 
+                     </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            其他
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/wiki/其他/我们为什么喜欢巧克力/">我们为什么喜欢巧克力</a></li>  <li class="file"><a href="/wiki/其他/NAS/">NAS</a></li>  <li class="file"><a href="/wiki/其他/nikon-d5600/">尼康D5600相机</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            学习方法
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/wiki/学习方法/使用正念减少压力/">通过正念减少压力,提升专注力</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            编程基础
+                        </a>
+                         <ul class="unstyled" id="tree"> 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            C++
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/wiki/编程基础/C++/base-cpp/">C++基础</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            git
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/wiki/编程基础/git/gitlab/">使用git</a></li>  <li class="file"><a href="/wiki/编程基础/git/git基本概念/">git基本概念</a></li>  <li class="file"><a href="/wiki/编程基础/git/use-git/">使用git</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            javascript
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/wiki/编程基础/javascript/node/">node</a></li>  <li class="file"><a href="/wiki/编程基础/javascript/javascript/">javascript基础</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            leetcode
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/wiki/编程基础/leetcode/141. Linked_List_Cycle/">双指针找环</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            博客工具
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/wiki/编程基础/博客工具/hexo/">hexo</a></li>  <li class="file"><a href="/wiki/编程基础/博客工具/hexo_fish主题/">hexo</a></li>  <li class="file"><a href="/wiki/编程基础/博客工具/markdown说明/">markdown说明</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            安装与配置
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/wiki/编程基础/安装与配置/install-manjaro/">安装manjaro</a></li>  <li class="file"><a href="/wiki/编程基础/安装与配置/set-vim/">配置vim</a></li>  <li class="file"><a href="/wiki/编程基础/安装与配置/set-vscode/">配置vscode</a></li>  <li class="file"><a href="/wiki/编程基础/安装与配置/system-record/">操作系统重装记录</a></li>  <li class="file"><a href="/wiki/编程基础/安装与配置/安装centos/">安装centos</a></li>  <li class="file"><a href="/wiki/编程基础/安装与配置/配置chrome/">配置chrome</a></li>  <li class="file"><a href="/wiki/编程基础/安装与配置/install-ubuntu/">安装ubuntu</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            软件使用备忘
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/wiki/编程基础/软件使用备忘/npm/">npm</a></li>  <li class="file"><a href="/wiki/编程基础/软件使用备忘/linux_write_DVD/">linux刻录光盘</a></li>  <li class="file"><a href="/wiki/编程基础/软件使用备忘/ubuntu的KDE开启触摸板/">ubuntu的KDE开启触摸板</a></li>  <li class="file"><a href="/wiki/编程基础/软件使用备忘/use-Adblock/">使用Adblock广告屏蔽插件</a></li>  <li class="file"><a href="/wiki/编程基础/软件使用备忘/use-htop/">使用 htop</a></li>  <li class="file"><a href="/wiki/编程基础/软件使用备忘/use-docker/">使用docker</a></li>  <li class="file"><a href="/wiki/编程基础/软件使用备忘/use-linux/">使用linux</a></li>  <li class="file"><a href="/wiki/编程基础/软件使用备忘/use-tmux/">use_tmux</a></li>  <li class="file"><a href="/wiki/编程基础/软件使用备忘/使用vim/">vim</a></li>  <li class="file"><a href="/wiki/编程基础/软件使用备忘/use-vscode/">use-vscode</a></li>  <li class="file"><a href="/wiki/编程基础/软件使用备忘/使用虚拟机/">使用虚拟机</a></li>  </ul> 
+                    </li> 
+                     </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            编程思维
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/wiki/编程思维/debug思路备忘/">debug思路备忘</a></li>  <li class="file"><a href="/wiki/编程思维/写代码技巧/">写代码技巧</a></li>  <li class="file"><a href="/wiki/编程思维/错误处理/">错误处理</a></li>  <li class="file"><a href="/wiki/编程思维/什么才是编程的基础知识？/">编程的基础知识</a></li>  </ul> 
+                    </li> 
+                     <li class="file active"><a href="/wiki/人工智能/pytorch/debug-CUDA-device-side-assert/">PyTorch</a></li>  <li class="file"><a href="/wiki/人工智能/资料/论文翻译-ALBERT/">论文翻译 ALBERT：A LITE BERT FOR SELF-SUPERVISED LEARNING OF LANGUAGE REPRESENTATIONS</a></li>  </ul> 
+    </div>
+    <script>
+        $(document).ready(function() {
+            var iconFolderOpenClass  = 'fa-folder-open';
+            var iconFolderCloseClass = 'fa-folder';
+            var iconAllExpandClass = 'fa-angle-double-down';
+            var iconAllPackClass = 'fa-angle-double-up';
+            // Handle directory-tree expansion:
+            // 左键单独展开目录
+            $(document).on('click', '#categories a[data-role="directory"]', function (event) {
+                event.preventDefault();
+
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconFolderOpenClass);
+                var subtree = $(this).siblings('ul');
+                icon.removeClass(iconFolderOpenClass).removeClass(iconFolderCloseClass);
+                if (expanded) {
+                    if (typeof subtree != 'undefined') {
+                        subtree.slideUp({ duration: 100 });
+                    }
+                    icon.addClass(iconFolderCloseClass);
+                } else {
+                    if (typeof subtree != 'undefined') {
+                        subtree.slideDown({ duration: 100 });
+                    }
+                    icon.addClass(iconFolderOpenClass);
+                }
+            });
+            // 右键展开下属所有目录
+            $('#categories a[data-role="directory"]').bind("contextmenu", function(event){
+                event.preventDefault();
+                
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconFolderOpenClass);
+                var listNode = $(this).siblings('ul');
+                var subtrees = $.merge(listNode.find('li ul'), listNode);
+                var icons = $.merge(listNode.find('.fa'), icon);
+                icons.removeClass(iconFolderOpenClass).removeClass(iconFolderCloseClass);
+                if(expanded) {
+                    subtrees.slideUp({ duration: 100 });
+                    icons.addClass(iconFolderCloseClass);
+                } else {
+                    subtrees.slideDown({ duration: 100 });
+                    icons.addClass(iconFolderOpenClass);
+                }
+            })
+            // 展开关闭所有目录按钮
+            $(document).on('click', '#allExpand', function (event) {
+                event.preventDefault();
+                
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconAllExpandClass);
+                icon.removeClass(iconAllExpandClass).removeClass(iconAllPackClass);
+                if(expanded) {
+                    $('#sidebar .fa.fa-folder').removeClass('fa-folder').addClass('fa-folder-open')
+                    $('#categories li ul').slideDown({ duration: 100 });
+                    icon.addClass(iconAllPackClass);
+                } else {
+                    $('#sidebar .fa.fa-folder-open').removeClass('fa-folder-open').addClass('fa-folder')
+                    $('#categories li ul').slideUp({ duration: 100 });
+                    icon.addClass(iconAllExpandClass);
+                }
+            });  
+        });
+    </script>
+
+    
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+            
+            <section id="main"><article id="Debugging CUDA device-side assert in PyTorch-人工智能/pytorch/debug-CUDA-device-side-assert" class="article article-type-Debugging CUDA device-side assert in PyTorch" itemscope="" itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+                    <div class="article-meta">
+                        
+                        
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/wiki/人工智能/pytorch/debug-CUDA-device-side-assert/">
+            <time datetime="2019-10-05T04:14:22.000Z" itemprop="datePublished">2019-10-05</time>
+        </a>
+    </div>
+
+
+                        
+                            <i class="fa fa-bar-chart"></i>
+                            <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span></span>    
+                        
+                        
+                            <div class="article-meta-button">
+                                <a href="https://github.com/ofooo/Wiki-site/raw/writing/source/_posts/人工智能/pytorch/debug-CUDA-device-side-assert.md" rel="external nofollow noopener noreferrer" target="_blank"> Source </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a href="https://github.com/ofooo/Wiki-site/edit/writing/source/_posts/人工智能/pytorch/debug-CUDA-device-side-assert.md" rel="external nofollow noopener noreferrer" target="_blank"> Edit </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a href="https://github.com/ofooo/Wiki-site/commits/writing/source/_posts/人工智能/pytorch/debug-CUDA-device-side-assert.md" rel="external nofollow noopener noreferrer" target="_blank"> History </a>
+                            </div>
+                        
+                    </div>
+                
+                
+    
+        <h1 class="article-title" itemprop="name">
+            PyTorch
+        </h1>
+    
+
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+        
+            
+        
+        
+            <h2 id="原文-Debugging-CUDA-device-side-assert-in-PyTorch"><a href="#原文-Debugging-CUDA-device-side-assert-in-PyTorch" class="headerlink" title="原文: Debugging CUDA device-side assert in PyTorch"></a>原文: <a href="https://lernapparat.de/debug-device-assert/" rel="external nofollow noopener noreferrer" target="_blank">Debugging CUDA device-side assert in PyTorch</a></h2><p>PyTorch的立即执行模型的美丽之处在于您实际上可以调试程序。 但是，有时CUDA执行的异步特性使其变得很难。 这是调试程序的一个小技巧。</p>
+<p>当您使用CUDA操作运行PyTorch程序时，该程序通常不等到计算完成，而是继续向GPU抛出指令，直到它实际需要结果为止（例如，使用.item（）或.cpu（）进行评估或打印）。</p>
+<p>尽管这是PyTorch程序出色性能的关键，但有一个弊端：当cuda操作失败时，您的程序可能正在执行其他操作(因为异步)。 通常的症状是，在触发错误的指令之后的某个地方，或多或少地出现随机性错误。 通常看起来像这样：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">---------------------------------------------------------------------------</span><br><span class="line">RuntimeError                              Traceback (most recent call last)</span><br><span class="line">&lt;ipython-input-4-3d8a992c81ab&gt; <span class="keyword">in</span> &lt;module&gt;()</span><br><span class="line">      1 loss = torch.nn.functional.cross_entropy(activations, labels)</span><br><span class="line">      2 average = loss/4</span><br><span class="line">----&gt; 3 <span class="built_in">print</span>(average.item())</span><br><span class="line"></span><br><span class="line">RuntimeError: cuda runtime error (59) : device-side assert triggered at /home/tv/pytorch/pytorch/aten/src/THC/generic/THCStorage.cpp:36</span><br></pre></td></tr></table></figure>
+<p>好吧，这很难理解，我敢肯定，报错位置是合法的代码。 因此，设备端断言意味着系统只是发现某个地方出了点问题。</p>
+<p>这是导致此输出的错误程序：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">import torch</span><br><span class="line">device = torch.device(<span class="string">'cuda:0'</span>)</span><br><span class="line">activations = torch.randn(4,3, device=device) <span class="comment"># usually we get our activations in a more refined way...</span></span><br><span class="line">labels = torch.arange(4, device=device)</span><br><span class="line">loss = torch.nn.functional.cross_entropy(activations, labels)</span><br><span class="line">average = loss/4</span><br><span class="line"><span class="built_in">print</span>(average.item())</span><br></pre></td></tr></table></figure>
+<p>调试中的一种选择是将事物移至CPU。 但通常，我们使用库或复杂的东西就没法这么做。 所以现在怎么办？ 如果我们能获得良好的追溯，我们就能找到并解决问题。</p>
+<p>以下是获得良好回溯的方式：您可以在环境变量CUDA_LAUNCH_BLOCKING设置为1的情况下启动程序。这也可以在python代码中解决：在程序的顶部，在导入任何内容（尤其是PyTorch）之前，先插入</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line">os.environ[<span class="string">'CUDA_LAUNCH_BLOCKING'</span>] = <span class="string">"1"</span></span><br></pre></td></tr></table></figure>
+<p>通过此添加，我们可以获得更好的错误回溯：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">---------------------------------------------------------------------------</span><br><span class="line">RuntimeError                              Traceback (most recent call last)</span><br><span class="line">&lt;ipython-input-4-3d8a992c81ab&gt; <span class="keyword">in</span> &lt;module&gt;()</span><br><span class="line">----&gt; 1 loss = torch.nn.functional.cross_entropy(activations, labels)</span><br><span class="line">      2 average = loss/4</span><br><span class="line">      3 <span class="built_in">print</span>(average.item())</span><br><span class="line"></span><br><span class="line">/usr/<span class="built_in">local</span>/lib/python3.6/dist-packages/torch/nn/functional.py <span class="keyword">in</span> cross_entropy(input, target, weight, size_average, ignore_index, reduce)</span><br><span class="line">   1472         &gt;&gt;&gt; loss.backward()</span><br><span class="line">   1473     <span class="string">""</span><span class="string">"</span></span><br><span class="line"><span class="string">-&gt; 1474     return nll_loss(log_softmax(input, 1), target, weight, size_average, ignore_index, reduce)</span></span><br><span class="line"><span class="string">   1475 </span></span><br><span class="line"><span class="string">   1476 </span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">/usr/local/lib/python3.6/dist-packages/torch/nn/functional.py in nll_loss(input, target, weight, size_average, ignore_index, reduce)</span></span><br><span class="line"><span class="string">   1362                          .format(input.size(0), target.size(0)))</span></span><br><span class="line"><span class="string">   1363     if dim == 2:</span></span><br><span class="line"><span class="string">-&gt; 1364         return torch._C._nn.nll_loss(input, target, weight, size_average, ignore_index, reduce)</span></span><br><span class="line"><span class="string">   1365     elif dim == 4:</span></span><br><span class="line"><span class="string">   1366         return torch._C._nn.nll_loss2d(input, target, weight, size_average, ignore_index, reduce)</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">RuntimeError: cuda runtime error (59) : device-side assert triggered at /home/tv/pytorch/pytorch/aten/src/THCUNN/generic/ClassNLLCriterion.cu:116</span></span><br></pre></td></tr></table></figure>
+<p>显然，损失函数的输入不合法。 实际上，我们的激活形状批处理为x 3，因此我们只允许三个类别（0、1、2），但标签的值为3！</p>
+<p>这对特殊情况也适用, 如果我们能恢复计算中的非GPU位而不需要完全重启就好了.(The best part is that this also works for nontrivial examples. Now if only we could recover the non-GPU bits of our calculation instead of needing a complete restart…  这句话翻译的不太好, 有建议可以联系我邮箱<a href="mailto:ofyu@163.com" rel="external nofollow noopener noreferrer" target="_blank">ofyu@163.com</a>)</p>
+
+            </div>
+        
+        <footer class="article-footer">
+        </footer>
+    </div>
+</article>
+
+
+    
+<nav id="article-nav">
+    
+        <a href="/wiki/其他/我们为什么喜欢巧克力/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">上一篇</strong>
+            <div class="article-nav-title">
+                
+                    我们为什么喜欢巧克力
+                
+            </div>
+        </a>
+    
+    
+        <a href="/wiki/学习方法/使用正念减少压力/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">下一篇</strong>
+            <div class="article-nav-title">通过正念减少压力,提升专注力</div>
+        </a>
+    
+</nav>
+
+
+
+
+
+    
+    
+
+
+
+
+<!-- baidu url auto push script -->
+<script type="text/javascript">
+    !function(){var e=/([http|https]:\/\/[a-zA-Z0-9\_\.]+\.baidu\.com)/gi,r=window.location.href,o=document.referrer;if(!e.test(r)){var n="//api.share.baidu.com/s.gif";o?(n+="?r="+encodeURIComponent(document.referrer),r&&(n+="&l="+r)):r&&(n+="?l="+r);var t=new Image;t.src=n}}(window);
+</script>     
+</section>
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            aifish &copy; 2019 
+            <a rel="external nofollow noopener noreferrer" href="http://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/80x15.png"></a>
+            <br> Powered by <a href="http://hexo.io/" target="_blank" rel="external nofollow noopener noreferrer">Hexo</a>. Theme - <a href="https://github.com/zthxxx/hexo-theme-Wikitten" rel="external nofollow noopener noreferrer" target="_blank">wikitten</a>
+            
+                <br>
+                <span id="busuanzi_container_site_pv"><i class="fa fa-eye"></i> <span id="busuanzi_value_site_pv"></span></span>
+                &nbsp;|&nbsp;
+                <span id="busuanzi_container_site_pv"><i class="fa fa-user"></i> <span id="busuanzi_value_site_uv"></span></span>
+            
+        </div>
+    </div>
+</footer>
+
+        
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+    
+        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
+        <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true,
+            TeX: {
+                equationNumbers: {
+                  autoNumber: 'AMS'
+                }
+            }
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script async src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+</body>
