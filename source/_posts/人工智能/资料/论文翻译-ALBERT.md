@@ -10,13 +10,15 @@ categories:
 
 原文链接: https://openreview.net/pdf?id=H1eA7AEtvS
 
+译注: 本人英语水平有限, 如有优化建议, 请随时提交issue.   
 
 
-> ABSTRACT
+
+
+
+> ABSTRACT  摘要 
 >
 > Increasing model size when pretraining natural language representations often results in improved performance on downstream tasks. However, at some point further model increases become harder due to GPU/TPU memory limitations, longer training times, and unexpected model degradation. To address these problems, we present two parameter-reduction techniques to lower memory consumption and increase the training speed of BERT (Devlin et al., 2019). Comprehensive empirical evidence shows that our proposed methods lead to models that scale much better compared to the original BERT. We also use a self-supervised loss that focuses on modeling inter-sentence coherence, and show it consistently helps downstream tasks with multi-sentence inputs. As a result, our best model establishes new state-of-the-art results on the GLUE, RACE, and SQuAD benchmarks while having fewer parameters compared to BERT-large.
-
-> 摘要 
 >
 > 在预训练自然语言表示时增加模型大小通常会导致下游任务的性能得到改善。 但是，由于GPU / TPU内存的限制，更长的训练时间以及意外的模型降级，在某些时候，进一步的模型增加变得更加困难。 为了解决这些问题，我们提出了两种参数减少技术，以降低内存消耗并提高BERT的训练速度（Devlin等人，2019）。 全面的经验证据表明，与原始BERT相比，我们提出的方法所导致的模型可扩展性更好。 我们还使用了一个自我监督的损失，该损失专注于模拟句子间的连贯性，并表明它始终可以帮助多句子输入的下游任务。 因此，我们的最佳模型在GLUE，RACE和SQuAD基准测试中建立了最新的结果，而与BERT-large相比，参数却更少。
 
@@ -82,7 +84,7 @@ In addition, it is difficult to experiment with large models due to computationa
 
 The idea of sharing parameters across layers has been previously explored with the Transformer architecture (Vaswani et al., 2017), but this prior work has focused on training for standard encoder-decoder tasks rather than the pretraining/finetuning setting. Different from our observations, Dehghani et al. (2018) show that networks with cross-layer parameter sharing (Universal Transformer, UT) get better performance on language modeling and subject-verb agreement than the standard transformer. Very recently, Bai et al. (2019) propose a Deep Equilibrium Model (DQE) for transformer networks and show that DQE can reach an equilibrium point for which the input embedding and the output embedding of a certain layer stay the same. Our observations show that our embeddings are oscillating rather than converging. Hao et al. (2019) combine a parameter-sharing transformer with the standard one, which further increases the number of parameters of the standard transformer.
 
-跨层共享参数的想法以前曾使用Transformer架构进行探讨（Vaswani 2017），但之前的这项工作集中在针对标准编码器-解码器任务的训练上，而不是预训练/微调设置上。 与我们的观察结果不同，Dehghani等人（2018）显示具有跨层参数共享的网络（Universal Transformer，UT）在语言建模和主谓词一致方面比标准Transformer具有更好的性能。 最近，Bai等（2019）提出了针对Transformer的深度均衡模型（DQE），并证明DQE可以达到一个平衡点，对于该平衡点，某层的输入嵌入和输出嵌入保持相同。 我们的观察表明，我们的嵌入是振荡的而不是收敛的。 郝等（2019）将参数共享transformer与标准transformer相结合，这进一步增加了标transformer的参数数量。
+跨层共享参数的想法以前曾使用Transformer架构进行探讨（Vaswani 2017），但之前的这项工作集中在针对标准编码器-解码器任务的训练上，而不是预训练/微调设置上。 与我们的观察结果不同，Dehghani等人（2018）显示具有跨层参数共享的网络（Universal Transformer，UT）在语言模型和主谓词一致方面比标准Transformer具有更好的性能。 最近，Bai等（2019）提出了针对Transformer的深度均衡模型（DQE），并证明DQE可以达到一个平衡点，对于该平衡点，某层的输入嵌入和输出嵌入保持相同。 我们的观察表明，我们的嵌入是振荡的而不是收敛的。 郝等（2019）将参数共享transformer与标准transformer相结合，这进一步增加了标transformer的参数数量。
 
 2.3  SENTENCE ORDERING OBJECTIVES  句子排序目标任务
 
@@ -109,11 +111,11 @@ ALBERT对BERT的设计选择做出了三点主要贡献。
 
 **Factorized embedding parameterization**. In BERT, as well as subsequent modeling improvements such as XLNet (Yang et al., 2019) and RoBERTa (Liu et al., 2019), the WordPiece embedding size E is tied with the hidden layer size H, i.e., E ≡ H. This decision appears suboptimal for both modeling and practical reasons, as follows.
 
-**分解词向量参数化**。 在BERT中，以及随后的建模改进（例如XLNet（Yang 2019）和RoBERTa（Liu 2019））中，WordPiece嵌入大小E与隐藏层大小H绑定，即E≡H 出于建模和实际原因，此决策似乎次优，如下所示。
+**分解词向量**。 在BERT中，以及随后的建模改进（例如XLNet（Yang 2019）和RoBERTa（Liu 2019））中，WordPiece词向量维度E与隐藏层大小H绑定，即E≡H 出于建模和实际原因，此决策似乎不是最优，如下所示。
 
 From a modeling perspective, WordPiece embeddings are meant to learn context-independent representations, whereas hidden-layer embeddings are meant to learn context-dependent representations. As experiments with context length indicate (Liu et al., 2019), the power of BERT-like representations comes from the use of context to provide the signal for learning such context-dependent representations. As such, untying the WordPiece embedding size E from the hidden layer size H allows us to make a more efficient usage of the total model parameters as informed by modeling needs, which dictate that H >> E.
 
-从建模角度看，WordPiece嵌入旨在学习上下文无关的表征，而隐藏层嵌入旨在学习上下文相关的表征。 正如上下文长度的实验所表明的那样（Liu 2019），类似BERT的表征的力量来自上下文的使用，以提供学习此类依赖于上下文的表征的信号。 这样，将WordPiece嵌入大小E与隐藏层大小H脱开，可以使我们更有效地利用建模所需的总模型参数，这表明H >> E。
+从建模角度看，WordPiece词向量旨在学习上下文无关的表征，而(注意力)隐藏层嵌入旨在学习上下文相关的表征。 正如上下文长度的实验所表明的那样（Liu 2019），类似BERT的表征的力量来自上下文的使用，以提供学习此类依赖于上下文表征的信号。 这样，将WordPiece词向量维度E与隐藏层大小H脱开，可以使我们更有效地利用建模所需的总模型参数，这表明H >> E。
 
 From a practical perspective, natural language processing usually require the vocabulary size V to be large. 1 If E ≡ H, then increasing H increases the size of the embedding matrix, which has size V × E. This can easily result in a model with billions of parameters, most of which are only updated sparsely during training.
 
@@ -121,7 +123,7 @@ From a practical perspective, natural language processing usually require the vo
 
 Therefore, for ALBERT we use a factorization of the embedding parameters, decomposing them into two smaller matrices. Instead of projecting the one-hot vectors directly into the hidden space of size H, we first project them into a lower dimensional embedding space of size E, and then project it to the hidden space. By using this decomposition, we reduce the embedding parameters from O(V × H) to O(V × E + E × H). This parameter reduction is significant when H >> E.
 
-因此，对于ALBERT，我们使用嵌入参数的分解，将它们分解为两个较小的矩阵。 与其直接将onehot向量投影到大小为H的隐藏空间中，不如将它们投影到大小为E的低维嵌入空间中，然后将其投影到隐藏空间中。 通过这种分解，我们将嵌入参数从O（V×H）减少到O（V×E + E×H）。 当H >> E时，此参数减小非常明显。
+因此，对于ALBERT，我们使用嵌入参数的分解，将它们分解为两个较小的矩阵。 与其直接将onehot向量投影到大小为H的隐藏空间中，不如将它们投影到大小为E的低维词向量空间中，然后将其投影到隐藏空间中。 通过这种分解，我们将嵌入参数从O（V×H）减少到O（V×E + E×H）。 当H >> E时，此参数减小非常明显。
 
 **Cross-layer parameter sharing**. For ALBERT, we propose cross-layer parameter sharing as another way to improve parameter efficiency. There are multiple ways to share parameters, e.g., only sharing feed-forward network (FFN) parameters across layers, or only sharing attention parameters. The default decision for ALBERT is to share all parameters across layers. We compare this design decision against other strategies in our experiments in Sec. 4.5.
 
@@ -154,39 +156,213 @@ Figure 2 shows the L2 distances and cosine similarity of the input and output em
 **Inter-sentence coherence loss**. In addition to the masked language modeling (MLM) loss (Devlin et al., 2019), BERT uses an additional loss called next-sentence prediction (NSP). NSP is a binary classification loss for predicting whether two segments appear consecutively in the original text, as follows: positive examples are created by taking consecutive segments from the training corpus; negative examples are created by pairing segments from different documents; positive and negative examples are sampled with equal probability. The NSP objective was designed to improve performance on downstream tasks, such as natural language inference, that require reasoning about
 the relationship between sentence pairs. However, subsequent studies (Yang et al., 2019; Liu et al., 2019) found NSP’s impact unreliable and decided to eliminate it, a decision supported by an improvement in downstream task performance across several tasks.
 
-**句子间连贯性损失**。 除了遮罩语言建模（MLM）损失（Devlin 2019）之外，BERT还使用了另一种损失，称为下一句预测（NSP）。 NSP是一种二分类损失，用于预测原始文本中是否有两个片段连续出现，如下所示：通过从训练语料库中获取连续片段来创建正样本；负样本是通过将来自不同文档的句段配对而创建的； 正样本和负样本均以相同的概率采样。 NSP目标旨在提高需要推理的下游任务性能, （例如自然语言推断）的句子对之间的关系。 然而，随后的研究（Yang 2019; Liu 2019）发现NSP的影响不可靠，因此决定消除它，这一决定得到了多项任务下游任务性能的改善的支持。
+**句子间连贯性损失**。 除了遮罩语言模型（MLM）损失（Devlin 2019）之外，BERT还使用了另一种损失，称为下一句预测（NSP）。 NSP是一种二分类损失，用于预测原始文本中是否有两个片段连续出现，如下所示：通过从训练语料库中获取连续片段来创建正样本；负样本是通过将来自不同文档的句段配对而创建的； 正样本和负样本均以相同的概率采样。 NSP目标旨在提高需要推理的下游任务性能, （例如自然语言推断）的句子对之间的关系。 然而，随后的研究（Yang 2019; Liu 2019）发现NSP的影响不可靠，因此决定消除它，这一决定得到了多项任务下游任务性能的改善的支持。
+
+We conjecture that the main reason behind NSP’s ineffectiveness is its lack of difficulty as a task, as compared to MLM. As formulated, NSP conflates topic prediction and coherence prediction in a single task ② . However, topic prediction is easier to learn compared to coherence prediction, and also overlaps more with what is learned using the MLM loss.
+
+我们推测，与遮罩语言模型（MLM）相比，NSP失效的主要原因是其缺乏任务难度。 按照规定，NSP可以在单个任务中融合主题预测和连贯性预测②。 但是，与连贯性预测相比，主题预测更容易学习，并且与使用MLM损失学习的内容重叠更多。
+
+We maintain that inter-sentence modeling is an important aspect of language understanding, but we propose a loss based primarily on coherence. That is, for ALBERT, we use a sentence-order prediction (SOP) loss, which avoids topic prediction and instead focuses on modeling inter-sentence coherence. The SOP loss uses as positive examples the same technique as BERT (two consecutive segments from the same document), and as negative examples the same two consecutive segments but with their order swapped. This forces the model to  learn finer-grained distinctions about discourse-level coherence properties. As we show in Sec. 4.6, it turns out that NSP cannot solve the SOP task at all (i.e., it ends up learning the easier topic-prediction signal, and performs at random baseline level on the SOP task), while SOP can  solve the NSP task to a reasonable degree, presumably based on analyzing misaligned coherence cues. As a result, ALBERT models  consistently improve downstream task performance for multi-sentence encoding tasks.
+
+我们坚持说句间建模是语言理解的一个重要方面，但是我们提出了一个主要基于连贯性的损失。也就是说，对于ALBERT，我们使用了句子顺序预测（SOP）目标损失，它避免了主题预测，而侧重于建模句子间的连贯性。 SOP损失使用与BERT（同一文档中的两个连续段）相同的技术作为正样本，而负样本使用相同的两个连续段，但顺序互换。这迫使模型学习关于话语级连贯性的细粒度区别。正如我们在第二节中所示。 4.6，事实证明NSP根本无法解决SOP任务（即，它最终学习了更容易的主题预测信号，并在SOP任务上以随机基线水平执行），而SOP可以将NSP任务解决到一个合理程度，大概是基于分析未对准的相干线索。结果，ALBERT模型持续提高了多语句编码任务的下游任务性能。
+
+### 3.2 MODEL SETUP    模型设置
+
+We present the differences between BERT and ALBERT models with comparable hyperparameter settings in Table 2. Due to the design choices discussed above, ALBERT models have much smaller parameter size compared to corresponding BERT models.
+
+我们在表2中介绍了具有可比较的超参数设置的BERT和ALBERT模型之间的差异。由于上述设计选择，与相应的BERT模型相比，ALBERT模型的参数大小要小得多。
+
+For example, ALBERT-large has about 18x fewer parameters compared to BERT-large, 18M versus 334M. If we set BERT to have an extra-large size with H = 2048, we end up with a model that has 1.27 billion parameters and under-performs (Fig. 1). In contrast, an ALBERT-xlarge configuration with H = 2048 has only 59M parameters, while an ALBERT-xxlarge configuration with H = 4096 has 233M parameters, i.e., around 70% of BERT-large’s parameters. Note that for ALBERT-xxlarge, we mainly report results on a 12-layer network because a 24-layer network (with the same configuration) obtains similar results but is computationally more expensive.
+
+例如，与BERT-large（18M与334M）相比，ALBERT-large的参数少了约18倍。 如果我们将BERT设置为具有H = 2048的超大尺寸，我们最终会得到一个模型，该模型具有12.7亿个参数并且表现不佳（图1）。 相比之下，H = 2048的ALBERT-xlarge配置只有59M参数，而H = 4096的ALBERT-xxlarge配置具有233M参数，即BERT-large参数的70％左右。 请注意，对于ALBERT-xxlarge，我们主要在12层网络上报告结果，因为24层网络（具有相同的配置）可获得相似的结果，但计算量更大。
+
+This improvement in parameter efficiency is the most important advantage of ALBERT’s design choices. Before we can quantify this advantage, we need to introduce our experimental setup in more detail.
+
+参数效率的提高是ALBERT设计选择的最重要优势。 在量化这一优势之前，我们需要更详细地介绍我们的实验设置。
 
 
 
+## 4  EXPERIMENTAL RESULTS  实验结果
+
+### 4.1  EXPERIMENTAL SETUP  实验设置
+
+To keep the comparison as meaningful as possible, we follow the BERT (Devlin et al., 2019) setup in using the BOOKCORPUS (Zhu et al., 2015) and English Wikipedia (Devlin et al., 2019) for pretraining baseline models. These two corpora consist of around 16GB of uncompressed text.  We format our inputs as ```“[CLS] x1 [SEP] x2 [SEP]”, where x1 = x1,1, x1,2 · · · and x2 = x1,1, x1,2 · · ·``` are two segments. ③ We always limit the maximum input length to 512, and randomly generate input sequences shorter than 512 with a probability of 10%. Like BERT, we use a vocabulary size of 30,000, tokenized using SentencePiece (Kudo & Richardson, 2018) as in XLNet (Yang et al., 2019). We generate masked inputs for the MLM targets using n-gram masking (Joshi et al., 2019), with the length of each n-gram mask selected randomly. The probability for the length n is given by
+
+![深度截图_选择区域_20191013110936](论文翻译-ALBERT/深度截图_选择区域_20191013110936.png)
+
+为了使比较尽可能有意义，我们在使用BOOKCORPUS（Zhu 2015）和英文维基百科（Devlin 2019）进行预训练基线模型时遵循BERT（Devlin 2019）的设置。 这两个语料库包含大约16GB的未压缩文本。 我们将输入的格式设置为```“[[CLS] x1 [SEP] x2 [SEP]”，其中x1 = x1,1，x1,2···和x2 = x1,1，x1,2··· ```是两个段。③ 我们始终将最大输入长度限制为512，并随机生成小于512的输入序列，概率为10％。 像BERT一样，我们使用的词汇量为30,000，使用XLNet中的SentencePiece（Kudo＆Richardson，2018）进行标记化（Yang 2019）。 我们使用n-gram掩码（Joshi 2019）为MLM目标生成被遮罩的输入，每个n-gram遮罩的长度是随机选择的。 长度为n的概率为
+
+![深度截图_选择区域_20191013110936](论文翻译-ALBERT/深度截图_选择区域_20191013110936.png)
+
+We set the maximum length of n-gram (i.e., n) to be 3 (i.e., the MLM target can consist of up to a 3-gram of complete words, such as “White House correspondents”).
+
+我们将n-gram（即n）的最大长度设置为3（即，MLM目标最多可以包含3个完整的单词，例如“白宫|通讯|员”）。
+
+All the model updates use a batch size of 4096 and a LAMB optimizer with learning rate 0.00176 (You et al., 2019). We train all models for 125,000 steps unless otherwise specified. Training was done on Cloud TPU V3. The number of TPUs used for training ranged from 64 to 1024,
+depending on model size.
+
+所有模型更新均使用4096的批量大小和学习率为0.00176的LAMB优化器（You 2019）。 除非另有说明，否则我们将训练所有模型125,000步。 在Cloud TPU V3上进行训练。 用于训练的TPU数量从64到1024不等，取决于型号。
+
+The experimental setup described in this section is used for all of our own versions of BERT as well as ALBERT models, unless otherwise specified.
+
+除非另有说明，否则本节中描述的实验设置将用于我们自己的所有BERT版本和ALBERT模型。
+
+### 4.2  EVALUATION BENCHMARKS  评估基准
+
+#### 4.2.1  INTRINSIC EVALUATION  内部评估
+
+To monitor the training progress, we create a development set based on the development sets from SQuAD and RACE using the same procedure as in Sec. 4.1. We report accuracies for both MLM and sentence classification tasks. Note that we only use this set to check how the model is converging; it has not been used in a way that would affect the performance of any downstream evaluation, such as via model selection.
+
+为了监控训练进度，我们基于SQuAD和RACE的开发集创建了一个开发集，并使用与本节4.1相同的步骤。 我们报告了MLM和句子分类任务的准确性。 注意，我们仅使用此集合来检查模型如何收敛； 它的使用方式不会影响任何下游评估的性能，例如通过模型选择。
+
+#### 4.2.2  DOWNSTREAM EVALUATION  下游任务评估
+
+Following Yang et al. (2019) and Liu et al. (2019), we evaluate our models on three popular benchmarks: The General Language Understanding Evaluation (GLUE) benchmark (Wang et al., 2018), two versions of the Stanford Question Answering Dataset (SQuAD; Rajpurkar et al., 2016; 2018), and the ReAding Comprehension from Examinations (RACE) dataset (Lai et al., 2017). For completeness, we provide description of these benchmarks in Appendix A.1. As in (Liu et al., 2019), we perform early stopping on the development sets, on which we report all comparisons except for our final comparisons based on the task leaderboards, for which we also report test set results.
+
+继杨等（2019）和Liu等（2019），我们在三个流行的基准上评估我们的模型：通用语言理解评估（GLUE）基准（Wang 2018），两个版本的斯坦福问答数据集（SQuAD; Rajpurkar 2016; 2018 ），以及来自考试的成绩理解（RACE）数据集（Lai 2017）。 为了完整起见，我们在附录A.1中提供了这些基准的描述。 与（Liu 2019）中一样，我们对开发集执行提早停止，除了基于任务排行榜的最终比较（我们还报告测试集结果）之外，我们会报告所有比较。
 
 
 
+### 4.3  OVERALL COMPARISON BETWEEN BERT AND ALBERT  BERT和ALBERT之间的总体比较
+
+We are now ready to quantify the impact of the design choices described in Sec. 3, specifically the ones around parameter efficiency. The improvement in parameter efficiency showcases the most important advantage of ALBERT’s design choices, as shown in Table 3: with only around 70% of BERT-large’s parameters, ALBERT-xxlarge achieves significant improvements over BERT-large, as measured by the difference on development set scores for several representative downstream tasks: SQuAD v1.1 (+1.7%), SQuAD v2.0 (+4.2%), MNLI (+2.2%), SST-2 (+3.0%), and RACE (+8.5%).
+
+现在，我们准备量化本节3 中描述的设计选择的影响。 具体是围绕参数效率的。 参数效率的提高展示了ALBERT设计选择的最重要优势，如表3所示：仅凭BERT-large的参数的70％左右，ALBERT-xxlarge就比BERT-large取得了显着改进，这通过开发差异来衡量 设置几个代表性下游任务的分数：SQuAD v1.1（+1.7％），SQuAD v2.0（+4.2％），MNLI（+2.2％），SST-2（+ 3.0％）和RACE（+ 8.5％） ）。
+
+We also observe that BERT-xlarge gets significantly worse results than BERT-base on all metrics. This indicates that a model like BERT-xlarge is more difficult to train than those that have smaller parameter sizes. Another interesting observation is the speed of data throughput at training time under the same training configuration (same number of TPUs). Because of less communication and fewer computations, ALBERT models have higher data throughput compared to their corresponding BERT models. The slowest one is the BERT-xlarge model, which we use as a baseline. As the models get larger, the differences between BERT and ALBERT models become bigger, e.g., ALBERT-xlarge can be trained 2.4x faster than BERT-xlarge.
+
+我们还观察到，在所有指标上，BERT-xlarge的结果均比BERT-base差得多。 这表明像BERT-xlarge这样的模型比具有较小参数大小的模型更难训练。 另一个有趣的发现是在相同训练配置（相同数量的TPU）下，训练时间的数据吞吐速度。 由于较少的通信和较少的计算，相比其对应的BERT模型，ALBERT模型具有更高的数据吞吐量。 速度最慢的是BERT-xlarge模型，我们将其用作基准。 随着模型变大，BERT和ALBERT模型之间的差异变得更大，例如ALBERT-xlarge的训练速度比BERT-xlarge快2.4倍。
+
+![深度截图_选择区域_20191013112553](论文翻译-ALBERT/深度截图_选择区域_20191013112553.png)
+
+Table 3: Dev set results for models pretrained over BOOKCORPUS and Wikipedia for 125k steps. Here and everywhere else, the Avg column is computed by averaging the scores of the downstream tasks to its left (the two numbers of F1 and EM for each SQuAD are first averaged).
+
+表3：经过BOOKCORPUS和Wikipedia预训练模型的开发集结果(训练了125k步)。 在这里和其他任何地方，“平均”列都是通过平均下游任务在其左侧的得分来计算的（每个SQuAD的F1和EM的两个数字首先取平均值）。
+
+Next, we perform ablation experiments that quantify the individual contribution of each of the design choices for ALBERT.
+
+接下来，我们执行消融实验，以量化ALBERT每个设计选择的个体贡献。
+
+### 4.4  FACTORIZED EMBEDDING PARAMETERIZATION 分解词向量
+
+Table 4 shows the effect of changing the vocabulary embedding size E using an ALBERT-base configuration setting (see Table 2), using the same set of representative downstream tasks. Under the non-shared condition (BERT-style), larger embedding sizes give better performance, but not by much. Under the all-shared condition (ALBERT-style), an embedding of size 128 appears to be the best. Based on these results, we use an embedding size E = 128 in all future settings, as a necessary step to do further scaling.
+
+表4显示了使用基于ALBERT在相同的游任务集更改词向量维度 E的效果。 在非共享条件下（BERT样式），较大的词向量维度可提供更好的性能，但幅度不大。 在全共享情况下（ALBERT样式），大小为128的词向量维度似乎是最好的。 根据这些结果，我们在以后的所有设置中都使用词向量维度E = 128，这是进行进一步缩放的必要步骤。
+
+![深度截图_选择区域_20191013112926](论文翻译-ALBERT/深度截图_选择区域_20191013112926.png)
 
 
 
+Table 4: The effect of vocabulary embedding size on the performance of ALBERT-base.
+
+表4：词向量维度大小对基于ALBERT的性能的影响。
+
+### 4.5  CROSS-LAYER PARAMETER SHARING  跨层参数共享
+
+Table 5 presents experiments for various cross-layer parameter-sharing strategies, using an ALBERT-base configuration (Table 2) with two embedding sizes (E = 768 and E = 128). We compare the all-shared strategy (ALBERT-style), the not-shared strategy (BERT-style), and intermediate strategies in which only the attention parameters are shared (but not the FNN ones) or only the FFN parameters are shared (but not the attention ones).
+
+表5展示了使用具有两种嵌入大小（E = 768和E = 128）的基于ALBERT的配置（表2）进行的各种跨层参数共享策略的实验。 我们比较了全共享策略（ALBERT风格），非共享策略（BERT风格）和仅共享attention参数（但不共享FNN）或仅共享FFN参数的中间策略（ 但没有attention）。
+
+The all-shared strategy hurts performance under both conditions, but it is less severe for E = 128 (-1.5 on Avg) compared to E = 768 (-2.5 on Avg). In addition, most of the performance drop appears to come from sharing the FFN-layer parameters, while sharing the attention parameters results in no drop when E = 128 (+0.1 on Avg), and a slight drop when E = 768 (-0.7 on Avg).
+
+在两种情况下，全共享策略都会损害性能，但是与E = 768（平均-2.5）相比，E = 128（平均-1.5）的严重性要小一些。 此外，大多数性能下降似乎来自共享FFN层参数，而共享注意力参数导致当E = 128（平均为+0.1时）不下降，而当E = 768（-0.7时）时略有下降。 平均）。
+
+![深度截图_选择区域_20191013114442](论文翻译-ALBERT/深度截图_选择区域_20191013114442.png)
+
+Table 5: The effect of cross-layer parameter-sharing strategies, ALBERT-base configuration.
+
+表5：跨层参数共享策略的影响，基于ALBERT的配置。
 
 
 
+### 4.6  SENTENCE ORDER PREDICTION (SOP)  句子顺序预测
+
+We compare head-to-head three experimental conditions for the additional inter-sentence loss: none  (XLNet- and RoBERTa-style), NSP (BERT-style), and SOP (ALBERT-style), using an ALBERT-base configuration. Results are shown in Table 6, both over intrinsic (accuracy for the MLM, NSP, and SOP tasks) and downstream tasks.
+
+我们比较了语句间损失的 head-to-head 三个实验条件：无（XLNet和RoBERTa风格），NSP（BERT风格）和SOP（ALBERT风格）, 使用ALBERT的配置。 结果显示在表6中，包括固有任务（MLM，NSP和SOP任务的准确性）和下游任务的结果。
+
+![深度截图_选择区域_20191013114957](论文翻译-ALBERT/深度截图_选择区域_20191013114957.png)
+
+Table 6: The effect of sentence-prediction loss, NSP vs. SOP, on intrinsic and downstream tasks.
+
+表6：句子预测损失（NSP与SOP）对内部任务和下游任务的影响。
+
+The results on the intrinsic tasks reveal that the NSP loss brings no discriminative power to the SOP task (52.0% accuracy, similar to the random-guess performance for the “None” condition). This allows us to conclude that NSP ends up modeling only topic shift. In contrast, the SOP loss does solve the NSP task relatively well (78.9% accuracy), and the SOP task even better (86.5% accuracy). Even more importantly, the SOP loss appears to consistently improve downstream task performance for multi-sentence encoding tasks (around +1% for SQuAD1.1, +2% for SQuAD2.0, +1.7% for RACE), for an Avg score improvement of around +1%.
+
+固有任务的结果表明，NSP损失对SOP任务没有任何判别能力（准确性为52.0％，类似于无条件的随机猜测性能）。 这使我们可以得出结论，NSP最终仅对主题转移建模。 相反，SOP损失确实可以较好地解决NSP任务（准确度为78.9％），而SOP本任务准确度为86.5% 。 更重要的是，SOP丢失似乎可以持续提高多句编码任务的下游任务性能（SQuAD1.1大约为+ 1％，SQuAD2.0为+ 2％，RACE为+ 1.7％），从而提高了平均得分 大约+ 1％。
+
+### 4.7  WHAT IF WE TRAIN FOR THE SAME AMOUNT OF TIME?  训练时间相同的情况如何？
+
+The speed-up results in Table 3 indicate that data-throughput for BERT-large is about 3.17x higher compared to ALBERT-xxlarge. Since longer training usually leads to better performance, we perform a comparison in which, instead of controlling for data throughput (number of  training steps), we control for the actual training time (i.e., let the models train for the same number of hours). In Table 7, we compare the performance of a BERT-large model after 400k training steps (after 34h of training), roughly equivalent with the amount of time needed to train an ALBERT-xxlarge model with 125k training steps (32h of training).
+
+表3中的加速结果表明，与ALBERT-xxlarge相比，BERT-large的数据吞吐量大约高3.17倍。 由于更长的训练通常会带来更好的性能，因此我们进行比较，而不是控制数据吞吐量（训练步骤数），而是控制实际训练时间（即让模型训练相同的小时数） 。 在表7中，我们比较了BERT大模型在400k训练步骤后（训练34小时）的性能，大致相当于训练有125k训练步骤（训练32小时）的ALBERT-xxlarge模型所需的时间。
+
+![深度截图_选择区域_20191013115511](论文翻译-ALBERT/深度截图_选择区域_20191013115511.png)
+
+Table 7: The effect of controlling for training time, BERT-large vs ALBERT-xxlarge configurations.
+
+表7：控制训练时间的效果，BERT-large和ALBERT-xxlarge配置。
+
+After training for roughly the same amount of time, ALBERT-xxlarge is significantly better than BERT-large: +1.5% better on Avg, with the difference on RACE as high as +5.2%.
+
+经过大致相同的时间训练后，ALBERT-xxlarge明显优于BERT-large：平均提高+ 1.5％，RACE的差异高达+ 5.2％。
+
+### 4.8  ADDITIONAL TRAINING DATA AND DROPOUT EFFECTS  其他训练数据和DROPOUT效果
+
+The experiments done up to this point use only the Wikipedia and BOOKCORPUS datasets, as in (Devlin et al., 2019). In this section, we report measurements on the impact of the additional data used by both XLNet (Yang et al., 2019) and RoBERTa (Liu et al., 2019).
+
+至此，完成的实验仅使用Wikipedia和BOOKCORPUS数据集，如（Devlin 2019）。 在本节中，我们报告了XLNet（Yang 2019）和RoBERTa（Liu 2019）所使用的附加数据的影响的测量结果。
+
+Fig. 3a plots the dev set MLM accuracy under two conditions, without and with additional data, with the latter condition giving a significant boost. We also observe performance improvements on the downstream tasks in Table 8, except for the SQuAD benchmarks (which are Wikipedia-based, and therefore are negatively affected by out-of-domain training material).
+
+图3a绘制了在没有附加数据和有附加数据的情况下，两种情况下开发集的MLM精度，其中后一种情况有明显的提高。 除了SQuAD基准（基于Wikipedia，因此受到域外培训材料的负面影响）之外，我们还观察到了表8中下游任务的性能改进。
+
+![深度截图_选择区域_20191013115944](论文翻译-ALBERT/深度截图_选择区域_20191013115944.png)
+
+Figure 3: The effects of adding data and removing dropout during training.
+
+图3：在训练期间添加数据和移除dropout的影响。
+
+![深度截图_选择区域_20191013120135](论文翻译-ALBERT/深度截图_选择区域_20191013120135.png)
+
+Table 8: The effect of additional training data using the ALBERT-base configuration.
+
+表8：使用基于ALBERT的配置的其他训练数据的效果。
+
+### 4.9   CURRENT STATE-OF-THE-ART ON NLU TASKS  NLU任务的当前最佳性能
+
+The results we report in this section make use of the training data used by Devlin et al. (2019), as well as the additional data used by Liu et al. (2019) and Yang et al. (2019). We report state-of-the-art results under two settings for fine-tuning: single-model and ensembles. In both settings, we only do single-task fine-tuning4 . Following Liu et al. (2019), on the development set we report the median result over five runs.
+
+我们在本节中报告的结果利用了Devlin等人使用的训练数据。 （2019），以及Liu等人使用的其他数据（2019）和Yang等（2019）。 我们在两种设置下报告了当前最佳性能(SOTA)，以进行微调：单模型和模型融合。 在这两种设置中，我们仅执行单任务微调4。 继刘等（2019），在开发集上，我们报告了五次运行的中位数结果。
+
+The single-model ALBERT configuration incorporates the best-performing settings discussed: an ALBERT-xxlarge configuration (Table 2) using combined MLM and SOP losses, and no dropout. The checkpoints that contribute to the final ensemble model are selected based on development set performance; the number of checkpoints considered for this selection range from 6 to 17, depending on the task. For the GLUE (Table 10) and RACE (Table 11) benchmarks, we average the model predictions for the ensemble models, where the candidates are fine-tuned from different training steps using the 12-layer and 24-layer architectures. For SQuAD (Table 11), we average the prediction scores for  those spans that have multiple probabilities; we also average the scores of the “unanswerable” decision.
+
+单模型ALBERT配置结合了所讨论的最佳性能设置：ALBERT-xxlarge配置（表2）结合了MLM和SOP损耗，并且没有dropout。 根据开发集性能选择有助于最终整体模型的检查点； 根据任务的不同，为此选择考虑的检查点数量在6到17之间。 对于GLUE（表10）和RACE（表11）基准，我们对集合模型的模型预测取平均，其中使用12层和24层体系结构从不同的训练步骤对候选者进行微调。 对于SQuAD（表11），我们对那些具有多个概率的跨度的预测得分取平均值。 我们还将“无法回答(unanswerable)”的决定的得分平均。
+
+Both single-model and ensemble results indicate that ALBERT improves the state-of-the-art significantly for all three benchmarks, achieving a  GLUE score of 89.4, a SQuAD 2.0 test F1 score of 92.2, and a RACE test accuracy of 89.4. The latter appears to be a particularly strong improvement, a jump of +17.4% absolute points over BERT (Devlin et al., 2019), +7.6% over XLNet (Yang et al., 2019), +6.2% over RoBERTa (Liu et al., 2019), and 5.3% over DCMI+ (Zhang et al., 2019), an ensemble of multiple models specifically designed for reading comprehension  tasks. Our single model achieves an accuracy of 86.5%, which is still 2.4% better than the state-of-the-art ensemble model.
+
+单模型结果和整体结果均表明，ALBERT显著改善了所有三个基准的最佳性能，GLUE得分为89.4，SQuAD 2.0测试F1得分为92.2，RACE测试准确性为89.4。 后者似乎是一个特别强大的改进，绝对值比BERT（Devlin 2019）跃升+ 17.4％，比XLNet（Yang 2019）跃升7.6％，比RoBERTa（Liu）跃升6.2％（2019），比DCMI +高5.3％（Zhang 2019），这是专门为阅读理解任务设计的多种模型的集合。 我们的单一模型可达到86.5％的准确度，仍比最新的集成模型高2.4％。
+
+![深度截图_选择区域_20191013120839](论文翻译-ALBERT/深度截图_选择区域_20191013120839.png)
+
+Table 10: State-of-the-art results on the GLUE benchmark. For single-task single-model results, we report ALBERT at 1M steps (comparable to RoBERTa) and at 1.5M steps. The ALBERT ensemble uses models trained with 1M, 1.5M, and other numbers of steps.
+
+表10：GLUE基准测试的最新结果。 对于单任务单模型结果，我们报告ALBERT的步长为1M（与RoBERTa相比），步长为150万。 ALBERT集成使用经过1M，1.5M和其他数量步数训练的模型。
+
+![深度截图_选择区域_20191013120927](论文翻译-ALBERT/深度截图_选择区域_20191013120927.png)
+
+Table 11: State-of-the-art results on the SQuAD and RACE benchmarks.
+
+表11：SQuAD和RACE的当前最佳性能
+
+## 5  DISCUSSION    讨论
+
+While ALBERT-xxlarge has less parameters than BERT-large and gets significantly better results, it is computationally more expensive due to its larger structure. An important next step is thus to speed up the training and inference speed of ALBERT through methods like sparse attention (Child et al., 2019) and block attention (Shen et al., 2018). An orthogonal line of research, which could provide additional representation power, includes hard example mining (Mikolov et al., 2013) and more efficient language modeling training (Yang et al., 2019). Additionally, although we have convincing evidence that sentence order prediction is a more consistently-useful learning task that leads to better language representations, we hypothesize that there could be more dimensions not yet captured by the current self-supervised training losses that could create additional representation power for the resulting representations.
+
+尽管ALBERT-xxlarge的参数比BERT-large的参数少，并且获得了明显更好的结果，但由于其较大的结构，计算量更大。 因此，重要的下一步是通过稀疏注意力（Child 2019）和block attention（Shen 2018）之类的方法来加快ALBERT的训练和推理速度。 可以提供更多表征能力的正交研究包括hard example mining（Mikolov 2013）和更有效的语言模型训练（Yang 2019）。 此外，尽管我们有令人信服的证据表明句子顺序预测是一种更一致有用的学习任务，可以带来更好的语言表示，但我们假设当前的自我监督训练损失可能还没有捕获到更多维度，这可能会产生更多的表示形式 结果表示的能力。
+
+## REFERENCES   参考文献   (略)
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-## 参考资料
-> - []()
-> - []()
 
