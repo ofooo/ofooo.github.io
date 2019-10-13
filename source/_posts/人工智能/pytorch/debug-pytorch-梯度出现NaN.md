@@ -6,7 +6,6 @@ tags:
   - NaN
 categories:
   - 人工智能
-  - 深度学习
   - pytorch
 date: 2019-05-22 19:00:45
 ---
