@@ -1,9 +1,11 @@
 ---
 title: 《hanlp神经网络依存句法分析器》笔记
 toc: true
+categories:
+  - 人工智能
+  - cs224n笔记
 date: 2019-10-08 19:42:54
 tags:
-categories:
 ---
 
 .

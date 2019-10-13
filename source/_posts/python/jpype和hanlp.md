@@ -1,9 +1,10 @@
 ---
 title: jpype和hanlp 安装
 toc: true
+categories:
+  - python
 date: 2019-10-08 20:17:31
 tags:
-categories:
 ---
 
 

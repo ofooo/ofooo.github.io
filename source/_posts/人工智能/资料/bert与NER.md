@@ -1,9 +1,11 @@
 ---
 title: BERT与NER
 toc: true
+categories:
+  - 人工智能
+  - 资料
 date: 2019-10-08 12:21:20
 tags:
-categories:
 ---
 
 ### 相关博客

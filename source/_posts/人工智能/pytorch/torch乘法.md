@@ -1,12 +1,11 @@
 ---
-title: torch中的几种乘法。torch.mm, torch.mul, torch.matmul
+title: 'torch中的几种乘法。torch.mm, torch.mul, torch.matmul'
 toc: true
+categories:
+  - 人工智能
+  - pytorch
 date: 2019-10-06 20:29:59
 tags:
-categories: 
-- torch.mm
-- torch.mul
-- torch.matmul
 ---
 
 .

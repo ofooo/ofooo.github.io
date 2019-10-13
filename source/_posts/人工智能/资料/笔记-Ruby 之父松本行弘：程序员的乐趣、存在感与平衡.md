@@ -1,9 +1,11 @@
 ---
 title: 笔记 Ruby 之父松本行弘：程序员的乐趣、存在感与平衡.md
 toc: true
+categories:
+  - 人工智能
+  - 资料
 date: 2018-12-08 11:21:20
 tags:
-categories:
 ---
 
 原文: https://gitee.com/gitee-stars/12https://zhuanlan.zhihu.com/p/84470460)
