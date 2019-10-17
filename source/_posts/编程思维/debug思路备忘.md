@@ -91,6 +91,20 @@ date: 2019-05-31 09:39:46
 
 
 
+## 网页可以浏览, 命令行不能联网
+
+可能是环境变量里面的PROXY设置有问题
+
+```bash
+env |grpe PROXY     # 查看代理的环境变量
+unset HTTP_PROXY     # 删除对应的环境变量
+unset HTTPS_PROXY
+```
+
+
+
+
+
 ## print无法输出内容(特别是docker容器里)
 
 设置环境变量: PYTHONUNBUFFERED=1

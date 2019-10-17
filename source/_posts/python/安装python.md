@@ -16,6 +16,18 @@ tags:
 ## 在ubuntu中安装python3.6
 
 ```bash
+# 安装python3.6
+sudo add-apt-repository ppa:jonathonf/python-3.6
+sudo apt-get update
+sudo apt-get install python3.6
+```
+
+
+
+
+
+```bash
+# 安装python3.6 并替换3.5
 sudo apt update \
     && apt install -y software-properties-common \
     && add-apt-repository -y ppa:jonathonf/python-3.6 \

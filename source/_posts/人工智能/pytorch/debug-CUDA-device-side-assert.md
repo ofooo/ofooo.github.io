@@ -79,3 +79,21 @@ RuntimeError: cuda runtime error (59) : device-side assert triggered at /home/tv
 显然，损失函数的输入不合法。 实际上，我们的激活形状批处理为x 3，因此我们只允许三个类别（0、1、2），但标签的值为3！
 
 这对特殊情况也适用, 如果我们能恢复计算中的非GPU位而不需要完全重启就好了.(The best part is that this also works for nontrivial examples. Now if only we could recover the non-GPU bits of our calculation instead of needing a complete restart...  这句话翻译的不太好, 有建议可以联系我邮箱ofyu@163.com)
+
+
+
+
+
+```bash
+
+
+RuntimeError: copy_if failed to synchronize: device-side assert triggered
+
+RuntimeError: CUDA error: device-side assert triggered
+
+THCudaCheck FAIL file=/pytorch/aten/src/THC/THCCachingHostAllocator.cpp line=296 error=59 : device-side assert triggered
+*** RuntimeError: cuda runtime error (59) : device-side assert triggered at /pytorch/aten/src/THC/THCCachingHostAllocator.cpp:296
+
+# 本次出错, 是因为词向量的id超出了词向量维度, 还有可能id=-1,或者label超出维度等等
+```
+
