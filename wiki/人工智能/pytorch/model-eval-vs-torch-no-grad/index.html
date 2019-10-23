@@ -3,22 +3,23 @@
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
     
-    <title>标签: GPU | AIfish</title>
+    <title>model.eval() 和 with torch.no_grad() 对比 | AIfish</title>
     
     
-        <meta name="keywords" content="AIfish">
+        <meta name="keywords" content="model.eval() 和 with torch.no_grad() 对比">
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta name="description" content="NLP AI">
-<meta property="og:type" content="website">
-<meta property="og:title" content="AIfish">
-<meta property="og:url" content="http://yoursite.com/tags/GPU/index.html">
+    <meta name="description" content="两者目标不一样  model.eval()eval()将通知所有层当前的使用模式(train/eval),  因为一些特殊的层会有两种工作方式.   batchnorm 在train时使用batch的数据归一化, 而在eval时使用统计数据进行归一化 dropout 在train时正常, 在eval时不会生效  torch.no_grad()12with torch.no_grad():	y">
+<meta property="og:type" content="article">
+<meta property="og:title" content="model.eval() 和 with torch.no_grad() 对比">
+<meta property="og:url" content="http://yoursite.com/wiki/人工智能/pytorch/model-eval-vs-torch-no-grad/index.html">
 <meta property="og:site_name" content="AIfish">
-<meta property="og:description" content="NLP AI">
+<meta property="og:description" content="两者目标不一样  model.eval()eval()将通知所有层当前的使用模式(train/eval),  因为一些特殊的层会有两种工作方式.   batchnorm 在train时使用batch的数据归一化, 而在eval时使用统计数据进行归一化 dropout 在train时正常, 在eval时不会生效  torch.no_grad()12with torch.no_grad():	y">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-10-23T08:52:53.810Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="AIfish">
-<meta name="twitter:description" content="NLP AI">
+<meta name="twitter:title" content="model.eval() 和 with torch.no_grad() 对比">
+<meta name="twitter:description" content="两者目标不一样  model.eval()eval()将通知所有层当前的使用模式(train/eval),  因为一些特殊的层会有两种工作方式.   batchnorm 在train时使用batch的数据归一化, 而在eval时使用统计数据进行归一化 dropout 在train时正常, 在eval时不会生效  torch.no_grad()12with torch.no_grad():	y">
     
 
     
@@ -166,9 +167,9 @@
                          <ul class="unstyled" id="tree">  <li class="file"><a href="/wiki/python/datetime/">datetime</a></li>  <li class="file"><a href="/wiki/python/jpype和hanlp/">jpype和hanlp 安装</a></li>  <li class="file"><a href="/wiki/python/decorator装饰器/">decorator装饰器</a></li>  <li class="file"><a href="/wiki/python/jupyter-notebook/">jupyter_notebook</a></li>  <li class="file"><a href="/wiki/python/py2和py3/">py2_and_py3</a></li>  <li class="file"><a href="/wiki/python/python-xml/">python-xml解析</a></li>  <li class="file"><a href="/wiki/python/python代码加密/">python代码加密</a></li>  <li class="file"><a href="/wiki/python/python基本数据类型/">python基本数据类型</a></li>  <li class="file"><a href="/wiki/python/python常用代码/">python常用代码</a></li>  <li class="file"><a href="/wiki/python/python源码转UML图/">python源码转UML图</a></li>  <li class="file"><a href="/wiki/python/queue队列/">Queue 队列模块相关</a></li>  <li class="file"><a href="/wiki/python/tornado/">tornado</a></li>  <li class="file"><a href="/wiki/python/命令行参数和环境变量/">命令行参数和环境变量</a></li>  <li class="file"><a href="/wiki/python/python常见错误/">python常见错误</a></li>  <li class="file"><a href="/wiki/python/多线程、多进程、协程/">thread多线程模块</a></li>  <li class="file"><a href="/wiki/python/安装python/">安装python</a></li>  <li class="file"><a href="/wiki/python/基础库/">基础库：os/sys/dis</a></li>  <li class="file"><a href="/wiki/python/迭代器和生成器/">python基本概念</a></li>  <li class="file"><a href="/wiki/python/文本操作/">文本操作</a></li>  <li class="file"><a href="/wiki/python/pycharm/">配置和使用 pycharm</a></li>  </ul> 
                     </li> 
                     
-                    <li class="directory">
+                    <li class="directory open">
                         <a href="#" data-role="directory">
-                            <i class="fa fa-folder"></i>
+                            <i class="fa fa-folder-open"></i>
                             &nbsp;
                             人工智能
                         </a>
@@ -182,13 +183,13 @@
                          <ul class="unstyled" id="tree">  <li class="file"><a href="/wiki/人工智能/cs224n笔记/《hanlp神经网络依存句法分析器》笔记/">《hanlp神经网络依存句法分析器》笔记</a></li>  <li class="file"><a href="/wiki/人工智能/cs224n笔记/02词向量/">cs224n-02词向量</a></li>  </ul> 
                     </li> 
                     
-                    <li class="directory">
+                    <li class="directory open">
                         <a href="#" data-role="directory">
-                            <i class="fa fa-folder"></i>
+                            <i class="fa fa-folder-open"></i>
                             &nbsp;
                             pytorch
                         </a>
-                         <ul class="unstyled" id="tree">  <li class="file"><a href="/wiki/人工智能/pytorch/debug-pytorch-梯度出现NaN/">debug：pytorch_梯度出现NaN</a></li>  <li class="file"><a href="/wiki/人工智能/pytorch/debug-CUDA-device-side-assert/">PyTorch</a></li>  <li class="file"><a href="/wiki/人工智能/pytorch/pytorch常用代码/">pytorch常用代码</a></li>  <li class="file"><a href="/wiki/人工智能/pytorch/pytorch-tensor/">pytorch--tensor</a></li>  <li class="file"><a href="/wiki/人工智能/pytorch/pytorch报错/">pytorch报错</a></li>  <li class="file"><a href="/wiki/人工智能/pytorch/torch乘法/">torch中的几种乘法。torch.mm, torch.mul, torch.matmul</a></li>  <li class="file"><a href="/wiki/人工智能/pytorch/model-eval-vs-torch-no-grad/">model.eval() 和 with torch.no_grad() 对比</a></li>  </ul> 
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/wiki/人工智能/pytorch/debug-pytorch-梯度出现NaN/">debug：pytorch_梯度出现NaN</a></li>  <li class="file"><a href="/wiki/人工智能/pytorch/debug-CUDA-device-side-assert/">PyTorch</a></li>  <li class="file"><a href="/wiki/人工智能/pytorch/pytorch常用代码/">pytorch常用代码</a></li>  <li class="file"><a href="/wiki/人工智能/pytorch/pytorch-tensor/">pytorch--tensor</a></li>  <li class="file"><a href="/wiki/人工智能/pytorch/pytorch报错/">pytorch报错</a></li>  <li class="file"><a href="/wiki/人工智能/pytorch/torch乘法/">torch中的几种乘法。torch.mm, torch.mul, torch.matmul</a></li>  <li class="file active"><a href="/wiki/人工智能/pytorch/model-eval-vs-torch-no-grad/">model.eval() 和 with torch.no_grad() 对比</a></li>  </ul> 
                     </li> 
                     
                     <li class="directory">
@@ -398,86 +399,117 @@
     <div id="toTop" class="fa fa-angle-up"></div>
 </aside>
             
-            <section id="main">
-<div class="timeline timeline-wrap">
-    <div class="timeline-row timeline-row-major">
-        <span class="node"><i class="fa fa-tag"></i></span>
-        <h1 class="title">#GPU</h1>
-    </div>
-    
-        <div class="timeline-row">
-            <span class="node"></span>
-            <div class="content">
+            <section id="main"><article id="post-人工智能/pytorch/model-eval-vs-torch-no-grad" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
                 
-    
-        <h1 itemprop="name">
-            <a class="timeline-article-title" href="/wiki/人工智能/pytorch/pytorch报错/">pytorch报错</a>
-        </h1>
-    
-
-                <div class="article-meta">
-                    
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/wiki/人工智能/pytorch/pytorch报错/">
-            <time datetime="2019-07-12T01:09:53.000Z" itemprop="datePublished">2019-07-12</time>
-        </a>
-    </div>
-
-
-                    
+                    <div class="article-meta">
+                        
     <div class="article-category">
     	<i class="fa fa-folder"></i>
         <a class="article-category-link" href="/categories/人工智能/">人工智能</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/人工智能/pytorch/">pytorch</a>
     </div>
 
-                    
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/GPU/">GPU</a>, <a class="tag-link" href="/tags/pytorch/">pytorch</a>, <a class="tag-link" href="/tags/深度学习/">深度学习</a>
-    </div>
-
-                </div>
-            </div>
-        </div>
-    
-        <div class="timeline-row">
-            <span class="node"></span>
-            <div class="content">
-                
-    
-        <h1 itemprop="name">
-            <a class="timeline-article-title" href="/wiki/人工智能/深度学习/nvidia-docker/">nvidia_docker</a>
-        </h1>
-    
-
-                <div class="article-meta">
-                    
+                        
+                        
     <div class="article-date">
         <i class="fa fa-calendar"></i>
-        <a href="/wiki/人工智能/深度学习/nvidia-docker/">
-            <time datetime="2019-06-14T01:54:32.000Z" itemprop="datePublished">2019-06-14</time>
+        <a href="/wiki/人工智能/pytorch/model-eval-vs-torch-no-grad/">
+            <time datetime="2019-10-23T08:23:19.000Z" itemprop="datePublished">2019-10-23</time>
         </a>
     </div>
 
 
-                    
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/人工智能/">人工智能</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/人工智能/深度学习/">深度学习</a>
-    </div>
-
-                    
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/GPU/">GPU</a>, <a class="tag-link" href="/tags/显卡/">显卡</a>, <a class="tag-link" href="/tags/深度学习/">深度学习</a>
-    </div>
-
-                </div>
-            </div>
-        </div>
+                        
+                            <i class="fa fa-bar-chart"></i>
+                            <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span></span>    
+                        
+                        
+                            <div class="article-meta-button">
+                                <a href="https://github.com/ofooo/Wiki-site/raw/writing/source/_posts/人工智能/pytorch/model-eval-vs-torch-no-grad.md" rel="external nofollow noopener noreferrer" target="_blank"> Source </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a href="https://github.com/ofooo/Wiki-site/edit/writing/source/_posts/人工智能/pytorch/model-eval-vs-torch-no-grad.md" rel="external nofollow noopener noreferrer" target="_blank"> Edit </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a href="https://github.com/ofooo/Wiki-site/commits/writing/source/_posts/人工智能/pytorch/model-eval-vs-torch-no-grad.md" rel="external nofollow noopener noreferrer" target="_blank"> History </a>
+                            </div>
+                        
+                    </div>
+                
+                
     
-</div>
+        <h1 class="article-title" itemprop="name">
+            model.eval() 和 with torch.no_grad() 对比
+        </h1>
+    
+
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+        
+            
+                <div id="toc" class="toc-article">
+                <strong class="toc-title">文章目录</strong>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#model-eval"><span class="toc-number">1.</span> <span class="toc-text">model.eval()</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#torch-no-grad"><span class="toc-number">1.1.</span> <span class="toc-text">torch.no_grad()</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考资料"><span class="toc-number">2.</span> <span class="toc-text">参考资料</span></a></li></ol>
+                </div>
+            
+        
+        
+            <blockquote>
+<p> 两者目标不一样</p>
+</blockquote>
+<h2 id="model-eval"><a href="#model-eval" class="headerlink" title="model.eval()"></a>model.eval()</h2><p>eval()将通知所有层当前的使用模式(train/eval),  因为一些特殊的层会有两种工作方式. </p>
+<ul>
+<li>batchnorm 在train时使用batch的数据归一化, 而在eval时使用统计数据进行归一化</li>
+<li>dropout 在train时正常, 在eval时不会生效</li>
+</ul>
+<h3 id="torch-no-grad"><a href="#torch-no-grad" class="headerlink" title="torch.no_grad()"></a>torch.no_grad()</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">with torch.no_grad():</span><br><span class="line">	y = model(x)</span><br></pre></td></tr></table></figure>
+<p>no_grad()会关闭自动梯度引擎, 这会降低内存或显存的使用数量, 并且加快计算速度</p>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><blockquote>
+<ul>
+<li><a href="https://discuss.pytorch.org/t/model-eval-vs-with-torch-no-grad/19615" rel="external nofollow noopener noreferrer" target="_blank">https://discuss.pytorch.org/t/model-eval-vs-with-torch-no-grad/19615</a></li>
+<li><a href=""></a></li>
+</ul>
+</blockquote>
+
+            </div>
+        
+        <footer class="article-footer">
+        </footer>
+    </div>
+</article>
+
+
+    
+<nav id="article-nav">
+    
+    
+        <a href="/wiki/人工智能/资料/论文翻译-ALBERT/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">下一篇</strong>
+            <div class="article-nav-title">论文翻译 ALBERT：A LITE BERT FOR SELF-SUPERVISED LEARNING OF LANGUAGE REPRESENTATIONS</div>
+        </a>
+    
+</nav>
+
+
+
+
+
+    
+    
+
+
+
+
+<!-- baidu url auto push script -->
+<script type="text/javascript">
+    !function(){var e=/([http|https]:\/\/[a-zA-Z0-9\_\.]+\.baidu\.com)/gi,r=window.location.href,o=document.referrer;if(!e.test(r)){var n="//api.share.baidu.com/s.gif";o?(n+="?r="+encodeURIComponent(document.referrer),r&&(n+="&l="+r)):r&&(n+="?l="+r);var t=new Image;t.src=n}}(window);
+</script>     
 </section>
         </div>
         <footer id="footer">
