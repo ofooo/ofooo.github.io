@@ -1,5 +1,5 @@
 ---
-title: hexo
+title: hexo_主题配置
 toc: true
 date: 2019-02-28 16:49:08
 tags:
@@ -9,6 +9,16 @@ categories:
   - 编程基础
   - 博客工具
 ---
+
+
+
+### 下载主题
+
+http://theme.typora.io/theme/Law/
+
+下载后把文件夹和.css文件拖动到主题目录中即可
+
+
 
 ## 配置主题
 

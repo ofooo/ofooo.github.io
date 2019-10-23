@@ -3,6 +3,9 @@ layout: Debugging CUDA device-side assert in PyTorch
 title: PyTorch
 date: 2019-10-05 12:14:22
 tags:
+categories:
+  - 人工智能
+  - pytorch
 ---
 
 ## 原文: [Debugging CUDA device-side assert in PyTorch](https://lernapparat.de/debug-device-assert/)
