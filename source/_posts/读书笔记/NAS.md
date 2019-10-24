@@ -2,7 +2,7 @@
 title: NAS
 toc: true
 categories:
-  - 其他
+  - 读书笔记
 date: 2019-07-05 08:40:32
 tags:
 ---
