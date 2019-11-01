@@ -4,7 +4,7 @@ title: >-
   REPRESENTATIONS
 toc: true
 categories:
-  - 人工智能
+  - 读书笔记
   - 论文翻译
 date: 2019-10-13 11:21:20
 tags:

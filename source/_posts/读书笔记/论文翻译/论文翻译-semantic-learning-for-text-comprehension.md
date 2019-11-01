@@ -2,7 +2,7 @@
 title: '论文翻译 I Know What You Want: Semantic Learning for Text Comprehension'
 toc: true
 categories:
-  - 人工智能
+  - 读书笔记
   - 论文翻译
 date: 2019-10-23 11:21:20
 tags:

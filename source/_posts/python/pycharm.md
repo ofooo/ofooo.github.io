@@ -141,6 +141,20 @@ Setting-->Editor-->Color Scheme-->Console Font
 
 ## 常见BUG
 
+
+
+### pycharm跳转源码时会跳转到pyi文件
+
+首先在File->Setting->Editor->Code Style->File Types中找到Python Stub
+
+然后将Registered Patterns里面的内容清空就好了。
+
+![深度截图_选择区域_20191031100857](pycharm/深度截图_选择区域_20191031100857.png)
+
+
+
+
+
 ### pycharm中所有代码无法自动提示处理方法
 
 **解决方案：** 
