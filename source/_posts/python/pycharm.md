@@ -143,6 +143,16 @@ Setting-->Editor-->Color Scheme-->Console Font
 
 
 
+### 更新了库以后跳转功能不一致(例如torch缺少torch.nn)
+
+1. 关闭pycharm
+
+2. 删除pycharm的提示缓存文件: /home/fish3/.PyCharmCE2019.2/system/python_stubs
+
+3. 然后再重新启动一次pycharm, 这时候pycharm会重新更新updating python interpreter
+
+
+
 ### pycharm跳转源码时会跳转到pyi文件
 
 首先在File->Setting->Editor->Code Style->File Types中找到Python Stub

@@ -61,6 +61,12 @@ sudo shutdown -h 10    # 10分钟后关机
 sudo shutdown -h 14:15 # 希望在14:15关闭计算机
 sudo shutdown -c       # 取消自动关机
 reboot                 # 重启电脑
+
+shell递归删除指定字符串文件或者目录：
+1、递归删除文件：
+find . -name "*.rej" | xargs rm -rf
+2、递归删除目录：
+find . -type d -name "*.rej" | xargs rm -rf
 ```
 
 ### shell脚本自动输入sudo密码
