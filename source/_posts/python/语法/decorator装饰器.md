@@ -7,6 +7,7 @@ tags:
   - 装饰器
 categories:
   - python
+  - 语法
 date: 2019-03-17 08:38:37
 ---
 

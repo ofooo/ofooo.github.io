@@ -3,6 +3,7 @@ title: python基本数据类型
 toc: true
 categories:
   - python
+  - 语法
 date: 2019-03-21 14:35:53
 tags:
 ---

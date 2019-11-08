@@ -3,6 +3,7 @@ title: 配置和使用 pycharm
 toc: true
 categories:
   - python
+  - 工具
 date: 2019-03-17 08:55:57
 tags:
 ---

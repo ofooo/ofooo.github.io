@@ -3,6 +3,7 @@ title: python常用代码
 toc: true
 categories:
   - python
+  - 语法
 date: 2019-04-10 22:46:50
 tags:
 ---

@@ -3,6 +3,7 @@ title: jpype和hanlp 安装
 toc: true
 categories:
   - python
+  - 库
 date: 2019-10-08 20:17:31
 tags:
 ---

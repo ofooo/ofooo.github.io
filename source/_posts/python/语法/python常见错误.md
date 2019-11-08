@@ -3,6 +3,7 @@ title: python常见错误
 toc: true
 categories:
   - python
+  - 语法
 date: 2019-04-15 08:46:54
 tags:
 ---

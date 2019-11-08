@@ -3,6 +3,7 @@ title: 安装python
 toc: true
 categories:
   - python
+  - 工具
 date: 2019-04-17 08:55:46
 tags:
 ---
