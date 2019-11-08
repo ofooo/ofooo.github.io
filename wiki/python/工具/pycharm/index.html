@@ -1,0 +1,1161 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    
+    <title>配置和使用 pycharm | AIfish</title>
+    
+    
+        <meta name="keywords" content="配置和使用 pycharm">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="配置常用代码片段配置   配置路径   Setting—&amp;gt;Editor—&amp;gt;Live Templates—&amp;gt;加号按钮  12345678910111213141516171819~nos     # noinspection PyMethodMayBeStatic# ~errerror = &apos;\n&apos;.join(traceback.format_exception(*sys.exc_">
+<meta property="og:type" content="article">
+<meta property="og:title" content="配置和使用 pycharm">
+<meta property="og:url" content="http://yoursite.com/wiki/python/工具/pycharm/index.html">
+<meta property="og:site_name" content="AIfish">
+<meta property="og:description" content="配置常用代码片段配置   配置路径   Setting—&amp;gt;Editor—&amp;gt;Live Templates—&amp;gt;加号按钮  12345678910111213141516171819~nos     # noinspection PyMethodMayBeStatic# ~errerror = &apos;\n&apos;.join(traceback.format_exception(*sys.exc_">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://yoursite.com/wiki/python/工具/pycharm/home/fish/.config/Typora/typora-user-images/1553590786370.png">
+<meta property="og:image" content="http://yoursite.com/wiki/python/工具/pycharm/深度截图_选择区域_20191031100857.png">
+<meta property="og:image" content="http://yoursite.com/wiki/python/工具/pycharm/1559468743424.png">
+<meta property="og:image" content="http://yoursite.com/wiki/python/工具/pycharm/深度截图_选择区域_20190718100823.png">
+<meta property="og:image" content="http://yoursite.com/wiki/python/工具/pycharm/深度截图_选择区域_20190621154146.png">
+<meta property="og:image" content="http://yoursite.com/wiki/python/工具/pycharm/6276648-23c52460ff30204f.webp">
+<meta property="og:updated_time" content="2019-11-02T05:48:30.522Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="配置和使用 pycharm">
+<meta name="twitter:description" content="配置常用代码片段配置   配置路径   Setting—&amp;gt;Editor—&amp;gt;Live Templates—&amp;gt;加号按钮  12345678910111213141516171819~nos     # noinspection PyMethodMayBeStatic# ~errerror = &apos;\n&apos;.join(traceback.format_exception(*sys.exc_">
+<meta name="twitter:image" content="http://yoursite.com/wiki/python/工具/pycharm/home/fish/.config/Typora/typora-user-images/1553590786370.png">
+    
+
+    
+
+    
+        <link rel="icon" href="/fish256.png">
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/open-sans/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="/libs/jquery/plugins/cookie/1.4.1/jquery.cookie.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+    
+    
+
+
+    
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+</head>
+</html>
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">AIfish</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/">首页</a>
+                
+                    <a class="main-nav-link" href="/archives">归档</a>
+                
+                    <a class="main-nav-link" href="/categories">分类</a>
+                
+                    <a class="main-nav-link" href="/tags">标签</a>
+                
+                    <a class="main-nav-link" href="/about">关于</a>
+                
+            </nav>
+            
+            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索">
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="想要查找什么...">
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/">首页</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">归档</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">分类</a></td>
+                
+                    <td><a class="main-nav-link" href="/tags">标签</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">关于</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索">
+    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+            
+                <aside id="sidebar">
+   
+        
+    <div class="widget-wrap" id="categories">
+        <h3 class="widget-title">
+            <span>分类</span>
+            &nbsp;
+            <a id="allExpand" href="#">
+                <i class="fa fa-angle-double-down fa-2x"></i>
+            </a>
+        </h3>
+        
+        
+        
+         <ul class="unstyled" id="tree"> 
+                    <li class="directory open">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder-open"></i>
+                            &nbsp;
+                            python
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/wiki/python/工具/jupyter-notebook/">jupyter_notebook</a></li>  <li class="file"><a href="/wiki/python/工具/py2和py3/">py2_and_py3</a></li>  <li class="file"><a href="/wiki/python/工具/python源码转UML图/">python源码转UML图</a></li>  <li class="file"><a href="/wiki/python/工具/python代码加密/">python代码加密</a></li>  <li class="file"><a href="/wiki/python/库/datetime/">datetime</a></li>  <li class="file"><a href="/wiki/python/工具/安装python/">安装python</a></li>  <li class="file"><a href="/wiki/python/库/jpype和hanlp/">jpype和hanlp 安装</a></li>  <li class="file"><a href="/wiki/python/库/python-xml/">python-xml解析</a></li>  <li class="file"><a href="/wiki/python/库/tornado/">tornado</a></li>  <li class="file"><a href="/wiki/python/库/queue队列/">Queue 队列模块相关</a></li>  <li class="file"><a href="/wiki/python/库/命令行参数和环境变量/">命令行参数和环境变量</a></li>  <li class="file"><a href="/wiki/python/语法/decorator装饰器/">decorator装饰器</a></li>  <li class="file"><a href="/wiki/python/库/多线程、多进程、协程/">thread多线程模块</a></li>  <li class="file"><a href="/wiki/python/语法/python常用代码/">python常用代码</a></li>  <li class="file"><a href="/wiki/python/库/基础库/">基础库：os/sys/dis</a></li>  <li class="file"><a href="/wiki/python/语法/文本操作/">文本操作</a></li>  <li class="file"><a href="/wiki/python/语法/python常见错误/">python常见错误</a></li>  <li class="file"><a href="/wiki/python/语法/迭代器和生成器/">python基本概念</a></li>  <li class="file"><a href="/wiki/python/语法/python基本数据类型/">python基本数据类型</a></li>  <li class="file active"><a href="/wiki/python/工具/pycharm/">配置和使用 pycharm</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            人工智能
+                        </a>
+                         <ul class="unstyled" id="tree"> 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            cs224n笔记
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/wiki/人工智能/cs224n笔记/02词向量/">cs224n-02词向量</a></li>  <li class="file"><a href="/wiki/人工智能/cs224n笔记/《hanlp神经网络依存句法分析器》笔记/">《hanlp神经网络依存句法分析器》笔记</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            pytorch
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/wiki/人工智能/pytorch/debug-pytorch-梯度出现NaN/">debug：pytorch_梯度出现NaN</a></li>  <li class="file"><a href="/wiki/人工智能/pytorch/model-eval-vs-torch-no-grad/">model.eval() 和 with torch.no_grad() 对比</a></li>  <li class="file"><a href="/wiki/人工智能/pytorch/debug-CUDA-device-side-assert/">PyTorch</a></li>  <li class="file"><a href="/wiki/人工智能/pytorch/pytorch报错/">pytorch报错</a></li>  <li class="file"><a href="/wiki/人工智能/pytorch/torch乘法/">torch中的几种乘法。torch.mm, torch.mul, torch.matmul</a></li>  <li class="file"><a href="/wiki/人工智能/pytorch/pytorch-tensor/">pytorch--tensor</a></li>  <li class="file"><a href="/wiki/人工智能/pytorch/pytorch常用代码/">pytorch常用代码</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            搜索引擎
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/wiki/人工智能/搜索引擎/elastic-debug/">elastic-debug</a></li>  <li class="file"><a href="/wiki/人工智能/搜索引擎/elastic-search插件/">elastic-search插件</a></li>  <li class="file"><a href="/wiki/人工智能/搜索引擎/install-es/">安装ES</a></li>  <li class="file"><a href="/wiki/人工智能/搜索引擎/mongo/">mongo</a></li>  <li class="file"><a href="/wiki/人工智能/搜索引擎/sql-oracle/">oracle的SQL基础</a></li>  <li class="file"><a href="/wiki/人工智能/搜索引擎/es-search/">es-搜索操作</a></li>  <li class="file"><a href="/wiki/人工智能/搜索引擎/elastic-search基础/">elastic_search基础</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            深度学习
+                        </a>
+                         <ul class="unstyled" id="tree"> 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            allennlp
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/wiki/人工智能/深度学习/allennlp/allennlp-classes/">allennlp 类</a></li>  <li class="file"><a href="/wiki/人工智能/深度学习/allennlp/allennlp-models/">allennlp_models</a></li>  <li class="file"><a href="/wiki/人工智能/深度学习/allennlp/allennlp-json-config/">allennlp_json_config</a></li>  <li class="file"><a href="/wiki/人工智能/深度学习/allennlp/allennlp-command/">allennlp 命令执行流程</a></li>  </ul> 
+                    </li> 
+                     <li class="file"><a href="/wiki/人工智能/深度学习/RNN/">RNN</a></li>  <li class="file"><a href="/wiki/人工智能/深度学习/nvidia-docker/">nvidia_docker</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            资料
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/wiki/人工智能/资料/bert与NER/">BERT与NER</a></li>  <li class="file"><a href="/wiki/人工智能/资料/聚类/">分词和新词发现</a></li>  <li class="file"><a href="/wiki/人工智能/资料/分词和新词发现/">分词和新词发现</a></li>  <li class="file"><a href="/wiki/人工智能/资料/词向量/">分词和新词发现</a></li>  <li class="file"><a href="/wiki/人工智能/资料/语料收集/">语料收集</a></li>  <li class="file"><a href="/wiki/人工智能/资料/语义蕴含模型相关/">语义蕴含模型相关</a></li>  <li class="file"><a href="/wiki/人工智能/资料/阅读理解模型相关/">阅读理解模型相关</a></li>  </ul> 
+                    </li> 
+                     </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            编程基础
+                        </a>
+                         <ul class="unstyled" id="tree"> 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            C++
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/wiki/编程基础/C++/base-cpp/">C++基础</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            git
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/wiki/编程基础/git/gitlab/">使用git</a></li>  <li class="file"><a href="/wiki/编程基础/git/git基本概念/">git基本概念</a></li>  <li class="file"><a href="/wiki/编程基础/git/use-git/">使用git</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            javascript
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/wiki/编程基础/javascript/node/">node</a></li>  <li class="file"><a href="/wiki/编程基础/javascript/ubuntu-安装微信开发者工具/">ubuntu安装微信开发者工具</a></li>  <li class="file"><a href="/wiki/编程基础/javascript/javascript/">javascript基础</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            leetcode
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/wiki/编程基础/leetcode/141. Linked_List_Cycle/">双指针找环</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            博客工具
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/wiki/编程基础/博客工具/markdown说明/">markdown说明</a></li>  <li class="file"><a href="/wiki/编程基础/博客工具/hexo/">hexo</a></li>  <li class="file"><a href="/wiki/编程基础/博客工具/hexo_fish主题/">hexo_主题配置</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            安装与配置
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/wiki/编程基础/安装与配置/install-manjaro/">安装manjaro</a></li>  <li class="file"><a href="/wiki/编程基础/安装与配置/set-vim/">配置vim</a></li>  <li class="file"><a href="/wiki/编程基础/安装与配置/set-vscode/">配置vscode</a></li>  <li class="file"><a href="/wiki/编程基础/安装与配置/安装centos/">安装centos</a></li>  <li class="file"><a href="/wiki/编程基础/安装与配置/system-record/">操作系统重装记录</a></li>  <li class="file"><a href="/wiki/编程基础/安装与配置/配置chrome/">配置chrome</a></li>  <li class="file"><a href="/wiki/编程基础/安装与配置/install-ubuntu/">安装ubuntu</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            软件使用备忘
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/wiki/编程基础/软件使用备忘/linux_write_DVD/">linux刻录光盘</a></li>  <li class="file"><a href="/wiki/编程基础/软件使用备忘/npm/">npm</a></li>  <li class="file"><a href="/wiki/编程基础/软件使用备忘/use-Adblock/">使用Adblock广告屏蔽插件</a></li>  <li class="file"><a href="/wiki/编程基础/软件使用备忘/ubuntu的KDE开启触摸板/">ubuntu的KDE开启触摸板</a></li>  <li class="file"><a href="/wiki/编程基础/软件使用备忘/use-htop/">使用 htop</a></li>  <li class="file"><a href="/wiki/编程基础/软件使用备忘/use-docker/">使用docker</a></li>  <li class="file"><a href="/wiki/编程基础/软件使用备忘/use-linux/">使用linux</a></li>  <li class="file"><a href="/wiki/编程基础/软件使用备忘/use-tmux/">use_tmux</a></li>  <li class="file"><a href="/wiki/编程基础/软件使用备忘/使用vim/">vim</a></li>  <li class="file"><a href="/wiki/编程基础/软件使用备忘/use-vscode/">use-vscode</a></li>  <li class="file"><a href="/wiki/编程基础/软件使用备忘/使用虚拟机/">使用虚拟机</a></li>  </ul> 
+                    </li> 
+                     </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            编程思维
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/wiki/编程思维/debug思路备忘/">debug思路备忘</a></li>  <li class="file"><a href="/wiki/编程思维/错误处理/">错误处理</a></li>  <li class="file"><a href="/wiki/编程思维/写代码技巧/">写代码技巧</a></li>  <li class="file"><a href="/wiki/编程思维/什么才是编程的基础知识？/">编程的基础知识</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            读书笔记
+                        </a>
+                         <ul class="unstyled" id="tree"> 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            学习方法
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/wiki/读书笔记/学习方法/使用正念减少压力/">通过正念减少压力,提升专注力</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            论文翻译
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/wiki/读书笔记/论文翻译/论文翻译-ESIM/">论文翻译 Enhanced Sequential Inference Model（ESIM）</a></li>  <li class="file"><a href="/wiki/读书笔记/论文翻译/论文翻译-semantic-learning-for-text-comprehension/">论文翻译 I Know What You Want: Semantic Learning for Text Comprehension</a></li>  <li class="file"><a href="/wiki/读书笔记/论文翻译/论文翻译-ALBERT/">论文翻译 ALBERT：A LITE BERT FOR SELF-SUPERVISED LEARNING OF LANGUAGE REPRESENTATIONS</a></li>  </ul> 
+                    </li> 
+                     <li class="file"><a href="/wiki/读书笔记/nikon-d5600/">尼康D5600相机</a></li>  <li class="file"><a href="/wiki/读书笔记/NAS/">NAS</a></li>  <li class="file"><a href="/wiki/读书笔记/我们为什么喜欢巧克力/">我们为什么喜欢巧克力</a></li>  <li class="file"><a href="/wiki/读书笔记/笔记-《做事的常识》/">笔记-《做事的常识》----原著:[日本]小苍广,   播音员: 胖子邓</a></li>  <li class="file"><a href="/wiki/读书笔记/笔记-如何有效阅读一本书/">笔记-如何有效阅读一本书</a></li>  <li class="file"><a href="/wiki/读书笔记/笔记-Ruby 之父松本行弘：程序员的乐趣、存在感与平衡/">笔记 Ruby 之父松本行弘：程序员的乐趣、存在感与平衡.md</a></li>  <li class="file"><a href="/wiki/读书笔记/笔记-建立专属的时间管理系统-胖子邓/">笔记: 建立专属的时间管理系统----胖子邓</a></li>  <li class="file"><a href="/wiki/读书笔记/英文信件结尾56种表达方式/">英文信件结尾除了Best_Regards, 还有56种表达方式</a></li>  </ul> 
+                    </li> 
+                     <li class="file"><a href="/wiki/python/库/维护有序数组的模块bisect/">维护有序数组的模块bisect</a></li>  <li class="file"><a href="/wiki/人工智能/资料/关于xlnet的疑问/">关于xlnet的疑问</a></li>  </ul> 
+    </div>
+    <script>
+        $(document).ready(function() {
+            var iconFolderOpenClass  = 'fa-folder-open';
+            var iconFolderCloseClass = 'fa-folder';
+            var iconAllExpandClass = 'fa-angle-double-down';
+            var iconAllPackClass = 'fa-angle-double-up';
+            // Handle directory-tree expansion:
+            // 左键单独展开目录
+            $(document).on('click', '#categories a[data-role="directory"]', function (event) {
+                event.preventDefault();
+
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconFolderOpenClass);
+                var subtree = $(this).siblings('ul');
+                icon.removeClass(iconFolderOpenClass).removeClass(iconFolderCloseClass);
+                if (expanded) {
+                    if (typeof subtree != 'undefined') {
+                        subtree.slideUp({ duration: 100 });
+                    }
+                    icon.addClass(iconFolderCloseClass);
+                } else {
+                    if (typeof subtree != 'undefined') {
+                        subtree.slideDown({ duration: 100 });
+                    }
+                    icon.addClass(iconFolderOpenClass);
+                }
+            });
+            // 右键展开下属所有目录
+            $('#categories a[data-role="directory"]').bind("contextmenu", function(event){
+                event.preventDefault();
+                
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconFolderOpenClass);
+                var listNode = $(this).siblings('ul');
+                var subtrees = $.merge(listNode.find('li ul'), listNode);
+                var icons = $.merge(listNode.find('.fa'), icon);
+                icons.removeClass(iconFolderOpenClass).removeClass(iconFolderCloseClass);
+                if(expanded) {
+                    subtrees.slideUp({ duration: 100 });
+                    icons.addClass(iconFolderCloseClass);
+                } else {
+                    subtrees.slideDown({ duration: 100 });
+                    icons.addClass(iconFolderOpenClass);
+                }
+            })
+            // 展开关闭所有目录按钮
+            $(document).on('click', '#allExpand', function (event) {
+                event.preventDefault();
+                
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconAllExpandClass);
+                icon.removeClass(iconAllExpandClass).removeClass(iconAllPackClass);
+                if(expanded) {
+                    $('#sidebar .fa.fa-folder').removeClass('fa-folder').addClass('fa-folder-open')
+                    $('#categories li ul').slideDown({ duration: 100 });
+                    icon.addClass(iconAllPackClass);
+                } else {
+                    $('#sidebar .fa.fa-folder-open').removeClass('fa-folder-open').addClass('fa-folder')
+                    $('#categories li ul').slideUp({ duration: 100 });
+                    icon.addClass(iconAllExpandClass);
+                }
+            });  
+        });
+    </script>
+
+    
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+            
+            <section id="main"><article id="post-python/工具/pycharm" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+                    <div class="article-meta">
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/python/">python</a>
+    </div>
+
+                        
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/wiki/python/工具/pycharm/">
+            <time datetime="2019-03-17T00:55:57.000Z" itemprop="datePublished">2019-03-17</time>
+        </a>
+    </div>
+
+
+                        
+                            <i class="fa fa-bar-chart"></i>
+                            <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span></span>    
+                        
+                        
+                            <div class="article-meta-button">
+                                <a href="https://github.com/ofooo/Wiki-site/raw/writing/source/_posts/python/工具/pycharm.md" rel="external nofollow noopener noreferrer" target="_blank"> Source </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a href="https://github.com/ofooo/Wiki-site/edit/writing/source/_posts/python/工具/pycharm.md" rel="external nofollow noopener noreferrer" target="_blank"> Edit </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a href="https://github.com/ofooo/Wiki-site/commits/writing/source/_posts/python/工具/pycharm.md" rel="external nofollow noopener noreferrer" target="_blank"> History </a>
+                            </div>
+                        
+                    </div>
+                
+                
+    
+        <h1 class="article-title" itemprop="name">
+            配置和使用 pycharm
+        </h1>
+    
+
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+        
+            
+                <div id="toc" class="toc-article">
+                <strong class="toc-title">文章目录</strong>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#配置"><span class="toc-number">1.</span> <span class="toc-text">配置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#常用代码片段配置"><span class="toc-number">1.1.</span> <span class="toc-text">常用代码片段配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#快捷键配置"><span class="toc-number">1.2.</span> <span class="toc-text">快捷键配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#跳转到上个光标所在位置"><span class="toc-number">1.3.</span> <span class="toc-text">跳转到上个光标所在位置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#插件"><span class="toc-number">1.4.</span> <span class="toc-text">插件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#显示界面和字体配置"><span class="toc-number">1.5.</span> <span class="toc-text">显示界面和字体配置</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#常见BUG"><span class="toc-number">2.</span> <span class="toc-text">常见BUG</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#更新了库以后跳转功能不一致-例如torch缺少torch-nn"><span class="toc-number">2.1.</span> <span class="toc-text">更新了库以后跳转功能不一致(例如torch缺少torch.nn)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#pycharm跳转源码时会跳转到pyi文件"><span class="toc-number">2.2.</span> <span class="toc-text">pycharm跳转源码时会跳转到pyi文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#pycharm中所有代码无法自动提示处理方法"><span class="toc-number">2.3.</span> <span class="toc-text">pycharm中所有代码无法自动提示处理方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#某个文件不能代码高亮"><span class="toc-number">2.4.</span> <span class="toc-text">某个文件不能代码高亮</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#关闭PEP8某些错误提醒"><span class="toc-number">2.5.</span> <span class="toc-text">关闭PEP8某些错误提醒</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#关闭错误检测提醒"><span class="toc-number">2.6.</span> <span class="toc-text">关闭错误检测提醒</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#关闭某些错误提醒"><span class="toc-number">2.7.</span> <span class="toc-text">关闭某些错误提醒</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考资料"><span class="toc-number">3.</span> <span class="toc-text">参考资料</span></a></li></ol>
+                </div>
+            
+        
+        
+            <h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><h3 id="常用代码片段配置"><a href="#常用代码片段配置" class="headerlink" title="常用代码片段配置"></a>常用代码片段配置</h3><hr>
+<blockquote>
+<p> 配置路径   Setting—&gt;Editor—&gt;Live Templates—&gt;加号按钮</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">~nos     </span><br><span class="line"><span class="comment"># noinspection PyMethodMayBeStatic</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># ~err</span></span><br><span class="line">error = <span class="string">'\n'</span>.join(traceback.format_exception(*sys.exc_info()))</span><br><span class="line"></span><br><span class="line"><span class="comment"># ~path</span></span><br><span class="line">path = os.path.join(os.path.dirname(__file__), <span class="string">''</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># ~root</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">root</span><span class="params">(*f, relative_root=<span class="string">'../../../'</span>)</span>:</span></span><br><span class="line">    <span class="comment"># relative_root 当前代码目录相对root的相对路径</span></span><br><span class="line">    <span class="keyword">for</span> t <span class="keyword">in</span> f:</span><br><span class="line">        <span class="keyword">if</span> t[:<span class="number">1</span>] == <span class="string">'/'</span>:</span><br><span class="line">            print(<span class="string">'Warning: root()包含绝对路径 参数=&#123;&#125;'</span>.format(f))</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">    code_dir = os.path.dirname(os.path.realpath(__file__))</span><br><span class="line">    long_path = os.path.join(code_dir, relative_root, *f)</span><br><span class="line">    <span class="keyword">return</span> long_path</span><br></pre></td></tr></table></figure>
+<h3 id="快捷键配置"><a href="#快捷键配置" class="headerlink" title="快捷键配置"></a>快捷键配置</h3><p>Keymap—方案设置成NetBeans</p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>快捷键</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Reformat</td>
+<td>Ctrl+Alt+L  需设置</td>
+<td>Code格式化代码</td>
+</tr>
+<tr>
+<td>Move Line Up</td>
+<td>Alt+Up  需设置</td>
+<td>当前行往上挪一行</td>
+</tr>
+<tr>
+<td>Move Line Down</td>
+<td>Alt+Down  需设置</td>
+<td>当前行往上挪一行</td>
+</tr>
+<tr>
+<td>Optimize Imports</td>
+<td>Ctrl+Shift+I</td>
+<td>优化导入代码</td>
+</tr>
+<tr>
+<td></td>
+<td>Ctrl+F12</td>
+<td>跳转到方法（列表）</td>
+</tr>
+<tr>
+<td></td>
+<td>Ctrl + F11</td>
+<td>设置书签</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>SHIFT F11</td>
+<td>显示所有书签</td>
+</tr>
+<tr>
+<td>Go to Bookmark 1</td>
+<td>Ctrl+Alt+1  需设置</td>
+<td>跳转到 该书签</td>
+</tr>
+<tr>
+<td>Next Bookmark</td>
+<td>Ctrl+Shift+.</td>
+<td>跳转到下个书签</td>
+</tr>
+<tr>
+<td>Previous Bookmark</td>
+<td>Ctrl+Shift+逗号</td>
+<td>跳转到上个书签</td>
+</tr>
+<tr>
+<td>Decrease Font Size</td>
+<td>Ctrl+Alt+减号</td>
+<td>减小字体大小</td>
+</tr>
+<tr>
+<td>Increase Font Size</td>
+<td>Ctrl+Alt+=</td>
+<td>增加字体大小</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>常用快捷键</strong></p>
+<p>把展开代码块，设置成递归的：</p>
+<p>设置》Keymap》Main menu 》Code》Folding 》Expand   删除快捷键</p>
+<p>设置》Keymap》Main menu 》Code》Folding 》Expand Recursively   增加快捷键 Ctrl+=</p>
+<table>
+<thead>
+<tr>
+<th>快捷键</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ctrl+Q</td>
+<td>查看当前函数有什么参数</td>
+</tr>
+<tr>
+<td>Ctrl+Alt+L</td>
+<td>格式化代码</td>
+</tr>
+<tr>
+<td>Ctrl+Shift+加号/减号</td>
+<td>展开/折叠所有代码块</td>
+</tr>
+<tr>
+<td>Ctrl + 加号/减号</td>
+<td>展开/折叠代码块（当前位置的：函数，注释等）</td>
+</tr>
+<tr>
+<td>Ctrl + Alt + E</td>
+<td>Show Useage</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="跳转到上个光标所在位置"><a href="#跳转到上个光标所在位置" class="headerlink" title="跳转到上个光标所在位置"></a>跳转到上个光标所在位置</h3><p>​    打开 View—toolbar   有左右箭头按钮。悬停可以查看快捷键</p>
+<p><img src="/wiki/python/工具/pycharm/home/fish/.config/Typora/typora-user-images/1553590786370.png" alt="toolbar"></p>
+<h3 id="插件"><a href="#插件" class="headerlink" title="插件"></a>插件</h3><p>File—Setting—Plugins</p>
+<p>数据库插件：</p>
+<p>​    搜索datebase</p>
+<p>​        安装 Database Navigator</p>
+<p>​        <del>安装Mongo Plugin</del></p>
+<p>​    Grep Console 控制台文本颜色</p>
+<p>默认logger的stream是输出到sys.stderr, 这是pycharm会把文字设置成红色. 如果设置stream到sys.stdout, 字体颜色就正常了</p>
+<p>​    </p>
+<h3 id="显示界面和字体配置"><a href="#显示界面和字体配置" class="headerlink" title="显示界面和字体配置"></a>显示界面和字体配置</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">界面的字体大小：</span><br><span class="line">Setting--&gt;Appearance&amp;Behavior--&gt;Appearance--&gt;Use custom font</span><br><span class="line"></span><br><span class="line">代码的字体大小：</span><br><span class="line">Setting--&gt;Editor--&gt;Font</span><br><span class="line"></span><br><span class="line">控制台的字体大小:</span><br><span class="line">Setting--&gt;Editor--&gt;Color Scheme--&gt;Console Font</span><br></pre></td></tr></table></figure>
+<h2 id="常见BUG"><a href="#常见BUG" class="headerlink" title="常见BUG"></a>常见BUG</h2><h3 id="更新了库以后跳转功能不一致-例如torch缺少torch-nn"><a href="#更新了库以后跳转功能不一致-例如torch缺少torch-nn" class="headerlink" title="更新了库以后跳转功能不一致(例如torch缺少torch.nn)"></a>更新了库以后跳转功能不一致(例如torch缺少torch.nn)</h3><ol>
+<li><p>关闭pycharm</p>
+</li>
+<li><p>删除pycharm的提示缓存文件: /home/fish3/.PyCharmCE2019.2/system/python_stubs</p>
+</li>
+<li><p>然后再重新启动一次pycharm, 这时候pycharm会重新更新updating python interpreter</p>
+</li>
+</ol>
+<h3 id="pycharm跳转源码时会跳转到pyi文件"><a href="#pycharm跳转源码时会跳转到pyi文件" class="headerlink" title="pycharm跳转源码时会跳转到pyi文件"></a>pycharm跳转源码时会跳转到pyi文件</h3><p>首先在File-&gt;Setting-&gt;Editor-&gt;Code Style-&gt;File Types中找到Python Stub</p>
+<p>然后将Registered Patterns里面的内容清空就好了。</p>
+<p><img src="/wiki/python/工具/pycharm/深度截图_选择区域_20191031100857.png" alt="深度截图_选择区域_20191031100857"></p>
+<h3 id="pycharm中所有代码无法自动提示处理方法"><a href="#pycharm中所有代码无法自动提示处理方法" class="headerlink" title="pycharm中所有代码无法自动提示处理方法"></a>pycharm中所有代码无法自动提示处理方法</h3><p><strong>解决方案：</strong><br>1）打开pycharm后必须等待indexing全部结束；<br>2）检查file菜单里，确保节能模式“power save mode”不被勾选。</p>
+<h3 id="某个文件不能代码高亮"><a href="#某个文件不能代码高亮" class="headerlink" title="某个文件不能代码高亮"></a>某个文件不能代码高亮</h3><p>原因: 自动识别成了text文件(误操作添加了文件类型)</p>
+<p>解决方案:</p>
+<p>设置—&gt;Editor—&gt;File Types—&gt;找到文件名删除(一般在Text里面)</p>
+<p><img src="/wiki/python/工具/pycharm/1559468743424.png" alt="1559468743424"></p>
+<h3 id="关闭PEP8某些错误提醒"><a href="#关闭PEP8某些错误提醒" class="headerlink" title="关闭PEP8某些错误提醒"></a>关闭PEP8某些错误提醒</h3><p>点击有错误提示的代码, 前面的下拉菜单, 选择忽略该错误, 会自动添加到  PEP8的忽略错误列表中</p>
+<p><img src="/wiki/python/工具/pycharm/深度截图_选择区域_20190718100823.png" alt="深度截图_选择区域_20190718100823"></p>
+<h3 id="关闭错误检测提醒"><a href="#关闭错误检测提醒" class="headerlink" title="关闭错误检测提醒"></a>关闭错误检测提醒</h3><p>PEP的错误提示，鼠标到错误提示行开头位置，出现灯泡，选择ignore like this</p>
+<p><strong>setting—&gt;Editor—&gt;inspections</strong></p>
+<table>
+<thead>
+<tr>
+<th>说明</th>
+<th>英文</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>捕捉异常范围太广</td>
+<td>Too broad exception clauses</td>
+</tr>
+<tr>
+<td>方法可能是静态的</td>
+<td>Method may be static</td>
+</tr>
+<tr>
+<td>拼写检测</td>
+<td>Typo</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><img src="/wiki/python/工具/pycharm/深度截图_选择区域_20190621154146.png" alt="深度截图_选择区域_20190621154146"></p>
+<h3 id="关闭某些错误提醒"><a href="#关闭某些错误提醒" class="headerlink" title="关闭某些错误提醒"></a>关闭某些错误提醒</h3><p>让PyCharm 在代码检查时人为跳过某些特定部分的代码检查，便于强迫症和优化代码提示</p>
+<p>使用方法：在需要跳过代码校验的部分加上注释即可， 如图：</p>
+<p><img src="/wiki/python/工具/pycharm/6276648-23c52460ff30204f.webp" alt="img"></p>
+<table>
+<thead>
+<tr>
+<th>注释</th>
+<th>对应检查说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td># noinspection PyMethodMayBeStatic</td>
+<td>This inspection detects any methods which may safely be made static.</td>
+</tr>
+<tr>
+<td># noinspection PyAbstractClass</td>
+<td>This inspection detects when not all abstract properties/methods are defined in a subclass</td>
+</tr>
+<tr>
+<td># noinspection PyArgumentList</td>
+<td>This inspection reports discrepancies between declared parameters and actual arguments, as well as incorrect arguments (e.g. duplicate named arguments) and incorrect argument order. Decorators are analyzed, too.</td>
+</tr>
+<tr>
+<td># noinspection PyArgumentEqualDefault</td>
+<td>This inspection highlights situations, where argument passed to function is equal to default parameter value</td>
+</tr>
+<tr>
+<td># noinspection PyAssignmentToLoopOrWithParameter</td>
+<td>Checks for cases when you rewrite loop variable with inner loop    for i in xrange(5):        for i in xrange(20, 25):            print(“Inner”, i)            print(“Outer”, i)It also warns you if variable declared in with statement is redeclared inside of statement body:    with open(“file”) as f:        f.read()        with open(“file”) as f:</td>
+</tr>
+<tr>
+<td># noinspection PyAsyncCall</td>
+<td>This inspection highlights coroutines which were called without await</td>
+</tr>
+<tr>
+<td># noinspection PyAugmentAssignment</td>
+<td>This inspection highlights assignment that can be replaced with augmented assignment.</td>
+</tr>
+<tr>
+<td># noinspection PyAttributeOutsideInit</td>
+<td>This inspection detects instance attribute definition outside <strong>init</strong> method</td>
+</tr>
+<tr>
+<td># noinspection PyBroadException</td>
+<td>This inspection highlights too broad exception clauses such as no exception class specified, or specified as ‘Exception’.</td>
+</tr>
+<tr>
+<td># noinspection PyByteLiteral</td>
+<td>This inspection detects characters &gt; 255 in byte literals.</td>
+</tr>
+<tr>
+<td># noinspection PyCallByClass</td>
+<td>This inspection checks for calls of a method by class while passing an instance of a different class as self parameter:    foo = Foo()    Bar.baz(foo, *more)Sometimes this may be intentional and correct. But when unintentional, this leads to subtle bugs.</td>
+</tr>
+<tr>
+<td># noinspection PyCallingNonCallable</td>
+<td>This inspection highlights attempts to call objects which are not callable, like, for example, tuples.</td>
+</tr>
+<tr>
+<td># noinspection PyChainedComparisons</td>
+<td>This inspection highlights chained comparisons that can be simplified.</td>
+</tr>
+<tr>
+<td># noinspection PyClassHasNoInit</td>
+<td>This inspection used when a class has no <strong>init</strong> method, neither its parent classes.</td>
+</tr>
+<tr>
+<td># noinspection PyClassicStyleClass</td>
+<td>This inspection detects classic style classes usage.</td>
+</tr>
+<tr>
+<td># noinspection PyComparisonWithNone</td>
+<td>This inspection highlights comparisons with None. That type of comparisons should always be done with ‘is’ or ‘is not’, never the equality operators.</td>
+</tr>
+<tr>
+<td># noinspection PyCompatibility</td>
+<td>Enable this inspection if you need your code to be compatible with a range of Python versions (for example, if you’re building a library). The range of Python versions with which the code needs to be compatible can be specified in the inspection settings.</td>
+</tr>
+<tr>
+<td># noinspection PyDataclass</td>
+<td>This inspection detects invalid definitions and usages of classes created with dataclasses or attr modules.</td>
+</tr>
+<tr>
+<td># noinspection PyDecorator</td>
+<td>This inspection reports usages of @classmethod or @staticmethod decorators on functions outside of a class.</td>
+</tr>
+<tr>
+<td># noinspection PyDefaultArgument</td>
+<td>This inspection detects when a mutable value as list or dictionary is detected in a default value for an argument. Default argument values are evaluated only once at function definition time, which means that modifying the default value of the argument will affect all subsequent calls of the function.</td>
+</tr>
+<tr>
+<td># noinspection PyDeprecation</td>
+<td>This inspection highlights usages of Python functions, classes or methods which are marked as deprecated (which raise a DeprecationWarning or a PendingDeprecationWarning).</td>
+</tr>
+<tr>
+<td># noinspection PyDictCreation</td>
+<td>This inspection detects situations when dictionary creation could be rewritten with dictionary literal.</td>
+</tr>
+<tr>
+<td># noinspection PyDictDuplicateKeys</td>
+<td>This inspection highlights using the same value as dictionary key twice.</td>
+</tr>
+<tr>
+<td># noinspection PyDocstringTypes</td>
+<td>This inspection highlights types in docstring which don’t match dynamically inferred types.</td>
+</tr>
+<tr>
+<td># noinspection PyDunderSlots</td>
+<td>This inspection detects invalid definition of <strong>slots</strong> in a class.</td>
+</tr>
+<tr>
+<td># noinspection PyExceptClausesOrder</td>
+<td>This inspection highlights situations when except clauses are not in the correct order (from the more specific to the more generic) or one exception class is caught twice. If you don’t fix the order, some exceptions may not be catched by the most specific handler.</td>
+</tr>
+<tr>
+<td># noinspection PyExceptionInherit</td>
+<td>This inspection detects when a custom exception class is raised but doesn’t inherit from the builtin “Exception” class.</td>
+</tr>
+<tr>
+<td># noinspection PyFromFutureImport</td>
+<td>This inspection detects ‘from <strong>future</strong> import’ statements which are used not in the beginning of a file.</td>
+</tr>
+<tr>
+<td># noinspection PyGlobalUndefined</td>
+<td>This inspection is used when a variable is defined through the “global” statement but the variable is not defined in the module scope.</td>
+</tr>
+<tr>
+<td># noinspection PyInconsistentIndentation</td>
+<td>This inspection reports inconsistent indentation in Python source files (for example, use of a mixture of tabs and spaces).</td>
+</tr>
+<tr>
+<td># noinspection PyIncorrectDocstring</td>
+<td>This inspection detects mismatched parameters in a docstring. Please note that it doesn’t warn you of missing parameters, if none of them is mentioned in a docstring.</td>
+</tr>
+<tr>
+<td># noinspection PyInitNewSignature</td>
+<td>This inspection checks mutual compatibility of <strong>new</strong> and <strong>init</strong> signatures.</td>
+</tr>
+<tr>
+<td># noinspection PyInterpreter</td>
+<td>This inspection notifies you if the current project has no Python interpreter configured or an invalid Python interpreter.</td>
+</tr>
+<tr>
+<td># noinspection PyListCreation</td>
+<td>This inspection detects situations when list creation could be rewritten with list literal.</td>
+</tr>
+<tr>
+<td># noinspection PyMandatoryEncoding</td>
+<td>This inspection detects lack of encoding magic comment for file.</td>
+</tr>
+<tr>
+<td># noinspection PyMethodFirstArgAssignment</td>
+<td>This inspection detects cases when first parameter, such as ‘self’ or ‘cls’, is reassigned in a method. In most cases imaginable, there’s no point in such reassignment, and it indicates an error.</td>
+</tr>
+<tr>
+<td># noinspection PyMethodOverriding</td>
+<td>This inspection detects inconsistencies in overriding method signatures.</td>
+</tr>
+<tr>
+<td># noinspection PyMethodParameters</td>
+<td>This inspection looks for methods that lack a first parameter (which is usually named self ).</td>
+</tr>
+<tr>
+<td># noinspection PyMissingConstructor</td>
+<td>This inspection warns if call to super constructor in class is missed</td>
+</tr>
+<tr>
+<td># noinspection PyMissingOrEmptyDocstring</td>
+<td>This inspection detects lack of docstring and an empty docstring.</td>
+</tr>
+<tr>
+<td># noinspection PyMissingTypeHints</td>
+<td>This inspection detects lack of type hints for function declaration in one of the two formats: parameter annotations or a type comment</td>
+</tr>
+<tr>
+<td># noinspection PyNamedTuple</td>
+<td>This inspection detects invalid definition of namedtuple.</td>
+</tr>
+<tr>
+<td># noinspection PyNestedDecorators</td>
+<td>This inspection looks for certain decorators that don’t nest well.</td>
+</tr>
+<tr>
+<td># noinspection PyNonAsciiChar</td>
+<td>This inspection detects file contains non-ASCII characters and doesn’t have an encoding declaration at the top.</td>
+</tr>
+<tr>
+<td># noinspection PyNoneFunctionAssignment</td>
+<td>This inspection is similar to pylint inspection E1111. It highlights situations when an assignment is done on a function call but the inferred function doesn’t return anything.</td>
+</tr>
+<tr>
+<td># noinspection PyOldStyleClasses</td>
+<td>This inspection highlights occurrences of new-style class features in old-style classes.</td>
+</tr>
+<tr>
+<td># noinspection PyOverloads</td>
+<td>This inspection validates overloads in regular Python files.</td>
+</tr>
+<tr>
+<td># noinspection PyPackageRequirements</td>
+<td>This inspection warns about imported or required, but not installed packages.</td>
+</tr>
+<tr>
+<td># noinspection PyPep8</td>
+<td>This inspection runs the pep8.py tool to check for violations of the PEP 8 coding style guide.</td>
+</tr>
+<tr>
+<td># noinspection PyPep8Naming</td>
+<td>This inspection checks the PEP8 naming conventions.</td>
+</tr>
+<tr>
+<td># noinspection PyPropertyAccess</td>
+<td>This inspection checks that properties are accessed correctly: read-only not set, write-only not read, non-deletable not deleted.</td>
+</tr>
+<tr>
+<td># noinspection PyPropertyDefinition</td>
+<td>This inspection checks that arguments to property() and functions annotated with @property and friends look reasonably.</td>
+</tr>
+<tr>
+<td># noinspection PyProtectedMember</td>
+<td>This inspection warns if a protected member is accessed outside the class, a descendant of the class where it’s defined or a module.</td>
+</tr>
+<tr>
+<td># noinspection PyProtocol</td>
+<td>This inspection detects invalid definitions and usages of protocols introduced in PEP-544.</td>
+</tr>
+<tr>
+<td># noinspection PyRedeclaration</td>
+<td>This inspection detects unconditional redeclarations of names without being used in between, like this: def x(): passx = 2It applies to function and class declarations, and top-level assignments.</td>
+</tr>
+<tr>
+<td># noinspection PyRedundantParentheses</td>
+<td>This inspection highlights redundant parentheses in statements.</td>
+</tr>
+<tr>
+<td># noinspection PyReturnFromInit</td>
+<td>This inspection reports occurrences of return statements with a return value inside <strong>init</strong> methods of classes. A constructor should not return any value.</td>
+</tr>
+<tr>
+<td># noinspection PySetFunctionToLiteral</td>
+<td>This inspection detects call for function “set” which can be replaced with set literal.</td>
+</tr>
+<tr>
+<td># noinspection PyShadowingBuiltins</td>
+<td>This inspection detects shadowing built-in names, such as ‘len’ or ‘list’.</td>
+</tr>
+<tr>
+<td># noinspection PyShadowingNames</td>
+<td>This inspection detects shadowing names defined in outer scopes</td>
+</tr>
+<tr>
+<td># noinspection PySimplifyBooleanCheck</td>
+<td>This inspection detects equality comparison with a boolean literal.</td>
+</tr>
+<tr>
+<td># noinspection PySingleQuotedDocstring</td>
+<td>This inspection highlights docstrings not using triple double-quoted string format.</td>
+</tr>
+<tr>
+<td># noinspection PyStatementEffect</td>
+<td>This inspection detects statements without any effect.</td>
+</tr>
+<tr>
+<td># noinspection PyStringException</td>
+<td>This inspection detects when a string exception is raised.</td>
+</tr>
+<tr>
+<td># noinspection PyStringFormat</td>
+<td>This inspection detects errors in string formatting operations.</td>
+</tr>
+<tr>
+<td># noinspection PySuperArguments</td>
+<td>This inspection check that in any call to super(A, B), B either is an instance of A or a subclass of A.</td>
+</tr>
+<tr>
+<td># noinspection PyTestParametrized</td>
+<td>Test function, decorated with @pytest.mark.parametrize, must have arguments to accept parameters from decorator</td>
+</tr>
+<tr>
+<td># noinspection PyTrailingSemicolon</td>
+<td>This inspection detects trailing semicolons in statements.</td>
+</tr>
+<tr>
+<td># noinspection PyTupleAssignmentBalance</td>
+<td>This inspection check that the number of expressions on right-hand side and targets on left-hand side are the same.</td>
+</tr>
+<tr>
+<td># noinspection PyTupleItemAssignment</td>
+<td>This inspection detects assignments to tuple item.</td>
+</tr>
+<tr>
+<td># noinspection PyTypeChecker</td>
+<td>This inspection detects type errors in function call expressions. Due to dynamic dispatch and duck typing, this is possible in a limited but useful number of cases. Types of function parameters can be specified in docstrings or in Python 3 function annotations.</td>
+</tr>
+<tr>
+<td># noinspection PyTypeHints</td>
+<td>This inspection detects invalid usages of type hints.</td>
+</tr>
+<tr>
+<td># noinspection PyUnboundLocalVariable</td>
+<td>This inspection warns about local variables referenced before assignment.</td>
+</tr>
+<tr>
+<td># noinspection PyUnnecessaryBackslash</td>
+<td>This inspection highlights backslashes in places where line continuation is implicit (inside (), [], {}).</td>
+</tr>
+<tr>
+<td># noinspection PyUnreachableCode</td>
+<td>This inspection detects code which can not be normally reached.</td>
+</tr>
+<tr>
+<td># noinspection PyUnresolvedReferences</td>
+<td>This inspection detects names that should resolve but don’t. Due to dynamic dispatch and duck typing, this is possible in a limited but useful number of cases. Top-level and class-level items are supported better than instance items.</td>
+</tr>
+<tr>
+<td># noinspection PyUnusedLocal</td>
+<td>This inspection highlights local variables,parameters or local functions unused in scope.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><blockquote>
+<ul>
+<li><a href=""></a></li>
+<li><a href=""></a></li>
+</ul>
+</blockquote>
+
+            </div>
+        
+        <footer class="article-footer">
+        </footer>
+    </div>
+</article>
+
+
+    
+<nav id="article-nav">
+    
+        <a href="/wiki/编程基础/安装与配置/set-vim/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">上一篇</strong>
+            <div class="article-nav-title">
+                
+                    配置vim
+                
+            </div>
+        </a>
+    
+    
+        <a href="/wiki/编程基础/安装与配置/install-ubuntu/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">下一篇</strong>
+            <div class="article-nav-title">安装ubuntu</div>
+        </a>
+    
+</nav>
+
+
+
+
+
+    
+    
+
+
+
+
+<!-- baidu url auto push script -->
+<script type="text/javascript">
+    !function(){var e=/([http|https]:\/\/[a-zA-Z0-9\_\.]+\.baidu\.com)/gi,r=window.location.href,o=document.referrer;if(!e.test(r)){var n="//api.share.baidu.com/s.gif";o?(n+="?r="+encodeURIComponent(document.referrer),r&&(n+="&l="+r)):r&&(n+="?l="+r);var t=new Image;t.src=n}}(window);
+</script>     
+</section>
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            aifish &copy; 2019 
+            <a rel="external nofollow noopener noreferrer" href="http://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/80x15.png"></a>
+            <br> Powered by <a href="http://hexo.io/" target="_blank" rel="external nofollow noopener noreferrer">Hexo</a>. Theme - <a href="https://github.com/zthxxx/hexo-theme-Wikitten" rel="external nofollow noopener noreferrer" target="_blank">wikitten</a>
+            
+                <br>
+                <span id="busuanzi_container_site_pv"><i class="fa fa-eye"></i> <span id="busuanzi_value_site_pv"></span></span>
+                &nbsp;|&nbsp;
+                <span id="busuanzi_container_site_pv"><i class="fa fa-user"></i> <span id="busuanzi_value_site_uv"></span></span>
+            
+        </div>
+    </div>
+</footer>
+
+        
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+    
+        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
+        <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true,
+            TeX: {
+                equationNumbers: {
+                  autoNumber: 'AMS'
+                }
+            }
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script async src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+</body>
