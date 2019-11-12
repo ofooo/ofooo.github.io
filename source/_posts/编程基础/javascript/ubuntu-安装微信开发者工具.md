@@ -51,11 +51,9 @@ StartupNotify=false
 StartupWMClass=wechat-ide
 ```
 
-图标下载网站: 
+安装桌面图标: 执行 bin/install_desktop.sh
 
-没有找到上述的软件图标图片, 我就在网络上下载了一个ICON图标
 
-图标在这个网站里找的: https://www.easyicon.net/
 
 
 
