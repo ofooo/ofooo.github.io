@@ -44,27 +44,27 @@ def root(*f, relative_root='../../../'):
 
 Keymap---方案设置成NetBeans
 
-| 名称               | 快捷键             | 说明               |
-| ------------------ | ------------------ | ------------------ |
-| Reformat           | Ctrl+Alt+L  需设置 | Code格式化代码     |
-| Move Line Up       | Alt+Up  需设置     | 当前行往上挪一行   |
-| Move Line Down     | Alt+Down  需设置   | 当前行往上挪一行   |
-| Optimize Imports   | Ctrl+Shift+I       | 优化导入代码       |
-|                    | Ctrl+F12           | 跳转到方法（列表） |
-|                    | Ctrl + F11         | 设置书签           |
-|                    |                    |                    |
-|                    | SHIFT F11          | 显示所有书签       |
-| Go to Bookmark 1   | Ctrl+Alt+1  需设置 | 跳转到 该书签      |
-| Next Bookmark      | Ctrl+Shift+.       | 跳转到下个书签     |
-| Previous Bookmark  | Ctrl+Shift+逗号    | 跳转到上个书签     |
-| Decrease Font Size | Ctrl+Alt+减号      | 减小字体大小       |
-| Increase Font Size | Ctrl+Alt+=         | 增加字体大小       |
-|                    |                    |                    |
-|                    |                    |                    |
-|                    |                    |                    |
-|                    |                    |                    |
-|                    |                    |                    |
-|                    |                    |                    |
+| 名称               | 快捷键                       | 说明               |
+| ------------------ | ---------------------------- | ------------------ |
+| Reformat           | Ctrl+Alt+L  需设置           | Code格式化代码     |
+| Move Line Up       | Alt+Up  需设置               | 当前行往上挪一行   |
+| Move Line Down     | Alt+Down  需设置             | 当前行往上挪一行   |
+| Optimize Imports   | Ctrl+Shift+I                 | 优化导入代码       |
+|                    | Ctrl+F12                     | 跳转到方法（列表） |
+|                    | Ctrl + F11                   | 设置书签           |
+|                    |                              |                    |
+|                    | SHIFT F11                    | 显示所有书签       |
+| Go to Bookmark 1   | Ctrl+Alt+1  需设置           | 跳转到 该书签      |
+| Next Bookmark      | Ctrl+Shift+.                 | 跳转到下个书签     |
+| Previous Bookmark  | Ctrl+Shift+逗号              | 跳转到上个书签     |
+| Decrease Font Size | Ctrl+Alt+减号                | 减小字体大小       |
+| Increase Font Size | Ctrl+Alt+=                   | 增加字体大小       |
+|                    |                              |                    |
+|                    |                              |                    |
+|                    | Ctrl+PageDown    Ctrl+PageUp | 切换标签页         |
+|                    |                              |                    |
+|                    |                              |                    |
+|                    |                              |                    |
 
 **常用快捷键**
 
