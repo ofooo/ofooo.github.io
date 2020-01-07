@@ -63,6 +63,7 @@ git checkout -b xxx origin/yyy
 
 # 将 xxx 分支追踪远程分支 origin/yyy
 git branch --set-upstream xxx origin/yyy
+git branch --set-upstream-to=远程仓库名/远程分支名 本地分支名   (把本地的分支绑定到远程的某个分支)
 
 # 设置当前分支跟踪远程分支 origin/yyyy
 git branch -u origin/yyyy

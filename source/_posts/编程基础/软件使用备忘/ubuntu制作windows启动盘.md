@@ -1,9 +1,11 @@
 ---
 title: ubuntu制作windows启动盘
 toc: true
+categories:
+  - 编程基础
+  - 软件使用备忘
 date: 2019-11-13 19:25:58
 tags:
-categories:
 ---
 
 
