@@ -334,7 +334,7 @@
                             &nbsp;
                             编程思维
                         </a>
-                         <ul class="unstyled" id="tree">  <li class="file"><a href="/wiki/编程思维/debug思路备忘/">debug思路备忘</a></li>  <li class="file"><a href="/wiki/编程思维/写代码技巧/">写代码技巧</a></li>  <li class="file"><a href="/wiki/编程思维/错误处理/">错误处理</a></li>  <li class="file"><a href="/wiki/编程思维/什么才是编程的基础知识？/">编程的基础知识</a></li>  </ul> 
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/wiki/编程思维/debug思路备忘/">debug思路备忘</a></li>  <li class="file"><a href="/wiki/编程思维/写代码技巧/">写代码技巧</a></li>  <li class="file"><a href="/wiki/编程思维/错误处理/">错误处理</a></li>  <li class="file"><a href="/wiki/编程思维/什么才是编程的基础知识？/">编程的基础知识</a></li>  <li class="file"><a href="/wiki/编程思维/做实验的标准/">做实验的标准</a></li>  </ul> 
                     </li> 
                     
                     <li class="directory">
@@ -435,6 +435,105 @@
 </aside>
             
             <section id="main">
+        <article id="post-编程基础/安装与配置/安装centos" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+                    <div class="article-meta">
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/编程基础/">编程基础</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/编程基础/安装与配置/">安装与配置</a>
+    </div>
+
+                        
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/wiki/编程基础/安装与配置/安装centos/">
+            <time datetime="2019-07-22T09:47:47.000Z" itemprop="datePublished">2019-07-22</time>
+        </a>
+    </div>
+
+
+                        
+                            <i class="fa fa-bar-chart"></i>
+                            <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span></span>    
+                        
+                        
+                            <div class="article-meta-button">
+                                <a href="https://github.com/ofooo/Wiki-site/raw/writing/source/_posts/编程基础/安装与配置/安装centos.md" rel="external nofollow noopener noreferrer" target="_blank"> Source </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a href="https://github.com/ofooo/Wiki-site/edit/writing/source/_posts/编程基础/安装与配置/安装centos.md" rel="external nofollow noopener noreferrer" target="_blank"> Edit </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a href="https://github.com/ofooo/Wiki-site/commits/writing/source/_posts/编程基础/安装与配置/安装centos.md" rel="external nofollow noopener noreferrer" target="_blank"> History </a>
+                            </div>
+                        
+                    </div>
+                
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/wiki/编程基础/安装与配置/安装centos/">安装centos</a>
+        </h1>
+    
+
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+        
+            
+                
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                
+                    
+                    <p></p><h2 id="安装docker"><a href="#安装docker" class="headerlink" title="安装docker"></a>安装docker</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 使用 root 权限登录 Centos</span></span><br><span class="line">su</span><br><span class="line"><span class="comment">#  yum 包更新到最新。</span></span><br><span class="line">yum update</span><br><span class="line"></span><br><span class="line"><span class="comment"># 卸载旧版本(如果安装过旧版本的话)</span></span><br><span class="line">yum remove docker  docker-common docker-selinux docker-engine</span><br><span class="line"><span class="comment"># 安装需要的软件包， yum-util 提供yum-config-manager功能，另外两个是devicemapper驱动依赖的</span></span><br><span class="line">yum install -y yum-utils device-mapper-persistent-data lvm2</span><br><span class="line"><span class="comment"># 设置yum源</span></span><br><span class="line">yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo</span><br><span class="line"><span class="comment"># 可以查看所有仓库中所有docker版本，并选择特定版本安装</span></span><br><span class="line">yum list docker-ce --showduplicates | sort -r</span><br><span class="line">[结果见下图]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 安装docker</span></span><br><span class="line">yum install docker-ce  <span class="comment">#由于repo中默认只开启stable仓库，故这里安装的是最新稳定版17.12.0</span></span><br><span class="line">yum install &lt;FQPN&gt;  <span class="comment"># 例如：sudo yum install docker-ce-17.12.0.ce</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 启动并加入开机启动</span></span><br><span class="line">systemctl start docker</span><br><span class="line">systemctl <span class="built_in">enable</span> docker</span><br><span class="line"></span><br><span class="line"><span class="comment"># 验证安装是否成功(有client和service两部分表示docker安装启动都成功了)</span></span><br><span class="line">docker version</span><br></pre></td></tr></table></figure>
+<p><img src="/wiki/编程基础/安装与配置/安装centos/1107037-20180128095038600-772177322.png" alt="查看所有仓库中所有docker版本"></p>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><blockquote>
+<ul>
+<li><a href=""></a></li>
+<p>
+                
+            
+        
+        
+            </p></ul></blockquote></div>   
+            <div class="article-more-link">
+                <a href="/wiki/编程基础/安装与配置/安装centos/#more">查看更多</a>
+            </div>
+        
+        <footer class="article-footer">
+        </footer>
+    </div>
+</article>
+
+
+
+
+
+
+    
         <article id="post-编程基础/软件使用备忘/使用vim" class="article article-type-post" itemscope="" itemprop="blogPost">
     <div class="article-inner">
         
@@ -1348,110 +1447,6 @@
             </p></blockquote></div>   
             <div class="article-more-link">
                 <a href="/wiki/编程基础/C++/base-cpp/#more">查看更多</a>
-            </div>
-        
-        <footer class="article-footer">
-        </footer>
-    </div>
-</article>
-
-
-
-
-
-
-    
-        <article id="post-编程基础/javascript/javascript" class="article article-type-post" itemscope="" itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
-                
-                    <div class="article-meta">
-                        
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/编程基础/">编程基础</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/编程基础/javascript/">javascript</a>
-    </div>
-
-                        
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/javascript语法/">javascript语法</a>
-    </div>
-
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/wiki/编程基础/javascript/javascript/">
-            <time datetime="2019-07-12T00:55:19.000Z" itemprop="datePublished">2019-07-12</time>
-        </a>
-    </div>
-
-
-                        
-                            <i class="fa fa-bar-chart"></i>
-                            <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span></span>    
-                        
-                        
-                            <div class="article-meta-button">
-                                <a href="https://github.com/ofooo/Wiki-site/raw/writing/source/_posts/编程基础/javascript/javascript.md" rel="external nofollow noopener noreferrer" target="_blank"> Source </a>
-                            </div>
-                            <div class="article-meta-button">
-                                <a href="https://github.com/ofooo/Wiki-site/edit/writing/source/_posts/编程基础/javascript/javascript.md" rel="external nofollow noopener noreferrer" target="_blank"> Edit </a>
-                            </div>
-                            <div class="article-meta-button">
-                                <a href="https://github.com/ofooo/Wiki-site/commits/writing/source/_posts/编程基础/javascript/javascript.md" rel="external nofollow noopener noreferrer" target="_blank"> History </a>
-                            </div>
-                        
-                    </div>
-                
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/wiki/编程基础/javascript/javascript/">javascript基础</a>
-        </h1>
-    
-
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-        
-            
-                
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                
-                    
-                    <p></p><h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><blockquote>
-<ul>
-<li><a href=""></a></li>
-<li><a href=""></a></li>
-</ul>
-<p>
-                
-            
-        
-        
-            </p></blockquote></div>   
-            <div class="article-more-link">
-                <a href="/wiki/编程基础/javascript/javascript/#more">查看更多</a>
             </div>
         
         <footer class="article-footer">
