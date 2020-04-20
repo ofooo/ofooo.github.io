@@ -48,3 +48,17 @@ git checkout -- $filename
 
 
 
+
+## Error修复
+
+### Tool open
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@         WARNING: UNPROTECTED PRIVATE KEY FILE!          @
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+Permissions 0664 for 'xxx_rsa' are too open.
+It is required that your private key files are NOT accessible by others.
+
+文件权限太开放, 被其他人可以读写.
+
+解决方案:  chmod 600 fileName       修改成```--rw------------```

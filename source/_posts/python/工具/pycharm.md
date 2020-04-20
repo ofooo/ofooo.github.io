@@ -44,27 +44,27 @@ def root(*f, relative_root='../../../'):
 
 Keymap---方案设置成NetBeans
 
-| 名称               | 快捷键                       | 说明               |
-| ------------------ | ---------------------------- | ------------------ |
-| Reformat           | Ctrl+Alt+L  需设置           | Code格式化代码     |
-| Move Line Up       | Alt+Up  需设置               | 当前行往上挪一行   |
-| Move Line Down     | Alt+Down  需设置             | 当前行往上挪一行   |
-| Optimize Imports   | Ctrl+Shift+I                 | 优化导入代码       |
-|                    | Ctrl+F12                     | 跳转到方法（列表） |
-|                    | Ctrl + F11                   | 设置书签           |
-|                    |                              |                    |
-|                    | SHIFT F11                    | 显示所有书签       |
-| Go to Bookmark 1   | Ctrl+Alt+1  需设置           | 跳转到 该书签      |
-| Next Bookmark      | Ctrl+Shift+.                 | 跳转到下个书签     |
-| Previous Bookmark  | Ctrl+Shift+逗号              | 跳转到上个书签     |
-| Decrease Font Size | Ctrl+Alt+减号                | 减小字体大小       |
-| Increase Font Size | Ctrl+Alt+=                   | 增加字体大小       |
-|                    |                              |                    |
-|                    |                              |                    |
-|                    | Ctrl+PageDown    Ctrl+PageUp | 切换标签页         |
-|                    |                              |                    |
-|                    |                              |                    |
-|                    |                              |                    |
+| 名称                   | 快捷键                       | 说明                             |
+| ---------------------- | ---------------------------- | -------------------------------- |
+| Reformat               | Ctrl+Alt+L  需设置           | Code格式化代码                   |
+| Move Line Up           | Alt+Up  需设置               | 当前行往上挪一行                 |
+| Move Line Down         | Alt+Down  需设置             | 当前行往上挪一行                 |
+| Optimize Imports       | Ctrl+Shift+I                 | 优化导入代码                     |
+|                        | Ctrl+F12                     | 跳转到方法（列表）               |
+|                        | Ctrl + F11                   | 设置书签                         |
+|                        |                              |                                  |
+|                        | SHIFT F11                    | 显示所有书签                     |
+| Go to Bookmark 1       | Ctrl+Alt+1  需设置           | 跳转到 该书签                    |
+| Next Bookmark          | Ctrl+Shift+.                 | 跳转到下个书签                   |
+| Previous Bookmark      | Ctrl+Shift+逗号              | 跳转到上个书签                   |
+| Decrease Font Size     | Ctrl+Alt+减号                | 减小字体大小                     |
+| Increase Font Size     | Ctrl+Alt+=                   | 增加字体大小                     |
+|                        |                              |                                  |
+| Move Caret to Line End | Ctrl+回车   需设置           | 光标挪到行尾，大括号什么的很方便 |
+|                        | Ctrl+PageDown    Ctrl+PageUp | 切换标签页                       |
+|                        |                              |                                  |
+|                        |                              |                                  |
+|                        |                              |                                  |
 
 **常用快捷键**
 
@@ -139,6 +139,24 @@ Setting-->Editor-->Font
 控制台的字体大小:
 Setting-->Editor-->Color Scheme-->Console Font
 ```
+
+### 界面颜色
+
+```bash
+## Editor > Color Scheme > 
+
+光标所在行   General > Editor > Caret row    Background=F1FFAA      #EBDEF0 淡蓝紫
+光标所在变量(编写位置)   General > Code > Identifier under caret (write)    Background=FFC483
+光标所在变量的其他位置   General > Code > Identifier under caret        Background=FFC483    FFD9B8 更淡一点    #D4E6F1 淡蓝色
+
+
+
+
+```
+
+
+
+
 
 ## 常见BUG
 
