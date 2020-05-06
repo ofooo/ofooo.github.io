@@ -4,6 +4,7 @@ toc: true
 categories:
   - 编程基础
   - 软件使用备忘
+  - ubuntu
 date: 2019-04-02 15:26:08
 tags:
 ---
