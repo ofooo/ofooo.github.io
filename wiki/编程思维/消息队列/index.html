@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    
+    <title>消息队列 | AIfish</title>
+    
+    
+        <meta name="keywords" content="消息队列">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content=". 1. 消息队列的定义消息队列是一个存放消息的容器，一般用于生产者消费者的设计模式，作为一种消息中间剑。 消息队列里存储的数据和数据库的区别是数据库可以查询关系，而消息队列只有当前消息可被查询。 2. 消息队列的优势1. 通过异步处理提高系统性能（削峰、减少响应所需时间）  由于消息队列比数据库存储更快，所以可以提高异步系统的性能。 当然由于消息队列的后续处理状态不确定（可能失败），所以在流程上">
+<meta property="og:type" content="article">
+<meta property="og:title" content="消息队列">
+<meta property="og:url" content="http://yoursite.com/wiki/编程思维/消息队列/index.html">
+<meta property="og:site_name" content="AIfish">
+<meta property="og:description" content=". 1. 消息队列的定义消息队列是一个存放消息的容器，一般用于生产者消费者的设计模式，作为一种消息中间剑。 消息队列里存储的数据和数据库的区别是数据库可以查询关系，而消息队列只有当前消息可被查询。 2. 消息队列的优势1. 通过异步处理提高系统性能（削峰、减少响应所需时间）  由于消息队列比数据库存储更快，所以可以提高异步系统的性能。 当然由于消息队列的后续处理状态不确定（可能失败），所以在流程上">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://yoursite.com/wiki/编程思维/消息队列/2509688-311483f18a8d228e.webp">
+<meta property="og:image" content="http://yoursite.com/wiki/编程思维/消息队列/2509688-f9b9af2c6620e724.webp">
+<meta property="og:image" content="http://yoursite.com/wiki/编程思维/消息队列/2509688-f3bddbdea97bb30c.webp">
+<meta property="og:image" content="http://yoursite.com/wiki/编程思维/消息队列/v2-8ca010d65aa8e4c385a901fb2e91f31a_1440w.jpg">
+<meta property="og:image" content="http://yoursite.com/wiki/编程思维/消息队列/v2-92c5c49e68a6213914936ed979c05c6b_1440w.jpg">
+<meta property="og:updated_time" content="2020-05-12T07:38:17.665Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="消息队列">
+<meta name="twitter:description" content=". 1. 消息队列的定义消息队列是一个存放消息的容器，一般用于生产者消费者的设计模式，作为一种消息中间剑。 消息队列里存储的数据和数据库的区别是数据库可以查询关系，而消息队列只有当前消息可被查询。 2. 消息队列的优势1. 通过异步处理提高系统性能（削峰、减少响应所需时间）  由于消息队列比数据库存储更快，所以可以提高异步系统的性能。 当然由于消息队列的后续处理状态不确定（可能失败），所以在流程上">
+<meta name="twitter:image" content="http://yoursite.com/wiki/编程思维/消息队列/2509688-311483f18a8d228e.webp">
+    
+
+    
+
+    
+        <link rel="icon" href="/fish256.png">
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/open-sans/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="/libs/jquery/plugins/cookie/1.4.1/jquery.cookie.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+    
+    
+
+
+    
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+</head>
+</html>
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">AIfish</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/">首页</a>
+                
+                    <a class="main-nav-link" href="/archives">归档</a>
+                
+                    <a class="main-nav-link" href="/categories">分类</a>
+                
+                    <a class="main-nav-link" href="/tags">标签</a>
+                
+                    <a class="main-nav-link" href="/about">关于</a>
+                
+            </nav>
+            
+            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索">
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="想要查找什么...">
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/">首页</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">归档</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">分类</a></td>
+                
+                    <td><a class="main-nav-link" href="/tags">标签</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">关于</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索">
+    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+            
+                <aside id="sidebar">
+   
+        
+    <div class="widget-wrap" id="categories">
+        <h3 class="widget-title">
+            <span>分类</span>
+            &nbsp;
+            <a id="allExpand" href="#">
+                <i class="fa fa-angle-double-down fa-2x"></i>
+            </a>
+        </h3>
+        
+        
+        
+         <ul class="unstyled" id="tree"> 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            python
+                        </a>
+                         <ul class="unstyled" id="tree"> 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            工具
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/wiki/python/工具/jupyter-notebook/">jupyter_notebook</a></li>  <li class="file"><a href="/wiki/python/工具/py2和py3/">py2_and_py3</a></li>  <li class="file"><a href="/wiki/python/工具/python代码加密/">python代码加密</a></li>  <li class="file"><a href="/wiki/python/工具/python源码转UML图/">python源码转UML图</a></li>  <li class="file"><a href="/wiki/python/工具/安装python/">安装python</a></li>  <li class="file"><a href="/wiki/python/工具/pycharm/">配置和使用 pycharm</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            库
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/wiki/python/库/jpype和hanlp/">jpype和hanlp 安装</a></li>  <li class="file"><a href="/wiki/python/库/datetime/">datetime</a></li>  <li class="file"><a href="/wiki/python/库/queue队列/">Queue 队列模块相关</a></li>  <li class="file"><a href="/wiki/python/库/tornado/">tornado</a></li>  <li class="file"><a href="/wiki/python/库/python-xml/">python-xml解析</a></li>  <li class="file"><a href="/wiki/python/库/多线程、多进程、协程/">thread多线程模块</a></li>  <li class="file"><a href="/wiki/python/库/基础库/">基础库：os/sys/dis</a></li>  <li class="file"><a href="/wiki/python/库/命令行参数和环境变量/">命令行参数和环境变量</a></li>  <li class="file"><a href="/wiki/python/库/维护有序数组的模块bisect/">维护有序数组的模块bisect</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            语法
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/wiki/python/语法/decorator装饰器/">decorator装饰器</a></li>  <li class="file"><a href="/wiki/python/语法/python常用代码/">python常用代码</a></li>  <li class="file"><a href="/wiki/python/语法/python基本数据类型/">python基本数据类型</a></li>  <li class="file"><a href="/wiki/python/语法/文本操作/">文本操作</a></li>  <li class="file"><a href="/wiki/python/语法/python常见错误/">python常见错误</a></li>  <li class="file"><a href="/wiki/python/语法/迭代器和生成器/">python基本概念</a></li>  </ul> 
+                    </li> 
+                     </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            人工智能
+                        </a>
+                         <ul class="unstyled" id="tree"> 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            cs224n笔记
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/wiki/人工智能/cs224n笔记/《hanlp神经网络依存句法分析器》笔记/">《hanlp神经网络依存句法分析器》笔记</a></li>  <li class="file"><a href="/wiki/人工智能/cs224n笔记/02词向量/">cs224n-02词向量</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            pytorch
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/wiki/人工智能/pytorch/model-eval-vs-torch-no-grad/">model.eval() 和 with torch.no_grad() 对比</a></li>  <li class="file"><a href="/wiki/人工智能/pytorch/debug-CUDA-device-side-assert/">PyTorch</a></li>  <li class="file"><a href="/wiki/人工智能/pytorch/pytorch-tensor/">pytorch--tensor</a></li>  <li class="file"><a href="/wiki/人工智能/pytorch/debug-pytorch-梯度出现NaN/">debug：pytorch_梯度出现NaN</a></li>  <li class="file"><a href="/wiki/人工智能/pytorch/pytorch常用代码/">pytorch常用代码</a></li>  <li class="file"><a href="/wiki/人工智能/pytorch/pytorch报错/">pytorch报错</a></li>  <li class="file"><a href="/wiki/人工智能/pytorch/torch乘法/">torch中的几种乘法。torch.mm, torch.mul, torch.matmul</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            搜索引擎
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/wiki/人工智能/搜索引擎/elastic-debug/">elastic-debug</a></li>  <li class="file"><a href="/wiki/人工智能/搜索引擎/elastic-search插件/">elastic-search插件</a></li>  <li class="file"><a href="/wiki/人工智能/搜索引擎/install-es/">安装ES</a></li>  <li class="file"><a href="/wiki/人工智能/搜索引擎/mongo/">mongo</a></li>  <li class="file"><a href="/wiki/人工智能/搜索引擎/sql-oracle/">oracle的SQL基础</a></li>  <li class="file"><a href="/wiki/人工智能/搜索引擎/elastic-search基础/">elastic_search基础</a></li>  <li class="file"><a href="/wiki/人工智能/搜索引擎/es-search/">es-搜索操作</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            深度学习
+                        </a>
+                         <ul class="unstyled" id="tree"> 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            allennlp
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/wiki/人工智能/深度学习/allennlp/allennlp-json-config/">allennlp_json_config</a></li>  <li class="file"><a href="/wiki/人工智能/深度学习/allennlp/allennlp-classes/">allennlp 类</a></li>  <li class="file"><a href="/wiki/人工智能/深度学习/allennlp/allennlp-models/">allennlp_models</a></li>  <li class="file"><a href="/wiki/人工智能/深度学习/allennlp/allennlp-command/">allennlp 命令执行流程</a></li>  </ul> 
+                    </li> 
+                     <li class="file"><a href="/wiki/人工智能/深度学习/RNN/">RNN</a></li>  <li class="file"><a href="/wiki/人工智能/深度学习/nvidia-docker/">nvidia_docker</a></li>  <li class="file"><a href="/wiki/人工智能/深度学习/写模型代码的流程/">写模型代码的流程</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            资料
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/wiki/人工智能/资料/bert与NER/">BERT与NER</a></li>  <li class="file"><a href="/wiki/人工智能/资料/聚类/">分词和新词发现</a></li>  <li class="file"><a href="/wiki/人工智能/资料/关于xlnet的疑问/">关于xlnet的疑问</a></li>  <li class="file"><a href="/wiki/人工智能/资料/分词和新词发现/">分词和新词发现</a></li>  <li class="file"><a href="/wiki/人工智能/资料/词向量/">分词和新词发现</a></li>  <li class="file"><a href="/wiki/人工智能/资料/语料收集/">语料收集</a></li>  <li class="file"><a href="/wiki/人工智能/资料/阅读理解模型相关/">阅读理解模型相关</a></li>  <li class="file"><a href="/wiki/人工智能/资料/语义蕴含模型相关/">语义蕴含模型相关</a></li>  </ul> 
+                    </li> 
+                     </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            编程基础
+                        </a>
+                         <ul class="unstyled" id="tree"> 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            C++
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/wiki/编程基础/C++/base-cpp/">C++基础</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            git
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/wiki/编程基础/git/gitlab/">使用git</a></li>  <li class="file"><a href="/wiki/编程基础/git/git基本概念/">git基本概念</a></li>  <li class="file"><a href="/wiki/编程基础/git/use-git/">使用git</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            javascript
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/wiki/编程基础/javascript/node/">node和npm使用说明</a></li>  <li class="file"><a href="/wiki/编程基础/javascript/ubuntu-安装微信开发者工具/">ubuntu安装微信开发者工具</a></li>  <li class="file"><a href="/wiki/编程基础/javascript/vue基础入门/">vue基础入门</a></li>  <li class="file"><a href="/wiki/编程基础/javascript/javascript/">javascript基础</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            leetcode
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/wiki/编程基础/leetcode/141. Linked_List_Cycle/">双指针找环</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            博客工具
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/wiki/编程基础/博客工具/hexo/">hexo</a></li>  <li class="file"><a href="/wiki/编程基础/博客工具/hexo_fish主题/">hexo_主题配置</a></li>  <li class="file"><a href="/wiki/编程基础/博客工具/markdown说明/">markdown说明</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            安装与配置
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/wiki/编程基础/安装与配置/install-manjaro/">安装manjaro</a></li>  <li class="file"><a href="/wiki/编程基础/安装与配置/set-vim/">配置vim</a></li>  <li class="file"><a href="/wiki/编程基础/安装与配置/system-record/">操作系统重装记录</a></li>  <li class="file"><a href="/wiki/编程基础/安装与配置/set-vscode/">配置vscode</a></li>  <li class="file"><a href="/wiki/编程基础/安装与配置/安装centos/">安装centos</a></li>  <li class="file"><a href="/wiki/编程基础/安装与配置/配置chrome/">配置chrome</a></li>  <li class="file"><a href="/wiki/编程基础/安装与配置/install-ubuntu/">安装ubuntu</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            软件使用备忘
+                        </a>
+                         <ul class="unstyled" id="tree"> 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            ubuntu
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/wiki/编程基础/软件使用备忘/ubuntu/rsync/">rsync</a></li>  <li class="file"><a href="/wiki/编程基础/软件使用备忘/ubuntu/linux_write_DVD/">linux刻录光盘</a></li>  <li class="file"><a href="/wiki/编程基础/软件使用备忘/ubuntu/ubuntu制作windows启动盘/">ubuntu制作windows启动盘</a></li>  <li class="file"><a href="/wiki/编程基础/软件使用备忘/ubuntu/ubuntu的KDE开启触摸板/">ubuntu的KDE开启触摸板</a></li>  <li class="file"><a href="/wiki/编程基础/软件使用备忘/ubuntu/use-linux/">使用linux</a></li>  </ul> 
+                    </li> 
+                     <li class="file"><a href="/wiki/编程基础/软件使用备忘/npm/">npm</a></li>  <li class="file"><a href="/wiki/编程基础/软件使用备忘/use-Adblock/">使用Adblock广告屏蔽插件</a></li>  <li class="file"><a href="/wiki/编程基础/软件使用备忘/use-docker/">使用docker</a></li>  <li class="file"><a href="/wiki/编程基础/软件使用备忘/use-htop/">使用 htop</a></li>  <li class="file"><a href="/wiki/编程基础/软件使用备忘/use-tmux/">use_tmux</a></li>  <li class="file"><a href="/wiki/编程基础/软件使用备忘/使用vim/">vim</a></li>  <li class="file"><a href="/wiki/编程基础/软件使用备忘/use-vscode/">use-vscode</a></li>  <li class="file"><a href="/wiki/编程基础/软件使用备忘/使用虚拟机/">使用虚拟机</a></li>  </ul> 
+                    </li> 
+                     </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            编程思维
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/wiki/编程思维/debug思路备忘/">debug思路备忘</a></li>  <li class="file"><a href="/wiki/编程思维/写代码技巧/">写代码技巧</a></li>  <li class="file"><a href="/wiki/编程思维/做实验的标准/">做实验的标准</a></li>  <li class="file"><a href="/wiki/编程思维/错误处理/">错误处理</a></li>  <li class="file"><a href="/wiki/编程思维/什么才是编程的基础知识？/">编程的基础知识</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            读书笔记
+                        </a>
+                         <ul class="unstyled" id="tree"> 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            学习方法
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/wiki/读书笔记/学习方法/使用正念减少压力/">通过正念减少压力,提升专注力</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            论文翻译
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/wiki/读书笔记/论文翻译/论文翻译-ESIM/">论文翻译 Enhanced Sequential Inference Model（ESIM）</a></li>  <li class="file"><a href="/wiki/读书笔记/论文翻译/论文翻译-semantic-learning-for-text-comprehension/">论文翻译 I Know What You Want: Semantic Learning for Text Comprehension</a></li>  <li class="file"><a href="/wiki/读书笔记/论文翻译/论文翻译-ALBERT/">论文翻译 ALBERT：A LITE BERT FOR SELF-SUPERVISED LEARNING OF LANGUAGE REPRESENTATIONS</a></li>  </ul> 
+                    </li> 
+                     <li class="file"><a href="/wiki/读书笔记/NAS/">NAS</a></li>  <li class="file"><a href="/wiki/读书笔记/nikon-d5600/">尼康D5600相机</a></li>  <li class="file"><a href="/wiki/读书笔记/我们为什么喜欢巧克力/">我们为什么喜欢巧克力</a></li>  <li class="file"><a href="/wiki/读书笔记/笔记-Ruby 之父松本行弘：程序员的乐趣、存在感与平衡/">笔记 Ruby 之父松本行弘：程序员的乐趣、存在感与平衡.md</a></li>  <li class="file"><a href="/wiki/读书笔记/笔记-如何有效阅读一本书/">笔记-如何有效阅读一本书</a></li>  <li class="file"><a href="/wiki/读书笔记/笔记-《做事的常识》/">笔记-《做事的常识》----原著:[日本]小苍广,   播音员: 胖子邓</a></li>  <li class="file"><a href="/wiki/读书笔记/笔记-建立专属的时间管理系统-胖子邓/">笔记: 建立专属的时间管理系统----胖子邓</a></li>  <li class="file"><a href="/wiki/读书笔记/英文信件结尾56种表达方式/">英文信件结尾除了Best_Regards, 还有56种表达方式</a></li>  </ul> 
+                    </li> 
+                     <li class="file active"><a href="/wiki/编程思维/消息队列/">消息队列</a></li>  <li class="file"><a href="/wiki/人工智能/资料/朴素贝叶斯/">朴素贝叶斯</a></li>  </ul> 
+    </div>
+    <script>
+        $(document).ready(function() {
+            var iconFolderOpenClass  = 'fa-folder-open';
+            var iconFolderCloseClass = 'fa-folder';
+            var iconAllExpandClass = 'fa-angle-double-down';
+            var iconAllPackClass = 'fa-angle-double-up';
+            // Handle directory-tree expansion:
+            // 左键单独展开目录
+            $(document).on('click', '#categories a[data-role="directory"]', function (event) {
+                event.preventDefault();
+
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconFolderOpenClass);
+                var subtree = $(this).siblings('ul');
+                icon.removeClass(iconFolderOpenClass).removeClass(iconFolderCloseClass);
+                if (expanded) {
+                    if (typeof subtree != 'undefined') {
+                        subtree.slideUp({ duration: 100 });
+                    }
+                    icon.addClass(iconFolderCloseClass);
+                } else {
+                    if (typeof subtree != 'undefined') {
+                        subtree.slideDown({ duration: 100 });
+                    }
+                    icon.addClass(iconFolderOpenClass);
+                }
+            });
+            // 右键展开下属所有目录
+            $('#categories a[data-role="directory"]').bind("contextmenu", function(event){
+                event.preventDefault();
+                
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconFolderOpenClass);
+                var listNode = $(this).siblings('ul');
+                var subtrees = $.merge(listNode.find('li ul'), listNode);
+                var icons = $.merge(listNode.find('.fa'), icon);
+                icons.removeClass(iconFolderOpenClass).removeClass(iconFolderCloseClass);
+                if(expanded) {
+                    subtrees.slideUp({ duration: 100 });
+                    icons.addClass(iconFolderCloseClass);
+                } else {
+                    subtrees.slideDown({ duration: 100 });
+                    icons.addClass(iconFolderOpenClass);
+                }
+            })
+            // 展开关闭所有目录按钮
+            $(document).on('click', '#allExpand', function (event) {
+                event.preventDefault();
+                
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconAllExpandClass);
+                icon.removeClass(iconAllExpandClass).removeClass(iconAllPackClass);
+                if(expanded) {
+                    $('#sidebar .fa.fa-folder').removeClass('fa-folder').addClass('fa-folder-open')
+                    $('#categories li ul').slideDown({ duration: 100 });
+                    icon.addClass(iconAllPackClass);
+                } else {
+                    $('#sidebar .fa.fa-folder-open').removeClass('fa-folder-open').addClass('fa-folder')
+                    $('#categories li ul').slideUp({ duration: 100 });
+                    icon.addClass(iconAllExpandClass);
+                }
+            });  
+        });
+    </script>
+
+    
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+            
+            <section id="main"><article id="post-编程思维/消息队列" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+                    <div class="article-meta">
+                        
+                        
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/wiki/编程思维/消息队列/">
+            <time datetime="2020-05-12T06:05:06.000Z" itemprop="datePublished">2020-05-12</time>
+        </a>
+    </div>
+
+
+                        
+                            <i class="fa fa-bar-chart"></i>
+                            <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span></span>    
+                        
+                        
+                            <div class="article-meta-button">
+                                <a href="https://github.com/ofooo/Wiki-site/raw/writing/source/_posts/编程思维/消息队列.md" rel="external nofollow noopener noreferrer" target="_blank"> Source </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a href="https://github.com/ofooo/Wiki-site/edit/writing/source/_posts/编程思维/消息队列.md" rel="external nofollow noopener noreferrer" target="_blank"> Edit </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a href="https://github.com/ofooo/Wiki-site/commits/writing/source/_posts/编程思维/消息队列.md" rel="external nofollow noopener noreferrer" target="_blank"> History </a>
+                            </div>
+                        
+                    </div>
+                
+                
+    
+        <h1 class="article-title" itemprop="name">
+            消息队列
+        </h1>
+    
+
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+        
+            
+                <div id="toc" class="toc-article">
+                <strong class="toc-title">文章目录</strong>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-消息队列的定义"><span class="toc-number">1.</span> <span class="toc-text">1. 消息队列的定义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-消息队列的优势"><span class="toc-number">2.</span> <span class="toc-text">2. 消息队列的优势</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-通过异步处理提高系统性能（削峰、减少响应所需时间）"><span class="toc-number">2.1.</span> <span class="toc-text">1. 通过异步处理提高系统性能（削峰、减少响应所需时间）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-降低系统耦合性"><span class="toc-number">2.2.</span> <span class="toc-text">2. 降低系统耦合性</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-消息队列的缺点"><span class="toc-number">3.</span> <span class="toc-text">3. 消息队列的缺点</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-消息通信模式"><span class="toc-number">3.1.</span> <span class="toc-text">4. 消息通信模式</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#4-1-点对点模式"><span class="toc-number">3.1.1.</span> <span class="toc-text">4.1 点对点模式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-2-发布订阅模式"><span class="toc-number">3.1.2.</span> <span class="toc-text">4.2 发布订阅模式</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-软件对比"><span class="toc-number">3.2.</span> <span class="toc-text">4. 软件对比</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考资料"><span class="toc-number">4.</span> <span class="toc-text">参考资料</span></a></li></ol>
+                </div>
+            
+        
+        
+            <p>.</p>
+<h2 id="1-消息队列的定义"><a href="#1-消息队列的定义" class="headerlink" title="1. 消息队列的定义"></a>1. 消息队列的定义</h2><p>消息队列是一个存放消息的容器，一般用于生产者消费者的设计模式，作为一种消息中间剑。</p>
+<p>消息队列里存储的数据和数据库的区别是数据库可以查询关系，而消息队列只有当前消息可被查询。</p>
+<h2 id="2-消息队列的优势"><a href="#2-消息队列的优势" class="headerlink" title="2. 消息队列的优势"></a>2. 消息队列的优势</h2><h3 id="1-通过异步处理提高系统性能（削峰、减少响应所需时间）"><a href="#1-通过异步处理提高系统性能（削峰、减少响应所需时间）" class="headerlink" title="1. 通过异步处理提高系统性能（削峰、减少响应所需时间）"></a>1. 通过异步处理提高系统性能（削峰、减少响应所需时间）</h3><p><img src="/wiki/编程思维/消息队列/2509688-311483f18a8d228e.webp" alt="img"></p>
+<p><img src="/wiki/编程思维/消息队列/2509688-f9b9af2c6620e724.webp" alt="img"></p>
+<p>由于消息队列比数据库存储更快，所以可以提高异步系统的性能。</p>
+<p>当然由于消息队列的后续处理状态不确定（可能失败），所以在流程上需要增加一个步骤，告诉用户现在是在消息队列里等待后续处理的状态。（例如购买车票后，真正出票会再次提醒）</p>
+<h3 id="2-降低系统耦合性"><a href="#2-降低系统耦合性" class="headerlink" title="2. 降低系统耦合性"></a>2. 降低系统耦合性</h3><p><img src="/wiki/编程思维/消息队列/2509688-f3bddbdea97bb30c.webp" alt="img"></p>
+<p>生产者和消费者不直接产生耦合。便于系统扩展。</p>
+<h2 id="3-消息队列的缺点"><a href="#3-消息队列的缺点" class="headerlink" title="3. 消息队列的缺点"></a>3. 消息队列的缺点</h2><ul>
+<li>系统可用性降低<ul>
+<li>在加入MQ之前，你不用考虑消息丢失或者说MQ挂掉等等的情况，但是，引入MQ之后你就需要去考虑了！</li>
+</ul>
+</li>
+<li>系统复杂性提高<ul>
+<li>加入MQ之后，你需要保证消息没有被重复消费、处理消息丢失的情况、保证消息传递的顺序性等等问题！</li>
+</ul>
+</li>
+<li>一致性问题<ul>
+<li>消息队列可以实现异步，消息队列带来的异步确实可以提高系统响应速度。但是，万一消息的真正消费者并没有正确消费消息怎么办？这样就会导致数据不一致的情况了!</li>
+</ul>
+</li>
+</ul>
+<h3 id="4-消息通信模式"><a href="#4-消息通信模式" class="headerlink" title="4. 消息通信模式"></a>4. 消息通信模式</h3><h4 id="4-1-点对点模式"><a href="#4-1-点对点模式" class="headerlink" title="4.1 点对点模式"></a>4.1 点对点模式</h4><p><img src="/wiki/编程思维/消息队列/v2-8ca010d65aa8e4c385a901fb2e91f31a_1440w.jpg" alt="img"></p>
+<p>点对点模式通常是基于拉取或者轮询的消息传送模型，这个模型的特点是发送到队列的消息被一个且只有一个消费者进行处理。生产者将消息放入消息队列后，由消费者主动的去拉取消息进行消费。点对点模型的的优点是消费者拉取消息的频率可以由自己控制。但是消息队列是否有消息需要消费，在消费者端无法感知，所以在消费者端需要额外的线程去监控。</p>
+<h4 id="4-2-发布订阅模式"><a href="#4-2-发布订阅模式" class="headerlink" title="4.2 发布订阅模式"></a>4.2 发布订阅模式</h4><p><img src="/wiki/编程思维/消息队列/v2-92c5c49e68a6213914936ed979c05c6b_1440w.jpg" alt="img"></p>
+<p>发布订阅模式是一个基于消息送的消息传送模型，改模型可以有多种不同的订阅者。生产者将消息放入消息队列后，队列会将消息推送给订阅过该类消息的消费者（类似微信公众号）。由于是消费者被动接收推送，所以无需感知消息队列是否有待消费的消息！但是consumer1、consumer2、consumer3由于机器性能不一样，所以处理消息的能力也会不一样，但消息队列却无法感知消费者消费的速度！所以推送的速度成了发布订阅模模式的一个问题！假设三个消费者处理速度分别是8M/s、5M/s、2M/s，如果队列推送的速度为5M/s，则consumer3无法承受！如果队列推送的速度为2M/s，则consumer1、consumer2会出现资源的极大浪费！</p>
+<h3 id="4-软件对比"><a href="#4-软件对比" class="headerlink" title="4. 软件对比"></a>4. 软件对比</h3><ul>
+<li>RabbitMQ 在吞吐量方面虽然稍逊于 Kafka 和 RocketMQ ，但是由于它基于 erlang 开发，所以并发能力很强，性能极其好，延时很低，达到微秒级。但是也因为 RabbitMQ 基于 erlang 开发，所以国内很少有公司有实力做erlang源码级别的研究和定制。如果业务场景对并发量要求不是太高（十万级、百万级），那这四种消息队列中，RabbitMQ 一定是你的首选。如果是大数据领域的实时计算、日志采集等场景，用 Kafka 是业内标准的，绝对没问题，社区活跃度很高，绝对不会黄，何况几乎是全世界这个领域的事实性规范。</li>
+<li>ActiveMQ 和 RabbitMQ 丢失的可能性非常低， RocketMQ 和 Kafka 理论上不会丢失。</li>
+<li>kafka 的特点其实很明显，就是仅仅提供较少的核心功能，但是提供超高的吞吐量，ms 级的延迟，极高的可用性以及可靠性，而且分布式可以任意扩展。同时 kafka 最好是支撑较少的 topic 数量即可，保证其超高吞吐量。kafka 唯一的一点劣势是有可能消息重复消费，那么对数据准确性会造成极其轻微的影响，在大数据领域中以及日志采集中，这点轻微影响可以忽略这个特性天然适合大数据实时计算以及日志收集。</li>
+</ul>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><blockquote>
+<ul>
+<li><a href=""></a></li>
+<li><a href=""></a></li>
+</ul>
+</blockquote>
+
+            </div>
+        
+        <footer class="article-footer">
+        </footer>
+    </div>
+</article>
+
+
+    
+<nav id="article-nav">
+    
+        <a href="/wiki/人工智能/资料/朴素贝叶斯/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">上一篇</strong>
+            <div class="article-nav-title">
+                
+                    朴素贝叶斯
+                
+            </div>
+        </a>
+    
+    
+        <a href="/wiki/编程基础/软件使用备忘/ubuntu/rsync/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">下一篇</strong>
+            <div class="article-nav-title">rsync</div>
+        </a>
+    
+</nav>
+
+
+
+
+
+    
+    
+
+
+
+
+<!-- baidu url auto push script -->
+<script type="text/javascript">
+    !function(){var e=/([http|https]:\/\/[a-zA-Z0-9\_\.]+\.baidu\.com)/gi,r=window.location.href,o=document.referrer;if(!e.test(r)){var n="//api.share.baidu.com/s.gif";o?(n+="?r="+encodeURIComponent(document.referrer),r&&(n+="&l="+r)):r&&(n+="?l="+r);var t=new Image;t.src=n}}(window);
+</script>     
+</section>
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            aifish &copy; 2020 
+            <a rel="external nofollow noopener noreferrer" href="http://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/80x15.png"></a>
+            <br> Powered by <a href="http://hexo.io/" target="_blank" rel="external nofollow noopener noreferrer">Hexo</a>. Theme - <a href="https://github.com/zthxxx/hexo-theme-Wikitten" rel="external nofollow noopener noreferrer" target="_blank">wikitten</a>
+            
+                <br>
+                <span id="busuanzi_container_site_pv"><i class="fa fa-eye"></i> <span id="busuanzi_value_site_pv"></span></span>
+                &nbsp;|&nbsp;
+                <span id="busuanzi_container_site_pv"><i class="fa fa-user"></i> <span id="busuanzi_value_site_uv"></span></span>
+            
+        </div>
+    </div>
+</footer>
+
+        
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+    
+        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
+        <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true,
+            TeX: {
+                equationNumbers: {
+                  autoNumber: 'AMS'
+                }
+            }
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script async src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+</body>
