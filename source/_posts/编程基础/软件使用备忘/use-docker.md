@@ -35,6 +35,30 @@ tags:
 
 
 
+## 把目录挪动到机械硬盘
+
+镜像和容器通常会占据很大的硬盘空间，所以最好移动到机械硬盘。
+
+```bash
+# 关闭dockder服务
+sudo systemctl stop docker
+
+# move
+sudo mv /var/lib/docker /机械硬盘位置
+
+# link
+sudo ln -s /机械硬盘位置/docker /var/lib/docker
+
+# 启动docker服务
+sudo systemctl start docker
+```
+
+
+
+
+
+
+
 ### 服务设置
 
 刚安装完成后，需要重启机器，才能启动服务
